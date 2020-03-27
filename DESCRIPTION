@@ -1,0 +1,29 @@
+Package: jeksterslabRutils
+Title: Package Utility Functions
+Version: 1.0.0
+Authors@R:
+    person(
+        given = "Ivan Jacob Agaloos",
+        family = "Pesigan",
+        role = c("aut", "cre"),
+        email = "i.j.a.pesigan@connect.um.edu.mo",
+        comment = c(ORCID = "0000-0003-4818-8420")
+    )
+Description: Sets up a boilerplate R package.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Language: en-US
+Depends: R (>= 3.2)
+Imports:
+    rprojroot,
+    styler,
+    rmarkdown,
+    parallel,
+    readxl,
+    usethis
+Suggests:
+    knitr,
+    testthat
+VignetteBuilder: knitr
+RoxygenNote: 7.1.0
