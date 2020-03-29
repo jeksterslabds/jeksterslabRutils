@@ -9,8 +9,10 @@ Authors@R:
         email = "i.j.a.pesigan@connect.um.edu.mo",
         comment = c(ORCID = "0000-0003-4818-8420")
     )
-Description: Sets up a boilerplate R package.
+Description: Utility functions I find useful in my personal R scripting.
 License: MIT + file LICENSE
+URL: https://github.com/jeksterslabds/jeksterslabRutils
+BugReports: https://github.com/jeksterslabds/jeksterslabRutils/issues
 Encoding: UTF-8
 LazyData: true
 Language: en-US
