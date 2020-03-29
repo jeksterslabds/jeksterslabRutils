@@ -4,19 +4,28 @@
 \alias{util_render}
 \title{Render R Scripts and R Markdown Files.}
 \usage{
-util_render(dir = getwd(), files = NULL, par = TRUE, ncores = NULL)
+util_render(
+  recursive = TRUE,
+  dir = getwd(),
+  files = NULL,
+  par = TRUE,
+  ncores = NULL
+)
 }
 \arguments{
+\item{recursive}{Logical.
+If \code{TRUE},
+recursively render all R scripts \code{.R} and
+R Markdown files \code{.Rmd}
+in \code{dir}.}
+
 \item{dir}{Character string.
-Directory.}
+Directory.
+Used if \code{recursive} is \code{TRUE}.}
 
 \item{files}{Character vector.
 Vector of files to render.
-If \code{NULL},
-the function will recursively render
-all R scripts \code{.R} and
-R Markdown files \code{.Rmd}
-in \code{dir}.}
+Used if \code{recursive} is \code{FALSE}.}
 
 \item{par}{Logical.
 If \code{TRUE}, use multiple cores.}
