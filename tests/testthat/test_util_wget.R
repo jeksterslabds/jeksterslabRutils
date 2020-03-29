@@ -3,7 +3,7 @@
 #' author: "Ivan Jacob Agaloos Pesigan"
 #' date: "`r Sys.Date()`"
 #' output:
-#'   rmarkdown::html_vignette:
+#'   rmarkdown::github_document:
 #'     toc: true
 #' ---
 
@@ -14,7 +14,7 @@ library(jeksterslabRutils)
 #' ## Set test parameters
 
 #+ parameters
-wd <- getwd()
+wd <- tempdir()
 link <- c(
   "https://raw.githubusercontent.com/jeksterslabds/jeksterslabRutils/master/R/util_bind.R",
   "https://raw.githubusercontent.com/jeksterslabds/jeksterslabRutils/master/R/util_cat_sys.R",
@@ -23,11 +23,11 @@ link <- c(
   "https://raw.githubusercontent.com/jeksterslabds/jeksterslabRutils/master/R/util_get_numbers.R"
 )
 files <- c(
-  file.path(wd , "util_bind.R"),
-  file.path(wd , "util_cat_sys.R"),
-  file.path(wd , "util_check_file_type.R"),
-  file.path(wd , "util_clean_tempdir.R"),
-  file.path(wd , "util_get_numbers.R")
+  file.path(wd, "util_bind.R"),
+  file.path(wd, "util_cat_sys.R"),
+  file.path(wd, "util_check_file_type.R"),
+  file.path(wd, "util_clean_tempdir.R"),
+  file.path(wd, "util_get_numbers.R")
 )
 
 #' | Variable | Description                | Value     |
@@ -46,16 +46,29 @@ util_wget(
 )
 
 #' ## Results
-results <- rep(x = NA, times = length(files))
+
+results <- log <- rep(x = NA, times = length(files))
 for (i in seq_along(files)) {
-  results[i] <- file.exists(files[i])
-  unlink(files[i])
+  if (file.exists(files[i])) {
+    results[i] <- files[i]
+    log[i] <- TRUE
+  } else {
+    results[i] <- NA
+    log[i] <- FALSE
+  }
 }
 
-#+ test_that, echo=FALSE
+#' | Variable  | Description       | Value       |
+#' |:----------|:------------------|:------------|
+#' | `results` | Downloaded files. | `r results` |
+
+#+ test_that, echo=TRUE
 test_that("util_wget works", {
   expect_equivalent(
-    all(results),
+    all(log),
     TRUE
   )
 })
+
+#+ clean_tempdir
+util_clean_tempdir()

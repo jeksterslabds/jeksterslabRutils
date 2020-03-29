@@ -3,7 +3,7 @@
 #' author: "Ivan Jacob Agaloos Pesigan"
 #' date: "`r Sys.Date()`"
 #' output:
-#'   rmarkdown::html_vignette:
+#'   rmarkdown::github_document:
 #'     toc: true
 #' ---
 
@@ -65,7 +65,7 @@ mean_of_ns <- mean(
 #' | Sample size.   | `r n`     | `r mean_of_ns`    |
 #' | Mean of means. | `r mu`    | `r mean_of_means` |
 
-#+ testthat_01, echo=FALSE
+#+ testthat_01, echo=TRUE
 test_that("sample size used is correct", {
   expect_equivalent(
     mean_of_ns,
@@ -73,7 +73,7 @@ test_that("sample size used is correct", {
   )
 })
 
-#+ testthat_02, echo=FALSE
+#+ testthat_02, echo=TRUE
 test_that("the mean of means converges to the population mean", {
   expect_equivalent(
     round(

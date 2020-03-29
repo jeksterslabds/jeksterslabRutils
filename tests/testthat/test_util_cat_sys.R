@@ -3,7 +3,7 @@
 #' author: "Ivan Jacob Agaloos Pesigan"
 #' date: "`r Sys.Date()`"
 #' output:
-#'   rmarkdown::html_vignette:
+#'   rmarkdown::github_document:
 #'     toc: true
 #' ---
 
@@ -36,7 +36,7 @@ result_year <- capture.output(
 #' |:--------------|:--------------|:----------------|
 #' | `result_year` | Current year. | `r result_year` |
 
-#+ test_that, echo=FALSE
+#+ test_that, echo=TRUE
 test_that("util_cat_sys works", {
   expect_equivalent(
     result_year,

@@ -3,7 +3,7 @@
 #' author: "Ivan Jacob Agaloos Pesigan"
 #' date: "`r Sys.Date()`"
 #' output:
-#'   rmarkdown::html_vignette:
+#'   rmarkdown::github_document:
 #'     toc: true
 #' ---
 
@@ -77,7 +77,7 @@ xlsx_col <- ncol(xlsx)
 #' | Number of rows.    | `r rows`    | `r csv_row`    | `r xls_row`    | `r xlsx_row`    |
 #' | Number of columns. | `r columns` | `r csv_col`    | `r xls_col`    | `r xlsx_col`    |
 
-#+ testthat_01, echo=FALSE
+#+ testthat_01, echo=TRUE
 test_that("rows are correct", {
   expect_equivalent(
     csv_row,
@@ -87,7 +87,7 @@ test_that("rows are correct", {
   )
 })
 
-#+ testthat_02, echo=FALSE
+#+ testthat_02, echo=TRUE
 test_that("columns are correct", {
   expect_equivalent(
     csv_col,
