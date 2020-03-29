@@ -65,7 +65,7 @@ mean_of_ns <- mean(
 #' | Sample size.   | `r n`     | `r mean_of_ns`    |
 #' | Mean of means. | `r mu`    | `r mean_of_means` |
 
-#+ test that_01, echo=FALSE
+#+ testthat_01, echo=FALSE
 test_that("sample size used is correct", {
   expect_equivalent(
     mean_of_ns,
@@ -73,7 +73,7 @@ test_that("sample size used is correct", {
   )
 })
 
-#+ test that_02, echo=FALSE
+#+ testthat_02, echo=FALSE
 test_that("the mean of means converges to the population mean", {
   expect_equivalent(
     round(

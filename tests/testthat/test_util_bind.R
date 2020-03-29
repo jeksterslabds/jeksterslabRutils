@@ -30,11 +30,11 @@ if (fn_column) {
 
 #' | Variable    | Description                                         | Value         |
 #' |:------------|:----------------------------------------------------|:--------------|
-#' | `wd`   	 | Working directory.                                  | `r wd`        |
+#' | `wd`   	   | Working directory.                                  | `r wd`        |
 #' | `pattern`   | Pattern.                                            | `r pattern`   |
 #' | `fn_column` | Save file name of source data file as a new column. | `r fn_column` |
-#' | `save`  	 | Save concatenated files in `csv` format.            | `r save`      |
-#' | `rows`  	 | Number of rows.                                     | `r rows`      |
+#' | `save`  	   | Save concatenated files in `csv` format.            | `r save`      |
+#' | `rows`  	   | Number of rows.                                     | `r rows`      |
 #' | `columns`   | Number of columns.                                  | `r columns`   |
 
 #' ## Run test
@@ -77,7 +77,7 @@ xlsx_col <- ncol(xlsx)
 #' | Number of rows.    | `r rows`    | `r csv_row`    | `r xls_row`    | `r xlsx_row`    |
 #' | Number of columns. | `r columns` | `r csv_col`    | `r xls_col`    | `r xlsx_col`    |
 
-#+ test that_01, echo=FALSE
+#+ testthat_01, echo=FALSE
 test_that("rows are correct", {
   expect_equivalent(
     csv_row,
@@ -87,7 +87,7 @@ test_that("rows are correct", {
   )
 })
 
-#+ test that_02, echo=FALSE
+#+ testthat_02, echo=FALSE
 test_that("columns are correct", {
   expect_equivalent(
     csv_col,
