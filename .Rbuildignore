@@ -1,9 +1,11 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^README\.*$
 ^LICENSE\.md$
 ^data_raw$
 ^\.travis\.yml$
 ^_pkgdown\.yml$
 ^docs$
-^pkgdown$
+^README\.Rmd$
+^README\.md$
+^README\.html$
+^jeksterslabRutils\.Rproj$
