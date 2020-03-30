@@ -24,25 +24,32 @@
 #' @param fn Character string.
 #'   Filename to use to save concatenated file.
 #'   Uses the basename of \code{dir} if not provided.
+#' @inheritParams util_lapply
 #' @importFrom utils glob2rx
 #' @importFrom utils read.csv
 #' @importFrom utils write.csv
 #' @importFrom readxl read_excel
 #' @export
 util_bind <- function(dir = getwd(),
-                      format = "csv",
+                      format = c(
+                        "csv",
+                        "xls",
+                        "xlsx"
+                      ),
                       pattern = "^filename*",
                       fn_column = TRUE,
                       save = FALSE,
-                      fn = NULL) {
-  dir <- file.path(dir)
+                      fn = NULL,
+                      par = TRUE,
+                      ncores = NULL) {
   root <- basename(dir)
   if (is.null(fn)) {
     fn <- file.path(
       dir,
       paste0(
         root,
-        ".csv"
+        ".",
+        format
       )
     )
   }
@@ -63,24 +70,29 @@ util_bind <- function(dir = getwd(),
     length(files)
   )
   if (format == "csv") {
-    for (i in seq_along(files)) {
-      input[[i]] <- read.csv(
-        file = files[i],
+    input <- util_lapply(
+      FUN = read.csv,
+      args = list(
+        file = files,
         stringsAsFactors = FALSE
-      )
-      if (fn_column) {
-        input[[i]]["fn"] <- files[i]
-      }
-    }
+      ),
+      par = par,
+      ncores = ncores
+    )
   }
   if (format %in% c("xls", "xlsx")) {
+    input <- util_lapply(
+      FUN = read_excel,
+      args = list(
+        file = files
+      ),
+      par = par,
+      ncores = ncores
+    )
+  }
+  if (fn_column) {
     for (i in seq_along(files)) {
-      input[[i]] <- read_excel(
-        path = files[i]
-      )
-      if (fn_column) {
-        input[[i]]["fn"] <- files[i]
-      }
+      input[[i]]["fn"] <- files[i]
     }
   }
   output <- as.data.frame(

@@ -6,11 +6,13 @@
 \usage{
 util_bind(
   dir = getwd(),
-  format = "csv",
+  format = c("csv", "xls", "xlsx"),
   pattern = "^filename*",
   fn_column = TRUE,
   save = FALSE,
-  fn = NULL
+  fn = NULL,
+  par = TRUE,
+  ncores = NULL
 )
 }
 \arguments{
@@ -38,6 +40,13 @@ Save concatenated files in \code{csv} format.}
 \item{fn}{Character string.
 Filename to use to save concatenated file.
 Uses the basename of \code{dir} if not provided.}
+
+\item{par}{Logical.
+If \code{TRUE}, use multiple cores.}
+
+\item{ncores}{Integer.
+Number of cores to use if \code{par = TRUE}.
+If unspecified, defaults to \code{detectCores() - 1}.}
 }
 \description{
 Binds comma separated or Excel files

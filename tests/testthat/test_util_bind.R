@@ -45,21 +45,24 @@ csv <- util_bind(
   format = "csv",
   pattern = "^filename*",
   fn_column = TRUE,
-  save = FALSE
+  save = FALSE,
+  par = FALSE
 )
 xls <- util_bind(
   dir = wd,
   format = "xls",
   pattern = "^filename*",
   fn_column = TRUE,
-  save = FALSE
+  save = FALSE,
+  par = FALSE
 )
 xlsx <- util_bind(
   dir = wd,
   format = "xlsx",
   pattern = "^filename*",
   fn_column = TRUE,
-  save = FALSE
+  save = FALSE,
+  par = FALSE
 )
 
 csv_row <- nrow(csv)
