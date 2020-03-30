@@ -123,11 +123,13 @@ Requires that files have the same columns.</p>
 
     <pre class="usage"><span class='fu'>util_bind</span>(
   <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span>(),
-  <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"csv"</span>,
+  <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"csv"</span>, <span class='st'>"xls"</span>, <span class='st'>"xlsx"</span>),
   <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>"^filename*"</span>,
   <span class='kw'>fn_column</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>fn</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+  <span class='kw'>fn</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>par</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>ncores</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -169,6 +171,17 @@ Save concatenated files in <code>csv</code> format.</p></td>
       <td><p>Character string.
 Filename to use to save concatenated file.
 Uses the basename of <code>dir</code> if not provided.</p></td>
+    </tr>
+    <tr>
+      <th>par</th>
+      <td><p>Logical.
+If <code>TRUE</code>, use multiple cores.</p></td>
+    </tr>
+    <tr>
+      <th>ncores</th>
+      <td><p>Integer.
+Number of cores to use if <code>par = TRUE</code>.
+If unspecified, defaults to <code>detectCores() - 1</code>.</p></td>
     </tr>
     </table>
 

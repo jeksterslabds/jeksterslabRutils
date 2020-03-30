@@ -117,7 +117,7 @@
     <p>XML/HTML to list</p>
     </div>
 
-    <pre class="usage"><span class='fu'>util_xml2list</span>(<span class='no'>tags</span>, <span class='no'>con</span>)</pre>
+    <pre class="usage"><span class='fu'>util_xml2list</span>(<span class='no'>tags</span>, <span class='no'>con</span>, <span class='kw'>par</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>ncores</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -131,6 +131,17 @@ XML or HTML tags.</p></td>
       <th>con</th>
       <td><p>Connection.
 Path or connection to XML/HTML file.</p></td>
+    </tr>
+    <tr>
+      <th>par</th>
+      <td><p>Logical.
+If <code>TRUE</code>, use multiple cores.</p></td>
+    </tr>
+    <tr>
+      <th>ncores</th>
+      <td><p>Integer.
+Number of cores to use if <code>par = TRUE</code>.
+If unspecified, defaults to <code>detectCores() - 1</code>.</p></td>
     </tr>
     </table>
 

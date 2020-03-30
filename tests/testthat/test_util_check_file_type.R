@@ -21,17 +21,17 @@ wd <- system.file(
   package = "jeksterslabRutils"
 )
 files <- list.files(
-    wd,
-    pattern = glob2rx("^*.epub$"),
-    full.names = TRUE
+  wd,
+  pattern = glob2rx("^*.epub$"),
+  full.names = TRUE
 )
 file.copy(
-    files,
-    tmp
+  files,
+  tmp
 )
 files <- list.files(
-    tmp,
-    pattern = glob2rx("^*.epub$")
+  tmp,
+  pattern = glob2rx("^*.epub$")
 )
 #'
 #' | Variable | Description | Value     |
@@ -40,15 +40,15 @@ files <- list.files(
 #'
 #+ test
 util_check_file_type(
-    dir = tmp,
-    fn = files,
-    file_type = "EPUB document",
-    remove_files = TRUE,
-    par = FALSE
+  dir = tmp,
+  fn = files,
+  file_type = "EPUB document",
+  remove_files = TRUE,
+  par = FALSE
 )
 files <- list.files(
-    tmp,
-    pattern = glob2rx("^*.epub$")
+  tmp,
+  pattern = glob2rx("^*.epub$")
 )
 #'
 #' ## Results
