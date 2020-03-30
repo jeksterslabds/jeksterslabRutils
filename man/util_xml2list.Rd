@@ -4,7 +4,7 @@
 \alias{util_xml2list}
 \title{XML/HTML to list}
 \usage{
-util_xml2list(tags, con)
+util_xml2list(tags, con, par = TRUE, ncores = NULL)
 }
 \arguments{
 \item{tags}{Character vector.
@@ -12,6 +12,13 @@ XML or HTML tags.}
 
 \item{con}{Connection.
 Path or connection to XML/HTML file.}
+
+\item{par}{Logical.
+If \code{TRUE}, use multiple cores.}
+
+\item{ncores}{Integer.
+Number of cores to use if \code{par = TRUE}.
+If unspecified, defaults to \code{detectCores() - 1}.}
 }
 \description{
 XML/HTML to list
