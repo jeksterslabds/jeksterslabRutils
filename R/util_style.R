@@ -21,22 +21,25 @@ util_style <- function(dir = getwd(),
     path = file.path(
       dir
     ),
-    pattern = glob2rx("^*.R$"),
+    pattern = glob2rx("^*.R$|^*.r$"),
     recursive = TRUE
   )
   rmd <- list.files(
     path = file.path(
       dir
     ),
-    pattern = glob2rx("^*.Rmd$"),
+    pattern = glob2rx("^*.Rmd$|^*.rmd$"),
     recursive = TRUE
   )
-  files <- c(rmd, rscript)
+  files <- c(rscript, rmd)
+  if (length(files) == 0) {
+    stop("No files to render.")
+  }
   invisible(
     util_lapply(
       FUN = style_file,
       args = list(
-        input = files
+        path = files
       ),
       par = par,
       ncores = ncores

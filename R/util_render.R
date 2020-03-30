@@ -28,7 +28,7 @@ util_render <- function(recursive = TRUE,
   if (recursive) {
     rmd <- list.files(
       path = dir,
-      pattern = glob2rx("^*.Rmd$"),
+      pattern = glob2rx("^*.Rmd$|^*.rmd$"),
       recursive = TRUE,
       include.dirs = TRUE
     )
@@ -36,7 +36,7 @@ util_render <- function(recursive = TRUE,
       path = file.path(
         dir
       ),
-      pattern = glob2rx("^*.R$"),
+      pattern = glob2rx("^*.R$|^*.r$"),
       recursive = TRUE,
       include.dirs = TRUE
     )
@@ -69,7 +69,10 @@ util_render <- function(recursive = TRUE,
         ncores = ncores
       )
     )
-    files <- files[!is.na]
+    if (all(is.na(files))) {
+      stop("No files to render.")
+    }
+    files <- files[!is.na(files)]
     if (length(files) == 0) {
       stop("No files to render.")
     }
