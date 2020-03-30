@@ -6,13 +6,13 @@
 #'   rmarkdown::github_document:
 #'     toc: true
 #' ---
-
+#'
 #+ setup
 library(testthat)
 library(jeksterslabRutils)
-
+#'
 #' ## Set test parameters
-
+#'
 #+ parameters
 wd <- system.file(
   "extdata",
@@ -27,7 +27,7 @@ columns <- 10
 if (fn_column) {
   columns <- columns + 1 # columns plus fn_column
 }
-
+#'
 #' | Variable    | Description                                         | Value         |
 #' |:------------|:----------------------------------------------------|:--------------|
 #' | `wd`   	   | Working directory.                                  | `r wd`        |
@@ -36,9 +36,9 @@ if (fn_column) {
 #' | `save`  	   | Save concatenated files in `csv` format.            | `r save`      |
 #' | `rows`  	   | Number of rows.                                     | `r rows`      |
 #' | `columns`   | Number of columns.                                  | `r columns`   |
-
+#'
 #' ## Run test
-
+#'
 #+ test
 csv <- util_bind(
   dir = wd,
@@ -64,22 +64,20 @@ xlsx <- util_bind(
   save = FALSE,
   par = FALSE
 )
-
 csv_row <- nrow(csv)
 xls_row <- nrow(xls)
 xlsx_row <- nrow(xlsx)
-
 csv_col <- ncol(csv)
 xls_col <- ncol(xls)
 xlsx_col <- ncol(xlsx)
-
+#'
 #' ## Results
-
+#'
 #' | Item               | Parameter   | `format = csv` | `format = xls` | `format = xlsx` |
 #' |:-------------------|------------:|---------------:|---------------:|----------------:|
 #' | Number of rows.    | `r rows`    | `r csv_row`    | `r xls_row`    | `r xlsx_row`    |
 #' | Number of columns. | `r columns` | `r csv_col`    | `r xls_col`    | `r xlsx_col`    |
-
+#'
 #+ testthat_01, echo=TRUE
 test_that("rows are correct", {
   expect_equivalent(
@@ -89,7 +87,7 @@ test_that("rows are correct", {
     rows
   )
 })
-
+#'
 #+ testthat_02, echo=TRUE
 test_that("columns are correct", {
   expect_equivalent(
