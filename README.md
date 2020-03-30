@@ -9,6 +9,8 @@ Ivan Jacob Agaloos Pesigan
 
 [![Travis build
 status](https://travis-ci.org/jeksterslabds/jeksterslabRutils.svg?branch=master)](https://travis-ci.org/jeksterslabds/jeksterslabRutils)
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/jeksterslabds/jeksterslabRutils?branch=master&svg=true)](https://ci.appveyor.com/project/jeksterslabds/jeksterslabRutils)
 [![codecov](https://codecov.io/github/jeksterslabds/jeksterslabRutils/branch/master/graphs/badge.svg)](https://codecov.io/github/jeksterslabds/jeksterslabRutils)
 <!-- badges: end -->
 
