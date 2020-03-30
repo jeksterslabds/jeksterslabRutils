@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Text to File. — util_txt2file • jeksterslabRutils</title>
+<title>Style R and RMD Files. — util_style • jeksterslabRutils</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Text to File. — util_txt2file" />
-<meta property="og:description" content="Writes lines of character strings to file." />
+<meta property="og:title" content="Style R and RMD Files. — util_style" />
+<meta property="og:description" content="Styles all R scripts and R Markdown files
+in a given directory recursively." />
 
 
 
@@ -108,52 +109,44 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Text to File.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jeksterslabds/jeksterslabRutils/blob/master/R/util_txt2file.R'><code>R/util_txt2file.R</code></a></small>
-    <div class="hidden name"><code>util_txt2file.Rd</code></div>
+    <h1>Style R and RMD Files.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jeksterslabds/jeksterslabRutils/blob/master/R/util_style.R'><code>R/util_style.R</code></a></small>
+    <div class="hidden name"><code>util_style.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Writes lines of character strings to file.</p>
+    <p>Styles all <code>R</code> scripts and <code>R Markdown</code> files
+in a given directory recursively.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>util_txt2file</span>(<span class='no'>text</span>, <span class='no'>dir</span>, <span class='no'>fn</span>)</pre>
+    <pre class="usage"><span class='fu'>util_style</span>(<span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span>(), <span class='kw'>par</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>ncores</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>text</th>
-      <td><p>A character vector</p></td>
-    </tr>
     <tr>
       <th>dir</th>
       <td><p>Character string.
 Directory.</p></td>
     </tr>
     <tr>
-      <th>fn</th>
-      <td><p>Character string.
-Filename.</p></td>
+      <th>par</th>
+      <td><p>Logical.
+If <code>TRUE</code>, use multiple cores.</p></td>
+    </tr>
+    <tr>
+      <th>ncores</th>
+      <td><p>Integer.
+Number of cores to use if <code>par = TRUE</code>.
+If unspecified, defaults to <code>detectCores() - 1</code>.</p></td>
     </tr>
     </table>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>text</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(
-  <span class='st'>"Lorem ipsum dolor sit amet,"</span>,
-  <span class='st'>"consectetur adipiscing elit,"</span>,
-  <span class='st'>"sed do eiusmod tempor incididunt"</span>,
-  <span class='st'>"ut labore et dolore magna aliqua."</span>,
-  <span class='st'>"Ut enim ad minim veniam,"</span>,
-  <span class='st'>"quis nostrud exercitation ullamco laboris nisi"</span>,
-  <span class='st'>"ut aliquip ex ea commodo consequat."</span>,
-  <span class='st'>"Duis aute irure dolor in reprehenderit in voluptate velit"</span>,
-  <span class='st'>"esse cillum dolore eu fugiat nulla pariatur."</span>,
-  <span class='st'>"Excepteur sint occaecat cupidatat non proident,"</span>,
-  <span class='st'>"sunt in culpa qui officia deserunt mollit anim id est laborum."</span>
-)
-<span class='fu'>util_txt2file</span>(<span class='kw'>text</span> <span class='kw'>=</span> <span class='no'>text</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span>(), <span class='kw'>fn</span> <span class='kw'>=</span> <span class='st'>"Lipsum.txt"</span>)</div><div class='output co'>#&gt; Output file: /tmp/Rtmp9tVbqa/Lipsum.txt </div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'>util_style</span>()
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
