@@ -1,34 +1,49 @@
 #' Bind Comma Separated or Excel Files.
 #'
 #' Binds comma separated or Excel files
-#' in a given directory by row (\code{rbind}).
+#' in a given directory by row (`rbind`).
 #' Requires that files have the same columns.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param dir Character string.
 #'   Directory which contains files.
 #' @param format Character string.
-#'   \code{"csv"} for comma separated files.
-#'   \code{"xls"} or \code{"xlx"} for Excel.
+#'   `"csv"` for comma separated files.
+#'   `"xls"` or `"xlsx` for Excel.
 #' @param pattern String.
 #'   Pattern of file names.
-#'   \code{format} is appended as an extension.
-#'   For example, if \code{pattern = "^filename*"},
-#'   and \code{format = "csv"},
+#'   `format` is appended as an extension.
+#'   For example, if `pattern = "^filename*"`,
+#'   and `format = "csv"`,
 #'   the pattern used to load files will be
-#'   \code{"^filename*.csv$"}.
+#'   `"^filename*.csv$"`.
 #' @param fn_column Logical.
 #'   Save file name of source data file as a new column.
 #' @param save Logical.
-#'   Save concatenated files in \code{csv} format.
+#'   Save concatenated files in `csv` format.
 #' @param fn Character string.
 #'   Filename to use to save concatenated file.
-#'   Uses the basename of \code{dir} if not provided.
+#'   Uses the basename of `dir` if not provided.
+#' @param save_dir Character string.
+#'   Directory used for `fn`.
 #' @inheritParams util_lapply
 #' @importFrom utils glob2rx
 #' @importFrom utils read.csv
 #' @importFrom utils write.csv
 #' @importFrom readxl read_excel
+#' @examples
+#' \dontrun{
+#' util_bind(
+#'   dir = getwd(),
+#'   format = "csv",
+#'   pattern = "^filename*",
+#'   fn_column = TRUE,
+#'   save = TRUE,
+#'   fn = NULL,
+#'   save_dir = getwd(),
+#'   par = FALSE
+#' )
+#' }
 #' @export
 util_bind <- function(dir = getwd(),
                       format = c(
@@ -40,16 +55,16 @@ util_bind <- function(dir = getwd(),
                       fn_column = TRUE,
                       save = FALSE,
                       fn = NULL,
+                      save_dir = getwd(),
                       par = TRUE,
                       ncores = NULL) {
   root <- basename(dir)
   if (is.null(fn)) {
     fn <- file.path(
-      dir,
+      save_dir,
       paste0(
         root,
-        ".",
-        format
+        ".csv"
       )
     )
   }

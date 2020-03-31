@@ -11,6 +11,7 @@ util_bind(
   fn_column = TRUE,
   save = FALSE,
   fn = NULL,
+  save_dir = getwd(),
   par = TRUE,
   ncores = NULL
 )
@@ -21,7 +22,7 @@ Directory which contains files.}
 
 \item{format}{Character string.
 \code{"csv"} for comma separated files.
-\code{"xls"} or \code{"xlx"} for Excel.}
+\code{"xls"} or \verb{"xlsx} for Excel.}
 
 \item{pattern}{String.
 Pattern of file names.
@@ -41,6 +42,9 @@ Save concatenated files in \code{csv} format.}
 Filename to use to save concatenated file.
 Uses the basename of \code{dir} if not provided.}
 
+\item{save_dir}{Character string.
+Directory used for \code{fn}.}
+
 \item{par}{Logical.
 If \code{TRUE}, use multiple cores.}
 
@@ -52,6 +56,20 @@ If unspecified, defaults to \code{detectCores() - 1}.}
 Binds comma separated or Excel files
 in a given directory by row (\code{rbind}).
 Requires that files have the same columns.
+}
+\examples{
+\dontrun{
+util_bind(
+  dir = getwd(),
+  format = "csv",
+  pattern = "^filename*",
+  fn_column = TRUE,
+  save = TRUE,
+  fn = NULL,
+  save_dir = getwd(),
+  par = FALSE
+)
+}
 }
 \author{
 Ivan Jacob Agaloos Pesigan
