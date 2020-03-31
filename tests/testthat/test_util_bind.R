@@ -19,6 +19,14 @@ wd <- system.file(
   "tests",
   package = "jeksterslabRutils"
 )
+root <- basename(wd)
+fn <- file.path(
+  wd,
+  paste0(
+    root,
+    ".csv"
+  )
+)
 pattern <- "^filename*"
 fn_column <- TRUE
 save <- FALSE
@@ -45,7 +53,8 @@ csv <- util_bind(
   format = "csv",
   pattern = "^filename*",
   fn_column = TRUE,
-  save = FALSE,
+  save = TRUE,
+  save_dir = wd,
   par = FALSE
 )
 xls <- util_bind(
@@ -97,3 +106,12 @@ test_that("columns are correct", {
     columns
   )
 })
+#'
+#+ testthat_03, echo=TRUE
+test_that("external file is saved", {
+  expect_equivalent(
+    file.exists(fn),
+    TRUE
+  )
+})
+unlink(fn)

@@ -128,6 +128,7 @@ Requires that files have the same columns.</p>
   <span class='kw'>fn_column</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>fn</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>save_dir</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span>(),
   <span class='kw'>par</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>ncores</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
 )</pre>
@@ -171,6 +172,11 @@ Save concatenated files in <code>csv</code> format.</p></td>
       <td><p>Character string.
 Filename to use to save concatenated file.
 Uses the basename of <code>dir</code> if not provided.</p></td>
+    </tr>
+    <tr>
+      <th>save_dir</th>
+      <td><p>Character string.
+Directory used for <code>fn</code>.</p></td>
     </tr>
     <tr>
       <th>par</th>

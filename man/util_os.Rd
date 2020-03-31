@@ -8,14 +8,14 @@ util_os()
 }
 \value{
 \itemize{
-    \item \code{linux} for GNU/Linux operating system
-    \item \code{osx} for Macintosh operating system
-    \item \code{windows} for Windows operating system
-  }
+\item \code{linux} for GNU/Linux operating system
+\item \code{osx} for Macintosh operating system
+\item \code{windows} for Windows operating system
+}
 }
 \description{
 Utility to detect the operating system of the current \code{R} session.
-  Based on \url{http://conjugateprior.org/2015/06/identifying-the-os-from-r/}.
+Based on \url{http://conjugateprior.org/2015/06/identifying-the-os-from-r/}.
 }
 \examples{
 util_os()

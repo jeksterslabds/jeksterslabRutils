@@ -13,7 +13,7 @@ util_cat_sys(command, sep = "\\n")
 }
 \description{
 Utility to \code{\link{cat}} \code{\link{system}} output.
-  Based on https://github.com/yihui/knitr/issues/1203.
+Based on https://github.com/yihui/knitr/issues/1203.
 }
 \examples{
 util_cat_sys("date")
