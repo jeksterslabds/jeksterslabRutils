@@ -1,5 +1,5 @@
 #' ---
-#' title: "Test: util_style and util_render"
+#' title: "Test: util_style"
 #' author: "Ivan Jacob Agaloos Pesigan"
 #' date: "`r Sys.Date()`"
 #' output:
@@ -18,8 +18,8 @@ util_style(
   dir = wd,
   par = FALSE
 )
-util_render(
-  recursive = TRUE,
-  dir = wd,
-  par = FALSE
-)
+#util_render(
+#  recursive = TRUE,
+#  dir = wd,
+#  par = FALSE
+#)
