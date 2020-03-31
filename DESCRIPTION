@@ -28,4 +28,5 @@ Suggests:
     knitr,
     testthat
 VignetteBuilder: knitr
+Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.0
