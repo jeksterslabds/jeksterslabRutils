@@ -61,6 +61,7 @@ files <- list.files(
 #'
 #+ testthat_01, echo=TRUE
 test_that("valid file is retained", {
+  skip_on_appveyor()
   expect_equivalent(
     file.exists(file.path(tmp, "valid.epub")),
     TRUE
@@ -69,6 +70,7 @@ test_that("valid file is retained", {
 #'
 #+ testthat_02, echo=TRUE
 test_that("invalid file is deleted", {
+  skip_on_appveyor()
   expect_equivalent(
     file.exists(file.path(tmp, "invalid.epub")),
     FALSE

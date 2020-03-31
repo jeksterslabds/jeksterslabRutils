@@ -28,7 +28,7 @@ input <- util_rand_str(
 #'
 #+ test
 result <- util_get_numbers(
-    x = input
+  x = input
 )
 #'
 #' ## Results

@@ -28,8 +28,8 @@ input <- paste0(
   "sunt in culpa qui officia deserunt mollit anim id est laborum."
 )
 wd <- tempdir()
-#wd <- util_rand_str()
-#dir.create(wd)
+# wd <- util_rand_str()
+# dir.create(wd)
 #'
 #' | Variable | Description   | Value     |
 #' |:---------|:--------------|:----------|
@@ -58,7 +58,7 @@ results <- readLines(
 #'
 #+ testthat, echo=TRUE
 test_that("util_txt2file works", {
-    skip_on_appveyor()
+  skip_on_appveyor()
   expect_equivalent(
     results,
     input
@@ -67,9 +67,9 @@ test_that("util_txt2file works", {
 #'
 #+ clean_tempdir
 util_clean_tempdir()
-#on.exit(
+# on.exit(
 #  unlink(
 #    wd,
 #    recursive = TRUE
 #  )
-#)
+# )
