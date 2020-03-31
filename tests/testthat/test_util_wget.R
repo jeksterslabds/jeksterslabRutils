@@ -14,7 +14,9 @@ library(jeksterslabRutils)
 #' ## Set test parameters
 
 #+ parameters
-wd <- tempdir()
+#wd <- tempdir()
+wd <- util_rand_str()
+dir.create(wd)
 link <- c(
   "https://raw.githubusercontent.com/jeksterslabds/jeksterslabRutils/master/R/util_bind.R",
   "https://raw.githubusercontent.com/jeksterslabds/jeksterslabRutils/master/R/util_cat_sys.R",
@@ -71,4 +73,12 @@ test_that("util_wget works", {
 })
 
 #+ clean_tempdir
-util_clean_tempdir()
+#util_clean_tempdir()
+#'
+on.exit(
+  unlink(
+    wd,
+    recursive = TRUE
+  )
+)
+

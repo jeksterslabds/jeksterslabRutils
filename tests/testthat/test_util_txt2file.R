@@ -27,7 +27,9 @@ input <- paste0(
   "Excepteur sint occaecat cupidatat non proident,",
   "sunt in culpa qui officia deserunt mollit anim id est laborum."
 )
-dir <- tempdir()
+#wd <- tempdir()
+wd <- util_rand_str()
+dir.create(wd)
 #'
 #' | Variable | Description   | Value     |
 #' |:---------|:--------------|:----------|
@@ -38,12 +40,12 @@ dir <- tempdir()
 #+ test
 util_txt2file(
   text = input,
-  dir = dir,
+  dir = wd,
   fn = "Lipsum.txt"
 )
 results <- readLines(
   file.path(
-    dir,
+    wd,
     "Lipsum.txt"
   )
 )
@@ -61,3 +63,10 @@ test_that("util_txt2file works", {
     input
   )
 })
+#'
+on.exit(
+  unlink(
+    wd,
+    recursive = TRUE
+  )
+)
