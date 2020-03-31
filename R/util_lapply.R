@@ -1,27 +1,32 @@
-#' lapply Utility
+#' `lapply` Utility.
 #'
-#' Utility to use different implementations of \code{lapply}.
+#' Utility to use different implementations of `lapply`.
 #'
 #' @param FUN Function to apply.
 #' @param args Named list.
-#'   Arguments to pass to \code{FUN}.
-#'   The first item (\code{args[[1]]})
-#'   should be first argument of \code{FUN}
-#'   that corresponds to the argument \code{X}
-#'   in \code{mclapply}, \code{parLapply} or \code{lapply}.
+#'   Arguments to pass to `FUN`.
+#'   The first item (`args[[1]]`)
+#'   should be first argument of `FUN`
+#'   that corresponds to the argument `X`
+#'   in `mclapply`, `parLapply` or `lapply`.
 #' @param par Logical.
-#'   If \code{TRUE}, use multiple cores.
+#'   If `TRUE`, use multiple cores.
 #' @param ncores Integer.
-#'   Number of cores to use if \code{par = TRUE}.
-#'   If unspecified, defaults to \code{detectCores() - 1}.
-#' @importFrom stats rnorm
+#'   Number of cores to use if `par = TRUE`.
+#'   If unspecified, defaults to `detectCores() - 1`.
+#' @examples
+#' util_lapply(
+#'   FUN = rnorm,
+#'   args = list(
+#'     n = rep(x = 100, times = 100),
+#'     mean = 100,
+#'     sd = 15
+#'   ),
+#'   par = FALSE
+#' )
 #' @export
-util_lapply <- function(FUN = rnorm,
-                        args = list(
-                          n = rep(x = 100, times = 100),
-                          mean = 100,
-                          sd = 15
-                        ),
+util_lapply <- function(FUN,
+                        args,
                         par = TRUE,
                         ncores = NULL) {
   args_length <- length(args)

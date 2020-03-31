@@ -1,14 +1,14 @@
 #' Get Operating System.
 #'
-#' Utility to detect the operating system of the current \code{R} session.
-#'   Based on \url{http://conjugateprior.org/2015/06/identifying-the-os-from-r/}.
+#' Utility to detect the operating system of the current `R` session.
+#'   Based on <http://conjugateprior.org/2015/06/identifying-the-os-from-r/>.
 #'
 #' @return
-#'   \itemize{
-#'     \item \code{linux} for GNU/Linux operating system
-#'     \item \code{osx} for Macintosh operating system
-#'     \item \code{windows} for Windows operating system
-#'   }
+#' Return any of the following:
+#'   - `linux` for GNU/Linux operating system
+#'   - `osx` for Macintosh operating system
+#'   - `windows` for Windows operating system
+#'   - mystery machine
 #' @examples
 #' util_os()
 #' @export

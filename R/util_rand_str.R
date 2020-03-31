@@ -1,7 +1,8 @@
 #' Generate Random Character String
 #'
 #' Generates random character string
-#' composed of lower and upper case letters.
+#' composed of lower and upper case letters
+#' with an option to include digits.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param characters Integer.

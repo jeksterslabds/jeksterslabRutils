@@ -23,6 +23,46 @@ If unspecified, defaults to \code{detectCores() - 1}.}
 \description{
 XML/HTML to list
 }
+\examples{
+xml <- paste0(
+  "<TITLE>",
+  "Romanza",
+  "</TITLE>",
+  "<ARTIST>",
+  "Andrea Bocelli",
+  "</ARTIST>",
+  "<COUNTRY>",
+  "EU",
+  "</COUNTRY>",
+  "<COMPANY>",
+  "Polydor",
+  "</COMPANY>",
+  "<PRICE>",
+  "10.80",
+  "</PRICE>",
+  "<YEAR>",
+  "1996",
+  "</YEAR>"
+)
+tmp <- tempfile()
+writeLines(
+  text = xml,
+  con = tmp
+)
+tags <- c(
+  "TITLE",
+  "ARTIST",
+  "COUNTRY",
+  "COMPANY",
+  "PRICE",
+  "YEAR"
+)
+util_xml2list(
+  tags = tags,
+  con = tmp,
+  par = FALSE
+)
+}
 \author{
 Ivan Jacob Agaloos Pesigan
 }

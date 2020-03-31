@@ -18,7 +18,8 @@ Optional extension.}
 }
 \description{
 Generates random character string
-composed of lower and upper case letters.
+composed of lower and upper case letters
+with an option to include digits.
 }
 \examples{
 util_rand_str(characters = 8L, ext = "R")

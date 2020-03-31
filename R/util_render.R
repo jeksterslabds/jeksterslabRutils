@@ -1,24 +1,27 @@
-#' Render R Scripts and R Markdown Files.
+#' Render `R` Scripts and `R` Markdown Files.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param recursive Logical.
-#'   If \code{TRUE},
-#'   recursively render all R scripts \code{.R} and
-#'   R Markdown files \code{.Rmd}
-#'   in \code{dir}.
+#'   If `TRUE`,
+#'   recursively render all `R` scripts `.R` and
+#'   R Markdown files `.Rmd`
+#'   in `dir`.
 #' @param dir Character string.
 #'   Directory.
-#'   Used if \code{recursive} is \code{TRUE}.
+#'   Used if `recursive` is `TRUE`.
 #' @param files Character vector.
 #'   Vector of files to render.
-#'   Used if \code{recursive} is \code{FALSE}.
+#'   Used if `recursive` is `FALSE`.
 #' @inheritParams util_lapply
-#' @examples
-#' \dontrun{
-#' util_render()
-#' }
 #' @importFrom utils glob2rx
 #' @importFrom rmarkdown render
+#' @examples
+#' \dontrun{
+#' util_render(
+#'   dir = getwd(),
+#'   par = FALSE
+#' )
+#' }
 #' @export
 util_render <- function(recursive = TRUE,
                         dir = getwd(),
@@ -76,9 +79,6 @@ util_render <- function(recursive = TRUE,
     if (length(files) == 0) {
       stop("No files to render.")
     }
-    # if (length(files) < (parallel::detectCores() - 1)) {
-    #  ncores <- length(files)
-    # }
     invisible(
       util_lapply(
         FUN = render,

@@ -2,12 +2,17 @@
 % Please edit documentation in R/util_clean_tempdir.R
 \name{util_clean_tempdir}
 \alias{util_clean_tempdir}
-\title{Clean tempdir}
+\title{Clean \code{tempdir}.}
 \usage{
 util_clean_tempdir()
 }
 \description{
-Clean tempdir
+Clean \code{tempdir}.
+}
+\examples{
+\dontrun{
+util_clean_tempdir()
+}
 }
 \author{
 Ivan Jacob Agaloos Pesigan

@@ -4,6 +4,22 @@
 #' @param fields Character vector.
 #'   Vector of names in the list.
 #' @param index List.
+#' @examples
+#' index <- list(
+#'   firstname = "Ivan Jacob",
+#'   lastname = "Pesigan",
+#'   province = "BC",
+#'   number = 27
+#' )
+#' util_list2vector(
+#'   fields = c(
+#'     "firstname",
+#'     "lastname",
+#'     "province",
+#'     "number"
+#'   ),
+#'   index = index
+#' )
 #' @export
 util_list2vector <- function(fields, index) {
   contents <- rep(x = NA, times = length(fields))

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Render R Scripts and R Markdown Files. — util_render • jeksterslabRutils</title>
+<title>Render <code>R</code> Scripts and <code>R</code> Markdown Files. — util_render • jeksterslabRutils</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Render R Scripts and R Markdown Files. — util_render" />
+<meta property="og:title" content="Render <code>R</code> Scripts and <code>R</code> Markdown Files. — util_render" />
 <meta property="og:description" content="Render R Scripts and R Markdown Files." />
 
 
@@ -108,13 +108,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Render R Scripts and R Markdown Files.</h1>
+    <h1>Render <code>R</code> Scripts and <code>R</code> Markdown Files.</h1>
     <small class="dont-index">Source: <a href='https://github.com/jeksterslabds/jeksterslabRutils/blob/master/R/util_render.R'><code>R/util_render.R</code></a></small>
     <div class="hidden name"><code>util_render.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Render R Scripts and R Markdown Files.</p>
+    <p>Render <code>R</code> Scripts and <code>R</code> Markdown Files.</p>
     </div>
 
     <pre class="usage"><span class='fu'>util_render</span>(
@@ -132,7 +132,7 @@
       <th>recursive</th>
       <td><p>Logical.
 If <code>TRUE</code>,
-recursively render all R scripts <code>.R</code> and
+recursively render all <code>R</code> scripts <code>.R</code> and
 R Markdown files <code>.Rmd</code>
 in <code>dir</code>.</p></td>
     </tr>
@@ -164,7 +164,10 @@ If unspecified, defaults to <code>detectCores() - 1</code>.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>util_render</span>()
+<span class='fu'>util_render</span>(
+  <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span>(),
+  <span class='kw'>par</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

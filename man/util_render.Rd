@@ -2,7 +2,7 @@
 % Please edit documentation in R/util_render.R
 \name{util_render}
 \alias{util_render}
-\title{Render R Scripts and R Markdown Files.}
+\title{Render \code{R} Scripts and \code{R} Markdown Files.}
 \usage{
 util_render(
   recursive = TRUE,
@@ -15,7 +15,7 @@ util_render(
 \arguments{
 \item{recursive}{Logical.
 If \code{TRUE},
-recursively render all R scripts \code{.R} and
+recursively render all \code{R} scripts \code{.R} and
 R Markdown files \code{.Rmd}
 in \code{dir}.}
 
@@ -35,11 +35,14 @@ Number of cores to use if \code{par = TRUE}.
 If unspecified, defaults to \code{detectCores() - 1}.}
 }
 \description{
-Render R Scripts and R Markdown Files.
+Render \code{R} Scripts and \code{R} Markdown Files.
 }
 \examples{
 \dontrun{
-util_render()
+util_render(
+  dir = getwd(),
+  par = FALSE
+)
 }
 }
 \author{

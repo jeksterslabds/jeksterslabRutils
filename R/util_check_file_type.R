@@ -5,8 +5,6 @@
 #' with an option to delete them.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
-#' @inheritParams util_bind
-#' @inheritParams util_lapply
 #' @param fn Character vector.
 #'   Filenames.
 #' @param file_type Character string.
@@ -17,6 +15,23 @@
 #'   Remove files that do not match the specified file type.
 #'   BE CAREFUL WITH THIS OPTION
 #'   AS FILES CAN BE DELETED FROM YOUR SYSTEM.
+#' @inheritParams util_bind
+#' @inheritParams util_lapply
+#' @examples
+#' \dontrun{
+#' util_check_file_type(
+#'   dir = getwd(),
+#'   fn = c(
+#'     "file_01.pdf",
+#'     "file_02.pdf",
+#'     "file_03.pdf",
+#'     "file_04.pdf",
+#'     "file_05.pdf"
+#'   ),
+#'   file_type = "PDF document",
+#'   par = FALSE
+#' )
+#' }
 #' @export
 util_check_file_type <- function(dir = getwd(),
                                  fn,
@@ -54,35 +69,10 @@ util_check_file_type <- function(dir = getwd(),
   if (nchar(Sys.which("file")) == 0) {
     stop("file command is not installed in the system.\n")
   }
-  #  if (file.exists("tmp")) {
-  #    unlink("tmp")
-  #  }
-  #  file.create("tmp")
-  #  for (i in seq_along(fn)) {
-  #    system(
-  #      paste(
-  #        "file",
-  #        paste0(
-  #          "\"",
-  #          fn[i],
-  #          "\""
-  #        ),
-  #        "|",
-  #        "grep -v",
-  #        paste0(
-  #          "\"",
-  #          file_type,
-  #          "\""
-  #        ),
-  #        ">> tmp"
-  #      )
-  #    )
-  #  }
   tempfile <- file.path(
     getwd(),
     util_rand_str()
   )
-  #  tempfile <- tempfile()
   if (file.exists(tempfile)) {
     unlink(tempfile)
   }

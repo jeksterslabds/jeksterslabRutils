@@ -6,6 +6,45 @@
 #' @param con Connection.
 #'   Path or connection to XML/HTML file.
 #' @inheritParams util_lapply
+#' @examples
+#' xml <- paste0(
+#'   "<TITLE>",
+#'   "Romanza",
+#'   "</TITLE>",
+#'   "<ARTIST>",
+#'   "Andrea Bocelli",
+#'   "</ARTIST>",
+#'   "<COUNTRY>",
+#'   "EU",
+#'   "</COUNTRY>",
+#'   "<COMPANY>",
+#'   "Polydor",
+#'   "</COMPANY>",
+#'   "<PRICE>",
+#'   "10.80",
+#'   "</PRICE>",
+#'   "<YEAR>",
+#'   "1996",
+#'   "</YEAR>"
+#' )
+#' tmp <- tempfile()
+#' writeLines(
+#'   text = xml,
+#'   con = tmp
+#' )
+#' tags <- c(
+#'   "TITLE",
+#'   "ARTIST",
+#'   "COUNTRY",
+#'   "COMPANY",
+#'   "PRICE",
+#'   "YEAR"
+#' )
+#' util_xml2list(
+#'   tags = tags,
+#'   con = tmp,
+#'   par = FALSE
+#' )
 #' @export
 util_xml2list <- function(tags,
                           con,
@@ -44,36 +83,4 @@ util_xml2list <- function(tags,
     what = "cbind",
     args = output
   )
-  #  output <- vector(mode = "list", length = length(tags))
-  #  for (i in seq_along(output)) {
-  #    x <- grep(
-  #      pattern = paste0(
-  #        "<",
-  #        tags[i],
-  #        ">[[:print:]]+</",
-  #        tags[i],
-  #        ">"
-  #      ),
-  #      x = text,
-  #      value = TRUE
-  #    )
-  #    if (length(x) == 0) {
-  #      output[[i]] <- NA_character_
-  #    } else {
-  #      output[[i]] <- trimws(
-  #        gsub(
-  #          pattern = paste0(
-  #            "<",
-  #            tags[i],
-  #            ">|</",
-  #            tags[i],
-  #            ">"
-  #          ),
-  #          replacement = "",
-  #          x = x
-  #        )
-  #      )
-  #    }
-  #  }
-  #  output
 }

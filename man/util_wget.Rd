@@ -26,6 +26,20 @@ If unspecified, defaults to \code{detectCores() - 1}.}
 \description{
 wget
 }
+\examples{
+\dontrun{
+link <- c(
+  "https://raw.githubusercontent.com/jeksterslabds/jeksterslabRutils/master/R/util_bind.R",
+  "https://raw.githubusercontent.com/jeksterslabds/jeksterslabRutils/master/R/util_cat_sys.R",
+)
+util_wget(
+  dir = getwd(),
+  link = link,
+  args = "-nc",
+  par = FALSE
+)
+}
+}
 \author{
 Ivan Jacob Agaloos Pesigan
 }

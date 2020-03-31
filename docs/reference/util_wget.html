@@ -151,6 +151,19 @@ If unspecified, defaults to <code>detectCores() - 1</code>.</p></td>
     </table>
 
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='no'>link</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(
+  <span class='st'>"https://raw.githubusercontent.com/jeksterslabds/jeksterslabRutils/master/R/util_bind.R"</span>,
+  <span class='st'>"https://raw.githubusercontent.com/jeksterslabds/jeksterslabRutils/master/R/util_cat_sys.R"</span>,
+)
+<span class='fu'>util_wget</span>(
+  <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span>(),
+  <span class='kw'>link</span> <span class='kw'>=</span> <span class='no'>link</span>,
+  <span class='kw'>args</span> <span class='kw'>=</span> <span class='st'>"-nc"</span>,
+  <span class='kw'>par</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

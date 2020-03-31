@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Style R and RMD Files. — util_style • jeksterslabRutils</title>
+<title>Style <code>R</code> and <code>R</code> Markdown Files. — util_style • jeksterslabRutils</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Style R and RMD Files. — util_style" />
+<meta property="og:title" content="Style <code>R</code> and <code>R</code> Markdown Files. — util_style" />
 <meta property="og:description" content="Styles all R scripts and R Markdown files
 in a given directory recursively." />
 
@@ -109,13 +109,13 @@ in a given directory recursively." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Style R and RMD Files.</h1>
+    <h1>Style <code>R</code> and <code>R</code> Markdown Files.</h1>
     <small class="dont-index">Source: <a href='https://github.com/jeksterslabds/jeksterslabRutils/blob/master/R/util_style.R'><code>R/util_style.R</code></a></small>
     <div class="hidden name"><code>util_style.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Styles all <code>R</code> scripts and <code>R Markdown</code> files
+    <p>Styles all <code>R</code> scripts and <code>R</code> Markdown files
 in a given directory recursively.</p>
     </div>
 
@@ -145,7 +145,10 @@ If unspecified, defaults to <code>detectCores() - 1</code>.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>util_style</span>()
+<span class='fu'>util_style</span>(
+  <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span>(),
+  <span class='kw'>par</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

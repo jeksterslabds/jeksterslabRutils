@@ -32,7 +32,11 @@ text <- paste0(
   "Excepteur sint occaecat cupidatat non proident,",
   "sunt in culpa qui officia deserunt mollit anim id est laborum."
 )
-util_txt2file(text = text, dir = tempdir(), fn = "Lipsum.txt")
+util_txt2file(
+  text = text,
+  dir = tempdir(),
+  fn = "Lipsum.txt"
+)
 }
 \author{
 Ivan Jacob Agaloos Pesigan

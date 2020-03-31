@@ -134,6 +134,23 @@ Vector of names in the list.</p></td>
     </table>
 
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>index</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
+  <span class='kw'>firstname</span> <span class='kw'>=</span> <span class='st'>"Ivan Jacob"</span>,
+  <span class='kw'>lastname</span> <span class='kw'>=</span> <span class='st'>"Pesigan"</span>,
+  <span class='kw'>province</span> <span class='kw'>=</span> <span class='st'>"BC"</span>,
+  <span class='kw'>number</span> <span class='kw'>=</span> <span class='fl'>27</span>
+)
+<span class='fu'>util_list2vector</span>(
+  <span class='kw'>fields</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(
+    <span class='st'>"firstname"</span>,
+    <span class='st'>"lastname"</span>,
+    <span class='st'>"province"</span>,
+    <span class='st'>"number"</span>
+  ),
+  <span class='kw'>index</span> <span class='kw'>=</span> <span class='no'>index</span>
+)</div><div class='output co'>#&gt;    firstname     lastname     province       number 
+#&gt; "Ivan Jacob"    "Pesigan"         "BC"         "27" </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

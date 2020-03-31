@@ -12,8 +12,8 @@ util_cat_sys(command, sep = "\\n")
 \item{sep}{a character vector of strings to append after each element.}
 }
 \description{
-Utility to \code{\link{cat}} \code{\link{system}} output.
-Based on https://github.com/yihui/knitr/issues/1203.
+Utility to \code{\link[=cat]{cat()}} \code{\link[=system]{system()}} output.
+Based on \url{https://github.com/yihui/knitr/issues/1203}.
 }
 \examples{
 util_cat_sys("date")

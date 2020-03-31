@@ -146,6 +146,46 @@ If unspecified, defaults to <code>detectCores() - 1</code>.</p></td>
     </table>
 
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>xml</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(
+  <span class='st'>"&lt;TITLE&gt;"</span>,
+  <span class='st'>"Romanza"</span>,
+  <span class='st'>"&lt;/TITLE&gt;"</span>,
+  <span class='st'>"&lt;ARTIST&gt;"</span>,
+  <span class='st'>"Andrea Bocelli"</span>,
+  <span class='st'>"&lt;/ARTIST&gt;"</span>,
+  <span class='st'>"&lt;COUNTRY&gt;"</span>,
+  <span class='st'>"EU"</span>,
+  <span class='st'>"&lt;/COUNTRY&gt;"</span>,
+  <span class='st'>"&lt;COMPANY&gt;"</span>,
+  <span class='st'>"Polydor"</span>,
+  <span class='st'>"&lt;/COMPANY&gt;"</span>,
+  <span class='st'>"&lt;PRICE&gt;"</span>,
+  <span class='st'>"10.80"</span>,
+  <span class='st'>"&lt;/PRICE&gt;"</span>,
+  <span class='st'>"&lt;YEAR&gt;"</span>,
+  <span class='st'>"1996"</span>,
+  <span class='st'>"&lt;/YEAR&gt;"</span>
+)
+<span class='no'>tmp</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>()
+<span class='fu'><a href='https://rdrr.io/r/base/writeLines.html'>writeLines</a></span>(
+  <span class='kw'>text</span> <span class='kw'>=</span> <span class='no'>xml</span>,
+  <span class='kw'>con</span> <span class='kw'>=</span> <span class='no'>tmp</span>
+)
+<span class='no'>tags</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(
+  <span class='st'>"TITLE"</span>,
+  <span class='st'>"ARTIST"</span>,
+  <span class='st'>"COUNTRY"</span>,
+  <span class='st'>"COMPANY"</span>,
+  <span class='st'>"PRICE"</span>,
+  <span class='st'>"YEAR"</span>
+)
+<span class='fu'>util_xml2list</span>(
+  <span class='kw'>tags</span> <span class='kw'>=</span> <span class='no'>tags</span>,
+  <span class='kw'>con</span> <span class='kw'>=</span> <span class='no'>tmp</span>,
+  <span class='kw'>par</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)</div><div class='output co'>#&gt;      TITLE     ARTIST           COUNTRY COMPANY   PRICE   YEAR  
+#&gt; [1,] "Romanza" "Andrea Bocelli" "EU"    "Polydor" "10.80" "1996"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

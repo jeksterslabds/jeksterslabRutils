@@ -7,10 +7,12 @@
 util_os()
 }
 \value{
+Return any of the following:
 \itemize{
 \item \code{linux} for GNU/Linux operating system
 \item \code{osx} for Macintosh operating system
 \item \code{windows} for Windows operating system
+\item mystery machine
 }
 }
 \description{

@@ -1,18 +1,21 @@
-#' Style R and RMD Files.
+#' Style `R` and `R` Markdown Files.
 #'
-#' Styles all \code{R} scripts and \code{R Markdown} files
+#' Styles all `R` scripts and `R` Markdown files
 #' in a given directory recursively.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param dir Character string.
 #'   Directory.
 #' @inheritParams util_lapply
-#' @examples
-#' \dontrun{
-#' util_style()
-#' }
 #' @importFrom rprojroot find_root
 #' @importFrom styler style_file
+#' @examples
+#' \dontrun{
+#' util_style(
+#'   dir = getwd(),
+#'   par = FALSE
+#' )
+#' }
 #' @export
 util_style <- function(dir = getwd(),
                        par = TRUE,
@@ -35,9 +38,6 @@ util_style <- function(dir = getwd(),
   if (length(files) == 0) {
     stop("No files to render.")
   }
-  # if (length(files) < (parallel::detectCores() - 1)) {
-  #  ncores <- length(files)
-  # }
   invisible(
     util_lapply(
       FUN = style_file,

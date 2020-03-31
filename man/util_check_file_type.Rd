@@ -42,6 +42,22 @@ Checks if files have the specified file type.
 Returns filenames of files that mismatch the file type specified
 with an option to delete them.
 }
+\examples{
+\dontrun{
+util_check_file_type(
+  dir = getwd(),
+  fn = c(
+    "file_01.pdf",
+    "file_02.pdf",
+    "file_03.pdf",
+    "file_04.pdf",
+    "file_05.pdf"
+  ),
+  file_type = "PDF document",
+  par = FALSE
+)
+}
+}
 \author{
 Ivan Jacob Agaloos Pesigan
 }

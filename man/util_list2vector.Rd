@@ -15,6 +15,23 @@ Vector of names in the list.}
 \description{
 Extract items from a list to a vector.
 }
+\examples{
+index <- list(
+  firstname = "Ivan Jacob",
+  lastname = "Pesigan",
+  province = "BC",
+  number = 27
+)
+util_list2vector(
+  fields = c(
+    "firstname",
+    "lastname",
+    "province",
+    "number"
+  ),
+  index = index
+)
+}
 \author{
 Ivan Jacob Agaloos Pesigan
 }

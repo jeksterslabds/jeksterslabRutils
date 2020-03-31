@@ -2,14 +2,9 @@
 % Please edit documentation in R/util_lapply.R
 \name{util_lapply}
 \alias{util_lapply}
-\title{lapply Utility}
+\title{\code{lapply} Utility.}
 \usage{
-util_lapply(
-  FUN = rnorm,
-  args = list(n = rep(x = 100, times = 100), mean = 100, sd = 15),
-  par = TRUE,
-  ncores = NULL
-)
+util_lapply(FUN, args, par = TRUE, ncores = NULL)
 }
 \arguments{
 \item{FUN}{Function to apply.}
@@ -30,4 +25,15 @@ If unspecified, defaults to \code{detectCores() - 1}.}
 }
 \description{
 Utility to use different implementations of \code{lapply}.
+}
+\examples{
+util_lapply(
+  FUN = rnorm,
+  args = list(
+    n = rep(x = 100, times = 100),
+    mean = 100,
+    sd = 15
+  ),
+  par = FALSE
+)
 }

@@ -1,7 +1,7 @@
 #' Cat System Output in knitr.
 #'
-#' Utility to \code{\link{cat}} \code{\link{system}} output.
-#'   Based on https://github.com/yihui/knitr/issues/1203.
+#' Utility to [`cat()`] [`system()`] output.
+#'   Based on <https://github.com/yihui/knitr/issues/1203>.
 #'
 #' @inheritParams base::cat
 #' @inheritParams base::system

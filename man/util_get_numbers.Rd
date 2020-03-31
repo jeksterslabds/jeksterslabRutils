@@ -12,6 +12,10 @@ util_get_numbers(x)
 \description{
 Extract Numbers from String.
 }
+\examples{
+x <- "fkj;lakjfajkfak73875kllkj75487"
+util_get_numbers(x)
+}
 \author{
 Ivan Jacob Agaloos Pesigan
 }

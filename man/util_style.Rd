@@ -2,7 +2,7 @@
 % Please edit documentation in R/util_style.R
 \name{util_style}
 \alias{util_style}
-\title{Style R and RMD Files.}
+\title{Style \code{R} and \code{R} Markdown Files.}
 \usage{
 util_style(dir = getwd(), par = TRUE, ncores = NULL)
 }
@@ -18,12 +18,15 @@ Number of cores to use if \code{par = TRUE}.
 If unspecified, defaults to \code{detectCores() - 1}.}
 }
 \description{
-Styles all \code{R} scripts and \code{R Markdown} files
+Styles all \code{R} scripts and \code{R} Markdown files
 in a given directory recursively.
 }
 \examples{
 \dontrun{
-util_style()
+util_style(
+  dir = getwd(),
+  par = FALSE
+)
 }
 }
 \author{

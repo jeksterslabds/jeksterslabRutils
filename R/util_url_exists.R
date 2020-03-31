@@ -1,10 +1,12 @@
-#' Check URL
+#' Check URL.
 #'
 #' Checks is website exists.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param con URL.
 #' @importFrom utils capture.output
+#' @examples
+#' util_url_exists("https://www.google.com")
 #' @export
 util_url_exists <- function(con) {
   on.exit(close(con))

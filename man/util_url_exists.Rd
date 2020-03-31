@@ -2,7 +2,7 @@
 % Please edit documentation in R/util_url_exists.R
 \name{util_url_exists}
 \alias{util_url_exists}
-\title{Check URL}
+\title{Check URL.}
 \usage{
 util_url_exists(con)
 }
@@ -11,6 +11,9 @@ util_url_exists(con)
 }
 \description{
 Checks is website exists.
+}
+\examples{
+util_url_exists("https://www.google.com")
 }
 \author{
 Ivan Jacob Agaloos Pesigan
