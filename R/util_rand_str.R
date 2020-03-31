@@ -6,20 +6,25 @@
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param characters Integer.
 #'   Number of characters.
+#' @param digits Logical.
+#'   Use digits.
 #' @param ext Character string.
 #'   Optional extension.
 #' @examples
-#' library(jeksterslabRutils)
-#' util_rand_str(characters = 16L, ext = "R")
+#' util_rand_str(characters = 8L, ext = "R")
 #' @export
 util_rand_str <- function(characters = 8L,
+                          digits = FALSE,
                           ext = NULL) {
+  input <- c(
+    letters,
+    LETTERS
+  )
+  if (digits) {
+    input <- c(input, 0:9)
+  }
   out_chars <- sample(
-    x =
-      c(
-        letters,
-        LETTERS
-      ),
+    x = input,
     size = characters,
     replace = TRUE
   )

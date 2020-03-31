@@ -4,11 +4,14 @@
 \alias{util_rand_str}
 \title{Generate Random Character String}
 \usage{
-util_rand_str(characters = 8L, ext = NULL)
+util_rand_str(characters = 8L, digits = FALSE, ext = NULL)
 }
 \arguments{
 \item{characters}{Integer.
 Number of characters.}
+
+\item{digits}{Logical.
+Use digits.}
 
 \item{ext}{Character string.
 Optional extension.}
@@ -18,8 +21,7 @@ Generates random character string
 composed of lower and upper case letters.
 }
 \examples{
-library(jeksterslabRutils)
-util_rand_str(characters = 16L, ext = "R")
+util_rand_str(characters = 8L, ext = "R")
 }
 \author{
 Ivan Jacob Agaloos Pesigan
