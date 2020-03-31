@@ -29,6 +29,9 @@ util_lapply <- function(FUN = rnorm,
     if (is.null(ncores)) {
       ncores <- detectCores() - 1
     }
+    if (length(args[[1]]) < (detectCores() - 1)) {
+      ncores <- length(args[[1]])
+    }
     if (util_os() %in% c("linux", "osx")) {
       FUN_lapply <- mclapply
       args_apply <- list(

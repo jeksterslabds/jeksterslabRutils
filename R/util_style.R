@@ -35,6 +35,9 @@ util_style <- function(dir = getwd(),
   if (length(files) == 0) {
     stop("No files to render.")
   }
+  # if (length(files) < (parallel::detectCores() - 1)) {
+  #  ncores <- length(files)
+  # }
   invisible(
     util_lapply(
       FUN = style_file,
