@@ -86,9 +86,9 @@ util_check_file_type <- function(dir = getwd(),
     getwd(),
     util_rand_str()
   )
-  if (file.exists(tempfile)) {
-    unlink(tempfile)
-  }
+  # if (file.exists(tempfile)) {
+  #  unlink(tempfile)
+  # }
   file.create(tempfile)
   invisible(
     util_lapply(
@@ -111,33 +111,34 @@ util_check_file_type <- function(dir = getwd(),
     mismatch
   )
   unlink(tempfile)
-  if (interactive()) {
-    cat(
-      paste0(
-        "The following files are NOT of the type ",
-        "\"",
-        file_type,
-        "\"",
-        ":\n"
-      )
-    )
-    cat(
-      paste(
-        output,
-        collapse = "\n"
-      )
-    )
-  }
+  # if (interactive()) {
+  #  cat(
+  #    paste0(
+  #      "The following files are NOT of the type ",
+  #      "\"",
+  #      file_type,
+  #      "\"",
+  #      ":\n"
+  #    )
+  #  )
+  #  cat(
+  #    paste(
+  #      output,
+  #      collapse = "\n"
+  #    ),
+  #    "\n"
+  #  )
+  # }
   if (remove_files) {
-    if (interactive()) {
-      cat("\nDo you wish to DELETE invalid files? [Y/n].\n")
-      line <- readline()
-      if (line == "Y") {
-        unlink(mismatch)
-        cat("\nInvalid files deleted.\n")
-      }
-    } else {
-      unlink(mismatch)
-    }
+    # if (interactive()) {
+    #  cat("\nDo you wish to DELETE invalid files? [Y/n].\n")
+    #  line <- readline()
+    #  if (line == "Y") {
+    #    unlink(mismatch)
+    #    cat("\nInvalid files deleted.\n")
+    #  }
+    # } else {
+    unlink(mismatch)
+    # }
   }
 }
