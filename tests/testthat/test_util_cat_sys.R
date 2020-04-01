@@ -10,6 +10,7 @@
 #+ setup
 library(testthat)
 library(jeksterslabRutils)
+context("Test util_cat_sys.")
 #'
 #' ## Set test parameters
 #'
@@ -31,9 +32,9 @@ result_year <- capture.output(
 #'
 #' ## Results
 #'
-#' | Variable      | Description   | Value           |
-#' |:--------------|:--------------|:----------------|
-#' | `result_year` | Current year. | `r result_year` |
+#' | Item          | Parameter | Result          |
+#' |:--------------|:----------|:----------------|
+#' | Current year. | `r year`  | `r result_year` |
 #'
 #+ test_that, echo=TRUE
 test_that("util_cat_sys works", {

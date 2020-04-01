@@ -10,6 +10,7 @@
 #+ setup
 library(testthat)
 library(jeksterslabRutils)
+context("Test util_txt2file.")
 #'
 #' ## Set test parameters
 #'
@@ -28,8 +29,6 @@ input <- paste0(
   "sunt in culpa qui officia deserunt mollit anim id est laborum."
 )
 wd <- tempdir()
-# wd <- util_rand_str()
-# dir.create(wd)
 #'
 #' | Variable | Description   | Value     |
 #' |:---------|:--------------|:----------|
@@ -52,9 +51,9 @@ results <- readLines(
 #'
 #' ## Results
 #'
-#' | Variable  | Description  | Value       |
-#' |:----------|:-------------|:------------|
-#' | `results` | results.     | `r results` |
+#' | Item         | Parameter | Results     |
+#' |:-------------|:----------|:------------|
+#' | Input string | `r input` | `r results` |
 #'
 #+ testthat, echo=TRUE
 test_that("util_txt2file works", {
@@ -67,9 +66,3 @@ test_that("util_txt2file works", {
 #'
 #+ clean_tempdir
 util_clean_tempdir()
-# on.exit(
-#  unlink(
-#    wd,
-#    recursive = TRUE
-#  )
-# )

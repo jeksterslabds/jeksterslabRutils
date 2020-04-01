@@ -1,5 +1,5 @@
 #' ---
-#' title: "Test: util_bind"
+#' title: "Test: util_check_file_type"
 #' author: "Ivan Jacob Agaloos Pesigan"
 #' date: "`r Sys.Date()`"
 #' output:
@@ -10,6 +10,7 @@
 #+ setup
 library(testthat)
 library(jeksterslabRutils)
+context("Test util_check_file_type.")
 #'
 #' ## Set test parameters
 #'
@@ -46,7 +47,7 @@ util_check_file_type(
   remove_files = TRUE,
   par = FALSE
 )
-files <- list.files(
+results_files <- list.files(
   tmp,
   pattern = glob2rx("^*.epub$")
 )
@@ -55,9 +56,9 @@ files <- list.files(
 #'
 #' Note that only `valid.epub` should be retained.
 #'
-#' | Variable | Description | Value     |
-#' |:---------|:------------|:----------|
-#' | `files`  | Files.      | `r files` |
+#' | Item   | Parameter | Result            |
+#' |:-------|:----------|:------------------|
+#' | Files. | `r files` | `r results_files` |
 #'
 #+ testthat_01, echo=TRUE
 test_that("valid file is retained", {

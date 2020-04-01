@@ -10,6 +10,7 @@
 #+ setup
 library(testthat)
 library(jeksterslabRutils)
+context("Test util_get_numbers.")
 #'
 #' ## Set test parameters
 #'
@@ -27,20 +28,22 @@ input <- util_rand_str(
 #' ## Run test
 #'
 #+ test
-result <- util_get_numbers(
+results <- util_get_numbers(
   x = input
 )
 #'
 #' ## Results
 #'
-#' | Variable | Description | Value      |
-#' |:---------|:------------|:-----------|
-#' | `result` | Result.     | `r result` |
+#' Note that only numbers should be retained.
+#'
+#' | Item     | Parameter | Result      |
+#' |:---------|:----------|:------------|
+#' | Results. | `r input` | `r results` |
 #'
 #+ testthat, echo=TRUE
 test_that("util_cat_sys works", {
   expect_equivalent(
-    is.numeric(result),
+    is.numeric(results),
     TRUE
   )
 })

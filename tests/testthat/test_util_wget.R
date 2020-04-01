@@ -6,17 +6,16 @@
 #'   rmarkdown::github_document:
 #'     toc: true
 #' ---
-
+#'
 #+ setup
 library(testthat)
 library(jeksterslabRutils)
-
+context("Test util_wget.")
+#'
 #' ## Set test parameters
-
+#'
 #+ parameters
 wd <- tempdir()
-# wd <- util_rand_str()
-# dir.create(wd)
 link <- c(
   "https://raw.githubusercontent.com/jeksterslabds/jeksterslabRutils/master/R/util_bind.R",
   "https://raw.githubusercontent.com/jeksterslabds/jeksterslabRutils/master/R/util_cat_sys.R",
@@ -31,14 +30,14 @@ files <- c(
   file.path(wd, "util_clean_tempdir.R"),
   file.path(wd, "util_get_numbers.R")
 )
-
+#'
 #' | Variable | Description                | Value     |
 #' |:---------|:---------------------------|:----------|
 #' | `link`   | Link to files to download. | `r link`  |
 #' | `files`  | Files.                     | `r files` |
-
+#'
 #' ## Run test
-
+#'
 #+ test
 util_wget(
   dir = wd,
@@ -46,9 +45,9 @@ util_wget(
   args = "-nc",
   par = FALSE
 )
-
+#'
 #' ## Results
-
+#'
 results <- log <- rep(x = NA, times = length(files))
 for (i in seq_along(files)) {
   if (file.exists(files[i])) {
@@ -59,11 +58,13 @@ for (i in seq_along(files)) {
     log[i] <- FALSE
   }
 }
-
-#' | Variable  | Description       | Value       |
-#' |:----------|:------------------|:------------|
-#' | `results` | Downloaded files. | `r results` |
-
+#'
+#' ## Results
+#'
+#' | Item              | Parameter | Results     |
+#' |:------------------|:----------|:------------|
+#' | Downloaded files. | `r files` | `r results` |
+#'
 #+ test_that, echo=TRUE
 test_that("util_wget works", {
   skip_on_appveyor()
@@ -72,13 +73,6 @@ test_that("util_wget works", {
     TRUE
   )
 })
-
+#'
 #+ clean_tempdir
 util_clean_tempdir()
-#'
-# on.exit(
-#  unlink(
-#    wd,
-#    recursive = TRUE
-#  )
-# )

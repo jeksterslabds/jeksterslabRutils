@@ -10,6 +10,7 @@
 #+ setup
 library(testthat)
 library(jeksterslabRutils)
+context("Test util_os.")
 #'
 #' ## Set test parameters
 #'

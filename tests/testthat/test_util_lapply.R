@@ -6,13 +6,14 @@
 #'   rmarkdown::github_document:
 #'     toc: true
 #' ---
-
+#'
 #+ setup
 library(testthat)
 library(jeksterslabRutils)
-
+context("Test util_lapply.")
+#'
 #' ## Set test parameters
-
+#'
 #+ parameters
 FUN <- rnorm
 n <- 10000
@@ -28,16 +29,16 @@ args <- list(
 )
 par <- FALSE
 ncores <- NULL
-
+#'
 #' | Variable                         | Description                                 | Value     |
 #' |:---------------------------------|:--------------------------------------------|:----------|
 #' | `FUN`                            | Function.                                   | `rnorm`   |
 #' | `n`                              | Number of observations.                     | `r n`     |
 #' | `mu` named as `mean` in `args`.  | Population mean $\left( \mu \right)$.       | `r mu`    |
 #' | `sigma` named as `sd` in `args`. | Standard deviation $\left( \sigma \right)$. | `r sigma` |
-
+#'
 #' ## Run test
-
+#'
 #+ test
 sample <- util_lapply(
   FUN = FUN,
@@ -57,14 +58,14 @@ mean_of_means <- mean(sample_means)
 mean_of_ns <- mean(
   lengths(sample)
 )
-
+#'
 #' ## Results
-
+#'
 #' | Item           | Parameter | Results           |
 #' |:---------------|----------:|------------------:|
 #' | Sample size.   | `r n`     | `r mean_of_ns`    |
 #' | Mean of means. | `r mu`    | `r mean_of_means` |
-
+#'
 #+ testthat_01, echo=TRUE
 test_that("sample size used is correct", {
   expect_equivalent(
@@ -72,7 +73,7 @@ test_that("sample size used is correct", {
     n
   )
 })
-
+#'
 #+ testthat_02, echo=TRUE
 test_that("the mean of means converges to the population mean", {
   expect_equivalent(

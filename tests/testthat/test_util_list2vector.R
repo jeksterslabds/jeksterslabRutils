@@ -10,6 +10,7 @@
 #+ setup
 library(testthat)
 library(jeksterslabRutils)
+context("Test util_list2vector.")
 #'
 #' ## Set test parameters
 #'
@@ -33,10 +34,11 @@ index[[3]] <- list(
   number = 12
 )
 #'
+#' | Variable | Description |
+#' |:---------|:------------|
+#' | `index`  | List.       |
 #'
-#' | Variable | Description | Value     |
-#' |:---------|:------------|:----------|
-#' | `index`  | List.       | `r index` |
+index
 #'
 #' ## Run test
 #'
@@ -56,11 +58,11 @@ results_03 <- util_list2vector(
 #'
 #' ## Results
 #'
-#' | Variable     | Description | Value          |
-#' |:-------------|:------------|:---------------|
-#' | `results_01` | Results 1.  | `r results_01` |
-#' | `results_02` | Results 2.  | `r results_02` |
-#' | `results_03` | Results 3.  | `r results_03` |
+#' | Item    | Parameter      | Results        |
+#' |:--------|:---------------|:---------------|
+#' | Index 1 | `r index[[1]]` | `r results_01` |
+#' | Index 2 | `r index[[2]]` | `r results_02` |
+#' | Index 3 | `r index[[3]]` | `r results_03` |
 #'
 #+ testthat_01, echo=TRUE
 test_that("result_01_01", {
