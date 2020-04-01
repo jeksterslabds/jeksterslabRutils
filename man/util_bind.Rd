@@ -2,7 +2,7 @@
 % Please edit documentation in R/util_bind.R
 \name{util_bind}
 \alias{util_bind}
-\title{Bind Comma Separated or Excel Files.}
+\title{Bind Comma Separated Values or \code{Excel} Files.}
 \usage{
 util_bind(
   dir = getwd(),
@@ -18,13 +18,13 @@ util_bind(
 }
 \arguments{
 \item{dir}{Character string.
-Directory which contains files.}
+Directory which contains target files.}
 
 \item{format}{Character string.
 \code{"csv"} for comma separated files.
-\code{"xls"} or \verb{"xlsx} for Excel.}
+\code{"xls"} or \verb{"xlsx} for \code{Excel} files.}
 
-\item{pattern}{String.
+\item{pattern}{Character string.
 Pattern of file names.
 \code{format} is appended as an extension.
 For example, if \code{pattern = "^filename*"},
@@ -39,7 +39,7 @@ Save file name of source data file as a new column.}
 Save concatenated files in \code{csv} format.}
 
 \item{fn}{Character string.
-Filename to use to save concatenated file.
+Filename to use when \code{save = TRUE}.
 Uses the basename of \code{dir} if not provided.}
 
 \item{save_dir}{Character string.
@@ -53,7 +53,7 @@ Number of cores to use if \code{par = TRUE}.
 If unspecified, defaults to \code{detectCores() - 1}.}
 }
 \description{
-Binds comma separated or Excel files
+Binds \code{csv} or \code{Excel} files
 in a given directory by row (\code{rbind}).
 Requires that files have the same columns.
 }

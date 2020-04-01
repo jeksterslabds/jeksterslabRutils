@@ -3,11 +3,11 @@
 #' Writes lines of character strings to file.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
-#' @inheritParams base::writeLines
 #' @param dir Character string.
 #'   Directory.
 #' @param fn Character string.
 #'   Filename.
+#' @inheritParams base::writeLines
 #' @examples
 #' text <- paste0(
 #'   "Lorem ipsum dolor sit amet,",

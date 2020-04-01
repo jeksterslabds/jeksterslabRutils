@@ -2,7 +2,7 @@
 % Please edit documentation in R/util_rand_str.R
 \name{util_rand_str}
 \alias{util_rand_str}
-\title{Generate Random Character String}
+\title{Generate a String with Random Characters.}
 \usage{
 util_rand_str(characters = 8L, digits = FALSE, ext = NULL)
 }

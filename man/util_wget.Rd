@@ -2,13 +2,13 @@
 % Please edit documentation in R/util_wget.R
 \name{util_wget}
 \alias{util_wget}
-\title{wget}
+\title{Download Files using \code{wget}.}
 \usage{
 util_wget(dir = getwd(), link, args = "-nc", par = TRUE, ncores = NULL)
 }
 \arguments{
 \item{dir}{Character string.
-Directory where the downloaded file is saved.}
+Output directory.}
 
 \item{link}{Character vector.
 URLs.}
@@ -24,7 +24,7 @@ Number of cores to use if \code{par = TRUE}.
 If unspecified, defaults to \code{detectCores() - 1}.}
 }
 \description{
-wget
+Download Files using \code{wget}.
 }
 \examples{
 \dontrun{

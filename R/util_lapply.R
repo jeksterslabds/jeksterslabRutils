@@ -6,8 +6,8 @@
 #' @param args Named list.
 #'   Arguments to pass to `FUN`.
 #'   The first item (`args[[1]]`)
-#'   should be first argument of `FUN`
-#'   that corresponds to the argument `X`
+#'   should be first argument of `FUN`.
+#'   This corresponds to the argument `X`
 #'   in `mclapply`, `parLapply` or `lapply`.
 #' @param par Logical.
 #'   If `TRUE`, use multiple cores.
@@ -18,7 +18,7 @@
 #' util_lapply(
 #'   FUN = rnorm,
 #'   args = list(
-#'     n = rep(x = 100, times = 100),
+#'     n = rep(x = 5, times = 5),
 #'     mean = 100,
 #'     sd = 15
 #'   ),

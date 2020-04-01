@@ -1,8 +1,8 @@
-#' wget
+#' Download Files using `wget`.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param dir Character string.
-#'   Directory where the downloaded file is saved.
+#'   Output directory.
 #' @param link Character vector.
 #'   URLs.
 #' @param args Character string.

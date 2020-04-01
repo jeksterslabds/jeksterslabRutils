@@ -1,7 +1,7 @@
-#' Extract Numbers from String.
+#' Extract Numbers from Strings.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
-#' @param x String.
+#' @param x Character string.
 #' @examples
 #' x <- "fkj;lakjfajkfak73875kllkj75487"
 #' util_get_numbers(x)

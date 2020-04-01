@@ -2,16 +2,16 @@
 % Please edit documentation in R/util_xml2list.R
 \name{util_xml2list}
 \alias{util_xml2list}
-\title{XML/HTML to list}
+\title{\code{XML}/\code{HTML} to List.}
 \usage{
 util_xml2list(tags, con, par = TRUE, ncores = NULL)
 }
 \arguments{
 \item{tags}{Character vector.
-XML or HTML tags.}
+\code{XML} or \code{HTML} tags.}
 
 \item{con}{Connection.
-Path or connection to XML/HTML file.}
+Path or connection to \code{XML}/\code{HTML} file.}
 
 \item{par}{Logical.
 If \code{TRUE}, use multiple cores.}
@@ -21,7 +21,7 @@ Number of cores to use if \code{par = TRUE}.
 If unspecified, defaults to \code{detectCores() - 1}.}
 }
 \description{
-XML/HTML to list
+\code{XML}/\code{HTML} to List.
 }
 \examples{
 xml <- paste0(

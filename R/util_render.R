@@ -3,12 +3,12 @@
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param recursive Logical.
 #'   If `TRUE`,
-#'   recursively render all `R` scripts `.R` and
-#'   R Markdown files `.Rmd`
+#'   recursively render all `R` scripts (`.R`) and
+#'   R Markdown files (`.Rmd`)
 #'   in `dir`.
 #' @param dir Character string.
 #'   Directory.
-#'   Used if `recursive` is `TRUE`.
+#'   Used if `recursive = TRUE`.
 #' @param files Character vector.
 #'   Vector of files to render.
 #'   Used if `recursive` is `FALSE`.

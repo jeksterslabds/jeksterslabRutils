@@ -1,4 +1,4 @@
-#' Generate Random Character String
+#' Generate a String with Random Characters.
 #'
 #' Generates random character string
 #' composed of lower and upper case letters

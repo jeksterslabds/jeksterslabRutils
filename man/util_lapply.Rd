@@ -12,8 +12,8 @@ util_lapply(FUN, args, par = TRUE, ncores = NULL)
 \item{args}{Named list.
 Arguments to pass to \code{FUN}.
 The first item (\code{args[[1]]})
-should be first argument of \code{FUN}
-that corresponds to the argument \code{X}
+should be first argument of \code{FUN}.
+This corresponds to the argument \code{X}
 in \code{mclapply}, \code{parLapply} or \code{lapply}.}
 
 \item{par}{Logical.
@@ -30,7 +30,7 @@ Utility to use different implementations of \code{lapply}.
 util_lapply(
   FUN = rnorm,
   args = list(
-    n = rep(x = 100, times = 100),
+    n = rep(x = 5, times = 5),
     mean = 100,
     sd = 15
   ),

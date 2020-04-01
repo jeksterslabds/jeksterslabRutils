@@ -15,7 +15,7 @@ util_check_file_type(
 }
 \arguments{
 \item{dir}{Character string.
-Directory which contains files.}
+Directory which contains target files.}
 
 \item{fn}{Character vector.
 Filenames.}

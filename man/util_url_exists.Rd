@@ -10,7 +10,7 @@ util_url_exists(con)
 \item{con}{URL.}
 }
 \description{
-Checks is website exists.
+Checks if website exists.
 }
 \examples{
 util_url_exists("https://www.google.com")

@@ -1,16 +1,16 @@
-#' Bind Comma Separated or Excel Files.
+#' Bind Comma Separated Values or `Excel` Files.
 #'
-#' Binds comma separated or Excel files
+#' Binds `csv` or `Excel` files
 #' in a given directory by row (`rbind`).
 #' Requires that files have the same columns.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param dir Character string.
-#'   Directory which contains files.
+#'   Directory which contains target files.
 #' @param format Character string.
 #'   `"csv"` for comma separated files.
-#'   `"xls"` or `"xlsx` for Excel.
-#' @param pattern String.
+#'   `"xls"` or `"xlsx` for `Excel` files.
+#' @param pattern Character string.
 #'   Pattern of file names.
 #'   `format` is appended as an extension.
 #'   For example, if `pattern = "^filename*"`,
@@ -22,7 +22,7 @@
 #' @param save Logical.
 #'   Save concatenated files in `csv` format.
 #' @param fn Character string.
-#'   Filename to use to save concatenated file.
+#'   Filename to use when `save = TRUE`.
 #'   Uses the basename of `dir` if not provided.
 #' @param save_dir Character string.
 #'   Directory used for `fn`.

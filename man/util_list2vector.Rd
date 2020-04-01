@@ -2,7 +2,7 @@
 % Please edit documentation in R/util_list2vector.R
 \name{util_list2vector}
 \alias{util_list2vector}
-\title{Extract items from a list to a vector.}
+\title{List to Vector.}
 \usage{
 util_list2vector(fields, index)
 }
@@ -13,7 +13,9 @@ Vector of names in the list.}
 \item{index}{List.}
 }
 \description{
-Extract items from a list to a vector.
+Extracts items from a list and returns a vector.
+Note that this only works with lists
+that follows the structure in the example below.
 }
 \examples{
 index <- list(

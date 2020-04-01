@@ -1,6 +1,6 @@
 #' Check URL.
 #'
-#' Checks is website exists.
+#' Checks if website exists.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param con URL.

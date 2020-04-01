@@ -1,4 +1,8 @@
-#' Extract items from a list to a vector.
+#' List to Vector.
+#'
+#' Extracts items from a list and returns a vector.
+#' Note that this only works with lists
+#' that follows the structure in the example below.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param fields Character vector.

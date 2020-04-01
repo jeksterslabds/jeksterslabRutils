@@ -15,13 +15,13 @@ util_render(
 \arguments{
 \item{recursive}{Logical.
 If \code{TRUE},
-recursively render all \code{R} scripts \code{.R} and
-R Markdown files \code{.Rmd}
+recursively render all \code{R} scripts (\code{.R}) and
+R Markdown files (\code{.Rmd})
 in \code{dir}.}
 
 \item{dir}{Character string.
 Directory.
-Used if \code{recursive} is \code{TRUE}.}
+Used if \code{recursive = TRUE}.}
 
 \item{files}{Character vector.
 Vector of files to render.

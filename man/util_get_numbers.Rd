@@ -2,15 +2,15 @@
 % Please edit documentation in R/util_get_numbers.R
 \name{util_get_numbers}
 \alias{util_get_numbers}
-\title{Extract Numbers from String.}
+\title{Extract Numbers from Strings.}
 \usage{
 util_get_numbers(x)
 }
 \arguments{
-\item{x}{String.}
+\item{x}{Character string.}
 }
 \description{
-Extract Numbers from String.
+Extract Numbers from Strings.
 }
 \examples{
 x <- "fkj;lakjfajkfak73875kllkj75487"
