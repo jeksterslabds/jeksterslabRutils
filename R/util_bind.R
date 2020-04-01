@@ -154,9 +154,13 @@ util_bind <- function(dir = getwd(),
       file = fn,
       row.names = FALSE
     )
-    if (interactive()) {
-      cat(paste(fn, "saved.\n"))
-    }
+    cat(
+      paste(
+        fn,
+        "saved.",
+        "\n"
+      )
+    )
   }
   output
 }
