@@ -48,4 +48,16 @@
   <url>
     <loc>https://github.com/jeksterslabds/jeksterslabRutils//reference/util_xml2list.html</loc>
   </url>
+  <url>
+    <loc>https://github.com/jeksterslabds/jeksterslabRutils//articles/util_cat_sys.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/jeksterslabds/jeksterslabRutils//articles/util_os.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/jeksterslabds/jeksterslabRutils//articles/util_pkg_load.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/jeksterslabds/jeksterslabRutils//articles/util_url_exists.html</loc>
+  </url>
 </urlset>

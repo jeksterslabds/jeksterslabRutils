@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Bind Comma Separated or Excel Files. — util_bind • jeksterslabRutils</title>
+<title>Bind Comma Separated Values or <code>Excel</code> Files. — util_bind • jeksterslabRutils</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Bind Comma Separated or Excel Files. — util_bind" />
-<meta property="og:description" content="Binds comma separated or Excel files
+<meta property="og:title" content="Bind Comma Separated Values or <code>Excel</code> Files. — util_bind" />
+<meta property="og:description" content="Binds csv or Excel files
 in a given directory by row (rbind).
 Requires that files have the same columns." />
 
@@ -89,6 +89,27 @@ Requires that files have the same columns." />
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/util_cat_sys.html">Cat System Output in knitr</a>
+    </li>
+    <li>
+      <a href="../articles/util_os.html">Get Operating System</a>
+    </li>
+    <li>
+      <a href="../articles/util_pkg_load.html">Load Packages</a>
+    </li>
+    <li>
+      <a href="../articles/util_url_exists.html">Check URL</a>
+    </li>
+  </ul>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -110,13 +131,13 @@ Requires that files have the same columns." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Bind Comma Separated or Excel Files.</h1>
+    <h1>Bind Comma Separated Values or <code>Excel</code> Files.</h1>
     <small class="dont-index">Source: <a href='https://github.com/jeksterslabds/jeksterslabRutils/blob/master/R/util_bind.R'><code>R/util_bind.R</code></a></small>
     <div class="hidden name"><code>util_bind.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Binds comma separated or Excel files
+    <p>Binds <code>csv</code> or <code>Excel</code> files
 in a given directory by row (<code>rbind</code>).
 Requires that files have the same columns.</p>
     </div>
@@ -139,17 +160,17 @@ Requires that files have the same columns.</p>
     <tr>
       <th>dir</th>
       <td><p>Character string.
-Directory which contains files.</p></td>
+Directory which contains target files.</p></td>
     </tr>
     <tr>
       <th>format</th>
       <td><p>Character string.
 <code>"csv"</code> for comma separated files.
-<code>"xls"</code> or <code>"xlsx</code> for Excel.</p></td>
+<code>"xls"</code> or <code>"xlsx</code> for <code>Excel</code> files.</p></td>
     </tr>
     <tr>
       <th>pattern</th>
-      <td><p>String.
+      <td><p>Character string.
 Pattern of file names.
 <code>format</code> is appended as an extension.
 For example, if <code>pattern = "^filename*"</code>,
@@ -170,7 +191,7 @@ Save concatenated files in <code>csv</code> format.</p></td>
     <tr>
       <th>fn</th>
       <td><p>Character string.
-Filename to use to save concatenated file.
+Filename to use when <code>save = TRUE</code>.
 Uses the basename of <code>dir</code> if not provided.</p></td>
     </tr>
     <tr>
