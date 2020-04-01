@@ -53,20 +53,33 @@ util_xml2list <- function(tags,
   input <- readLines(con)
   exe <- function(tag,
                   input) {
-    gsub(
-      pattern = paste0(
-        "[[:print:]]*",
-        "<",
-        tag,
-        ">",
-        "(.*)",
-        "</",
-        tag,
-        ">",
-        "[[:print:]]*"
-      ),
-      replacement = "\\1",
-      x = input
+    tryCatch(
+      {
+        gsub(
+          pattern = paste0(
+            "[[:print:]]*",
+            "<",
+            tag,
+            ">",
+            "(.*)",
+            "</",
+            tag,
+            ">",
+            "[[:print:]]*"
+          ),
+          replacement = "\\1",
+          x = input
+        )
+      },
+      error = function(err) {
+        cat(
+          paste(
+            "Error substitution",
+            input,
+            "\n"
+          )
+        )
+      }
     )
   }
   output <- util_lapply(

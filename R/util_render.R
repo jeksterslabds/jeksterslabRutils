@@ -28,6 +28,29 @@ util_render <- function(recursive = TRUE,
                         files = NULL,
                         par = TRUE,
                         ncores = NULL) {
+  exe_list <- function(file) {
+    if (file.exists(file)) {
+      return(file)
+    } else {
+      return(NA)
+    }
+  }
+  exe_render <- function(input, ...) {
+    tryCatch(
+      {
+        render(input, ...)
+      },
+      error = function(err) {
+        cat(
+          paste(
+            "Error rendering",
+            input,
+            "\n"
+          )
+        )
+      }
+    )
+  }
   if (recursive) {
     rmd <- list.files(
       path = dir,
@@ -46,7 +69,7 @@ util_render <- function(recursive = TRUE,
     files <- c(rmd, rscript)
     invisible(
       util_lapply(
-        FUN = render,
+        FUN = exe_render,
         args = list(
           input = files
         ),
@@ -55,16 +78,9 @@ util_render <- function(recursive = TRUE,
       )
     )
   } else {
-    exe <- function(file) {
-      if (file.exists(file)) {
-        return(file)
-      } else {
-        return(NA)
-      }
-    }
     files <- invisible(
       util_lapply(
-        FUN = exe,
+        FUN = exe_list,
         args = list(
           input = files
         ),
@@ -81,7 +97,7 @@ util_render <- function(recursive = TRUE,
     }
     invisible(
       util_lapply(
-        FUN = render,
+        FUN = exe_render,
         args = list(
           input = files
         ),

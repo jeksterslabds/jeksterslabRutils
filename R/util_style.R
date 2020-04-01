@@ -20,6 +20,22 @@
 util_style <- function(dir = getwd(),
                        par = TRUE,
                        ncores = NULL) {
+  exe <- function(path, ...) {
+    tryCatch(
+      {
+        style_file(path, ...)
+      },
+      error = function(err) {
+        cat(
+          paste(
+            "Error styling",
+            path,
+            "\n"
+          )
+        )
+      }
+    )
+  }
   rscript <- list.files(
     path = file.path(
       dir
@@ -40,7 +56,7 @@ util_style <- function(dir = getwd(),
   }
   invisible(
     util_lapply(
-      FUN = style_file,
+      FUN = exe,
       args = list(
         path = files
       ),

@@ -42,24 +42,37 @@ util_check_file_type <- function(dir = getwd(),
   exe <- function(fn,
                   file_type,
                   tempfile) {
-    system(
-      paste(
-        "file",
-        paste0(
-          "\"",
-          fn,
-          "\""
-        ),
-        "|",
-        "grep -v",
-        paste0(
-          "\"",
-          file_type,
-          "\""
-        ),
-        ">> ",
-        shQuote(tempfile)
-      )
+    tryCatch(
+      {
+        system(
+          paste(
+            "file",
+            paste0(
+              "\"",
+              fn,
+              "\""
+            ),
+            "|",
+            "grep -v",
+            paste0(
+              "\"",
+              file_type,
+              "\""
+            ),
+            ">> ",
+            shQuote(tempfile)
+          )
+        )
+      },
+      error = function(err) {
+        cat(
+          paste(
+            "Error checking",
+            fn,
+            "\n"
+          )
+        )
+      }
     )
   }
   fn <- file.path(

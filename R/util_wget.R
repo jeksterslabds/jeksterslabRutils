@@ -53,8 +53,14 @@ util_wget <- function(dir = getwd(),
           ignore.stderr = TRUE
         )
       },
-      error = function(e) {
-        cat("wget error.")
+      error = function(err) {
+        cat(
+          paste(
+            "Error downloading",
+            link,
+            "\n"
+          )
+        )
       }
     )
   }

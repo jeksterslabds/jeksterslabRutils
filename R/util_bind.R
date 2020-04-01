@@ -58,6 +58,38 @@ util_bind <- function(dir = getwd(),
                       save_dir = getwd(),
                       par = TRUE,
                       ncores = NULL) {
+  exe_xls <- function(file, ...) {
+    tryCatch(
+      {
+        read_excel(file, ...)
+      },
+      error = function(err) {
+        cat(
+          paste(
+            "Error reading in",
+            file,
+            "\n"
+          )
+        )
+      }
+    )
+  }
+  exe_csv <- function(file, ...) {
+    tryCatch(
+      {
+        read.csv(file, ...)
+      },
+      error = function(err) {
+        cat(
+          paste(
+            "Error reading in",
+            file,
+            "\n"
+          )
+        )
+      }
+    )
+  }
   root <- basename(dir)
   if (is.null(fn)) {
     fn <- file.path(
@@ -86,7 +118,7 @@ util_bind <- function(dir = getwd(),
   )
   if (format == "csv") {
     input <- util_lapply(
-      FUN = read.csv,
+      FUN = exe_csv,
       args = list(
         file = files,
         stringsAsFactors = FALSE
@@ -97,7 +129,7 @@ util_bind <- function(dir = getwd(),
   }
   if (format %in% c("xls", "xlsx")) {
     input <- util_lapply(
-      FUN = read_excel,
+      FUN = exe_xls,
       args = list(
         file = files
       ),
