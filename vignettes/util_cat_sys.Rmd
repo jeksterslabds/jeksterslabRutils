@@ -1,0 +1,38 @@
+---
+title: "Cat System Output in knitr"
+author: "Ivan Jacob Agaloos Pesigan"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Cat System Output in knitr}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## util_cat_sys
+
+The `util_cat_sys` function
+displays the output of a `system` call.
+
+## Use case
+
+In the example below,
+the result of the system call would not be returned.
+
+```{r}
+system("date")
+```
+
+The output of the same system call is returned using `util_cat_sys`.
+
+```{r}
+library(jeksterslabRutils)
+util_cat_sys("date")
+```

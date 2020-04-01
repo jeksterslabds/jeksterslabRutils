@@ -1,0 +1,67 @@
+---
+title: "Get Operating System"
+author: "Ivan Jacob Agaloos Pesigan"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Get Operating System}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## util_os
+
+The `util_os` function
+returns the operating system of the current `R` session.
+
+  - `linux` for GNU/Linux operating system
+  - `osx` for Macintosh operating system
+  - `windows` for Windows operating system
+  - mystery machine
+
+```{r}
+library(jeksterslabRutils)
+util_os()
+```
+
+## Use case
+
+I use the `util_os` function to programatically
+employ forking on operating systems (POSIX) that support it and
+employ sockets on Windows.
+
+```{r}
+exe <- function(cores = 2) {
+  os <- jeksterslabRutils::util_os()
+  cat("Operating System:", os)
+  if (os %in% c("linux", "osx")) {
+    return(
+      parallel::mclapply(
+        X = 1:5,
+        FUN = rnorm,
+        mc.cores = cores
+      )
+    )
+  }
+  if (os == "windows") {
+    cl <- parallel::makeCluster(cores)
+    on.exit(
+      parallel::stopCluster(cl)
+    )
+    return(
+      parallel::parLapply(
+        X = 1:5,
+        fun = rnorm
+      )
+    )
+  }
+}
+exe()
+```
