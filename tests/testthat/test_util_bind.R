@@ -176,17 +176,22 @@ unlink(fn)
 #'
 #+ error
 test_that("tryCatch", {
-  skip_on_appveyor()
-  util_bind(
+  expect_error(
+    util_bind(
     format = "csv",
     par = FALSE
   )
-  util_bind(
+  )
+  expect_error(
+    util_bind(
     format = "xls",
     par = FALSE
   )
-  util_bind(
+  )
+  expect_error(
+    util_bind(
     format = "xlsx",
     par = FALSE
+  )
   )
 })
