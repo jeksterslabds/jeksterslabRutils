@@ -54,16 +54,38 @@ tags <- c(
   "PRICE",
   "YEAR"
 )
-#'
-#' | Variable  | Description | Value       |
-#' |:----------|:------------|:------------|
-#' | `title`   | Title       | `r title`   |
-#' | `artist`  | Artist      | `r artist`  |
-#' | `country` | Country     | `r country` |
-#' | `company` | Company     | `r company` |
-#' | `price`   | Price       | `r price`   |
-#' | `year`    | Year        | `r year`    |
-#'
+Variable <- c(
+  "`title`",
+  "`artist`",
+  "`country`",
+  "`company`",
+  "`price`",
+  "`year`"
+)
+Description <- c(
+  "Title",
+  "Artist",
+  "Country",
+  "Company",
+  "Price",
+  "Year"
+)
+Value <- c(
+  title,
+  artist,
+  country,
+  company,
+  price,
+  year
+)
+knitr::kable(
+  x = data.frame(
+    Variable,
+    Description,
+    Value
+  ),
+  row.names = FALSE
+)
 #+ test
 results <- util_xml2list(
   tags = tags,
@@ -73,14 +95,31 @@ results <- util_xml2list(
 #'
 #' ## Results
 #'
-#' | Item    | Parameter   | Result                   |
-#' |:--------|:------------|:-------------------------|
-#' | Title   | `r title`   | `r results[, "TITLE"]`   |
-#' | Artist  | `r artist`  | `r results[, "ARTIST"]`  |
-#' | Country | `r country` | `r results[, "COUNTRY"]` |
-#' | Company | `r company` | `r results[, "COMPANY"]` |
-#' | Price   | `r price`   | `r results[, "PRICE"]`   |
-#' | Year    | `r year`    | `r results[, "YEAR"]`    |
+#+ results
+Parameter <- c(
+  title,
+  artist,
+  country,
+  company,
+  price,
+  year
+)
+Result <- c(
+  results[, "TITLE"],
+  results[, "ARTIST"],
+  results[, "COUNTRY"],
+  results[, "COMPANY"],
+  results[, "PRICE"],
+  results[, "YEAR"]
+)
+knitr::kable(
+  x = data.frame(
+    Description,
+    Parameter,
+    Result
+  ),
+  row.names = FALSE
+)
 #'
 #+ testthat_01, echo=TRUE
 test_that("title is correct", {

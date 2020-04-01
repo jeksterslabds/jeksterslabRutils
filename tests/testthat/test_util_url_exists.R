@@ -19,12 +19,26 @@ wrong_url <- "https://thisWebsiteDoesNotExist.com"
 wrong_url_expected <- FALSE
 correct_url <- "https://www.google.com"
 correct_url_expected <- TRUE
-#'
-#' | Variable      | Description                    | Expected Value           |
-#' |:--------------|:-------------------------------|:-------------------------|
-#' | `wrong_url`   | Wrong URL (`r wrong_url`).     | `r wrong_url_expected`   |
-#' | `correct_url` | Correct URL (`r correct_url`). | `r correct_url_expected` |
-#'
+Variable <- c(
+  "`wrong_url`",
+  "`correct_url`"
+)
+Description <- c(
+  paste0("Wrong URL (", wrong_url, ")."),
+  paste0("Correct URL (", correct_url, ").")
+)
+Value <- c(
+  wrong_url_expected,
+  correct_url_expected
+)
+knitr::kable(
+  x = data.frame(
+    Variable,
+    Description,
+    Value
+  ),
+  row.names = FALSE
+)
 #' ## Run test
 #'
 #+ test
@@ -33,10 +47,23 @@ exist <- util_url_exists(con = correct_url)
 #'
 #' ## Results
 #'
-#' | Item        | Parameter                | Results       |
-#' |:------------|:-------------------------|:--------------|
-#' | Wrong       | `r wrong_url_expected`   | `r not_exist` |
-#' | Correct URL | `r correct_url_expected` | `r exist`     |
+#+ results
+Parameter <- c(
+  wrong_url_expected,
+  correct_url_expected
+)
+Result <- c(
+  not_exist,
+  exist
+)
+knitr::kable(
+  x = data.frame(
+    Description,
+    Parameter,
+    Result
+  ),
+  row.names = FALSE
+)
 #'
 #+ testthat_01, echo=TRUE
 test_that("util_url_exists returns FALSE", {

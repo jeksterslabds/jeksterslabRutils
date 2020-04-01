@@ -15,6 +15,17 @@ context("Test util_txt2file.")
 #' ## Set test parameters
 #'
 #+ parameters
+tmp <- file.path(
+  getwd(),
+  util_rand_str()
+)
+dir.create(tmp)
+on.exit(
+  unlink(
+    tmp,
+    recursive = TRUE
+  )
+)
 input <- paste0(
   "Lorem ipsum dolor sit amet,",
   "consectetur adipiscing elit,",
@@ -28,32 +39,45 @@ input <- paste0(
   "Excepteur sint occaecat cupidatat non proident,",
   "sunt in culpa qui officia deserunt mollit anim id est laborum."
 )
-wd <- tempdir()
-#'
-#' | Variable | Description   | Value     |
-#' |:---------|:--------------|:----------|
-#' | `input`  | Input string. | `r input` |
-#'
+Variable <- "`input`"
+Description <- "Input string"
+Value <- paste(input, collapse = "\n")
+knitr::kable(
+  x = data.frame(
+    Variable,
+    Description,
+    Value
+  ),
+  row.names = FALSE
+)
 #' ## Run test
 #'
 #+ test
 util_txt2file(
   text = input,
-  dir = wd,
+  dir = tmp,
   fn = "Lipsum.txt"
 )
 results <- readLines(
   file.path(
-    wd,
+    tmp,
     "Lipsum.txt"
   )
 )
 #'
 #' ## Results
 #'
-#' | Item         | Parameter | Results     |
-#' |:-------------|:----------|:------------|
-#' | Input string | `r input` | `r results` |
+#+ results
+Parameter <- paste(input, collapse = "\n")
+Result <- paste(results, collapse = "\n")
+knitr::kable(
+  x = data.frame(
+    Description,
+    Parameter,
+    Result
+  ),
+  row.names = FALSE
+)
 #'
 #+ testthat, echo=TRUE
 test_that("util_txt2file works", {
@@ -64,5 +88,8 @@ test_that("util_txt2file works", {
   )
 })
 #'
-#+ clean_tempdir
-util_clean_tempdir
+#+ cleanup
+unlink(
+  tmp,
+  recursive = TRUE
+)

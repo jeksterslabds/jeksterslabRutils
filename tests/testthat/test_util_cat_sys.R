@@ -21,7 +21,8 @@ knitr::kable(
     Variable = "`year`",
     Description = "Current year.",
     Value = year
-  )
+  ),
+  row.names = FALSE
 )
 #'
 #' ## Run test
@@ -41,7 +42,8 @@ knitr::kable(
     Description = "Current year.",
     Parameter = year,
     Result = results
-  )
+  ),
+  row.names = FALSE
 )
 #'
 #+ test_that, echo=TRUE

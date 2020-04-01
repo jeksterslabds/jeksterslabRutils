@@ -15,7 +15,17 @@ context("Test util_wget.")
 #' ## Set test parameters
 #'
 #+ parameters
-wd <- tempdir()
+tmp <- file.path(
+  getwd(),
+  util_rand_str()
+)
+dir.create(tmp)
+on.exit(
+  unlink(
+    tmp,
+    recursive = TRUE
+  )
+)
 link <- c(
   "https://raw.githubusercontent.com/jeksterslabds/jeksterslabRutils/master/R/util_bind.R",
   "https://raw.githubusercontent.com/jeksterslabds/jeksterslabRutils/master/R/util_cat_sys.R",
@@ -24,23 +34,37 @@ link <- c(
   "https://raw.githubusercontent.com/jeksterslabds/jeksterslabRutils/master/R/util_get_numbers.R"
 )
 files <- c(
-  file.path(wd, "util_bind.R"),
-  file.path(wd, "util_cat_sys.R"),
-  file.path(wd, "util_check_file_type.R"),
-  file.path(wd, "util_clean_tempdir.R"),
-  file.path(wd, "util_get_numbers.R")
+  file.path(tmp, "util_bind.R"),
+  file.path(tmp, "util_cat_sys.R"),
+  file.path(tmp, "util_check_file_type.R"),
+  file.path(tmp, "util_clean_tempdir.R"),
+  file.path(tmp, "util_get_numbers.R")
 )
-#'
-#' | Variable | Description                | Value     |
-#' |:---------|:---------------------------|:----------|
-#' | `link`   | Link to files to download. | `r link`  |
-#' | `files`  | Files.                     | `r files` |
-#'
+Variable <- c(
+  "`link`",
+  "`files`"
+)
+Description <- c(
+  "Link to files to download.",
+  "Files."
+)
+Value <- c(
+  paste(link, collapse = ", "),
+  paste(files, collapse = ", ")
+)
+knitr::kable(
+  x = data.frame(
+    Variable,
+    Description,
+    Value
+  ),
+  row.names = FALSE
+)
 #' ## Run test
 #'
 #+ test
 util_wget(
-  dir = wd,
+  dir = tmp,
   link = link,
   args = "-nc",
   par = FALSE
@@ -61,10 +85,23 @@ for (i in seq_along(files)) {
 #'
 #' ## Results
 #'
-#' | Item              | Parameter | Results     |
-#' |:------------------|:----------|:------------|
-#' | Downloaded files. | `r files` | `r results` |
-#'
+#+ results
+Parameter <- c(
+  paste(link, collapse = ", "),
+  paste(files, collapse = ", ")
+)
+Result <- c(
+  paste(link, collapse = ", "),
+  paste(results, collapse = ", ")
+)
+knitr::kable(
+  x = data.frame(
+    Description,
+    Parameter,
+    Result
+  ),
+  row.names = FALSE
+)
 #+ test_that, echo=TRUE
 test_that("util_wget works", {
   skip_on_appveyor()
@@ -74,5 +111,8 @@ test_that("util_wget works", {
   )
 })
 #'
-#+ clean_tempdir
-util_clean_tempdir()
+#+ cleanup
+unlink(
+  tmp,
+  recursive = TRUE
+)

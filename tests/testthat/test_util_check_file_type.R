@@ -15,44 +15,79 @@ context("Test util_check_file_type.")
 #' ## Set test parameters
 #'
 #+ parameters
-tmp <- tempdir()
-wd <- system.file(
+tmp <- file.path(
+  getwd(),
+  util_rand_str()
+)
+dir.create(tmp)
+on.exit(
+  unlink(
+    tmp,
+    recursive = TRUE
+  )
+)
+invalid_from <- system.file(
   "extdata",
   "tests",
+  "invalid.epub",
   package = "jeksterslabRutils"
 )
-files <- list.files(
-  wd,
-  pattern = glob2rx("^*.epub$"),
-  full.names = TRUE
+valid_from <- system.file(
+  "extdata",
+  "tests",
+  "valid.epub",
+  package = "jeksterslabRutils"
+)
+invalid <- file.path(
+  tmp,
+  "invalid.epub"
+)
+valid <- file.path(
+  tmp,
+  "valid.epub"
+)
+fn <- c(
+  "invalid.epub",
+  "valid.epub"
 )
 file.copy(
-  files,
-  tmp
+  from = c(
+    invalid_from,
+    valid_from
+  ),
+  to = c(
+    invalid,
+    valid
+  )
 )
-files <- list.files(
-  tmp,
-  pattern = glob2rx("^*.epub$")
+Variable <- c(
+  "`invalid`",
+  "`valid`"
+)
+Description <- c(
+  "Invalid file.",
+  "Valid file."
+)
+Value <- c(
+  invalid,
+  valid
 )
 knitr::kable(
   x = data.frame(
-    Variable = "`files`",
-    Description = "Files.",
-    Value = files
-  )
+    Variable,
+    Description,
+    Value
+  ),
+  row.names = FALSE
 )
 #'
 #+ test
 util_check_file_type(
   dir = tmp,
-  fn = files,
+  fn = fn,
   file_type = "EPUB document",
   remove_files = TRUE,
   par = FALSE
-)
-results <- list.files(
-  tmp,
-  pattern = glob2rx("^*.epub$")
 )
 #'
 #' ## Results
@@ -60,46 +95,90 @@ results <- list.files(
 #' Note that only `valid.epub` should be retained.
 #'
 #+ results
+Parameter <- fn
+Result <- c(
+  file.exists(invalid),
+  file.exists(valid)
+)
 knitr::kable(
   x = data.frame(
-    Description = "Files.",
-    Parameter = files,
-    Result = results
-  )
+    Description,
+    Parameter,
+    Result
+  ),
+  row.names = FALSE
 )
 #'
 #+ testthat_01, echo=TRUE
-test_that("valid file is retained", {
-  skip_on_appveyor()
-  expect_equivalent(
-    file.exists(file.path(tmp, "valid.epub")),
-    TRUE
-  )
-})
-#'
-#+ testthat_02, echo=TRUE
 test_that("invalid file is deleted", {
-  skip_on_appveyor()
+  # skip_on_appveyor()
   expect_equivalent(
-    file.exists(file.path(tmp, "invalid.epub")),
+    file.exists(invalid),
     FALSE
   )
 })
 #'
-#+ clean_tempdir
-util_clean_tempdir()
+#+ testthat_02, echo=TRUE
+test_that("valid file is retained", {
+  # skip_on_appveyor()
+  expect_equivalent(
+    file.exists(valid),
+    TRUE
+  )
+})
 #'
-#' ## tryCatch Error for code coverage
+#+ cleanup
+unlink(
+  c(
+    invalid,
+    valid
+  )
+)
 #'
-#+ error
+#' ## Expect error
+#'
+#+ testthat_03, echo=TRUE
 test_that("tryCatch", {
   expect_error(
     util_check_file_type(
+      dir = tmp,
       par = FALSE
     )
   )
 })
 #'
-#+ clean_tempdir
-util_clean_tempdir()
+#' ## tryCatch error for code coverage
 #'
+#+ error
+files <- paste0(
+  file.path(
+    tmp,
+    "error"
+  ),
+  1:5,
+  ".epub"
+)
+fn <- paste0(
+  "error",
+  1:5,
+  ".epub"
+)
+sapply(
+  X = files,
+  FUN = file.create
+)
+util_check_file_type(
+  dir = tmp,
+  fn = fn,
+  par = FALSE
+)
+sapply(
+  X = files,
+  FUN = unlink
+)
+#'
+#+ cleanup
+unlink(
+  tmp,
+  recursive = TRUE
+)

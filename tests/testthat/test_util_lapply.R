@@ -52,7 +52,8 @@ knitr::kable(
     Variable,
     Description,
     Value
-  )
+  ),
+  row.names = FALSE
 )
 #'
 #' ## Run test
@@ -97,7 +98,8 @@ knitr::kable(
     Description,
     Parameter,
     Result
-  )
+  ),
+  row.names = FALSE
 )
 #'
 #+ testthat_01, echo=TRUE

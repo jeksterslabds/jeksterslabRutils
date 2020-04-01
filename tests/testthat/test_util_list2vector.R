@@ -33,11 +33,13 @@ index[[3]] <- list(
   lastname = "Matata",
   number = 12
 )
-#'
-#' | Variable | Description |
-#' |:---------|:------------|
-#' | `index`  | List.       |
-#'
+knitr::kable(
+  x = data.frame(
+    Variable = "`index`",
+    Description = "List."
+  ),
+  row.names = FALSE
+)
 index
 #'
 #' ## Run test
@@ -58,12 +60,30 @@ results_03 <- util_list2vector(
 #'
 #' ## Results
 #'
-#' | Item    | Parameter      | Results        |
-#' |:--------|:---------------|:---------------|
-#' | Index 1 | `r index[[1]]` | `r results_01` |
-#' | Index 2 | `r index[[2]]` | `r results_02` |
-#' | Index 3 | `r index[[3]]` | `r results_03` |
-#'
+#+ results
+Description <- c(
+  "Index 1",
+  "Index 2",
+  "Index 3"
+)
+Parameter <- c(
+  paste(index[[1]], collapse = ", "),
+  paste(index[[2]], collapse = ", "),
+  paste(index[[3]], collapse = ", ")
+)
+Result <- c(
+  paste(results_01, collapse = ", "),
+  paste(results_02, collapse = ", "),
+  paste(results_03, collapse = ", ")
+)
+knitr::kable(
+  x = data.frame(
+    Description,
+    Parameter,
+    Result
+  ),
+  row.names = FALSE
+)
 #+ testthat_01, echo=TRUE
 test_that("result_01_01", {
   expect_equivalent(

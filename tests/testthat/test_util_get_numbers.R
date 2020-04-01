@@ -25,7 +25,8 @@ knitr::kable(
     Variable = "`input`",
     Description = "Input string.",
     Value = input
-  )
+  ),
+  row.names = FALSE
 )
 #'
 #' ## Run test
@@ -45,7 +46,8 @@ knitr::kable(
     Description = "Results.",
     Parameter = input,
     Result = as.vector(results)
-  )
+  ),
+  row.names = FALSE
 )
 #'
 #+ testthat, echo=TRUE

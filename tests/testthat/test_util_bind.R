@@ -15,6 +15,17 @@ context("Test util_bind.")
 #' ## Set test parameters
 #'
 #+ parameters
+tmp <- file.path(
+  getwd(),
+  util_rand_str()
+)
+dir.create(tmp)
+on.exit(
+  unlink(
+    tmp,
+    recursive = TRUE
+  )
+)
 wd <- system.file(
   "extdata",
   "tests",
@@ -65,7 +76,8 @@ knitr::kable(
     Variable,
     Description,
     Value
-  )
+  ),
+  row.names = FALSE
 )
 #'
 #' ## Run test
@@ -140,7 +152,8 @@ knitr::kable(
     "`format = csv`",
     "`format = xls`",
     "`format = xlsx`"
-  )
+  ),
+  row.names = FALSE
 )
 #'
 #+ testthat_01, echo=TRUE
@@ -172,80 +185,116 @@ test_that("external file is saved", {
 })
 unlink(fn)
 #'
-#' ## tryCatch Error for code coverage
+#' ## Expect error
 #'
-#+ error
+#+ testthat_04, echo=TRUE
+#'
 test_that("tryCatch", {
   expect_error(
     util_bind(
+      dir = tmp,
       format = "csv",
       par = FALSE
     )
   )
   expect_error(
     util_bind(
+      dir = tmp,
       format = "xls",
       par = FALSE
     )
   )
   expect_error(
     util_bind(
+      dir = tmp,
       format = "xlsx",
       par = FALSE
     )
   )
-  sapply(
-    paste0(
-      "error",
-      1:5,
-      ".csv"
-    ),
-    file.create
-  )
-  sapply(
-    paste0(
-      "error",
-      1:5,
-      ".xls"
-    ),
-    file.create
-  )
-  sapply(
-    paste0(
-      "error",
-      1:5,
-      ".xlsx"
-    ),
-    file.create
-  )
-  util_bind(
-    pattern = "^error*",
-    format = "csv",
-    par = FALSE
-  )
-  util_bind(
-    pattern = "^error*",
-    format = "xls",
-    par = FALSE
-  )
-  util_bind(
-    pattern = "^error*",
-    format = "xlsx",
-    par = FALSE
-  )
-  unlink(
-    glob2rx(
-      "error*.csv"
-    )
-  )
-  unlink(
-    glob2rx(
-      "error*.xlsx"
-    )
-  )
-  unlink(
-    glob2rx(
-      "error*.xls"
-    )
-  )
 })
+#'
+#' ## tryCatch error for code coverage
+#'
+#+ error
+files_csv <- paste0(
+  file.path(
+    tmp,
+    "error"
+  ),
+  1:5,
+  ".csv"
+)
+files_xls <- paste0(
+  file.path(
+    tmp,
+    "error"
+  ),
+  1:5,
+  ".xls"
+)
+fn_xls <- paste0(
+  "error",
+  1:5,
+  ".xls"
+)
+files_xlsx <- paste0(
+  file.path(
+    tmp,
+    "error"
+  ),
+  1:5,
+  ".xlsx"
+)
+fn_xlsx <- paste0(
+  "error",
+  1:5,
+  ".xlsx"
+)
+sapply(
+  X = files_csv,
+  FUN = file.create
+)
+sapply(
+  X = files_xls,
+  FUN = file.create
+)
+sapply(
+  X = files_xlsx,
+  FUN = file.create
+)
+util_bind(
+  dir = tmp,
+  pattern = "^error*",
+  format = "csv",
+  par = FALSE
+)
+util_bind(
+  dir = tmp,
+  pattern = "^error*",
+  format = "xls",
+  par = FALSE
+)
+util_bind(
+  dir = tmp,
+  pattern = "^error*",
+  format = "xlsx",
+  par = FALSE
+)
+sapply(
+  X = files_csv,
+  FUN = unlink
+)
+sapply(
+  X = files_xls,
+  FUN = unlink
+)
+sapply(
+  X = files_xlsx,
+  FUN = unlink
+)
+#'
+#+ cleanup
+unlink(
+  tmp,
+  recursive = TRUE
+)
