@@ -171,3 +171,18 @@ test_that("external file is saved", {
   )
 })
 unlink(fn)
+#'
+#' ## tryCatch Error for code coverage
+#+ error
+util_bind(
+  format = "csv",
+  par = FALSE
+)
+util_bind(
+  format = "xls",
+  par = FALSE
+)
+util_bind(
+  format = "xlsx",
+  par = FALSE
+)
