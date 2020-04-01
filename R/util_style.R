@@ -41,14 +41,18 @@ util_style <- function(dir = getwd(),
       dir
     ),
     pattern = glob2rx("^*.R$|^*.r$"),
-    recursive = TRUE
+    full.names = TRUE,
+    recursive = TRUE,
+    include.dirs = TRUE
   )
   rmd <- list.files(
     path = file.path(
       dir
     ),
     pattern = glob2rx("^*.Rmd$|^*.rmd$"),
-    recursive = TRUE
+    full.names = TRUE,
+    recursive = TRUE,
+    include.dirs = TRUE
   )
   files <- c(rscript, rmd)
   invisible(
