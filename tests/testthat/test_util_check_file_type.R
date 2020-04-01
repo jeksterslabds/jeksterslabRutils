@@ -77,3 +77,6 @@ test_that("invalid file is deleted", {
     FALSE
   )
 })
+#'
+#+ clean_tempdir
+util_clean_tempdir

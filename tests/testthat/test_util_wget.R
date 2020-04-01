@@ -75,4 +75,4 @@ test_that("util_wget works", {
 })
 #'
 #+ clean_tempdir
-util_clean_tempdir()
+util_clean_tempdir

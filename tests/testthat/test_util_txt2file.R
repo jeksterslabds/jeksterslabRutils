@@ -65,4 +65,4 @@ test_that("util_txt2file works", {
 })
 #'
 #+ clean_tempdir
-util_clean_tempdir()
+util_clean_tempdir
