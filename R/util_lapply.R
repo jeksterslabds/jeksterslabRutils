@@ -29,13 +29,25 @@ util_lapply <- function(FUN,
                         args,
                         par = TRUE,
                         ncores = NULL) {
+  length_X <- length(args[[1]])
+  if (length_X == 0) {
+    stop("`length(args[[1]]` should be greater than or equal to 1.)")
+  }
+  if (length_X == 1) {
+    par <- FALSE
+  }
   args_length <- length(args)
-  if (par) {
-    if (is.null(ncores)) {
-      ncores <- detectCores() - 1
+  available_cores <- detectCores()
+  if (is.null(ncores)) {
+    if (available_cores == 1) {
+      par <- FALSE
+    } else {
+      ncores <- available_cores - 1
     }
-    if (length(args[[1]]) < (detectCores() - 1)) {
-      ncores <- length(args[[1]])
+  }
+  if (par) {
+    if (length_X < ncores) {
+      ncores <- length_X
     }
     if (util_os() %in% c("linux", "osx")) {
       FUN_lapply <- mclapply
