@@ -16,6 +16,9 @@ BugReports: https://github.com/jeksterslabds/jeksterslabRutils/issues
 Encoding: UTF-8
 LazyData: true
 Language: en-US
+SystemRequirements:
+    wget,
+    file
 Depends: R (>= 3.2)
 Imports:
     rprojroot,
