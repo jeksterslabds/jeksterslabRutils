@@ -3,12 +3,14 @@
 os:
   - linux
   - osx
+
 language: r
+
 cache: packages
 
-r_packages:
-  - covr
+before_install:
+  - Rscript -e 'if (!require("covr")) install.packages("covr")'
+  - Rscript -e 'if (!require("tinytex")) install.packages("tinytex"); tinytex::install_tinytex()'
 
 after_success:
-  - Rscript -e 'library(covr); codecov()'
-  
+  - Rscript -e 'covr::codecov()'
