@@ -20,10 +20,13 @@ input <- util_rand_str(
   digits = TRUE,
   ext = "inp"
 )
-#'
-#' | Variable | Description   | Value     |
-#' |:---------|:--------------|:----------|
-#' | `input`  | Input string. | `r input` |
+knitr::kable(
+  x = data.frame(
+    Variable = "`input`",
+    Description = "Input string.",
+    Value = input
+  )
+)
 #'
 #' ## Run test
 #'
@@ -36,9 +39,14 @@ results <- util_get_numbers(
 #'
 #' Note that only numbers should be retained.
 #'
-#' | Item     | Parameter | Result      |
-#' |:---------|:----------|:------------|
-#' | Results. | `r input` | `r results` |
+#+ results
+knitr::kable(
+  x = data.frame(
+    Description = "Results.",
+    Parameter = input,
+    Result = as.vector(results)
+  )
+)
 #'
 #+ testthat, echo=TRUE
 test_that("util_cat_sys works", {

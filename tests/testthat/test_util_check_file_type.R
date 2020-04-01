@@ -34,10 +34,13 @@ files <- list.files(
   tmp,
   pattern = glob2rx("^*.epub$")
 )
-#'
-#' | Variable | Description | Value     |
-#' |:---------|:------------|:----------|
-#' | `files`  | Files.      | `r files` |
+knitr::kable(
+  x = data.frame(
+    Variable = "`files`",
+    Description = "Files.",
+    Value = files
+  )
+)
 #'
 #+ test
 util_check_file_type(
@@ -47,7 +50,7 @@ util_check_file_type(
   remove_files = TRUE,
   par = FALSE
 )
-results_files <- list.files(
+results <- list.files(
   tmp,
   pattern = glob2rx("^*.epub$")
 )
@@ -56,9 +59,14 @@ results_files <- list.files(
 #'
 #' Note that only `valid.epub` should be retained.
 #'
-#' | Item   | Parameter | Result            |
-#' |:-------|:----------|:------------------|
-#' | Files. | `r files` | `r results_files` |
+#+ results
+knitr::kable(
+  x = data.frame(
+    Description = "Files.",
+    Parameter = files,
+    Result = results
+  )
+)
 #'
 #+ testthat_01, echo=TRUE
 test_that("valid file is retained", {
@@ -79,4 +87,4 @@ test_that("invalid file is deleted", {
 })
 #'
 #+ clean_tempdir
-util_clean_tempdir
+util_clean_tempdir()

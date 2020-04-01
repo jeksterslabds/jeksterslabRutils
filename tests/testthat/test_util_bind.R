@@ -36,15 +36,37 @@ columns <- 10
 if (fn_column) {
   columns <- columns + 1 # columns plus fn_column
 }
-#'
-#' | Variable    | Description                                         | Value         |
-#' |:------------|:----------------------------------------------------|:--------------|
-#' | `wd`   	   | Working directory.                                  | `r wd`        |
-#' | `pattern`   | Pattern.                                            | `r pattern`   |
-#' | `fn_column` | Save file name of source data file as a new column. | `r fn_column` |
-#' | `save`  	   | Save concatenated files in `csv` format.            | `r save`      |
-#' | `rows`  	   | Number of rows.                                     | `r rows`      |
-#' | `columns`   | Number of columns.                                  | `r columns`   |
+Variable <- c(
+  "`wd`",
+  "`pattern`",
+  "`fn_column`",
+  "`save`",
+  "`rows`",
+  "`columns`"
+)
+Description <- c(
+  "Working directory.",
+  "Pattern.",
+  "Save file name of source data file as a new column.",
+  "Save concatenated files in `csv` format.",
+  "Number of rows.",
+  "Number of columns."
+)
+Value <- c(
+  wd,
+  pattern,
+  fn_column,
+  save,
+  rows,
+  columns
+)
+knitr::kable(
+  x = data.frame(
+    Variable,
+    Description,
+    Value
+  )
+)
 #'
 #' ## Run test
 #'
@@ -83,10 +105,43 @@ xlsx_col <- ncol(xlsx)
 #'
 #' ## Results
 #'
-#' | Item               | Parameter   | `format = csv` | `format = xls` | `format = xlsx` |
-#' |:-------------------|------------:|---------------:|---------------:|----------------:|
-#' | Number of rows.    | `r rows`    | `r csv_row`    | `r xls_row`    | `r xlsx_row`    |
-#' | Number of columns. | `r columns` | `r csv_col`    | `r xls_col`    | `r xlsx_col`    |
+#+ results
+Item <- c(
+  "Number of rows.",
+  "Number of columns."
+)
+Parameter <- c(
+  rows,
+  columns
+)
+results_csv <- c(
+  csv_row,
+  csv_col
+)
+results_xls <- c(
+  xls_row,
+  xls_col
+)
+results_xlsx <- c(
+  xlsx_row,
+  xlsx_col
+)
+knitr::kable(
+  x = data.frame(
+    Item,
+    Parameter,
+    results_csv,
+    results_xls,
+    results_xlsx
+  ),
+  col.names = c(
+    "Item",
+    "Parameter",
+    "`format = csv`",
+    "`format = xls`",
+    "`format = xlsx`"
+  )
+)
 #'
 #+ testthat_01, echo=TRUE
 test_that("rows are correct", {

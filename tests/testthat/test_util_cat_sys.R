@@ -16,15 +16,18 @@ context("Test util_cat_sys.")
 #'
 #+ parameters
 year <- format(Sys.time(), "%Y")
-#'
-#' | Variable | Description   | Value    |
-#' |:---------|:--------------|:---------|
-#' | `year`   | Current year. | `r year` |
+knitr::kable(
+  x = data.frame(
+    Variable = "`year`",
+    Description = "Current year.",
+    Value = year
+  )
+)
 #'
 #' ## Run test
 #'
 #+ test
-result_year <- capture.output(
+results <- capture.output(
   util_cat_sys(
     command = "date +%Y"
   )
@@ -32,14 +35,19 @@ result_year <- capture.output(
 #'
 #' ## Results
 #'
-#' | Item          | Parameter | Result          |
-#' |:--------------|:----------|:----------------|
-#' | Current year. | `r year`  | `r result_year` |
+#+ results
+knitr::kable(
+  x = data.frame(
+    Description = "Current year.",
+    Parameter = year,
+    Result = results
+  )
+)
 #'
 #+ test_that, echo=TRUE
 test_that("util_cat_sys works", {
   expect_equivalent(
-    result_year,
+    results,
     year
   )
 })

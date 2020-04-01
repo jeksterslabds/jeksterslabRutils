@@ -29,13 +29,31 @@ args <- list(
 )
 par <- FALSE
 ncores <- NULL
-#'
-#' | Variable                         | Description                                 | Value     |
-#' |:---------------------------------|:--------------------------------------------|:----------|
-#' | `FUN`                            | Function.                                   | `rnorm`   |
-#' | `n`                              | Number of observations.                     | `r n`     |
-#' | `mu` named as `mean` in `args`.  | Population mean $\left( \mu \right)$.       | `r mu`    |
-#' | `sigma` named as `sd` in `args`. | Standard deviation $\left( \sigma \right)$. | `r sigma` |
+Variable <- c(
+  "`FUN`",
+  "`n`",
+  "`mu` named as `mean` in `args`.",
+  "`sigma` named as `sd` in `args`."
+)
+Description <- c(
+  "Function.",
+  "Number of observations.",
+  "Population mean $\\left( \\mu \\right)$.",
+  "Standard deviation $\\left( \\sigma \\right)$."
+)
+Value <- c(
+  "`rnorm`",
+  n,
+  mu,
+  sigma
+)
+knitr::kable(
+  x = data.frame(
+    Variable,
+    Description,
+    Value
+  )
+)
 #'
 #' ## Run test
 #'
@@ -61,10 +79,26 @@ mean_of_ns <- mean(
 #'
 #' ## Results
 #'
-#' | Item           | Parameter | Results           |
-#' |:---------------|----------:|------------------:|
-#' | Sample size.   | `r n`     | `r mean_of_ns`    |
-#' | Mean of means. | `r mu`    | `r mean_of_means` |
+#+ results
+Description <- c(
+  "Sample size.",
+  "Mean of means."
+)
+Parameter <- c(
+  n,
+  mu
+)
+Result <- c(
+  mean_of_ns,
+  mean_of_means
+)
+knitr::kable(
+  x = data.frame(
+    Description,
+    Parameter,
+    Result
+  )
+)
 #'
 #+ testthat_01, echo=TRUE
 test_that("sample size used is correct", {
