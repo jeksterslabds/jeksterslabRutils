@@ -81,7 +81,7 @@ knitr::kable(
 #'
 #+ testthat, echo=TRUE
 test_that("util_txt2file works", {
-  #skip_on_appveyor()
+  # skip_on_appveyor()
   expect_equivalent(
     results,
     input

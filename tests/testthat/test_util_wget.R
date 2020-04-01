@@ -104,7 +104,7 @@ knitr::kable(
 )
 #+ test_that, echo=TRUE
 test_that("util_wget works", {
-  #skip_on_appveyor()
+  # skip_on_appveyor()
   expect_equivalent(
     all(log),
     TRUE
