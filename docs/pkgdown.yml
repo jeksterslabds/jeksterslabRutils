@@ -4,9 +4,8 @@ pkgdown_sha: ~
 articles:
   util_cat_sys: util_cat_sys.html
   util_os: util_os.html
-  util_pkg_load: util_pkg_load.html
   util_url_exists: util_url_exists.html
-last_built: 2020-04-01T02:47Z
+last_built: 2020-04-01T02:59Z
 urls:
   reference: https://github.com/jeksterslabds/jeksterslabRutils//reference
   article: https://github.com/jeksterslabds/jeksterslabRutils//articles
