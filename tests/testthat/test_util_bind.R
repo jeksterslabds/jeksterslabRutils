@@ -178,20 +178,74 @@ unlink(fn)
 test_that("tryCatch", {
   expect_error(
     util_bind(
+      format = "csv",
+      par = FALSE
+    )
+  )
+  expect_error(
+    util_bind(
+      format = "xls",
+      par = FALSE
+    )
+  )
+  expect_error(
+    util_bind(
+      format = "xlsx",
+      par = FALSE
+    )
+  )
+  sapply(
+    paste0(
+      "error",
+      1:5,
+      ".csv"
+    ),
+    file.create
+  )
+  sapply(
+    paste0(
+      "error",
+      1:5,
+      ".xls"
+    ),
+    file.create
+  )
+  sapply(
+    paste0(
+      "error",
+      1:5,
+      ".xlsx"
+    ),
+    file.create
+  )
+  util_bind(
+    pattern = "^error*",
     format = "csv",
     par = FALSE
   )
-  )
-  expect_error(
-    util_bind(
+  util_bind(
+    pattern = "^error*",
     format = "xls",
     par = FALSE
   )
-  )
-  expect_error(
-    util_bind(
+  util_bind(
+    pattern = "^error*",
     format = "xlsx",
     par = FALSE
   )
+  unlink(
+    glob2rx(
+      "error*.csv"
+    )
+  )
+  unlink(
+    glob2rx(
+      "error*.xlsx"
+    )
+  )
+  unlink(
+    glob2rx(
+      "error*.xls"
+    )
   )
 })

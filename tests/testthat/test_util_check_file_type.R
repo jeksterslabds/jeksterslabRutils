@@ -95,8 +95,8 @@ util_clean_tempdir()
 test_that("tryCatch", {
   expect_error(
     util_check_file_type(
-    par = FALSE
-  )
+      par = FALSE
+    )
   )
 })
 #'
