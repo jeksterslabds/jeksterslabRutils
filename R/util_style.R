@@ -51,9 +51,6 @@ util_style <- function(dir = getwd(),
     recursive = TRUE
   )
   files <- c(rscript, rmd)
-  if (length(files) == 0) {
-    stop("No files to render.")
-  }
   invisible(
     util_lapply(
       FUN = exe,
