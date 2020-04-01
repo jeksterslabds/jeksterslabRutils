@@ -88,3 +88,17 @@ test_that("invalid file is deleted", {
 #'
 #+ clean_tempdir
 util_clean_tempdir()
+#'
+#' ## tryCatch Error for code coverage
+#'
+#+ error
+test_that("tryCatch", {
+  skip_on_appveyor()
+  util_check_file_type(
+    par = FALSE
+  )
+})
+#'
+#+ clean_tempdir
+util_clean_tempdir()
+#'
