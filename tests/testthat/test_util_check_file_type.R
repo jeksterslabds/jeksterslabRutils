@@ -111,7 +111,7 @@ knitr::kable(
 #'
 #+ testthat_01, echo=TRUE
 test_that("invalid file is deleted", {
-  # skip_on_appveyor()
+  skip_on_appveyor()
   expect_equivalent(
     file.exists(invalid),
     FALSE
@@ -120,7 +120,7 @@ test_that("invalid file is deleted", {
 #'
 #+ testthat_02, echo=TRUE
 test_that("valid file is retained", {
-  # skip_on_appveyor()
+  skip_on_appveyor()
   expect_equivalent(
     file.exists(valid),
     TRUE
