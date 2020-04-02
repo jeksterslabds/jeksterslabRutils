@@ -15,6 +15,23 @@ context("Test util_xml2list.")
 #' ## Set test parameters
 #'
 #+ parameters
+tmp <- file.path(
+  getwd(),
+  util_rand_str()
+)
+dir.create(tmp)
+on.exit(
+  unlink(
+    tmp,
+    recursive = TRUE
+  )
+)
+fn <- file.path(
+  file.path(
+    tmp,
+    util_rand_str()
+  )
+)
 title <- "Romanza"
 artist <- "Andrea Bocelli"
 country <- "EU"
@@ -41,10 +58,9 @@ xml <- paste0(
   year,
   "</YEAR>"
 )
-tmp <- tempfile()
 writeLines(
   text = xml,
-  con = tmp
+  con = fn
 )
 tags <- c(
   "TITLE",
@@ -89,7 +105,7 @@ knitr::kable(
 #+ test
 results <- util_xml2list(
   tags = tags,
-  con = tmp,
+  con = fn,
   par = FALSE
 )
 #'
