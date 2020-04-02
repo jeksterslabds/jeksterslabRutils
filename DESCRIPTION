@@ -19,14 +19,15 @@ Language: en-US
 SystemRequirements:
     wget,
     file
-Depends: R (>= 3.2)
+Depends: R (>= 3.5.0)
 Imports:
     rprojroot,
     styler,
     rmarkdown,
     parallel,
     readxl,
-    usethis
+    usethis,
+    shiny
 Suggests:
     knitr,
     testthat
