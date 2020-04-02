@@ -64,6 +64,12 @@ results <- readLines(
     "Lipsum.txt"
   )
 )
+unlink(
+  file.path(
+    tmp,
+    "Lipsum.txt"
+  )
+)
 #'
 #' ## Results
 #'
