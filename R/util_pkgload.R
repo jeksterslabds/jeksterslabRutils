@@ -19,7 +19,7 @@
 #'   "devtools",
 #'   "rmarkdown"
 #' )
-#' pkg_load(pkg = pkg)
+#' util_pkgload(pkg = pkg)
 #' @export
 util_pkgload <- function(pkg,
                          lib.loc = .libPaths()[1],
