@@ -1,0 +1,57 @@
+---
+title: "z-scores"
+author: "Ivan Jacob Agaloos Pesigan"
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::html_vignette:
+    toc: true
+vignette: >
+  %\VignetteIndexEntry{z-scores}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+In statistics,
+a $z$-score (standard score) is a signed value
+that indicates the number of standard deviations
+by which a data point is above or below the mean.
+A positive value indicates that the data point is above the mean.
+A negative value indicates that the data point is below the mean.
+It is calculated
+by subtracting the mean $\left(\mu\right)$
+from the data point $\left(x\right)$
+and dividing by the standard deviation $\left(\sigma = \sqrt{\sigma^2}\right)$.
+
+\begin{equation}
+z = \frac{x - \mu}{\sigma}
+\end{equation}
+
+## The z function
+
+The `z` function performs this calculation.
+
+## Example
+
+### Generating $x$
+
+```{r, plot1, fig.caption="Histogram 1"}
+set.seed(42)
+x <- rnorm(n = 1000, mean = 100, sd = 15)
+hist(x)
+```
+
+### Calculating $z$-scores
+
+```{r, plot2, fig.caption="Histogram 2"}
+library(BOILERPLATEPACKAGE)
+std <- z(x = x, mu = 100, sigma = 15)
+hist(std, main = "Histogram of z")
+```
+

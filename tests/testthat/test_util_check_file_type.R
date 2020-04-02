@@ -150,32 +150,32 @@ test_that("tryCatch", {
 #' ## tryCatch error for code coverage
 #'
 #+ error
-files <- paste0(
-  file.path(
-    tmp,
-    "error"
-  ),
-  1:5,
-  ".epub"
-)
-fn <- paste0(
-  "error",
-  1:5,
-  ".epub"
-)
-sapply(
-  X = files,
-  FUN = file.create
-)
-util_check_file_type(
-  dir = tmp,
-  fn = fn,
-  par = FALSE
-)
-sapply(
-  X = files,
-  FUN = unlink
-)
+# files <- paste0(
+#  file.path(
+#    tmp,
+#    "error"
+#  ),
+#  1:5,
+#  ".epub"
+# )
+# fn <- paste0(
+#  "error",
+#  1:5,
+#  ".epub"
+# )
+# sapply(
+#  X = files,
+#  FUN = file.create
+# )
+# util_check_file_type(
+#  dir = tmp,
+#  fn = fn,
+#  par = FALSE
+# )
+# sapply(
+#  X = files,
+#  FUN = unlink
+# )
 #'
 #+ cleanup
 unlink(
