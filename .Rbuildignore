@@ -3,6 +3,7 @@
 ^LICENSE\.md$
 ^data_raw$
 ^\.travis\.yml$
+^.covrignore$
 ^_pkgdown\.yml$
 ^docs$
 ^README\.Rmd$
