@@ -2,9 +2,9 @@
 % Please edit documentation in R/util_shiny.R
 \name{util_shiny}
 \alias{util_shiny}
-\title{View Data Using a Shiny App}
+\title{Run a Shiny App in a Package}
 \usage{
-util_shiny(app, pkg_name)
+util_shiny(app, pkg_name, ...)
 }
 \arguments{
 \item{app}{Character string.
@@ -12,9 +12,12 @@ Name of the Shiny App.}
 
 \item{pkg_name}{Character string.
 package name.}
+
+\item{...}{Optional arguments to pass to \code{\link[shiny:runApp]{shiny::runApp()}}.}
 }
 \description{
-inst/shiny/app
+Runs a Shiny App in a package located in
+\verb{inst/shiny/}.
 }
 \author{
 Ivan Jacob Agaloos Pesigan
