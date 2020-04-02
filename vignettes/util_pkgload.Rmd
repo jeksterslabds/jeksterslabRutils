@@ -1,0 +1,59 @@
+---
+title: "Load Packages"
+author: "Ivan Jacob Agaloos Pesigan"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Load Packages}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## util_pkgload
+
+The `util_pkgload` function
+checks if packages in character vector are installed,
+installs them if they are not currently installed,
+and loads them.
+
+## Use case
+
+Typically,
+packages are installed and loaded using the following code.
+Installing and loading libraries this way can be tedious
+especially when the list of packages to install is long.
+The package are also re-installed
+even if they are already installed in the system.
+This takes time.
+
+```{r, eval=FALSE}
+packages <- c(
+  "testthat",
+  "devtools",
+  "rmarkdown"
+)
+install.packages(packages)
+library("testthat")
+library("devtools")
+library("rmarkdown")
+```
+
+The above task is executed with a single call below.
+The function does more.
+**If the packages are already installed,
+the installation process is skipped.
+This is a great time saver.**
+All the packages in vector are loaded in the namespace.
+
+```{r, eval=FALSE}
+library(jeksterslabRutils)
+util_pkgload(packages)
+```
+
