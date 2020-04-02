@@ -1,5 +1,5 @@
 #' ---
-#' title: "Test: util_clean_tempdir"
+#' title: "Test: util_render"
 #' author: "Ivan Jacob Agaloos Pesigan"
 #' date: "`r Sys.Date()`"
 #' output:
@@ -10,6 +10,15 @@
 #+ setup
 library(testthat)
 library(jeksterslabRutils)
-context("Test util_clean_tempdir.")
+context("Test util_render.")
 #'
-util_clean_tempdir()
+#+ parameters
+wd <- system.file(
+  "extdata",
+  "tests",
+  package = "jeksterslabRutils"
+)
+util_render(
+  dir = wd,
+  par = FALSE
+)
