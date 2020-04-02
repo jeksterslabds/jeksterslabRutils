@@ -13,7 +13,8 @@ util_bind(
   fn = NULL,
   save_dir = getwd(),
   par = TRUE,
-  ncores = NULL
+  ncores = NULL,
+  ...
 )
 }
 \arguments{
@@ -51,11 +52,19 @@ If \code{TRUE}, use multiple cores.}
 \item{ncores}{Integer.
 Number of cores to use if \code{par = TRUE}.
 If unspecified, defaults to \code{detectCores() - 1}.}
+
+\item{...}{Optional arguments to pass to
+\code{\link[readxl:read_excel]{readxl::read_excel()}} when \code{format \%in\% c("xls", "xlsx")} or
+\code{\link[=read.csv]{read.csv()}} when \code{format = "csv"}.}
 }
 \description{
 Binds \code{csv} or \code{Excel} files
 in a given directory by row (\code{rbind}).
 Requires that files have the same columns.
+}
+\details{
+By default, \code{stringsAsFactors = FALSE}
+when \code{format = "csv"}.
 }
 \examples{
 \dontrun{

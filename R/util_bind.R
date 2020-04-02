@@ -3,7 +3,10 @@
 #' Binds `csv` or `Excel` files
 #' in a given directory by row (`rbind`).
 #' Requires that files have the same columns.
-#'
+#' 
+#' By default, `stringsAsFactors = FALSE`
+#' when `format = "csv"`.
+#' 
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param dir Character string.
 #'   Directory which contains target files.
@@ -26,6 +29,9 @@
 #'   Uses the basename of `dir` if not provided.
 #' @param save_dir Character string.
 #'   Directory used for `fn`.
+#' @param ... Optional arguments to pass to
+#'   [`readxl::read_excel()`] when `format %in% c("xls", "xlsx")` or
+#'   [`read.csv()`] when `format = "csv"`.
 #' @inheritParams util_lapply
 #' @importFrom utils glob2rx
 #' @importFrom utils read.csv
@@ -57,30 +63,32 @@ util_bind <- function(dir = getwd(),
                       fn = NULL,
                       save_dir = getwd(),
                       par = TRUE,
-                      ncores = NULL) {
-  exe_xls <- function(file, ...) {
+                      ncores = NULL,
+                      ...) {
+  exe <- function(file,
+                  format,
+                  ...
+                  ){
     tryCatch(
       {
-        read_excel(file, ...)
-      },
-      error = function(err) {
-        cat(
-          paste(
-            "Error reading in",
-            file,
-            "\n"
+        if (format == "csv") {
+          options(
+            stringsAsFactors = FALSE
           )
-        )
-      }
-    )
-  }
-  exe_csv <- function(file, ...) {
-    tryCatch(
-      {
-        read.csv(file, ...)
+          read.csv(
+            file = file,
+            ...
+          )
+        }
+        if (format %in% c("xls", "xlsx")) {
+          read_excel(
+            path = file,
+            ...
+          )
+        }
       },
       error = function(err) {
-        cat(
+        warning(
           paste(
             "Error reading in",
             file,
@@ -116,27 +124,16 @@ util_bind <- function(dir = getwd(),
     mode = "list",
     length(files)
   )
-  if (format == "csv") {
-    input <- util_lapply(
-      FUN = exe_csv,
-      args = list(
-        file = files,
-        stringsAsFactors = FALSE
-      ),
-      par = par,
-      ncores = ncores
-    )
-  }
-  if (format %in% c("xls", "xlsx")) {
-    input <- util_lapply(
-      FUN = exe_xls,
-      args = list(
-        file = files
-      ),
-      par = par,
-      ncores = ncores
-    )
-  }
+  input <- util_lapply(
+    FUN = exe,
+    args = list(
+      file = files,
+      format = format,
+      ...
+    ),
+    par = par,
+    ncores = ncores
+  )
   if (fn_column) {
     for (i in seq_along(files)) {
       input[[i]]["fn"] <- files[i]
@@ -154,7 +151,7 @@ util_bind <- function(dir = getwd(),
       file = fn,
       row.names = FALSE
     )
-    cat(
+    message(
       paste(
         fn,
         "saved.",
