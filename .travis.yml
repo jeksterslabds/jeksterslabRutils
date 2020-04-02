@@ -10,7 +10,6 @@ cache: packages
 
 before_install:
   - Rscript -e 'if (!require("covr")) install.packages("covr")'
-  - Rscript -e 'if (!require("tinytex")) install.packages("tinytex"); tinytex::install_tinytex()'
 
 after_success:
   - Rscript -e 'covr::codecov()'
