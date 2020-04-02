@@ -15,9 +15,9 @@
 #' @importFrom utils installed.packages
 #' @examples
 #' pkg <- list(
-#'   "testthat",
-#'   "devtools",
-#'   "rmarkdown"
+#'   "parallel",
+#'   "stats",
+#'   "stats4"
 #' )
 #' util_pkgload(pkg = pkg)
 #' @export
