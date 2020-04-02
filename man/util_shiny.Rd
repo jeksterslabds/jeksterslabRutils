@@ -4,11 +4,14 @@
 \alias{util_shiny}
 \title{View Data Using a Shiny App}
 \usage{
-util_shiny(app, package)
+util_shiny(app, pkg_name)
 }
 \arguments{
 \item{app}{Character string.
 Name of the Shiny App.}
+
+\item{pkg_name}{Character string.
+package name.}
 }
 \description{
 inst/shiny/app

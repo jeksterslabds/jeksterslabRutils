@@ -69,7 +69,7 @@ pkg <- list(
   "devtools",
   "rmarkdown"
 )
-pkg_load(pkg = pkg)
+util_pkgload(pkg = pkg)
 }
 \author{
 Ivan Jacob Agaloos Pesigan

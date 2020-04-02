@@ -5,13 +5,15 @@
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param app Character string.
 #'   Name of the Shiny App.
+#' @param pkg_name Character string.
+#'   package name.
 #' @importFrom shiny runApp
 #' @export
-util_shiny <- function(app, package) {
+util_shiny <- function(app, pkg_name) {
   valid <- list.files(
     system.file(
       "shiny",
-      package = package
+      package = pkg_name
     )
   )
   msg <- paste0(
@@ -32,7 +34,7 @@ util_shiny <- function(app, package) {
   dir <- system.file(
     "shiny",
     app,
-    package = package
+    package = pkg_name
   )
   runApp(
     dir,
