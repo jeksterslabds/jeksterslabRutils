@@ -12,7 +12,7 @@
 #' @importFrom shiny runApp
 #' @export
 util_shiny <- function(app, pkg_name, ...) {
-  if(!pkg_name %in% rownames(installed.packages())) {
+  if (!pkg_name %in% rownames(installed.packages())) {
     stop(
       paste(
         pkg_name,
@@ -56,7 +56,7 @@ util_shiny <- function(app, pkg_name, ...) {
       ),
       call. = FALSE
     )
-  } 
+  }
   shiny_app_dir <- system.file(
     "shiny",
     app,

@@ -3,10 +3,10 @@
 #' Binds `csv` or `Excel` files
 #' in a given directory by row (`rbind`).
 #' Requires that files have the same columns.
-#' 
+#'
 #' By default, `stringsAsFactors = FALSE`
 #' when `format = "csv"`.
-#' 
+#'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param dir Character string.
 #'   Directory which contains target files.
@@ -67,8 +67,7 @@ util_bind <- function(dir = getwd(),
                       ...) {
   exe <- function(file,
                   format,
-                  ...
-                  ){
+                  ...) {
     tryCatch(
       {
         if (format == "csv") {

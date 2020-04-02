@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>View Data Using a Shiny App — util_shiny • jeksterslabRutils</title>
+<title>Run a Shiny App in a Package — util_shiny • jeksterslabRutils</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="View Data Using a Shiny App — util_shiny" />
-<meta property="og:description" content="inst/shiny/app" />
+<meta property="og:title" content="Run a Shiny App in a Package — util_shiny" />
+<meta property="og:description" content="Runs a Shiny App in a package located in
+inst/shiny/." />
 
 
 
@@ -129,16 +130,17 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>View Data Using a Shiny App</h1>
+    <h1>Run a Shiny App in a Package</h1>
     <small class="dont-index">Source: <a href='https://github.com/jeksterslabds/jeksterslabRutils/blob/master/R/util_shiny.R'><code>R/util_shiny.R</code></a></small>
     <div class="hidden name"><code>util_shiny.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>inst/shiny/app</p>
+    <p>Runs a Shiny App in a package located in
+<code>inst/shiny/</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>util_shiny</span>(<span class='no'>app</span>, <span class='no'>pkg_name</span>)</pre>
+    <pre class="usage"><span class='fu'>util_shiny</span>(<span class='no'>app</span>, <span class='no'>pkg_name</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -152,6 +154,10 @@ Name of the Shiny App.</p></td>
       <th>pkg_name</th>
       <td><p>Character string.
 package name.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Optional arguments to pass to <code><a href='https://rdrr.io/pkg/shiny/man/runApp.html'>shiny::runApp()</a></code>.</p></td>
     </tr>
     </table>
 

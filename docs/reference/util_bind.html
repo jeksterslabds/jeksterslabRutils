@@ -151,7 +151,8 @@ Requires that files have the same columns.</p>
   <span class='kw'>fn</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>save_dir</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span>(),
   <span class='kw'>par</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>ncores</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+  <span class='kw'>ncores</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='no'>...</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -210,8 +211,18 @@ If <code>TRUE</code>, use multiple cores.</p></td>
 Number of cores to use if <code>par = TRUE</code>.
 If unspecified, defaults to <code>detectCores() - 1</code>.</p></td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Optional arguments to pass to
+<code><a href='https://readxl.tidyverse.org/reference/read_excel.html'>readxl::read_excel()</a></code> when <code>format %in% c("xls", "xlsx")</code> or
+<code><a href='https://rdrr.io/r/utils/read.table.html'>read.csv()</a></code> when <code>format = "csv"</code>.</p></td>
+    </tr>
     </table>
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>By default, <code>stringsAsFactors = FALSE</code>
+when <code>format = "csv"</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
