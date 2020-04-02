@@ -33,7 +33,7 @@ wd <- system.file(
 )
 root <- basename(wd)
 fn <- file.path(
-  wd,
+  tmp,
   paste0(
     root,
     ".csv"
@@ -89,7 +89,7 @@ csv <- util_bind(
   pattern = "^filename*",
   fn_column = TRUE,
   save = TRUE,
-  save_dir = wd,
+  save_dir = tmp,
   par = FALSE
 )
 xls <- util_bind(
