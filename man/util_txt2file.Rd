@@ -34,7 +34,7 @@ text <- paste0(
 )
 util_txt2file(
   text = text,
-  dir = tempdir(),
+  dir = getwd(),
   fn = "Lipsum.txt"
 )
 }
