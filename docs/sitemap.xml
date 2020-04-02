@@ -28,10 +28,16 @@
     <loc>https://github.com/jeksterslabds/jeksterslabRutils//reference/util_os.html</loc>
   </url>
   <url>
+    <loc>https://github.com/jeksterslabds/jeksterslabRutils//reference/util_pkgload.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/jeksterslabds/jeksterslabRutils//reference/util_rand_str.html</loc>
   </url>
   <url>
     <loc>https://github.com/jeksterslabds/jeksterslabRutils//reference/util_render.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/jeksterslabds/jeksterslabRutils//reference/util_shiny.html</loc>
   </url>
   <url>
     <loc>https://github.com/jeksterslabds/jeksterslabRutils//reference/util_style.html</loc>
@@ -53,6 +59,9 @@
   </url>
   <url>
     <loc>https://github.com/jeksterslabds/jeksterslabRutils//articles/util_os.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/jeksterslabds/jeksterslabRutils//articles/util_pkgload.html</loc>
   </url>
   <url>
     <loc>https://github.com/jeksterslabds/jeksterslabRutils//articles/util_url_exists.html</loc>

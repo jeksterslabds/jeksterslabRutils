@@ -22,11 +22,11 @@
 #' pkg_load(pkg = pkg)
 #' @export
 util_pkgload <- function(pkg,
-                     lib.loc = .libPaths()[1],
-                     repos = "https://cran.rstudio.org",
-                     dependencies = TRUE,
-                     type = "source",
-                     update = FALSE) {
+                         lib.loc = .libPaths()[1],
+                         repos = "https://cran.rstudio.org",
+                         dependencies = TRUE,
+                         type = "source",
+                         update = FALSE) {
   if (update) {
     suppressMessages(
       update.packages(

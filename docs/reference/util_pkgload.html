@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title><code>lapply</code> Utility. — util_lapply • jeksterslabRutils</title>
+<title>Load Packages. — util_pkgload • jeksterslabRutils</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,10 @@
 
 
 
-<meta property="og:title" content="<code>lapply</code> Utility. — util_lapply" />
-<meta property="og:description" content="Utility to use different implementations of lapply." />
+<meta property="og:title" content="Load Packages. — util_pkgload" />
+<meta property="og:description" content="Checks if a character vector of R packages are installed,
+installs them if they are not currently installed,
+and loads them in the namespace." />
 
 
 
@@ -129,71 +131,87 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1><code>lapply</code> Utility.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jeksterslabds/jeksterslabRutils/blob/master/R/util_lapply.R'><code>R/util_lapply.R</code></a></small>
-    <div class="hidden name"><code>util_lapply.Rd</code></div>
+    <h1>Load Packages.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jeksterslabds/jeksterslabRutils/blob/master/R/util_pkgload.R'><code>R/util_pkgload.R</code></a></small>
+    <div class="hidden name"><code>util_pkgload.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Utility to use different implementations of <code>lapply</code>.</p>
+    <p>Checks if a character vector of <code>R</code> packages are installed,
+installs them if they are not currently installed,
+and loads them in the namespace.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>util_lapply</span>(<span class='no'>FUN</span>, <span class='no'>args</span>, <span class='kw'>par</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>ncores</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>util_pkgload</span>(
+  <span class='no'>pkg</span>,
+  <span class='kw'>lib.loc</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/libPaths.html'>.libPaths</a></span>()[<span class='fl'>1</span>],
+  <span class='kw'>repos</span> <span class='kw'>=</span> <span class='st'>"https://cran.rstudio.org"</span>,
+  <span class='kw'>dependencies</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"source"</span>,
+  <span class='kw'>update</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>FUN</th>
-      <td><p>Function to apply.</p></td>
+      <th>pkg</th>
+      <td><p>Character vector of packages.</p></td>
     </tr>
     <tr>
-      <th>args</th>
-      <td><p>Named list.
-Arguments to pass to <code>FUN</code>.
-The first item (<code>args[[1]]</code>)
-should be first argument of <code>FUN</code>.
-This corresponds to the argument <code>X</code>
-in <code>mclapply</code>, <code>parLapply</code> or <code>lapply</code>.</p></td>
+      <th>lib.loc</th>
+      <td><p>character vector describing the location of R
+    library trees to search through (and update packages therein), or
+    <code>NULL</code> for all known trees (see <code><a href='https://rdrr.io/r/base/libPaths.html'>.libPaths</a></code>).</p></td>
     </tr>
     <tr>
-      <th>par</th>
+      <th>repos</th>
+      <td><p>character vector, the base URL(s) of the repositories
+    to use, e.g., the URL of a CRAN mirror such as
+    <code>"https://cloud.r-project.org"</code>.</p></td>
+    </tr>
+    <tr>
+      <th>dependencies</th>
+      <td><p>logical indicating whether to also install
+    uninstalled packages which these packages depend on/link
+    to/import/suggest (and so on recursively).
+    Not used if <code>repos = NULL</code>.
+    Can also be a character vector, a subset of
+    <code><a href='https://rdrr.io/r/base/c.html'>c("Depends", "Imports", "LinkingTo", "Suggests", "Enhances")</a></code>.</p>
+<p>Only supported if <code>lib</code> is of length one (or missing),
+    so it is unambiguous where to install the dependent packages.  If
+    this is not the case it is ignored, with a warning.</p>
+<p>The default, <code>NA</code>, means
+    <code><a href='https://rdrr.io/r/base/c.html'>c("Depends", "Imports", "LinkingTo")</a></code>.</p>
+<p><code>TRUE</code> means to use
+    <code><a href='https://rdrr.io/r/base/c.html'>c("Depends", "Imports", "LinkingTo", "Suggests")</a></code> for
+    <code>pkgs</code> and
+    <code><a href='https://rdrr.io/r/base/c.html'>c("Depends", "Imports", "LinkingTo")</a></code> for added dependencies:
+    this installs all the packages needed to run <code>pkgs</code>, their
+    examples, tests and vignettes (if the package author specified them
+    correctly).</p>
+<p>In all of these, <code>"LinkingTo"</code> is omitted for binary packages.</p></td>
+    </tr>
+    <tr>
+      <th>type</th>
+      <td><p>character, indicating the type of package to download and
+    install.  See <code><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>update</th>
       <td><p>Logical.
-If <code>TRUE</code>, use multiple cores.</p></td>
-    </tr>
-    <tr>
-      <th>ncores</th>
-      <td><p>Integer.
-Number of cores to use if <code>par = TRUE</code>.
-If unspecified, defaults to <code>detectCores() - 1</code>.</p></td>
+Update installed packages.</p></td>
     </tr>
     </table>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>util_lapply</span>(
-  <span class='kw'>FUN</span> <span class='kw'>=</span> <span class='no'>rnorm</span>,
-  <span class='kw'>args</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
-    <span class='kw'>n</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>times</span> <span class='kw'>=</span> <span class='fl'>5</span>),
-    <span class='kw'>mean</span> <span class='kw'>=</span> <span class='fl'>100</span>,
-    <span class='kw'>sd</span> <span class='kw'>=</span> <span class='fl'>15</span>
-  ),
-  <span class='kw'>par</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-)</div><div class='output co'>#&gt; [[1]]
-#&gt; [1]  78.99935 103.82976  63.44105  99.91643 109.32329
-#&gt; 
-#&gt; [[2]]
-#&gt; [1] 117.22617  72.67274  96.29012  96.33701  95.75942
-#&gt; 
-#&gt; [[3]]
-#&gt; [1]  91.69451 109.43473 130.97537  75.53516 107.68640
-#&gt; 
-#&gt; [[4]]
-#&gt; [1]  72.05483  92.16981  99.21097 108.14495  86.28888
-#&gt; 
-#&gt; [[5]]
-#&gt; [1] 107.02232 105.44427  80.43185 111.06664 128.32757
-#&gt; </div></pre>
+    <pre class="examples"><div class='input'><span class='no'>pkg</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
+  <span class='st'>"testthat"</span>,
+  <span class='st'>"devtools"</span>,
+  <span class='st'>"rmarkdown"</span>
+)
+<span class='fu'>pkg_load</span>(<span class='kw'>pkg</span> <span class='kw'>=</span> <span class='no'>pkg</span>)</div><div class='output co'>#&gt; <span class='error'>Error in pkg_load(pkg = pkg): could not find function "pkg_load"</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

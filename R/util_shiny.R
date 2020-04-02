@@ -1,7 +1,7 @@
 #' View Data Using a Shiny App
 #'
 #' inst/shiny/app
-#' 
+#'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param app Character string.
 #'   Name of the Shiny App.
