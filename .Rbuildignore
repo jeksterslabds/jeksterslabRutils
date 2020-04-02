@@ -3,9 +3,10 @@
 ^LICENSE\.md$
 ^data_raw$
 ^\.travis\.yml$
-^.covrignore$
+^\.covrignore$
 ^_pkgdown\.yml$
 ^docs$
+^\.github$
 ^README\.Rmd$
 ^README\.md$
 ^README\.html$
