@@ -46,7 +46,7 @@ util_txt2file <- function(text,
     text = text,
     con = con
   )
-  cat(
+  message(
     paste(
       "Output file:",
       output_fn,

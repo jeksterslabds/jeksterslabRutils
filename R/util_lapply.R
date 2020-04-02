@@ -31,7 +31,9 @@ util_lapply <- function(FUN,
                         ncores = NULL) {
   length_X <- length(args[[1]])
   if (length_X == 0) {
-    stop("`length(args[[1]]` should be greater than or equal to 1.)")
+    stop(
+      "`length(args[[1]]` should be greater than or equal to 1.\n"
+    )
   }
   if (length_X == 1) {
     par <- FALSE

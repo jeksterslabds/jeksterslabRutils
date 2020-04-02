@@ -35,13 +35,13 @@ util_render <- function(recursive = TRUE,
       return(NA)
     }
   }
-  exe_render <- function(input, ...) {
+  exe_render <- function(input) {
     tryCatch(
       {
-        render(input, ...)
+        render(input)
       },
       error = function(err) {
-        cat(
+        warning(
           paste(
             "Error rendering",
             input,
@@ -89,11 +89,15 @@ util_render <- function(recursive = TRUE,
       )
     )
     if (all(is.na(files))) {
-      stop("No files to render.")
+      stop(
+        "No files to render.\n"
+      )
     }
     files <- files[!is.na(files)]
     if (length(files) == 0) {
-      stop("No files to render.")
+      stop(
+        "No files to render.\n"
+      )
     }
     invisible(
       util_lapply(

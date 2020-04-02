@@ -65,7 +65,7 @@ util_check_file_type <- function(dir = getwd(),
         )
       },
       error = function(err) {
-        cat(
+        warning(
           paste(
             "Error checking",
             fn,
@@ -80,16 +80,21 @@ util_check_file_type <- function(dir = getwd(),
     fn
   )
   if (nchar(Sys.which("file")) == 0) {
-    stop("file command is not installed in the system.\n")
+    stop(
+      "`file` command is not installed in the system.\n"
+    )
   }
   tempfile <- file.path(
     getwd(),
     util_rand_str()
   )
-  # if (file.exists(tempfile)) {
-  #  unlink(tempfile)
-  # }
   file.create(tempfile)
+  on.exit(
+    unlink(
+      x = tempfile,
+      recursive = TRUE
+    )
+  )
   invisible(
     util_lapply(
       FUN = exe,
@@ -111,34 +116,7 @@ util_check_file_type <- function(dir = getwd(),
     mismatch
   )
   unlink(tempfile)
-  # if (interactive()) {
-  #  cat(
-  #    paste0(
-  #      "The following files are NOT of the type ",
-  #      "\"",
-  #      file_type,
-  #      "\"",
-  #      ":\n"
-  #    )
-  #  )
-  #  cat(
-  #    paste(
-  #      output,
-  #      collapse = "\n"
-  #    ),
-  #    "\n"
-  #  )
-  # }
   if (remove_files) {
-    # if (interactive()) {
-    #  cat("\nDo you wish to DELETE invalid files? [Y/n].\n")
-    #  line <- readline()
-    #  if (line == "Y") {
-    #    unlink(mismatch)
-    #    cat("\nInvalid files deleted.\n")
-    #  }
-    # } else {
     unlink(mismatch)
-    # }
   }
 }

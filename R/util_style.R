@@ -20,13 +20,13 @@
 util_style <- function(dir = getwd(),
                        par = TRUE,
                        ncores = NULL) {
-  exe <- function(path, ...) {
+  exe <- function(path) {
     tryCatch(
       {
-        style_file(path, ...)
+        style_file(path)
       },
       error = function(err) {
-        cat(
+        warning(
           paste(
             "Error styling",
             path,
