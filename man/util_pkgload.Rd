@@ -65,9 +65,9 @@ and loads them in the namespace.
 }
 \examples{
 pkg <- list(
-  "testthat",
-  "devtools",
-  "rmarkdown"
+  "parallel",
+  "stats",
+  "stats4"
 )
 util_pkgload(pkg = pkg)
 }
