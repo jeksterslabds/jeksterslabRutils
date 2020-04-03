@@ -14,6 +14,11 @@
 #' @param ncores Integer.
 #'   Number of cores to use if `par = TRUE`.
 #'   If unspecified, defaults to `detectCores() - 1`.
+#' @importFrom parallel detectCores
+#' @importFrom parallel makeCluster
+#' @importFrom parallel stopCluster
+#' @importFrom parallel mclapply
+#' @importFrom parallel parLapply
 #' @examples
 #' util_lapply(
 #'   FUN = rnorm,

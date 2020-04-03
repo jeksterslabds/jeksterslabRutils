@@ -8,11 +8,6 @@
 #' @param args Character string.
 #'   Arguments to pass to \code{wget}.
 #' @inheritParams util_lapply
-#' @importFrom parallel detectCores
-#' @importFrom parallel makeCluster
-#' @importFrom parallel stopCluster
-#' @importFrom parallel mclapply
-#' @importFrom parallel parLapply
 #' @examples
 #' \dontrun{
 #' link <- c(
@@ -35,7 +30,7 @@ util_wget <- function(dir = getwd(),
   dir <- file.path(dir)
   if (nchar(Sys.which("wget")) == 0) {
     stop(
-      "wget command is not installed in the system.\n"
+      "`wget` command is not installed in the system.\n"
     )
   }
   exe <- function(link, args) {
