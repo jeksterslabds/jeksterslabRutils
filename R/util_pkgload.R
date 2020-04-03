@@ -15,7 +15,7 @@
 #' @importFrom utils install.packages
 #' @importFrom utils installed.packages
 #' @examples
-#' pkg <- list(
+#' pkg <- c(
 #'   "parallel",
 #'   "stats",
 #'   "stats4"

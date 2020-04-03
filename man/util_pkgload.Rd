@@ -65,7 +65,7 @@ installs them if they are not currently installed,
 and loads them in the namespace.
 }
 \examples{
-pkg <- list(
+pkg <- c(
   "parallel",
   "stats",
   "stats4"
