@@ -21,7 +21,6 @@ SystemRequirements:
     file
 Depends: R (>= 3.5.0)
 Imports:
-    rprojroot,
     styler,
     rmarkdown,
     parallel,
