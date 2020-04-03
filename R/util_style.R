@@ -7,7 +7,6 @@
 #' @param dir Character string.
 #'   Directory.
 #' @inheritParams util_lapply
-#' @importFrom rprojroot find_root
 #' @importFrom styler style_file
 #' @examples
 #' \dontrun{
