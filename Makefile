@@ -8,4 +8,4 @@ all :
 	rm -rf ${PKG}/tests/testthat/*.md
 	rm -rf ${PKG}/vignettes/*.html
 	rm -rf ${PKG}/vignettes/*.md
-	Rscript -e 'jeksterslabRpkg::pkg_build("$(PKG)")'
+	Rscript -e 'jeksterslabRpkg::pkg_build("$(PKG)", git = TRUE, github = TRUE)'
