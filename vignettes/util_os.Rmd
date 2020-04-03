@@ -37,7 +37,7 @@ I use the `util_os` function to programatically
 employ forking on operating systems (POSIX) that support it and
 employ sockets on Windows.
 
-```{r}
+```{r, eval=FALSE}
 exe <- function(cores = 2) {
   os <- jeksterslabRutils::util_os()
   cat("Operating System:", os)

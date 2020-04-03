@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 ## util_pkgload
 
 The `util_pkgload` function
-checks if packages in character vector are installed,
+checks if character vector of packages are installed,
 installs them if they are not currently installed,
 and loads them.
 
@@ -33,7 +33,7 @@ The package are also re-installed
 even if they are already installed in the system.
 This takes time.
 
-```{r, eval=FALSE}
+```{r, eval = FALSE}
 packages <- c(
   "testthat",
   "devtools",
@@ -52,8 +52,14 @@ the installation process is skipped.
 This is a great time saver.**
 All the packages in vector are loaded in the namespace.
 
-```{r, eval=FALSE}
+```{r}
 library(jeksterslabRutils)
+packages <- c(
+  "testthat",
+  "devtools",
+  "rmarkdown",
+  "psych"
+)
 util_pkgload(packages)
 ```
 

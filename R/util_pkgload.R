@@ -5,7 +5,8 @@
 #' and loads them in the namespace.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
-#' @param pkg Character vector of packages.
+#' @param pkg Character vector.
+#'   Packages to install.
 #' @param update Logical.
 #'   Update installed packages.
 #' @inheritParams utils::update.packages
@@ -27,6 +28,9 @@ util_pkgload <- function(pkg,
                          dependencies = TRUE,
                          type = "source",
                          update = FALSE) {
+  if (is.vector(pkg)) {
+    pkg <- as.list(pkg)
+  }
   if (update) {
     suppressMessages(
       update.packages(

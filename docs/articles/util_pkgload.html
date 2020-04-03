@@ -103,7 +103,7 @@
 <div id="util_pkgload" class="section level2">
 <h2 class="hasAnchor">
 <a href="#util_pkgload" class="anchor"></a>util_pkgload</h2>
-<p>The <code>util_pkgload</code> function checks if packages in character vector are installed, installs them if they are not currently installed, and loads them.</p>
+<p>The <code>util_pkgload</code> function checks if character vector of packages are installed, installs them if they are not currently installed, and loads them.</p>
 </div>
 <div id="use-case" class="section level2">
 <h2 class="hasAnchor">
@@ -120,6 +120,12 @@
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"rmarkdown"</span>)</pre></body></html></div>
 <p>The above task is executed with a single call below. The function does more. <strong>If the packages are already installed, the installation process is skipped. This is a great time saver.</strong> All the packages in vector are loaded in the namespace.</p>
 <div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">jeksterslabRutils</span>)
+<span class="no">packages</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(
+  <span class="st">"testthat"</span>,
+  <span class="st">"devtools"</span>,
+  <span class="st">"rmarkdown"</span>,
+  <span class="st">"psych"</span>
+)
 <span class="fu"><a href="../reference/util_pkgload.html">util_pkgload</a></span>(<span class="no">packages</span>)</pre></body></html></div>
 </div>
   </div>

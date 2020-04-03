@@ -14,7 +14,8 @@ util_pkgload(
 )
 }
 \arguments{
-\item{pkg}{Character vector of packages.}
+\item{pkg}{Character vector.
+Packages to install.}
 
 \item{lib.loc}{character vector describing the location of R
     library trees to search through (and update packages therein), or
