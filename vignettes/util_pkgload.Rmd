@@ -57,8 +57,7 @@ library(jeksterslabRutils)
 packages <- c(
   "testthat",
   "devtools",
-  "rmarkdown",
-  "psych"
+  "rmarkdown"
 )
 util_pkgload(packages)
 ```
