@@ -28,17 +28,11 @@ on.exit(
 )
 link <- c(
   "https://raw.githubusercontent.com/jeksterslabds/jeksterslabRutils/master/R/util_bind.R",
-  "https://raw.githubusercontent.com/jeksterslabds/jeksterslabRutils/master/R/util_cat_sys.R",
-  "https://raw.githubusercontent.com/jeksterslabds/jeksterslabRutils/master/R/util_check_file_type.R",
-  "https://raw.githubusercontent.com/jeksterslabds/jeksterslabRutils/master/R/util_clean_tempdir.R",
-  "https://raw.githubusercontent.com/jeksterslabds/jeksterslabRutils/master/R/util_get_numbers.R"
+  "https://raw.githubusercontent.com/jeksterslabds/jeksterslabRutils/master/R/util_cat_sys.R"
 )
 files <- c(
   file.path(tmp, "util_bind.R"),
-  file.path(tmp, "util_cat_sys.R"),
-  file.path(tmp, "util_check_file_type.R"),
-  file.path(tmp, "util_clean_tempdir.R"),
-  file.path(tmp, "util_get_numbers.R")
+  file.path(tmp, "util_cat_sys.R")
 )
 Variable <- c(
   "`link`",
