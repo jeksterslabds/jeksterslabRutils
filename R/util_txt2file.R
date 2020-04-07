@@ -7,6 +7,10 @@
 #'   Directory.
 #' @param fn Character string.
 #'   Filename.
+#' @param msg Character string.
+#'   Optional message.
+#'   If supplied,
+#'   prints `msg dir/fn`.
 #' @inheritParams base::writeLines
 #' @examples
 #' text <- paste0(
@@ -30,7 +34,8 @@
 #' @export
 util_txt2file <- function(text,
                           dir,
-                          fn) {
+                          fn,
+                          msg = NULL) {
   if (!dir.exists(dir)) {
     dir.create(dir)
   }
@@ -46,11 +51,13 @@ util_txt2file <- function(text,
     text = text,
     con = con
   )
-  message(
-    paste(
-      "Output file:",
-      output_fn,
-      "\n"
+  if (!is.null(msg)) {
+    message(
+      paste(
+        msg,
+        output_fn,
+        "\n"
+      )
     )
-  )
+  }
 }
