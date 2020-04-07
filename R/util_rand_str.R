@@ -3,6 +3,11 @@
 #' Generates random character string
 #' composed of lower and upper case letters
 #' with an option to include digits.
+#' 
+#' To ensure that the character string generated
+#' is a valid `R` variable name,
+#' the first character will always be a lower case or upper case letter
+#' when `digits = TRUE`.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param characters Integer.
@@ -22,7 +27,13 @@ util_rand_str <- function(characters = 8L,
     LETTERS
   )
   if (digits) {
+    out_start <- sample(
+      x = input,
+      size = 1,
+      replace = TRUE
+    )
     input <- c(input, 0:9)
+    characters <- characters - 1
   }
   out_chars <- sample(
     x = input,
@@ -33,6 +44,13 @@ util_rand_str <- function(characters = 8L,
     out_chars,
     collapse = ""
   )
+  if (digits) {
+    out_str <- paste0(
+      out_start,
+      out_str,
+      collapse = ""
+    )
+  }
   if (is.null(ext)) {
     return(
       out_str
