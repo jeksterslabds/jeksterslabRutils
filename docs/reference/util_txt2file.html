@@ -138,7 +138,7 @@
     <p>Writes lines of character strings to file.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>util_txt2file</span>(<span class='no'>text</span>, <span class='no'>dir</span>, <span class='no'>fn</span>)</pre>
+    <pre class="usage"><span class='fu'>util_txt2file</span>(<span class='no'>text</span>, <span class='no'>dir</span>, <span class='no'>fn</span>, <span class='kw'>msg</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -156,6 +156,13 @@ Directory.</p></td>
       <th>fn</th>
       <td><p>Character string.
 Filename.</p></td>
+    </tr>
+    <tr>
+      <th>msg</th>
+      <td><p>Character string.
+Optional message.
+If supplied,
+prints <code>msg dir/fn</code>.</p></td>
     </tr>
     </table>
 
@@ -178,7 +185,7 @@ Filename.</p></td>
   <span class='kw'>text</span> <span class='kw'>=</span> <span class='no'>text</span>,
   <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span>(),
   <span class='kw'>fn</span> <span class='kw'>=</span> <span class='st'>"Lipsum.txt"</span>
-)</div><div class='output co'>#&gt; <span class='message'>Output file: /home/jek/scripts/r/jeksterslabRutils/docs/reference/Lipsum.txt </span></div></pre>
+)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

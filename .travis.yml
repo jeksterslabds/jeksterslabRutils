@@ -1,15 +1,21 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
-
 os:
   - linux
   - osx
-
 language: r
-
 cache: packages
-
 before_install:
   - Rscript -e 'if (!require("covr")) install.packages("covr")'
-
 after_success:
+  - Rscript -e 'pkgdown::build_site()'
   - Rscript -e 'covr::codecov()'
+deploy:
+  provider: pages
+  cleanup: false
+  strategy: git
+  dist: xenial
+  token: $GITHUB_PAT
+  keep_history: true
+  local_dir: docs
+  on:
+    branch: master

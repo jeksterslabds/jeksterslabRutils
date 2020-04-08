@@ -192,19 +192,19 @@ util_git_config <- function(name = "Ivan Jacob Agaloos Pesigan",
       )
     )
     if (global) {
-    tryCatch(
-      {
-        system(
-          ignore
-        )
-      },
-      error = function(err) {
-        warning(
-          "Error in `git config`.\n"
-        )
-      }
-    )
-    print("ignore global\n")
+      tryCatch(
+        {
+          system(
+            ignore
+          )
+        },
+        error = function(err) {
+          warning(
+            "Error in `git config`.\n"
+          )
+        }
+      )
+      print("ignore global\n")
     }
   }
   if (!is.null(msg)) {

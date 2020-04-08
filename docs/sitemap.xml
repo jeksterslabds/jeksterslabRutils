@@ -19,6 +19,9 @@
     <loc>https://github.com/jeksterslabds/jeksterslabRutils//reference/util_get_numbers.html</loc>
   </url>
   <url>
+    <loc>https://github.com/jeksterslabds/jeksterslabRutils//reference/util_git_config.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/jeksterslabds/jeksterslabRutils//reference/util_lapply.html</loc>
   </url>
   <url>
@@ -47,6 +50,9 @@
   </url>
   <url>
     <loc>https://github.com/jeksterslabds/jeksterslabRutils//reference/util_url_exists.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/jeksterslabds/jeksterslabRutils//reference/util_valid_email.html</loc>
   </url>
   <url>
     <loc>https://github.com/jeksterslabds/jeksterslabRutils//reference/util_wget.html</loc>

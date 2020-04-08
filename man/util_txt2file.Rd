@@ -4,7 +4,7 @@
 \alias{util_txt2file}
 \title{Text to File.}
 \usage{
-util_txt2file(text, dir, fn)
+util_txt2file(text, dir, fn, msg = NULL)
 }
 \arguments{
 \item{text}{A character vector}
@@ -14,6 +14,11 @@ Directory.}
 
 \item{fn}{Character string.
 Filename.}
+
+\item{msg}{Character string.
+Optional message.
+If supplied,
+prints \verb{msg dir/fn}.}
 }
 \description{
 Writes lines of character strings to file.

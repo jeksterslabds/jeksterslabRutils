@@ -45,5 +45,4 @@ tests/testthat/*.md
 .Renviron
 
 # pkgdown site
-# comment this out if github pages is used to display pkgdown site
-#docs/
+docs/

@@ -3,7 +3,7 @@
 #' Generates random character string
 #' composed of lower and upper case letters
 #' with an option to include digits.
-#' 
+#'
 #' To ensure that the character string generated
 #' is a valid `R` variable name,
 #' the first character will always be a lower case or upper case letter
