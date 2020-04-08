@@ -12,9 +12,8 @@ after_success:
   - Rscript -e 'covr::codecov()'
 deploy:
   provider: pages
-  cleanup: false
+  skip_cleanup: true
   strategy: git
-  dist: xenial
   token: $GITHUB_PAT
   keep_history: true
   local_dir: docs
