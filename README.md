@@ -1,7 +1,7 @@
 jeksterslabRutils
 ================
 Ivan Jacob Agaloos Pesigan
-2020-04-09
+2020-04-10
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -23,11 +23,11 @@ You can install the released version of `jeksterslabRutils` from
 [GitHub](https://github.com/jeksterslabds/jeksterslabRutils) with:
 
 ``` r
-library(devtools)
-install_github("jeksterslabds/jeksterslabRutils")
+remotes::install_github("jeksterslabds/jeksterslabRutils")
 ```
 
 ## Example
 
-See [GitHub Pages](https://jeksterslabds.github.io/jeksterslabRutils/)
-for package documentation.
+See [GitHub
+Pages](https://jeksterslabds.github.io/jeksterslabRutils/index.html) for
+package documentation.
