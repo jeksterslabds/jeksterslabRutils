@@ -30,11 +30,10 @@ to support scripting and data analysis.
 You can install the released version of `jeksterslabRutils` from [GitHub](https://github.com/jeksterslabds/jeksterslabRutils) with:
 
 ```r
-library(devtools)
-install_github("jeksterslabds/jeksterslabRutils")
+remotes::install_github("jeksterslabds/jeksterslabRutils")
 ```
 
 ## Example
 
-See [GitHub Pages](https://jeksterslabds.github.io/jeksterslabRutils/)
+See [GitHub Pages](https://jeksterslabds.github.io/jeksterslabRutils/index.html)
 for package documentation.
