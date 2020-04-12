@@ -42,7 +42,7 @@ util_user_lib <- function(libpath = NULL) {
   }
   .libPaths(
     c(
-      "libpath",
+      libpath,
       .libPaths()
     )
   )
