@@ -8,8 +8,10 @@
 #'   Library path.
 #'   If unspecified, defaults to
 #'   `{HOME}/R/{PLATFORM}-library/{R.VERSION}`.
+#' @inheritParams util_renviron
 #' @export
-util_user_lib <- function(libpath = NULL) {
+util_user_lib <- function(libpath = NULL,
+                          dir = Sys.getenv("HOME")) {
   if (is.null(libpath)) {
     # The library path is set to `{HOME}/R/{PLATFORM}-library/{R.VERSION}`
     platform <- R.version[["platform"]]
@@ -41,9 +43,11 @@ util_user_lib <- function(libpath = NULL) {
     )
   }
   .libPaths(
-    c(
-      libpath,
-      .libPaths()
+    unique(
+      c(
+        libpath,
+        .libPaths()
+      )
     )
   )
   R_LIBS_USER <- paste0(
@@ -59,12 +63,12 @@ util_user_lib <- function(libpath = NULL) {
     )
   )
   # Generate `{HOME}/.Renviron` with the environment variable `R_LIBS_USER={HOME}/R/{PLATFORM}-library/{R.VERSION}`.
-  dotRenviron <- file.path(
-    Sys.getenv("HOME"),
+  renviron <- file.path(
+    dir,
     ".Renviron"
   )
-  if (file.exists(dotRenviron)) {
-    content <- readLines(dotRenviron)
+  if (file.exists(renviron)) {
+    content <- readLines(renviron)
     pattern <- "^R_LIBS_USER=.*"
     if (
       any(
@@ -79,10 +83,21 @@ util_user_lib <- function(libpath = NULL) {
         replacement = R_LIBS_USER,
         x = content
       )
+    } else {
+      R_LIBS_USER <- paste(
+        R_LIBS_USER,
+        paste0(
+          content,
+          collapse = "\n"
+        ),
+        sep = "\n"
+      )
     }
   }
-  writeLines(
+  util_txt2file(
     text = R_LIBS_USER,
-    con = dotRenviron
+    dir = dir,
+    fn = ".Renviron",
+    msg = "Added R_LIBS_USER to"
   )
 }
