@@ -1,0 +1,9 @@
+!TERM
+XTerm.termName: xterm-256color
+!UTF-8
+XTerm.vt100.locale: true
+!Scrolling
+XTerm.vt100.saveLines: 4096
+!Font
+XTerm.vt100.faceName: Liberation Mono:size=9:antialias=true
+XTerm.vt100.font: 7x13
