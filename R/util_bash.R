@@ -234,4 +234,3 @@ util_bash <- function(overwrite = FALSE,
     msg = "Output file:"
   )
 }
-
