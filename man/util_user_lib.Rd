@@ -4,13 +4,16 @@
 \alias{util_user_lib}
 \title{Set User Library}
 \usage{
-util_user_lib(libpath = NULL)
+util_user_lib(libpath = NULL, dir = Sys.getenv("HOME"))
 }
 \arguments{
 \item{libpath}{Character string.
 Library path.
 If unspecified, defaults to
 \code{{HOME}/R/{PLATFORM}-library/{R.VERSION}}.}
+
+\item{dir}{Character string.
+\code{.Renviron} directory}
 }
 \description{
 Sets user library using \code{.libPaths}

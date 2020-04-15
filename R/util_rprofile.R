@@ -4,31 +4,41 @@
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param dir Character string.
-#'   Directory
+#'   `.Rprofile` directory
+#' @param overwrite Logical.
+#'   Overwrite existing `.Rprofile` file in `dir`.
 #' @export
-util_rprofile <- function(dir = Sys.getenv("HOME")) {
-  rprofile <- file.path(dir, ".Rprofile")
+util_rprofile <- function(dir = Sys.getenv("HOME"),
+                          overwrite = FALSE) {
+  rprofile <- file.path(
+    dir,
+    ".Rprofile"
+  )
+  output <- readLines(
+    con = system.file(
+      "extdata",
+      "Rextras",
+      "Rprofile.R",
+      package = "jeksterslabRutils",
+      mustWork = TRUE
+    )
+  )
   if (file.exists(rprofile)) {
-    warning(
-      paste(
-        rprofile,
-        "exists and will NOT be overwritten.\n"
+    if (!overwrite) {
+      return(
+        message(
+          paste(
+            rprofile,
+            "exists and will NOT be overwritten."
+          )
+        )
       )
-    )
-  } else {
-    output <- readLines(
-      con = system.file(
-        "extdata",
-        "Rprofile",
-        package = "jeksterslabRutils",
-        mustWork = TRUE
-      )
-    )
-    util_txt2file(
-      text = output,
-      dir = dir,
-      fn = ".Rprofile",
-      msg = paste("Output file:", rprofile)
-    )
+    }
   }
+  util_txt2file(
+    text = output,
+    dir = dir,
+    fn = ".Rprofile",
+    msg = "Output file:"
+  )
 }

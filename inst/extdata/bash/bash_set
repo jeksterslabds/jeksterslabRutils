@@ -1,0 +1,24 @@
+################################################################################
+#====[ Settings ]===============================================================
+################################################################################
+
+#====[ bash completion ]========================================================
+[ -r "/usr/share/bash-completion/bash_completion" ] && . "/usr/share/bash-completion/bash_completion"
+
+#====[ vi readline ]============================================================
+set -o vi
+#set show-mode-in-prompt on # display which one is currently active
+set vi-ins-mode-string \1\e[6 q\2
+set vi-cmd-mode-string \1\e[2 q\2
+
+#====[ line wrap ]==============================================================
+shopt -s checkwinsize
+
+#====[ noclobber ]==============================================================
+set -o noclobber
+
+#====[ autojump ]===============================================================
+#[ -r "/etc/profile.d.autojump.bash" ] && . "/etc/profile.d/autojump.bash"
+
+#====[ auto cd ]================================================================
+shopt -s autocd

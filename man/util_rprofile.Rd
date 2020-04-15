@@ -4,11 +4,14 @@
 \alias{util_rprofile}
 \title{Create \code{.Rprofile} File}
 \usage{
-util_rprofile(dir = Sys.getenv("HOME"))
+util_rprofile(dir = Sys.getenv("HOME"), overwrite = FALSE)
 }
 \arguments{
 \item{dir}{Character string.
-Directory}
+\code{.Rprofile} directory}
+
+\item{overwrite}{Logical.
+Overwrite existing \code{.Rprofile} file in \code{dir}.}
 }
 \description{
 Creates a \code{.Rprofile} file in \code{dir}.
