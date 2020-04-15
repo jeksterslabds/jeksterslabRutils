@@ -144,20 +144,18 @@ export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWUPSTREAM=auto
 PROMPT_COMMAND="history -a"
 case ${TERM} in
-  xterm | xterm-256color | rxvt | screen | linux | st-256color)
-        PS1="\[\$(load_color)\][\A\[${NC}\] "
-        # Time of day (with load info):
-        PS1="\[\$(load_color)\][\A\[${NC}\] "
+    xterm | xterm-256color | rxvt | screen | linux | st-256color)
+        # Date and Time of day (with load info):
+        PS1="\[\$(load_color)\][\d \A\[${NC}\] "
         # User@Host (with connection type info):
         PS1=${PS1}"\[${SU}\]\u\[${NC}\]@\[${CNX}\]\h\[${NC}\] "
         # PWD (with 'disk space' info):
-        PS1=${PS1}"\[\$(disk_color)\]\W]\[${NC}\] "
+        PS1=${PS1}"\[\$(disk_color)\]\w]\[${NC}\] "
         # Prompt (with 'job' info):
-        PS1=${PS1}"\[\$(job_color)\]$\[${NC}\] "
-        # Set title of current xterm:
-        #PS1=${PS1}"\[\e]0;[\u@\h] \w\a\]"
+        PS1=${PS1}"\[\$(job_color)\]\[${NC}\]"
         # Git prompt
-        PS1=${PS1}"\[\e]0;[\u@\h] \w\a\$(__git_ps1 '(%s) ')\]"
+        PS1=${PS1}"\[\e]0;[\u@\h]\w\a\$(__git_ps1 '(%s) ')\]"
+        PS1=${PS1}"\n$ "
         ;;
     *)
         PS1="(\A \u@\h \W) $ " # --> PS1="(\A \u@\h \w) $ "
