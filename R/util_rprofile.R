@@ -17,6 +17,7 @@ util_rprofile <- function(dir = Sys.getenv("HOME"),
   output <- readLines(
     con = system.file(
       "extdata",
+      "Rextras",
       "Rprofile.R",
       package = "jeksterslabRutils",
       mustWork = TRUE
