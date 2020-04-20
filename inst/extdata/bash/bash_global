@@ -1,2 +1,0 @@
-#====[ Source global definitions if any ]=======================================
-[ -f "/etc/bashrc" ] && . "/etc/bashrc"
