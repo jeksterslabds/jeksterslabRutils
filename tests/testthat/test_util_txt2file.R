@@ -56,7 +56,8 @@ knitr::kable(
 util_txt2file(
   text = input,
   dir = tmp,
-  fn = "Lipsum.txt"
+  fn = "Lipsum.txt",
+  msg = "Output file:"
 )
 results <- readLines(
   file.path(
