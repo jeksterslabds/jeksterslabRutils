@@ -1,15 +1,18 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
+language: r
+r:
+- oldrel
+- release
 os:
 - linux
 - osx
-language: r
 cache: packages
 before_install:
 - Rscript -e 'if (!require("covr")) install.packages("covr")'
 - Rscript -e 'if (!require("pkgdown")) install.packages("pkgdown")'
 after_success:
-- Rscript -e 'pkgdown::build_site()'
 - Rscript -e 'covr::codecov()'
+- Rscript -e 'pkgdown::build_site()'
 deploy:
   provider: pages
   skip_cleanup: true
