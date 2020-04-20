@@ -40,7 +40,8 @@ text <- paste0(
 util_txt2file(
   text = text,
   dir = getwd(),
-  fn = "Lipsum.txt"
+  fn = "Lipsum.txt",
+  msg = "Output file:"
 )
 }
 \author{
