@@ -19,7 +19,8 @@ tmp <- file.path(
   getwd(),
   util_rand_str()
 )
-dir.create(tmp)
+# to cover dir.create(dir) in util_txt2file.R
+# dir.create(tmp)
 on.exit(
   unlink(
     tmp,
