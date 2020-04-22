@@ -52,21 +52,21 @@ util_render <- function(recursive = TRUE,
     )
   }
   if (recursive) {
-    rmd <- list.files(
+    pattern <- paste0(
+      glob2rx("*.Rmd"),
+      "|",
+      glob2rx("*.rmd"),
+      "|",
+      glob2rx("*.R"),
+      "|",
+      glob2rx("*.r")
+    )
+    files <- list.files(
       path = dir,
-      pattern = glob2rx("^*.Rmd$|^*.rmd$"),
+      pattern = pattern,
       recursive = TRUE,
       include.dirs = TRUE
     )
-    rscript <- list.files(
-      path = file.path(
-        dir
-      ),
-      pattern = glob2rx("^*.R$|^*.r$"),
-      recursive = TRUE,
-      include.dirs = TRUE
-    )
-    files <- c(rmd, rscript)
     invisible(
       util_lapply(
         FUN = exe_render,

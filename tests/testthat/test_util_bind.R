@@ -262,23 +262,29 @@ sapply(
   X = files_xlsx,
   FUN = file.create
 )
-util_bind(
-  dir = tmp,
-  pattern = "^error*",
-  format = "csv",
-  par = FALSE
+suppressWarnings(
+  util_bind(
+    dir = tmp,
+    pattern = "^error*",
+    format = "csv",
+    par = FALSE
+  )
 )
-util_bind(
-  dir = tmp,
-  pattern = "^error*",
-  format = "xls",
-  par = FALSE
+suppressWarnings(
+  util_bind(
+    dir = tmp,
+    pattern = "^error*",
+    format = "xls",
+    par = FALSE
+  )
 )
-util_bind(
-  dir = tmp,
-  pattern = "^error*",
-  format = "xlsx",
-  par = FALSE
+suppressWarnings(
+  util_bind(
+    dir = tmp,
+    pattern = "^error*",
+    format = "xlsx",
+    par = FALSE
+  )
 )
 sapply(
   X = files_csv,
