@@ -82,7 +82,7 @@ util_render <- function(recursive = TRUE,
       util_lapply(
         FUN = exe_list,
         args = list(
-          input = files
+          file = files
         ),
         par = par,
         ncores = ncores
