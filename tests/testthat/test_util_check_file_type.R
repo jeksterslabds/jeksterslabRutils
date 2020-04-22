@@ -127,7 +127,7 @@ test_that("valid file is retained", {
   )
 })
 #'
-#+ cleanup
+#+ cleanup_01
 unlink(
   c(
     invalid,
@@ -177,7 +177,7 @@ test_that("tryCatch", {
 #  FUN = unlink
 # )
 #'
-#+ cleanup
+#+ cleanup_02
 unlink(
   tmp,
   recursive = TRUE
