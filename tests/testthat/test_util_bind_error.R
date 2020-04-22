@@ -213,6 +213,92 @@ test_that("tryCatch", {
   )
 })
 #'
+#' ## tryCatch error for code coverage
+#'
+#+ error
+files_csv <- paste0(
+  file.path(
+    tmp,
+    "error"
+  ),
+  1:5,
+  ".csv"
+)
+files_xls <- paste0(
+  file.path(
+    tmp,
+    "error"
+  ),
+  1:5,
+  ".xls"
+)
+fn_xls <- paste0(
+  "error",
+  1:5,
+  ".xls"
+)
+files_xlsx <- paste0(
+  file.path(
+    tmp,
+    "error"
+  ),
+  1:5,
+  ".xlsx"
+)
+fn_xlsx <- paste0(
+  "error",
+  1:5,
+  ".xlsx"
+)
+sapply(
+  X = files_csv,
+  FUN = file.create
+)
+sapply(
+  X = files_xls,
+  FUN = file.create
+)
+sapply(
+  X = files_xlsx,
+  FUN = file.create
+)
+suppressWarnings(
+  util_bind(
+    dir = tmp,
+    pattern = "^error*",
+    format = "csv",
+    par = FALSE
+  )
+)
+suppressWarnings(
+  util_bind(
+    dir = tmp,
+    pattern = "^error*",
+    format = "xls",
+    par = FALSE
+  )
+)
+suppressWarnings(
+  util_bind(
+    dir = tmp,
+    pattern = "^error*",
+    format = "xlsx",
+    par = FALSE
+  )
+)
+sapply(
+  X = files_csv,
+  FUN = unlink
+)
+sapply(
+  X = files_xls,
+  FUN = unlink
+)
+sapply(
+  X = files_xlsx,
+  FUN = unlink
+)
+#'
 #+ cleanup
 unlink(
   tmp,
