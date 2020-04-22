@@ -35,16 +35,16 @@ util_render <- function(recursive = TRUE,
       return(NA)
     }
   }
-  exe_render <- function(input) {
+  exe_render <- function(file) {
     tryCatch(
       {
-        render(input)
+        render(file)
       },
       error = function(err) {
         warning(
           paste(
             "Error rendering",
-            input,
+            file,
             "\n"
           )
         )
@@ -71,7 +71,7 @@ util_render <- function(recursive = TRUE,
       util_lapply(
         FUN = exe_render,
         args = list(
-          input = files
+          file = files
         ),
         par = par,
         ncores = ncores
@@ -103,7 +103,7 @@ util_render <- function(recursive = TRUE,
       util_lapply(
         FUN = exe_render,
         args = list(
-          input = files
+          file = files
         ),
         par = par,
         ncores = ncores
