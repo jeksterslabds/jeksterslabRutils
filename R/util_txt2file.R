@@ -26,12 +26,14 @@
 #'   "Excepteur sint occaecat cupidatat non proident,",
 #'   "sunt in culpa qui officia deserunt mollit anim id est laborum."
 #' )
+#' \dontrun{
 #' util_txt2file(
 #'   text = text,
 #'   dir = getwd(),
 #'   fn = "Lipsum.txt",
 #'   msg = "Output file:"
 #' )
+#' }
 #' @export
 util_txt2file <- function(text,
                           dir,
