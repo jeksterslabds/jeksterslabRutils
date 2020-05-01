@@ -1,11 +1,16 @@
 #' Style `R` and `R` Markdown Files.
 #'
 #' Styles all `R` scripts and `R` Markdown files
-#' in a given directory recursively.
+#' in a given directory.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param dir Character string.
 #'   Directory.
+#' @param recursive Logical.
+#'   If `TRUE`,
+#'   styles all `.R, .r, .Rmd, .rmd` in the working directory and subdirectories.
+#'   If `FALSE`,
+#'   styles files in the working directory.
 #' @inheritParams util_lapply
 #' @importFrom styler style_file
 #' @examples
@@ -17,6 +22,7 @@
 #' }
 #' @export
 util_style <- function(dir = getwd(),
+                       recursive = FALSE,
                        par = TRUE,
                        ncores = NULL) {
   exe <- function(path) {
@@ -41,7 +47,7 @@ util_style <- function(dir = getwd(),
     ),
     pattern = glob2rx("^*.R$|^*.r$"),
     full.names = TRUE,
-    recursive = TRUE,
+    recursive = recursive,
     include.dirs = TRUE
   )
   rmd <- list.files(
@@ -50,7 +56,7 @@ util_style <- function(dir = getwd(),
     ),
     pattern = glob2rx("^*.Rmd$|^*.rmd$"),
     full.names = TRUE,
-    recursive = TRUE,
+    recursive = recursive,
     include.dirs = TRUE
   )
   files <- c(rscript, rmd)
