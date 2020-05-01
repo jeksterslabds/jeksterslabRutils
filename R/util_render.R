@@ -3,15 +3,15 @@
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param dir Character string.
 #'   Directory.
-#'   Used if `recursive = TRUE`.
+#'   Ignored if `file` is NOT NULL.
 #' @param recursive Logical.
 #'   If `TRUE`,
 #'   recursively render all `R` scripts (`.R`, `.r`) and
 #'   R Markdown files (`.Rmd`, `.rmd`)
 #'   in `dir`.
+#'   Ignored if `file` is NOT NULL.
 #' @param files Character vector.
 #'   Vector of files to render.
-#'   Used if `recursive` is `FALSE`.
 #' @inheritParams util_lapply
 #' @importFrom utils glob2rx
 #' @importFrom rmarkdown render
@@ -23,21 +23,19 @@
 #' )
 #' }
 #' @export
-
-## make recursive = FALSE only render files in the working directory
 util_render <- function(dir = getwd(),
                         recursive = FALSE,
                         files = NULL,
                         par = TRUE,
                         ncores = NULL) {
-  exe_list <- function(file) {
+  foo_list <- function(file) {
     if (file.exists(file)) {
       return(file)
     } else {
       return(NA)
     }
   }
-  exe_render <- function(file) {
+  foo_render <- function(file) {
     tryCatch(
       {
         render(file)
@@ -53,25 +51,18 @@ util_render <- function(dir = getwd(),
       }
     )
   }
-  if (recursive) {
-    pattern <- paste0(
-      glob2rx("^*.Rmd$"),
-      "|",
-      glob2rx("^*.rmd$"),
-      "|",
-      glob2rx("^*.R$"),
-      "|",
-      glob2rx("^*.r$")
-    )
+  if (is.null(file)) {
     files <- list.files(
-      path = dir,
-      pattern = pattern,
-      recursive = TRUE,
+      path = normalizePath(dir),
+      pattern = "^.*\\.[r|rmd]$",
+      full.names = TRUE,
+      recursive = recursive,
+      ignore.case = TRUE,
       include.dirs = TRUE
     )
     invisible(
       util_lapply(
-        FUN = exe_render,
+        FUN = foo_render,
         args = list(
           file = files
         ),
@@ -82,7 +73,7 @@ util_render <- function(dir = getwd(),
   } else {
     files <- invisible(
       util_lapply(
-        FUN = exe_list,
+        FUN = foo_list,
         args = list(
           file = files
         ),
@@ -103,7 +94,7 @@ util_render <- function(dir = getwd(),
     }
     invisible(
       util_lapply(
-        FUN = exe_render,
+        FUN = foo_render,
         args = list(
           file = files
         ),

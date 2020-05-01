@@ -57,7 +57,7 @@ util_bind <- function(dir = getwd(),
                         "xls",
                         "xlsx"
                       ),
-                      pattern = "^filename*",
+                      pattern = "^filename.*",
                       fn_column = TRUE,
                       save = FALSE,
                       fn = NULL,
@@ -97,6 +97,8 @@ util_bind <- function(dir = getwd(),
       }
     )
   }
+  dir <- normalizePath(dir)
+  save_dir <- normalizePath(save_dir)
   root <- basename(dir)
   if (is.null(fn)) {
     fn <- file.path(
@@ -109,15 +111,23 @@ util_bind <- function(dir = getwd(),
   }
   files <- list.files(
     path = dir,
-    pattern = glob2rx(
-      paste0(
-        pattern,
-        ".",
-        format,
-        "$"
-      )
+    pattern = paste0(
+      pattern,
+      "\\.",
+      format,
+      "$"
     ),
-    full.names = TRUE
+#    pattern = glob2rx(
+#      paste0(
+#        pattern,
+#        ".",
+#        format,
+#        "$"
+#      )
+#    ),
+    full.names = TRUE,
+    recursive = FALSE,
+    ignore.case = TRUE
   )
   input <- vector(
     mode = "list",
@@ -160,3 +170,4 @@ util_bind <- function(dir = getwd(),
   }
   output
 }
+

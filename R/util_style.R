@@ -25,46 +25,35 @@ util_style <- function(dir = getwd(),
                        recursive = FALSE,
                        par = TRUE,
                        ncores = NULL) {
-  exe <- function(path) {
+  foo <- function(file) {
     tryCatch(
       {
-        style_file(path)
+        style_file(file)
       },
       error = function(err) {
         warning(
           paste(
             "Error styling",
-            path,
+            file,
             "\n"
           )
         )
       }
     )
   }
-  rscript <- list.files(
-    path = file.path(
-      dir
-    ),
-    pattern = glob2rx("^*.R$|^*.r$"),
+  files <- list.files(
+    path = normalizePath(dir),
+    pattern = "^.*\\.[r|rmd]$",
     full.names = TRUE,
     recursive = recursive,
+    ignore.case = TRUE,
     include.dirs = TRUE
   )
-  rmd <- list.files(
-    path = file.path(
-      dir
-    ),
-    pattern = glob2rx("^*.Rmd$|^*.rmd$"),
-    full.names = TRUE,
-    recursive = recursive,
-    include.dirs = TRUE
-  )
-  files <- c(rscript, rmd)
   invisible(
     util_lapply(
-      FUN = exe,
+      FUN = foo,
       args = list(
-        path = files
+        file = files
       ),
       par = par,
       ncores = ncores
