@@ -26,7 +26,7 @@
 
 ## make recursive = FALSE only render files in the working directory
 util_render <- function(dir = getwd(),
-                        recursive = TRUE,
+                        recursive = FALSE,
                         files = NULL,
                         par = TRUE,
                         ncores = NULL) {
