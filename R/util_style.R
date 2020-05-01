@@ -8,9 +8,9 @@
 #'   Directory.
 #' @param recursive Logical.
 #'   If `TRUE`,
-#'   styles all `.R, .r, .Rmd, .rmd` in the working directory and subdirectories.
-#'   If `FALSE`,
-#'   styles files in the working directory.
+#'   recursively style all `R` scripts (`.R`, `.r`) and
+#'   R Markdown files (`.Rmd`, `.rmd`)
+#'   in `dir`.
 #' @inheritParams util_lapply
 #' @importFrom styler style_file
 #' @examples

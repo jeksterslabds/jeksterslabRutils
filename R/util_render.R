@@ -1,14 +1,14 @@
 #' Render `R` Scripts and `R` Markdown Files.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
-#' @param recursive Logical.
-#'   If `TRUE`,
-#'   recursively render all `R` scripts (`.R`) and
-#'   R Markdown files (`.Rmd`)
-#'   in `dir`.
 #' @param dir Character string.
 #'   Directory.
 #'   Used if `recursive = TRUE`.
+#' @param recursive Logical.
+#'   If `TRUE`,
+#'   recursively render all `R` scripts (`.R`, `.r`) and
+#'   R Markdown files (`.Rmd`, `.rmd`)
+#'   in `dir`.
 #' @param files Character vector.
 #'   Vector of files to render.
 #'   Used if `recursive` is `FALSE`.
@@ -23,8 +23,10 @@
 #' )
 #' }
 #' @export
-util_render <- function(recursive = TRUE,
-                        dir = getwd(),
+
+## make recursive = FALSE only render files in the working directory
+util_render <- function(dir = getwd(),
+                        recursive = TRUE,
                         files = NULL,
                         par = TRUE,
                         ncores = NULL) {
@@ -53,13 +55,13 @@ util_render <- function(recursive = TRUE,
   }
   if (recursive) {
     pattern <- paste0(
-      glob2rx("*.Rmd"),
+      glob2rx("^*.Rmd$"),
       "|",
-      glob2rx("*.rmd"),
+      glob2rx("^*.rmd$"),
       "|",
-      glob2rx("*.R"),
+      glob2rx("^*.R$"),
       "|",
-      glob2rx("*.r")
+      glob2rx("^*.r$")
     )
     files <- list.files(
       path = dir,
