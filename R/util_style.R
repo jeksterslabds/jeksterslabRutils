@@ -43,7 +43,7 @@ util_style <- function(dir = getwd(),
   }
   files <- list.files(
     path = normalizePath(dir),
-    pattern = "^.*\\.[r|rmd]$",
+    pattern = ".*\\.[r|rmd]",
     full.names = TRUE,
     recursive = recursive,
     ignore.case = TRUE,

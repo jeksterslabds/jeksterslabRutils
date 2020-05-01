@@ -39,7 +39,7 @@ fn <- file.path(
     ".csv"
   )
 )
-pattern <- "^filename*"
+pattern <- "^filename.*"
 fn_column <- TRUE
 save <- FALSE
 rows <- 1108
@@ -86,7 +86,7 @@ knitr::kable(
 csv <- util_bind(
   dir = wd,
   format = "csv",
-  pattern = "^filename*",
+  pattern = "^filename.*",
   fn_column = TRUE,
   save = TRUE,
   save_dir = tmp,
@@ -95,7 +95,7 @@ csv <- util_bind(
 xls <- util_bind(
   dir = wd,
   format = "xls",
-  pattern = "^filename*",
+  pattern = "^filename.*",
   fn_column = TRUE,
   save = FALSE,
   par = FALSE
@@ -103,7 +103,7 @@ xls <- util_bind(
 xlsx <- util_bind(
   dir = wd,
   format = "xlsx",
-  pattern = "^filename*",
+  pattern = "^filename.*",
   fn_column = TRUE,
   save = FALSE,
   par = FALSE
@@ -265,7 +265,7 @@ sapply(
 suppressWarnings(
   util_bind(
     dir = tmp,
-    pattern = "^error*",
+    pattern = "^error.*",
     format = "csv",
     par = FALSE
   )
@@ -273,7 +273,7 @@ suppressWarnings(
 suppressWarnings(
   util_bind(
     dir = tmp,
-    pattern = "^error*",
+    pattern = "^error.*",
     format = "xls",
     par = FALSE
   )
@@ -281,7 +281,7 @@ suppressWarnings(
 suppressWarnings(
   util_bind(
     dir = tmp,
-    pattern = "^error*",
+    pattern = "^error.*",
     format = "xlsx",
     par = FALSE
   )

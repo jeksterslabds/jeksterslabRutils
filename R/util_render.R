@@ -51,10 +51,10 @@ util_render <- function(dir = getwd(),
       }
     )
   }
-  if (is.null(file)) {
+  if (is.null(files)) {
     files <- list.files(
       path = normalizePath(dir),
-      pattern = "^.*\\.[r|rmd]$",
+      pattern = ".*\\.[r|rmd]",
       full.names = TRUE,
       recursive = recursive,
       ignore.case = TRUE,
@@ -71,6 +71,8 @@ util_render <- function(dir = getwd(),
       )
     )
   } else {
+    # tryCatch(
+    #  {
     files <- invisible(
       util_lapply(
         FUN = foo_list,
@@ -81,6 +83,18 @@ util_render <- function(dir = getwd(),
         ncores = ncores
       )
     )
+    #  },
+    #  error = function(err) {
+    #    warning(
+    #      paste(
+    #        "Error rendering",
+    #        file,
+    #        "\n"
+    #      )
+    #    )
+    #    files <- NA
+    #  }
+    # )
     if (all(is.na(files))) {
       stop(
         "No files to render.\n"

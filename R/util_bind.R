@@ -14,12 +14,13 @@
 #'   `"csv"` for comma separated files.
 #'   `"xls"` or `"xlsx` for `Excel` files.
 #' @param pattern Character string.
+#'   Regular expression.
 #'   Pattern of file names.
 #'   `format` is appended as an extension.
-#'   For example, if `pattern = "^filename*"`,
+#'   For example, if `pattern = "filename.*"`,
 #'   and `format = "csv"`,
 #'   the pattern used to load files will be
-#'   `"^filename*.csv$"`.
+#'   `"filename.*\\.csv"`.
 #' @param fn_column Logical.
 #'   Save file name of source data file as a new column.
 #' @param save Logical.
@@ -57,7 +58,7 @@ util_bind <- function(dir = getwd(),
                         "xls",
                         "xlsx"
                       ),
-                      pattern = "^filename.*",
+                      pattern = "filename.*",
                       fn_column = TRUE,
                       save = FALSE,
                       fn = NULL,
@@ -114,17 +115,8 @@ util_bind <- function(dir = getwd(),
     pattern = paste0(
       pattern,
       "\\.",
-      format,
-      "$"
+      format
     ),
-#    pattern = glob2rx(
-#      paste0(
-#        pattern,
-#        ".",
-#        format,
-#        "$"
-#      )
-#    ),
     full.names = TRUE,
     recursive = FALSE,
     ignore.case = TRUE
@@ -170,4 +162,3 @@ util_bind <- function(dir = getwd(),
   }
   output
 }
-

@@ -50,7 +50,9 @@ hist(x)
 ### Calculating $z$-scores
 
 ```{r, plot2, fig.caption="Histogram 2"}
-library(BOILERPLATEPACKAGE)
+z <- function(x, mu, sigma) {
+  (x - mu) / sigma
+}
 std <- z(x = x, mu = 100, sigma = 15)
 hist(std, main = "Histogram of z")
 ```
