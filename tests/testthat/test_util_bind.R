@@ -298,7 +298,3 @@ unlink(
   tmp,
   recursive = TRUE
 )
-unlink(
-  tmp,
-  recursive = TRUE
-)

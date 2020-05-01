@@ -137,6 +137,7 @@ util_bind <- function(dir = getwd(),
     ignore.case = TRUE,
     no.. = FALSE
   )
+  if (length(files) > 0) {
   input <- vector(
     mode = "list",
     length(files)
@@ -176,5 +177,8 @@ util_bind <- function(dir = getwd(),
       )
     )
   }
-  output
+  return(output)
+  } else {
+    stop("No files to bind.\n")
+  }
 }
