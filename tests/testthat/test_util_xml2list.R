@@ -20,12 +20,6 @@ tmp <- file.path(
   util_rand_str()
 )
 dir.create(tmp)
-on.exit(
-  unlink(
-    tmp,
-    recursive = TRUE
-  )
-)
 fn <- file.path(
   file.path(
     tmp,
@@ -184,3 +178,7 @@ test_that("year is correct", {
     year
   )
 })
+unlink(
+  tmp,
+  recursive = TRUE
+)

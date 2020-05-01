@@ -21,12 +21,6 @@ tmp <- file.path(
 )
 # to cover dir.create(dir) in util_txt2file.R
 # dir.create(tmp)
-on.exit(
-  unlink(
-    tmp,
-    recursive = TRUE
-  )
-)
 input <- paste0(
   "Lorem ipsum dolor sit amet,",
   "consectetur adipiscing elit,",

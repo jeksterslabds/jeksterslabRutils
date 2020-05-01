@@ -20,12 +20,6 @@ tmp <- file.path(
   util_rand_str()
 )
 dir.create(tmp)
-on.exit(
-  unlink(
-    tmp,
-    recursive = TRUE
-  )
-)
 link <- c(
   "https://raw.githubusercontent.com/jeksterslabds/jeksterslabRutils/master/R/util_bind.R",
   "https://raw.githubusercontent.com/jeksterslabds/jeksterslabRutils/master/R/util_cat_sys.R"

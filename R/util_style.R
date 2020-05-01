@@ -41,22 +41,27 @@ util_style <- function(dir = getwd(),
       }
     )
   }
-  files <- list.files(
-    path = normalizePath(dir),
-    pattern = ".*\\.[r|rmd]",
+  dir <- normalizePath(dir)
+  files <- util_search_r(
+    dir = dir,
+    all.files = FALSE,
     full.names = TRUE,
     recursive = recursive,
     ignore.case = TRUE,
-    include.dirs = TRUE
+    no.. = FALSE
   )
-  invisible(
-    util_lapply(
-      FUN = foo,
-      args = list(
-        file = files
-      ),
-      par = par,
-      ncores = ncores
+  if (length(files) > 0) {
+    invisible(
+      util_lapply(
+        FUN = foo,
+        args = list(
+          file = files
+        ),
+        par = par,
+        ncores = ncores
+      )
     )
-  )
+  } else {
+    message("No files to style.\n")
+  }
 }

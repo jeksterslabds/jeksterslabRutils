@@ -28,7 +28,7 @@ util_render <- function(dir = getwd(),
                         files = NULL,
                         par = TRUE,
                         ncores = NULL) {
-  foo_list <- function(file) {
+  foo_exists <- function(file) {
     if (file.exists(file)) {
       return(file)
     } else {
@@ -51,15 +51,53 @@ util_render <- function(dir = getwd(),
       }
     )
   }
+  foo_go <- function(files) {
+    if (length(files) == 0 | all(is.na(files))) {
+      return(FALSE)
+    } else {
+      return(TRUE)
+    }
+  }
+  message <- "No files to render.\n"
+  dir <- normalizePath(dir)
   if (is.null(files)) {
-    files <- list.files(
-      path = normalizePath(dir),
-      pattern = ".*\\.[r|rmd]",
+    # populate files
+    files <- util_search_r(
+      dir = dir,
+      all.files = FALSE,
       full.names = TRUE,
       recursive = recursive,
       ignore.case = TRUE,
-      include.dirs = TRUE
+      no.. = FALSE
     )
+  } else {
+    # files > 0 check if files exist
+    if (foo_go(files)) {
+      # check if file in files exists
+      files <- invisible(
+        util_lapply(
+          FUN = foo_exists,
+          args = list(
+            file = files
+          ),
+          par = par,
+          ncores = ncores
+        )
+      )
+    } else {
+      message(message)
+    }
+    # if some file/s exist retain only non NA
+    if (foo_go(files)) {
+      # retain non NA
+      files <- files[!is.na(files)]
+    } else {
+      message(message)
+    }
+  }
+  # render if files > 0
+  if (foo_go(files)) {
+    # render
     invisible(
       util_lapply(
         FUN = foo_render,
@@ -71,50 +109,6 @@ util_render <- function(dir = getwd(),
       )
     )
   } else {
-    # tryCatch(
-    #  {
-    files <- invisible(
-      util_lapply(
-        FUN = foo_list,
-        args = list(
-          file = files
-        ),
-        par = par,
-        ncores = ncores
-      )
-    )
-    #  },
-    #  error = function(err) {
-    #    warning(
-    #      paste(
-    #        "Error rendering",
-    #        file,
-    #        "\n"
-    #      )
-    #    )
-    #    files <- NA
-    #  }
-    # )
-    if (all(is.na(files))) {
-      stop(
-        "No files to render.\n"
-      )
-    }
-    files <- files[!is.na(files)]
-    if (length(files) == 0) {
-      stop(
-        "No files to render.\n"
-      )
-    }
-    invisible(
-      util_lapply(
-        FUN = foo_render,
-        args = list(
-          file = files
-        ),
-        par = par,
-        ncores = ncores
-      )
-    )
+    message(message)
   }
 }
