@@ -66,7 +66,7 @@ util_bind <- function(dir = getwd(),
                       par = TRUE,
                       ncores = NULL,
                       ...) {
-  exe <- function(file,
+  foo <- function(file,
                   format,
                   ...) {
     tryCatch(
@@ -88,7 +88,7 @@ util_bind <- function(dir = getwd(),
         }
       },
       error = function(err) {
-        warning(
+        stop(
           paste(
             "Error reading in",
             file,
@@ -110,18 +110,6 @@ util_bind <- function(dir = getwd(),
       )
     )
   }
-  # files <- list.files(
-  #  path = dir,
-  #  pattern = paste0(
-  #    pattern,
-  #    "\\.",
-  #    format,
-  #    "$"
-  #  ),
-  #  full.names = TRUE,
-  #  recursive = FALSE,
-  #  ignore.case = TRUE
-  # )
   pattern <- paste0(
     pattern,
     "\\.",
@@ -138,46 +126,46 @@ util_bind <- function(dir = getwd(),
     no.. = FALSE
   )
   if (length(files) > 0) {
-  input <- vector(
-    mode = "list",
-    length(files)
-  )
-  input <- util_lapply(
-    FUN = exe,
-    args = list(
-      file = files,
-      format = format,
-      ...
-    ),
-    par = par,
-    ncores = ncores
-  )
-  if (fn_column) {
-    for (i in seq_along(files)) {
-      input[[i]]["fn"] <- files[i]
+    input <- vector(
+      mode = "list",
+      length(files)
+    )
+    input <- util_lapply(
+      FUN = foo,
+      args = list(
+        file = files,
+        format = format,
+        ...
+      ),
+      par = par,
+      ncores = ncores
+    )
+    if (fn_column) {
+      for (i in seq_along(files)) {
+        input[[i]]["fn"] <- files[i]
+      }
     }
-  }
-  output <- as.data.frame(
-    do.call(
-      what = "rbind",
-      args = input
-    )
-  )
-  if (save) {
-    write.csv(
-      x = output,
-      file = fn,
-      row.names = FALSE
-    )
-    message(
-      paste(
-        fn,
-        "saved.",
-        "\n"
+    output <- as.data.frame(
+      do.call(
+        what = "rbind",
+        args = input
       )
     )
-  }
-  return(output)
+    if (save) {
+      write.csv(
+        x = output,
+        file = fn,
+        row.names = FALSE
+      )
+      message(
+        paste(
+          fn,
+          "saved.",
+          "\n"
+        )
+      )
+    }
+    return(output)
   } else {
     stop("No files to bind.\n")
   }

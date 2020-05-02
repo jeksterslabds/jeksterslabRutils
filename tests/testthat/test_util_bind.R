@@ -16,7 +16,7 @@ context("Test util_bind.")
 #'
 #+ parameters
 tmp <- file.path(
-  getwd(),
+  tempdir(),
   util_rand_str()
 )
 dir.create(tmp)
@@ -256,30 +256,32 @@ sapply(
   X = files_xlsx,
   FUN = file.create
 )
-suppressWarnings(
-  util_bind(
-    dir = tmp,
-    pattern = "^error.*",
-    format = "csv",
-    par = FALSE
+test_that("tryCatch", {
+  expect_error(
+    util_bind(
+      dir = tmp,
+      pattern = "^error.*",
+      format = "csv",
+      par = FALSE
+    )
   )
-)
-suppressWarnings(
-  util_bind(
-    dir = tmp,
-    pattern = "^error.*",
-    format = "xls",
-    par = FALSE
+  expect_error(
+    util_bind(
+      dir = tmp,
+      pattern = "^error.*",
+      format = "xls",
+      par = FALSE
+    )
   )
-)
-suppressWarnings(
-  util_bind(
-    dir = tmp,
-    pattern = "^error.*",
-    format = "xlsx",
-    par = FALSE
+  expect_error(
+    util_bind(
+      dir = tmp,
+      pattern = "^error.*",
+      format = "xlsx",
+      par = FALSE
+    )
   )
-)
+})
 sapply(
   X = files_csv,
   FUN = unlink
@@ -297,4 +299,10 @@ sapply(
 unlink(
   tmp,
   recursive = TRUE
+)
+on.exit(
+  unlink(
+    tmp,
+    recursive = TRUE
+  )
 )

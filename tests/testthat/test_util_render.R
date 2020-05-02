@@ -110,3 +110,9 @@ unlink(
   tmp,
   recursive = TRUE
 )
+on.exit(
+  unlink(
+    tmp,
+    recursive = TRUE
+  )
+)

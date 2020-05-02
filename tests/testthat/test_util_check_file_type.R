@@ -16,7 +16,7 @@ context("Test util_check_file_type.")
 #'
 #+ parameters
 tmp <- file.path(
-  getwd(),
+  tempdir(),
   util_rand_str()
 )
 dir.create(tmp)
@@ -175,4 +175,10 @@ test_that("tryCatch", {
 unlink(
   tmp,
   recursive = TRUE
+)
+on.exit(
+  unlink(
+    tmp,
+    recursive = TRUE
+  )
 )
