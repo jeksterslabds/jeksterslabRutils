@@ -15,8 +15,12 @@ context("Test util_txt2file.")
 #' ## Set test parameters
 #'
 #+ parameters
+extdata <- system.file(
+  "extdata",
+  package = "jeksterslabRutils"
+)
 tmp <- file.path(
-  getwd(),
+  extdata,
   util_rand_str()
 )
 # to cover dir.create(dir) in util_txt2file.R

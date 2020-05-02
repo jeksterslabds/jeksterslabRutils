@@ -15,8 +15,12 @@ context("Test util_xml2list.")
 #' ## Set test parameters
 #'
 #+ parameters
+extdata <- system.file(
+  "extdata",
+  package = "jeksterslabRutils"
+)
 tmp <- file.path(
-  getwd(),
+  extdata,
   util_rand_str()
 )
 dir.create(tmp)

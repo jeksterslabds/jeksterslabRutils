@@ -26,6 +26,8 @@ output <- file.path(
   wd,
   "z.html"
 )
+#'
+#+ test_01
 if (file.exists(output)) {
   unlink(output)
 }
@@ -43,6 +45,7 @@ test_that("output", {
   )
 })
 #'
+#+ test_02
 if (file.exists(output)) {
   unlink(output)
 }
@@ -63,7 +66,7 @@ test_that("output", {
 #+ message
 message <- "No files to render"
 #'
-#' #' Length of `files == 0`
+#' Length of `files == 0`
 #'
 #+ testthat_03, echo=TRUE
 test_that("expect_message", {
@@ -92,8 +95,12 @@ test_that("expect_message", {
 #' No `R` or `R Markdown` files in `dir`.
 #'
 #+ testthat_05, echo=TRUE
+extdata <- system.file(
+  "extdata",
+  package = "jeksterslabRutils"
+)
 tmp <- file.path(
-  getwd(),
+  extdata,
   util_rand_str()
 )
 dir.create(tmp)

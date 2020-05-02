@@ -23,7 +23,6 @@ util_style(
   par = FALSE
 )
 #'
-#'
 #+ message
 message <- "No files to style"
 #'

@@ -13,8 +13,12 @@ library(jeksterslabRutils)
 context("Test util_search.")
 #'
 #+ parameters
+extdata <- system.file(
+  "extdata",
+  package = "jeksterslabRutils"
+)
 tmp <- file.path(
-  getwd(),
+  extdata,
   util_rand_str()
 )
 dir.create(tmp)
