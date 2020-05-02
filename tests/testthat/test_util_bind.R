@@ -182,7 +182,6 @@ unlink(fn)
 #' ## Expect error
 #'
 #+ testthat_04, echo=TRUE
-#'
 test_that("tryCatch", {
   expect_error(
     util_bind(

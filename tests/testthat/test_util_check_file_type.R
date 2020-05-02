@@ -143,7 +143,7 @@ test_that("tryCatch", {
 #'
 #' ## tryCatch error for code coverage
 #'
-#+ error
+#' error
 # files <- paste0(
 #  file.path(
 #    tmp,
