@@ -16,7 +16,7 @@ context("Test util_check_file_type.")
 #'
 #+ parameters
 tmp <- file.path(
-  tempdir(),
+  getwd(),
   util_rand_str()
 )
 dir.create(tmp)
