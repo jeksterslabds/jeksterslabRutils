@@ -7,6 +7,13 @@
 #'     toc: true
 #' ---
 #'
+#+ include=FALSE
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  out.width = "100%"
+)
+#'
 #+ setup
 library(testthat)
 library(jeksterslabRutils)
