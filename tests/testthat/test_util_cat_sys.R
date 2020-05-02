@@ -7,8 +7,9 @@
 #'     toc: true
 #' ---
 #'
-#+ include=FALSE
+#+ include=FALSE, cache=FALSE
 knitr::opts_chunk$set(
+  error = TRUE,
   collapse = TRUE,
   comment = "#>",
   out.width = "100%"
