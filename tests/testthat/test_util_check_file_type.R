@@ -23,15 +23,17 @@ context("Test util_check_file_type.")
 #' ## Set test parameters
 #'
 #+ parameters
-extdata <- system.file(
-  "extdata",
-  package = "jeksterslabRutils"
-)
 tmp <- file.path(
-  extdata,
+  tempdir(),
   util_rand_str()
 )
 dir.create(tmp)
+on.exit(
+  unlink(
+    tmp,
+    recursive = TRUE
+  )
+)
 invalid_from <- system.file(
   "extdata",
   "tests",
@@ -187,10 +189,4 @@ sapply(
 unlink(
   tmp,
   recursive = TRUE
-)
-on.exit(
-  unlink(
-    tmp,
-    recursive = TRUE
-  )
 )

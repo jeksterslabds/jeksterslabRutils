@@ -103,15 +103,17 @@ test_that("expect_message", {
 #' No `R` or `R Markdown` files in `dir`.
 #'
 #+ testthat_05, echo=TRUE
-extdata <- system.file(
-  "extdata",
-  package = "jeksterslabRutils"
-)
 tmp <- file.path(
-  extdata,
+  tempdir(),
   util_rand_str()
 )
 dir.create(tmp)
+on.exit(
+  unlink(
+    tmp,
+    recursive = TRUE
+  )
+)
 test_that("expect_message", {
   expect_message(
     util_render(
@@ -124,10 +126,4 @@ test_that("expect_message", {
 unlink(
   tmp,
   recursive = TRUE
-)
-on.exit(
-  unlink(
-    tmp,
-    recursive = TRUE
-  )
 )

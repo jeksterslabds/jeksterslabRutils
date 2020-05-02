@@ -23,15 +23,17 @@ context("Test util_xml2list.")
 #' ## Set test parameters
 #'
 #+ parameters
-extdata <- system.file(
-  "extdata",
-  package = "jeksterslabRutils"
-)
 tmp <- file.path(
-  extdata,
+  tempdir(),
   util_rand_str()
 )
 dir.create(tmp)
+on.exit(
+  unlink(
+    tmp,
+    recursive = TRUE
+  )
+)
 fn <- file.path(
   file.path(
     tmp,
@@ -193,10 +195,4 @@ test_that("year is correct", {
 unlink(
   tmp,
   recursive = TRUE
-)
-on.exit(
-  unlink(
-    tmp,
-    recursive = TRUE
-  )
 )

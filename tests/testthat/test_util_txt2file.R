@@ -23,13 +23,15 @@ context("Test util_txt2file.")
 #' ## Set test parameters
 #'
 #+ parameters
-extdata <- system.file(
-  "extdata",
-  package = "jeksterslabRutils"
-)
 tmp <- file.path(
-  extdata,
+  tempdir(),
   util_rand_str()
+)
+on.exit(
+  unlink(
+    tmp,
+    recursive = TRUE
+  )
 )
 # to cover dir.create(dir) in util_txt2file.R
 # dir.create(tmp)
@@ -106,10 +108,4 @@ test_that("util_txt2file works", {
 unlink(
   tmp,
   recursive = TRUE
-)
-on.exit(
-  unlink(
-    tmp,
-    recursive = TRUE
-  )
 )

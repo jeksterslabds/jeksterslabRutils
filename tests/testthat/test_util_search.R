@@ -21,15 +21,17 @@ library(jeksterslabRutils)
 context("Test util_search.")
 #'
 #+ parameters
-extdata <- system.file(
-  "extdata",
-  package = "jeksterslabRutils"
-)
 tmp <- file.path(
-  extdata,
+  tempdir(),
   util_rand_str()
 )
 dir.create(tmp)
+on.exit(
+  unlink(
+    tmp,
+    recursive = TRUE
+  )
+)
 #'
 #+ pattern1
 pattern1 <- "^[[:print:]]*\\.[[:alnum:]]{1,4}$"
@@ -332,10 +334,4 @@ unlink(
 unlink(
   tmp,
   recursive = TRUE
-)
-on.exit(
-  unlink(
-    tmp,
-    recursive = TRUE
-  )
 )

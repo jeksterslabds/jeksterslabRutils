@@ -23,15 +23,17 @@ context("Test util_bind.")
 #' ## Set test parameters
 #'
 #+ parameters
-extdata <- system.file(
-  "extdata",
-  package = "jeksterslabRutils"
-)
 tmp <- file.path(
-  extdata,
+  tempdir(),
   util_rand_str()
 )
 dir.create(tmp)
+on.exit(
+  unlink(
+    tmp,
+    recursive = TRUE
+  )
+)
 wd <- system.file(
   "extdata",
   "tests",
@@ -310,10 +312,4 @@ sapply(
 unlink(
   tmp,
   recursive = TRUE
-)
-on.exit(
-  unlink(
-    tmp,
-    recursive = TRUE
-  )
 )

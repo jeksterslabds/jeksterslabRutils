@@ -38,10 +38,16 @@ message <- "No files to style"
 #'
 #+ testthat_05, echo=TRUE
 tmp <- file.path(
-  getwd(),
+  tempdir(),
   util_rand_str()
 )
 dir.create(tmp)
+on.exit(
+  unlink(
+    tmp,
+    recursive = TRUE
+  )
+)
 test_that("expect_message", {
   expect_message(
     util_style(
@@ -54,10 +60,4 @@ test_that("expect_message", {
 unlink(
   tmp,
   recursive = TRUE
-)
-on.exit(
-  unlink(
-    tmp,
-    recursive = TRUE
-  )
 )
