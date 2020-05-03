@@ -95,12 +95,32 @@ knitr::kable(
   row.names = FALSE
 )
 #'
-#+ testthat, echo=TRUE
+#+ testthat_01, echo=TRUE
 test_that("util_txt2file works", {
   skip_on_appveyor()
   expect_equivalent(
     results,
     input
+  )
+})
+#'
+#+ testthat_02, echo=TRUE
+test_that("warning", {
+  util_txt2file(
+    text = input,
+    dir = tmp,
+    fn = "Lipsum.txt",
+    msg = "Output file:",
+    overwrite = FALSE
+  )
+  expect_warning(
+    util_txt2file(
+      text = input,
+      dir = tmp,
+      fn = "Lipsum.txt",
+      msg = "Output file:",
+      overwrite = FALSE
+    )
   )
 })
 #'
