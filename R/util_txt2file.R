@@ -11,6 +11,8 @@
 #'   Optional message.
 #'   If supplied,
 #'   prints `msg dir/fn`.
+#' @param overwrite Logical.
+#'   Overwrite existing `fn` in `dir`.
 #' @inheritParams base::writeLines
 #' @examples
 #' \dontrun{
@@ -38,14 +40,27 @@
 util_txt2file <- function(text,
                           dir,
                           fn,
-                          msg = NULL) {
-  if (!dir.exists(dir)) {
-    dir.create(dir)
-  }
+                          msg = NULL,
+                          overwrite = FALSE) {
   output_fn <- file.path(
     dir,
     fn
   )
+  if (file.exists(output_fn)) {
+    if (!overwrite) {
+      return(
+        warning(
+          paste(
+            output_fn,
+            "exists and will NOT be overwritten.\n"
+          )
+        )
+      )
+    }
+  }
+  if (!dir.exists(dir)) {
+    dir.create(dir)
+  }
   con <- file(output_fn)
   on.exit(
     close(con)
