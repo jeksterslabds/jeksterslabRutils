@@ -1,24 +1,20 @@
 PREFIX=/media/jeksterslab/scripts/r
 PKG=$(PREFIX)/jeksterslabRutils
 
-.PHONY: all clean
+.PHONY: all clean rm
 
-all :
-	-rm -rf ${PKG}/docs/*
-	-rm -rf ${PKG}/man/*
-	-rm -rf ${PKG}/tests/testthat/*.html
-	-rm -rf ${PKG}/tests/testthat/*.md
-	-rm -rf ${PKG}/vignettes/*.html
-	-rm -rf ${PKG}/vignettes/*.md
+all : rm
 	Rscript -e 'jeksterslabRpkg::pkg_build("$(PKG)", git = TRUE, github = TRUE)'
 
-clean :
-	-rm -rf ${PKG}/docs/*
-	-rm -rf ${PKG}/man/*
-	-rm -rf ${PKG}/tests/testthat/*.html
-	-rm -rf ${PKG}/tests/testthat/*.md
-	-rm -rf ${PKG}/vignettes/*.html
-	-rm -rf ${PKG}/vignettes/*.md
+clean : rm
 	git add --all
 	git commit -m "Automated clean."
 	git push
+
+rm :
+	-rm -rf ${PKG}/docs/*
+	-rm -rf ${PKG}/man/*
+	-rm -rf ${PKG}/tests/testthat/*.html
+	-rm -rf ${PKG}/tests/testthat/*.md
+	-rm -rf ${PKG}/vignettes/*.html
+	-rm -rf ${PKG}/vignettes/*.md
