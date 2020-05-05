@@ -2,9 +2,11 @@
 #' title: "Test: util_render"
 #' author: "Ivan Jacob Agaloos Pesigan"
 #' date: "`r Sys.Date()`"
-#' output:
-#'   rmarkdown::github_document:
-#'     toc: true
+#' output: rmarkdown::html_vignette
+#' vignette: >
+#'   %\VignetteIndexEntry{Test: util_render}
+#'   %\VignetteEngine{knitr::rmarkdown}
+#'   %\VignetteEncoding{UTF-8}
 #' ---
 #'
 #+ include=FALSE, cache=FALSE
@@ -104,7 +106,7 @@ test_that("expect_message", {
 #'
 #+ testthat_05, echo=TRUE
 tmp <- file.path(
-  tempdir(),
+  getwd(),
   util_rand_str()
 )
 dir.create(tmp)

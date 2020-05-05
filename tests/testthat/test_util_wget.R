@@ -2,9 +2,11 @@
 #' title: "Test: util_wget"
 #' author: "Ivan Jacob Agaloos Pesigan"
 #' date: "`r Sys.Date()`"
-#' output:
-#'   rmarkdown::github_document:
-#'     toc: true
+#' output: rmarkdown::html_vignette
+#' vignette: >
+#'   %\VignetteIndexEntry{Test: util_wget}
+#'   %\VignetteEngine{knitr::rmarkdown}
+#'   %\VignetteEncoding{UTF-8}
 #' ---
 #'
 #+ include=FALSE, cache=FALSE
@@ -24,7 +26,7 @@ context("Test util_wget.")
 #'
 #+ parameters
 tmp <- file.path(
-  tempdir(),
+  getwd(),
   util_rand_str()
 )
 dir.create(tmp)
@@ -62,6 +64,7 @@ knitr::kable(
   ),
   row.names = FALSE
 )
+#'
 #' ## Run test
 #'
 #+ test
@@ -74,6 +77,7 @@ util_wget(
 #'
 #' ## Results
 #'
+#+ results
 results <- log <- rep(x = NA, times = length(files))
 for (i in seq_along(files)) {
   if (file.exists(files[i])) {
@@ -84,10 +88,6 @@ for (i in seq_along(files)) {
     log[i] <- FALSE
   }
 }
-#'
-#' ## Results
-#'
-#+ results
 Parameter <- c(
   paste(link, collapse = ", "),
   paste(files, collapse = ", ")

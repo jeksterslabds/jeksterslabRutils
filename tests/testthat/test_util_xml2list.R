@@ -2,9 +2,11 @@
 #' title: "Test: util_xml2list"
 #' author: "Ivan Jacob Agaloos Pesigan"
 #' date: "`r Sys.Date()`"
-#' output:
-#'   rmarkdown::github_document:
-#'     toc: true
+#' output: rmarkdown::html_vignette
+#' vignette: >
+#'   %\VignetteIndexEntry{Test: util_xml2list}
+#'   %\VignetteEngine{knitr::rmarkdown}
+#'   %\VignetteEncoding{UTF-8}
 #' ---
 #'
 #+ include=FALSE, cache=FALSE
@@ -24,7 +26,7 @@ context("Test util_xml2list.")
 #'
 #+ parameters
 tmp <- file.path(
-  tempdir(),
+  getwd(),
   util_rand_str()
 )
 dir.create(tmp)

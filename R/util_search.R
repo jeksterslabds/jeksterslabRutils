@@ -78,19 +78,34 @@ util_search_ext <- function(dir = getwd(),
 #' Searches for `R` and `R Markdown` files in `dir`.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
+#' @param rscript Logical.
+#'   Search for `R` scripts (`*.R` or `*.r`).
+#' @param rmd Logical.
+#'   Search for `R Markdown` files (`*.Rmd` or `*.rmd`).
 #' @inheritParams util_search_pattern
 #' @examples
 #' util_search_r(dir = getwd())
 #' @export
 util_search_r <- function(dir = getwd(),
+                          rscript = TRUE,
+                          rmd = TRUE,
                           all.files = FALSE,
                           full.names = TRUE,
                           recursive = FALSE,
                           ignore.case = TRUE,
                           no.. = FALSE) {
+  if (rscript == TRUE & rmd == TRUE) {
+    pattern <- "^.*\\.r$|^.*\\.rmd$"
+  }
+  if (rscript == TRUE & rmd == FALSE) {
+    pattern <- "^.*\\.r$"
+  }
+  if (rscript == FALSE & rmd == TRUE) {
+    pattern <- "^.*\\.rmd$"
+  }
   list.files(
     path = normalizePath(dir),
-    pattern = "^.*\\.r$|^.*\\.rmd$",
+    pattern = pattern,
     all.files = all.files,
     full.names = full.names,
     recursive = recursive,

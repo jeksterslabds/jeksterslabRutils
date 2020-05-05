@@ -27,9 +27,9 @@ Imports:
     readxl,
     usethis,
     shiny,
-    remotes
+    remotes,
+    knitr
 Suggests:
-    knitr,
     testthat
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)

@@ -6,6 +6,8 @@
 \usage{
 util_search_r(
   dir = getwd(),
+  rscript = TRUE,
+  rmd = TRUE,
   all.files = FALSE,
   full.names = TRUE,
   recursive = FALSE,
@@ -16,6 +18,12 @@ util_search_r(
 \arguments{
 \item{dir}{Character string.
 Directory to search.}
+
+\item{rscript}{Logical.
+Search for \code{R} scripts (\verb{*.R} or \verb{*.r}).}
+
+\item{rmd}{Logical.
+Search for \verb{R Markdown} files (\verb{*.Rmd} or \verb{*.rmd}).}
 
 \item{all.files}{a logical value.  If \code{FALSE}, only the
     names of visible files are returned (following Unix-style visibility,

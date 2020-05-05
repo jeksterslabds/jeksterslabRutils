@@ -1,4 +1,4 @@
-#' Render `R` Scripts and `R` Markdown Files.
+#' Spin `R` Scripts into `R` Markdown Files.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param dir Character string.
@@ -6,27 +6,32 @@
 #'   Ignored if `file` is NOT NULL.
 #' @param recursive Logical.
 #'   If `TRUE`,
-#'   recursively render all `R` scripts (`.R`, `.r`) and
-#'   R Markdown files (`.Rmd`, `.rmd`)
+#'   recursively spin all `R` scripts (`.R`, `.r`)
 #'   in `dir`.
 #'   Ignored if `file` is NOT NULL.
 #' @param files Character vector.
-#'   Vector of files to render.
+#'   Vector of files to spin.
+#' @param knit Logical.
+#'   If `TRUE`, compiles the document after conversion.
+#' @param ... Arguments to pass to [`knitr::spin()`].
 #' @inheritParams util_lapply
-#' @importFrom rmarkdown render
+#' @inheritParams knitr::spin
+#' @importFrom knitr spin
 #' @examples
 #' \dontrun{
-#' util_render(
+#' util_spin(
 #'   dir = getwd(),
 #'   par = FALSE
 #' )
 #' }
 #' @export
-util_render <- function(dir = getwd(),
-                        recursive = FALSE,
-                        files = NULL,
-                        par = TRUE,
-                        ncores = NULL) {
+util_spin <- function(dir = getwd(),
+                      recursive = FALSE,
+                      files = NULL,
+                      knit = FALSE,
+                      par = TRUE,
+                      ncores = NULL,
+                      ...) {
   foo_exists <- function(file) {
     if (file.exists(file)) {
       return(file)
@@ -34,15 +39,21 @@ util_render <- function(dir = getwd(),
       return(NA)
     }
   }
-  foo_render <- function(file) {
+  foo_spin <- function(file,
+                       knit,
+                       ...) {
     tryCatch(
       {
-        render(file)
+        spin(
+          hair = file,
+          knit = knit,
+          ...
+        )
       },
       error = function(err) {
         warning(
           paste(
-            "Error rendering",
+            "Error spinning",
             file,
             "\n"
           )
@@ -57,12 +68,14 @@ util_render <- function(dir = getwd(),
       return(TRUE)
     }
   }
-  message <- "No files to render.\n"
+  message <- "No files to spin.\n"
   dir <- normalizePath(dir)
   if (is.null(files)) {
     # populate files
     files <- util_search_r(
       dir = dir,
+      rscript = TRUE,
+      rmd = FALSE,
       all.files = FALSE,
       full.names = TRUE,
       recursive = recursive,
@@ -94,14 +107,16 @@ util_render <- function(dir = getwd(),
       message(message)
     }
   }
-  # render if files > 0
+  # spin if files > 0
   if (foo_go(files)) {
-    # render
+    # spin
     invisible(
       util_lapply(
-        FUN = foo_render,
+        FUN = foo_spin,
         args = list(
-          file = files
+          hair = files,
+          knit = knit,
+          ...
         ),
         par = par,
         ncores = ncores

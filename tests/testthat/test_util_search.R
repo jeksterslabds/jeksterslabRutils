@@ -2,9 +2,11 @@
 #' title: "Test: util_search"
 #' author: "Ivan Jacob Agaloos Pesigan"
 #' date: "`r Sys.Date()`"
-#' output:
-#'   rmarkdown::github_document:
-#'     toc: true
+#' output: rmarkdown::html_vignette
+#' vignette: >
+#'   %\VignetteIndexEntry{Test: util_search}
+#'   %\VignetteEngine{knitr::rmarkdown}
+#'   %\VignetteEncoding{UTF-8}
 #' ---
 #'
 #+ include=FALSE, cache=FALSE
@@ -22,7 +24,7 @@ context("Test util_search.")
 #'
 #+ parameters
 tmp <- file.path(
-  tempdir(),
+  getwd(),
   util_rand_str()
 )
 dir.create(tmp)
@@ -334,4 +336,169 @@ unlink(
 unlink(
   tmp,
   recursive = TRUE
+)
+#'
+#+ pattern6
+pattern6 <- "^.*\\.r$"
+n <- 30
+file_basename <- mismatch <- rep(
+  x = NA,
+  times = n
+)
+for (i in seq_along(file_basename)) {
+  file_basename[i] <- util_rand_str(
+    characters = sample(1:8),
+    digits = TRUE,
+    ext = NULL
+  )
+  mismatch[i] <- util_rand_str(
+    characters = sample(1:8),
+    digits = TRUE,
+    ext = NULL
+  )
+}
+file_name <- paste0(
+  file_basename,
+  ".",
+  sample(
+    c(
+      "r",
+      "R"
+    ),
+    size = n,
+    replace = TRUE
+  )
+)
+file_name <- file.path(
+  tmp,
+  file_name
+)
+mismatch <- paste0(
+  mismatch,
+  ".",
+  sample(
+    c(
+      "md",
+      "rd",
+      "Rd",
+      "js",
+      "Rtex",
+      "Rmd",
+      "rmd"
+    ),
+    size = n,
+    replace = TRUE
+  )
+)
+mismatch <- file.path(
+  tmp,
+  mismatch
+)
+file.create(
+  c(
+    file_name,
+    mismatch
+  )
+)
+results_util_search_pattern_pattern6 <- util_search_pattern(
+  dir = tmp,
+  pattern = pattern6
+)
+results_util_search_r_pattern6 <- util_search_r(
+  dir = tmp
+)
+expect_equal(
+  sort(results_util_search_pattern_pattern6),
+  sort(results_util_search_r_pattern6),
+  sort(file_name)
+)
+unlink(
+  c(
+    file_name,
+    mismatch
+  )
+)
+#'
+#+ pattern7
+pattern7 <- "^.*\\.rmd$"
+n <- 30
+file_basename <- mismatch <- rep(
+  x = NA,
+  times = n
+)
+for (i in seq_along(file_basename)) {
+  file_basename[i] <- util_rand_str(
+    characters = sample(1:8),
+    digits = TRUE,
+    ext = NULL
+  )
+  mismatch[i] <- util_rand_str(
+    characters = sample(1:8),
+    digits = TRUE,
+    ext = NULL
+  )
+}
+file_name <- paste0(
+  file_basename,
+  ".",
+  sample(
+    c(
+      "rmd",
+      "Rmd",
+      "RMD",
+      "rMd",
+      "rmD"
+    ),
+    size = n,
+    replace = TRUE
+  )
+)
+file_name <- file.path(
+  tmp,
+  file_name
+)
+mismatch <- paste0(
+  mismatch,
+  ".",
+  sample(
+    c(
+      "md",
+      "rd",
+      "Rd",
+      "js",
+      "Rtex",
+      "R",
+      "r"
+    ),
+    size = n,
+    replace = TRUE
+  )
+)
+mismatch <- file.path(
+  tmp,
+  mismatch
+)
+file.create(
+  c(
+    file_name,
+    mismatch
+  )
+)
+results_util_search_pattern_pattern7 <- util_search_pattern(
+  dir = tmp,
+  pattern = pattern7
+)
+results_util_search_r_pattern7 <- util_search_r(
+  dir = tmp
+)
+expect_equal(
+  sort(results_util_search_pattern_pattern7),
+  sort(results_util_search_r_pattern7),
+  sort(file_name)
+)
+unlink(
+  c(
+    file_name,
+    mismatch
+  )
 )
