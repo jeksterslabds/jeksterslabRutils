@@ -59,6 +59,10 @@ packages <- c(
   "devtools",
   "rmarkdown"
 )
-util_pkgload(packages)
+github <- "jalvesaq/colorout"
+util_pkgload(
+  pkg = packages,
+  github = github
+)
 ```
 

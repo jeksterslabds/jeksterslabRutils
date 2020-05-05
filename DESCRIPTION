@@ -26,7 +26,8 @@ Imports:
     parallel,
     readxl,
     usethis,
-    shiny
+    shiny,
+    remotes
 Suggests:
     knitr,
     testthat

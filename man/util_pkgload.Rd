@@ -6,6 +6,7 @@
 \usage{
 util_pkgload(
   pkg,
+  github = NULL,
   lib.loc = .libPaths()[1],
   repos = "https://cran.rstudio.org",
   dependencies = TRUE,
@@ -16,6 +17,9 @@ util_pkgload(
 \arguments{
 \item{pkg}{Character vector.
 Packages to install.}
+
+\item{github}{Character vector.
+Packages from \code{Github} to install.}
 
 \item{lib.loc}{character vector describing the location of R
     library trees to search through (and update packages therein), or
@@ -70,7 +74,9 @@ pkg <- c(
   "stats",
   "stats4"
 )
-util_pkgload(pkg = pkg)
+util_pkgload(
+  pkg = pkg
+)
 }
 \author{
 Ivan Jacob Agaloos Pesigan

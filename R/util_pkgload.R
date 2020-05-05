@@ -7,6 +7,8 @@
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param pkg Character vector.
 #'   Packages to install.
+#' @param github Character vector.
+#'   Packages from `Github` to install.
 #' @param update Logical.
 #'   Update installed packages.
 #' @inheritParams utils::update.packages
@@ -20,9 +22,12 @@
 #'   "stats",
 #'   "stats4"
 #' )
-#' util_pkgload(pkg = pkg)
+#' util_pkgload(
+#'   pkg = pkg
+#' )
 #' @export
 util_pkgload <- function(pkg,
+                         github = NULL,
                          lib.loc = .libPaths()[1],
                          repos = "https://cran.rstudio.org",
                          dependencies = TRUE,
@@ -53,6 +58,26 @@ util_pkgload <- function(pkg,
       )
     )
   )
+  suppressMessages(
+    invisible(
+      remotes::install_github(
+        repo = github,
+        repos = repos,
+        lib = lib.loc,
+        ask = FALSE,
+        dependencies = dependencies,
+        type = type
+      )
+    )
+  )
+  if (!is.null(github)) {
+    github <- gsub(
+      pattern = ".*/(.*?$)",
+      replacement = "\\1",
+      x = github
+    )
+    pkg <- c(as.vector(pkg), github)
+  }
   suppressMessages(
     invisible(
       lapply(
