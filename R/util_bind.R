@@ -1,9 +1,12 @@
-#' Bind Comma Separated Values or `Excel` Files.
+#' Row Bind External Files.
 #'
-#' Binds `csv` or `Excel` files
+#' Binds `csv`, `Excel`, `RData`, or `Rds` files
 #' in a given directory by row (`rbind`).
-#' Requires that files have the same columns.
 #'
+#' The function requires that files have the data structure.
+#' For `R` object files.
+#' only vectors, matrices or data frames
+#' are allowed.
 #' By default, `stringsAsFactors = FALSE`
 #' when `format = "csv"`.
 #'
@@ -23,6 +26,8 @@
 #'   `"^filename.*\\.csv$"`.
 #' @param fn_column Logical.
 #'   Save file name of source data file as a new column.
+#' @param fn_column_full_path Logical.
+#'   Save the full path of source data file as a new column.
 #' @param save Logical.
 #'   Save concatenated files in `csv` format.
 #' @param fn Character string.
@@ -31,8 +36,10 @@
 #' @param save_dir Character string.
 #'   Directory used for `fn`.
 #' @param ... Optional arguments to pass to
-#'   [`readxl::read_excel()`] when `format %in% c("xls", "xlsx")` or
-#'   [`read.csv()`] when `format = "csv"`.
+#'   [`readxl::read_excel()`] when `format %in% c("xls", "xlsx")`,
+#'   [`read.csv()`] when `format = "csv"`,
+#'   [`load()`] when `format %in% c("Rda", "RDA", "RData", "Rdata", "rdata", "RDATA")`, or
+#'   [`readRDS()`] when `format %in% c("Rds", "rds", "RDS")`.
 #' @inheritParams util_lapply
 #' @importFrom utils glob2rx
 #' @importFrom utils read.csv
@@ -53,13 +60,10 @@
 #' }
 #' @export
 util_bind <- function(dir = getwd(),
-                      format = c(
-                        "csv",
-                        "xls",
-                        "xlsx"
-                      ),
+                      format = "csv",
                       pattern = "^filename.*",
                       fn_column = TRUE,
+                      fn_column_full_path = FALSE,
                       save = FALSE,
                       fn = NULL,
                       save_dir = getwd(),
@@ -75,17 +79,50 @@ util_bind <- function(dir = getwd(),
           options(
             stringsAsFactors = FALSE
           )
-          read.csv(
+          x <- read.csv(
+            file = file,
+            ...
+          )
+          return(x)
+        }
+        if (format %in% c("xls", "xlsx")) {
+          x <- read_excel(
+            path = file,
+            ...
+          )
+          return(x)
+        }
+        if (format %in% c("Rda", "RDA", "RData", "Rdata", "rdata", "RDATA")) {
+          x <- load(
             file = file,
             ...
           )
         }
-        if (format %in% c("xls", "xlsx")) {
-          read_excel(
-            path = file,
+        if (format %in% c("Rds", "rds", "RDS")) {
+          x <- readRDS(
+            file = file,
             ...
           )
         }
+        # These lines are covered when
+        # format %in% c("Rda", "RDA", "RData", "Rdata", "rdata", "RDATA")
+        # or
+        # format %in% c("Rds", "rds", "RDS")
+        # write tests for these
+        if (is.vector(x)) {
+          x <- as.data.frame(t(x))
+        } else if (is.matrix(x)) {
+          x <- as.data.frame(x)
+        } else if (is.data.frame(x)) {
+          x
+        } else {
+          stop(
+            paste0(
+              "The function only accepts vectors, matrices, or data frames.\n"
+            )
+          )
+        }
+        return(x)
       },
       error = function(err) {
         stop(
@@ -142,6 +179,9 @@ util_bind <- function(dir = getwd(),
     )
     if (fn_column) {
       for (i in seq_along(files)) {
+        if (!fn_column_full_path) {
+          files[i] <- basename(files[i])
+        }
         input[[i]]["fn"] <- files[i]
       }
     }
