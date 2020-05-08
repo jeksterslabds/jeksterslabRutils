@@ -36,6 +36,10 @@ output <- file.path(
   wd,
   "z_roxygen.Rmd"
 )
+epub <- file.path(
+  wd,
+  "valid.epub"
+)
 #'
 #+ test_01
 if (file.exists(output)) {
@@ -102,9 +106,22 @@ test_that("expect_message", {
   )
 })
 #'
-#' No `R` files in `dir`.
+#' Invalid file
 #'
 #+ testthat_05, echo=TRUE
+test_that("expect_warning", {
+  expect_warning(
+    util_spin(
+      files = epub,
+      par = FALSE
+    ),
+    regexp = "Error spinning"
+  )
+})
+#'
+#' No `R` files in `dir`.
+#'
+#+ testthat_06, echo=TRUE
 tmp <- file.path(
   getwd(),
   util_rand_str()

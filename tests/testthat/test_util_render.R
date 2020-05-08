@@ -36,6 +36,10 @@ output <- file.path(
   wd,
   "z.html"
 )
+epub <- file.path(
+  wd,
+  "valid.epub"
+)
 #'
 #+ test_01
 if (file.exists(output)) {
@@ -102,9 +106,22 @@ test_that("expect_message", {
   )
 })
 #'
-#' No `R` or `R Markdown` files in `dir`.
+#' Invalid file
 #'
 #+ testthat_05, echo=TRUE
+test_that("expect_warning", {
+  expect_warning(
+    util_render(
+      files = epub,
+      par = FALSE
+    ),
+    regexp = "Error rendering"
+  )
+})
+#'
+#' No `R` or `R Markdown` files in `dir`.
+#'
+#+ testthat_06, echo=TRUE
 tmp <- file.path(
   getwd(),
   util_rand_str()

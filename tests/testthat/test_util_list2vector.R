@@ -51,6 +51,39 @@ knitr::kable(
   row.names = FALSE
 )
 index
+null_index <- vector(mode = "list", length = 3)
+null_index[[1]] <- list(
+  firstname = NULL,
+  lastname = "Pesigan",
+  province = "BC",
+  number = 27
+)
+null_index[[2]] <- list(
+  firstname = NULL,
+  lastname = "Doe",
+  province = "Ontario",
+  number = 98
+)
+null_index[[3]] <- list(
+  firstname = NULL,
+  lastname = "Matata",
+  number = 12
+)
+knitr::kable(
+  x = data.frame(
+    Variable = "`index`",
+    Description = "List."
+  ),
+  row.names = FALSE
+)
+knitr::kable(
+  x = data.frame(
+    Variable = "`index`",
+    Description = "List."
+  ),
+  row.names = FALSE
+)
+null_index
 #'
 #' ## Run test
 #'
@@ -66,6 +99,18 @@ results_02 <- util_list2vector(
 results_03 <- util_list2vector(
   fields = c("firstname", "lastname", "province", "number"),
   index = index[[3]]
+)
+results_04 <- util_list2vector(
+  fields = c("firstname", "lastname", "province", "number"),
+  index = null_index[[1]]
+)
+results_05 <- util_list2vector(
+  fields = c("firstname", "lastname", "province", "number"),
+  index = null_index[[2]]
+)
+results_06 <- util_list2vector(
+  fields = c("firstname", "lastname", "province", "number"),
+  index = null_index[[3]]
 )
 #'
 #' ## Results
@@ -176,5 +221,26 @@ test_that("result_03_02", {
   expect_equivalent(
     results_03[4],
     "12"
+  )
+})
+#+ testthat_13, echo=TRUE
+test_that("result_04_01", {
+  expect_true(
+    is.na(results_04[1]),
+    TRUE
+  )
+})
+#+ testthat_14, echo=TRUE
+test_that("result_05_01", {
+  expect_true(
+    is.na(results_05[1]),
+    TRUE
+  )
+})
+#+ testthat_15, echo=TRUE
+test_that("result_06_01", {
+  expect_true(
+    is.na(results_06[1]),
+    TRUE
   )
 })

@@ -28,6 +28,10 @@ wd <- system.file(
   "tests",
   package = "jeksterslabRutils"
 )
+epub <- file.path(
+  wd,
+  "valid.epub"
+)
 util_style(
   dir = wd,
   par = FALSE
@@ -38,7 +42,7 @@ message <- "No files to style"
 #'
 #' No `R` or `R Markdown` files in `dir`.
 #'
-#+ testthat_05, echo=TRUE
+#+ testthat_01, echo=TRUE
 tmp <- file.path(
   getwd(),
   util_rand_str()
@@ -63,3 +67,16 @@ unlink(
   tmp,
   recursive = TRUE
 )
+#'
+#' Invalid file
+#'
+#+ testthat_02, echo=TRUE
+test_that("expect_warning", {
+  expect_warning(
+    util_style(
+      files = epub,
+      par = FALSE
+    ),
+    regexp = "Error styling"
+  )
+})
