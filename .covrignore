@@ -3,3 +3,4 @@ R/util_lapply.R
 R/util_clean_tempdir.R
 R/util_shiny.R
 R/util_pkgload.R
+R/util_distro.R
