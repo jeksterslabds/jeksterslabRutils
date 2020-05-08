@@ -75,7 +75,6 @@ util_xml2list <- function(tags,
         warning(
           paste(
             "Error in substitution",
-            input,
             "\n"
           )
         )
