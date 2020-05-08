@@ -405,7 +405,9 @@ results_util_search_pattern_pattern6 <- util_search_pattern(
   pattern = pattern6
 )
 results_util_search_r_pattern6 <- util_search_r(
-  dir = tmp
+  dir = tmp,
+  rscript = TRUE,
+  rmd = FALSE
 )
 expect_equal(
   sort(results_util_search_pattern_pattern6),
@@ -489,7 +491,9 @@ results_util_search_pattern_pattern7 <- util_search_pattern(
   pattern = pattern7
 )
 results_util_search_r_pattern7 <- util_search_r(
-  dir = tmp
+  dir = tmp,
+  rscript = FALSE,
+  rmd = TRUE
 )
 expect_equal(
   sort(results_util_search_pattern_pattern7),
