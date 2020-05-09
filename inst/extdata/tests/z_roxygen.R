@@ -3,12 +3,8 @@
 #' author: "Ivan Jacob Agaloos Pesigan"
 #' date: "`r Sys.Date()`"
 #' output:
-#'   rmarkdown::html_vignette:
+#'  html_document:
 #'     toc: true
-#' vignette: >
-#'   %\VignetteIndexEntry{z-scores}
-#'   %\VignetteEngine{knitr::rmarkdown}
-#'   %\VignetteEncoding{UTF-8}
 #' ---
 #'
 #+ include = FALSE
