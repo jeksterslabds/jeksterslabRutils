@@ -23,14 +23,16 @@ util_search_pattern <- function(dir = getwd(),
                                 recursive = FALSE,
                                 ignore.case = TRUE,
                                 no.. = FALSE) {
-  list.files(
-    path = normalizePath(dir),
-    pattern = pattern,
-    all.files = all.files,
-    full.names = full.names,
-    recursive = recursive,
-    ignore.case = ignore.case,
-    no.. = no..
+  sort(
+    list.files(
+      path = normalizePath(dir),
+      pattern = pattern,
+      all.files = all.files,
+      full.names = full.names,
+      recursive = recursive,
+      ignore.case = ignore.case,
+      no.. = no..
+    )
   )
 }
 
@@ -62,14 +64,16 @@ util_search_ext <- function(dir = getwd(),
     ext,
     "$"
   )
-  list.files(
-    path = normalizePath(dir),
-    pattern = pattern,
-    all.files = all.files,
-    full.names = full.names,
-    recursive = recursive,
-    ignore.case = ignore.case,
-    no.. = no..
+  sort(
+    list.files(
+      path = normalizePath(dir),
+      pattern = pattern,
+      all.files = all.files,
+      full.names = full.names,
+      recursive = recursive,
+      ignore.case = ignore.case,
+      no.. = no..
+    )
   )
 }
 
@@ -103,13 +107,15 @@ util_search_r <- function(dir = getwd(),
   if (rscript == FALSE & rmd == TRUE) {
     pattern <- "^.*\\.rmd$"
   }
-  list.files(
-    path = normalizePath(dir),
-    pattern = pattern,
-    all.files = all.files,
-    full.names = full.names,
-    recursive = recursive,
-    ignore.case = ignore.case,
-    no.. = no..
+  sort(
+    list.files(
+      path = normalizePath(dir),
+      pattern = pattern,
+      all.files = all.files,
+      full.names = full.names,
+      recursive = recursive,
+      ignore.case = ignore.case,
+      no.. = no..
+    )
   )
 }
