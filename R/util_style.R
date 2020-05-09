@@ -67,6 +67,8 @@ util_style <- function(dir = getwd(),
     # populate files
     files <- util_search_r(
       dir = dir,
+      rscript = TRUE,
+      rmd = TRUE,
       all.files = FALSE,
       full.names = TRUE,
       recursive = recursive,
@@ -114,43 +116,4 @@ util_style <- function(dir = getwd(),
   } else {
     message(message)
   }
-  # foo <- function(file) {
-  #  tryCatch(
-  #    {
-  #      style_file(file)
-  #    },
-  #    error = function(err) {
-  #      warning(
-  #        paste(
-  #          "Error styling",
-  #          file,
-  #          "\n"
-  #        )
-  #      )
-  #    }
-  #  )
-  # }
-  # dir <- normalizePath(dir)
-  # files <- util_search_r(
-  #  dir = dir,
-  #  all.files = FALSE,
-  #  full.names = TRUE,
-  #  recursive = recursive,
-  #  ignore.case = TRUE,
-  #  no.. = FALSE
-  # )
-  # if (length(files) > 0) {
-  #  invisible(
-  #    util_lapply(
-  #      FUN = foo,
-  #      args = list(
-  #        file = files
-  #      ),
-  #      par = par,
-  #      ncores = ncores
-  #    )
-  #  )
-  # } else {
-  #  message("No files to style.\n")
-  # }
 }

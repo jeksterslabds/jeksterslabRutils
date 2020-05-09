@@ -63,6 +63,8 @@ util_render <- function(dir = getwd(),
     # populate files
     files <- util_search_r(
       dir = dir,
+      rscript = TRUE,
+      rmd = TRUE,
       all.files = FALSE,
       full.names = TRUE,
       recursive = recursive,
