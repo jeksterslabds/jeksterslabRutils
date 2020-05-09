@@ -30,12 +30,6 @@ tmp <- file.path(
   util_rand_str()
 )
 dir.create(tmp)
-on.exit(
-  unlink(
-    tmp,
-    recursive = TRUE
-  )
-)
 wd <- system.file(
   "extdata",
   "tests",

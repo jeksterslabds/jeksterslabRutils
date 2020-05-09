@@ -127,12 +127,6 @@ tmp <- file.path(
   util_rand_str()
 )
 dir.create(tmp)
-on.exit(
-  unlink(
-    tmp,
-    recursive = TRUE
-  )
-)
 test_that("expect_message", {
   expect_message(
     util_spin(

@@ -28,12 +28,6 @@ tmp <- file.path(
   util_rand_str()
 )
 dir.create(tmp)
-on.exit(
-  unlink(
-    tmp,
-    recursive = TRUE
-  )
-)
 #'
 #+ pattern1
 pattern1 <- "^[[:print:]]*\\.[[:alnum:]]{1,4}$"
@@ -83,7 +77,7 @@ results_util_search_pattern_pattern1 <- util_search_pattern(
   pattern = pattern1
 )
 expect_equal(
-  sort(results_util_search_pattern_pattern1),
+  results_util_search_pattern_pattern1,
   sort(file_name)
 )
 unlink(
@@ -165,8 +159,8 @@ results_util_search_r_pattern2 <- util_search_r(
   dir = tmp
 )
 expect_equal(
-  sort(results_util_search_pattern_pattern2),
-  sort(results_util_search_r_pattern2),
+  results_util_search_pattern_pattern2,
+  results_util_search_r_pattern2,
   sort(file_name)
 )
 unlink(
@@ -254,8 +248,8 @@ results_util_search_ext_pattern3 <- util_search_ext(
   ext = ext
 )
 expect_equal(
-  sort(results_util_search_pattern_pattern3),
-  sort(results_util_search_ext_pattern3),
+  results_util_search_pattern_pattern3,
+  results_util_search_ext_pattern3,
   sort(file_name)
 )
 unlink(
@@ -324,7 +318,7 @@ results_util_search_pattern_pattern4 <- util_search_pattern(
   pattern = pattern4
 )
 expect_equal(
-  sort(results_util_search_pattern_pattern4),
+  results_util_search_pattern_pattern4,
   sort(file_name)
 )
 unlink(
@@ -410,8 +404,8 @@ results_util_search_r_pattern6 <- util_search_r(
   rmd = FALSE
 )
 expect_equal(
-  sort(results_util_search_pattern_pattern6),
-  sort(results_util_search_r_pattern6),
+  results_util_search_pattern_pattern6,
+  results_util_search_r_pattern6,
   sort(file_name)
 )
 unlink(
@@ -496,8 +490,8 @@ results_util_search_r_pattern7 <- util_search_r(
   rmd = TRUE
 )
 expect_equal(
-  sort(results_util_search_pattern_pattern7),
-  sort(results_util_search_r_pattern7),
+  results_util_search_pattern_pattern7,
+  results_util_search_r_pattern7,
   sort(file_name)
 )
 unlink(

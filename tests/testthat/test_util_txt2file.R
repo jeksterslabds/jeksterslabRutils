@@ -29,12 +29,6 @@ tmp <- file.path(
   getwd(),
   util_rand_str()
 )
-on.exit(
-  unlink(
-    tmp,
-    recursive = TRUE
-  )
-)
 # to cover dir.create(dir) in util_txt2file.R
 # dir.create(tmp)
 input <- paste0(
