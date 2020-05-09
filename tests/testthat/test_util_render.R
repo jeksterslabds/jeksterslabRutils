@@ -9,8 +9,7 @@
 #'   %\VignetteEncoding{UTF-8}
 #' ---
 #'
-# This is not automatically rendering on rbuild.
-# Find out what the issue is.
+# Check why this test fails in appveyor.
 #'
 #+ include=FALSE, cache=FALSE
 knitr::opts_chunk$set(
@@ -26,22 +25,46 @@ library(jeksterslabRutils)
 context("Test util_render.")
 #'
 #+ parameters
-wd <- system.file(
+tmp <- file.path(
+  getwd(),
+  util_rand_str()
+)
+dir.create(tmp)
+setwd(tmp)
+tests_folder <- system.file(
   "extdata",
   "tests",
   package = "jeksterslabRutils"
 )
-file <- file.path(
-  wd,
+file_from <- file.path(
+  tests_folder,
   "z.Rmd"
 )
-output <- file.path(
-  wd,
-  "z.html"
+file <- file.path(
+  tmp,
+  "z.Rmd"
+)
+epub_from <- file.path(
+  tests_folder,
+  "valid.epub"
 )
 epub <- file.path(
-  wd,
+  tmp,
   "valid.epub"
+)
+output <- file.path(
+  tmp,
+  "z.html"
+)
+file.copy(
+  from = c(
+    file_from,
+    epub_from
+  ),
+  to = c(
+    file,
+    epub
+  )
 )
 #'
 #+ test_01
@@ -49,14 +72,14 @@ if (file.exists(output)) {
   unlink(output)
 }
 util_render(
-  dir = wd,
+  dir = tests_folder,
   par = FALSE
 )
 #'
 #' Check if output `html` is produced
 #'
 #+ testthat_01, echo=TRUE
-test_that("output", {
+test_that("output 1", {
   expect_true(
     file.exists(output)
   )
@@ -74,7 +97,7 @@ util_render(
 #' Check if output `html` is produced
 #'
 #+ testthat_02, echo=TRUE
-test_that("output", {
+test_that("output 1", {
   expect_true(
     file.exists(output)
   )
@@ -139,6 +162,12 @@ test_that("expect_message", {
     regexp = message
   )
 })
+unlink(
+  tmp,
+  recursive = TRUE
+)
+#'
+#+ cleanup
 unlink(
   tmp,
   recursive = TRUE

@@ -9,6 +9,8 @@
 #'   %\VignetteEncoding{UTF-8}
 #' ---
 #'
+# Check why this test fails in appveyor.
+#' 
 #+ include=FALSE, cache=FALSE
 knitr::opts_chunk$set(
   error = TRUE,
