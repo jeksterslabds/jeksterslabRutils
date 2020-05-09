@@ -2,7 +2,7 @@
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param dir Character string.
-#'   Directory.
+#'   Directory which contains target files.
 #'   Ignored if `file` is NOT NULL.
 #' @param recursive Logical.
 #'   If `TRUE`,

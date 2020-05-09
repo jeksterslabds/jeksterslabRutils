@@ -10,7 +10,7 @@
 #' ---
 #'
 # Check why this test fails in appveyor.
-#' 
+#'
 #+ include=FALSE, cache=FALSE
 knitr::opts_chunk$set(
   error = TRUE,

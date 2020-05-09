@@ -11,7 +11,7 @@
 #'
 # This is not automatically rendering on rbuild.
 # Find out what the issue is.
-#' 
+#'
 #+ include=FALSE, cache=FALSE
 knitr::opts_chunk$set(
   error = TRUE,

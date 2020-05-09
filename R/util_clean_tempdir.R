@@ -1,6 +1,10 @@
-#' Clean `tempdir`.
+#' Clean Contents of `tempdir`.
 #'
-#' @author Ivan Jacob Agaloos Pesigan
+#' Cleans contents of `tempdir`.
+#'
+#' From [stevec's](https://stackoverflow.com/users/5783745/stevec)
+#' answer in [Stackoverflow](https://stackoverflow.com/questions/45894133/deleting-tmp-files)
+#'
 #' @examples
 #' \dontrun{
 #' util_clean_tempdir()
