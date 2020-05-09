@@ -28,6 +28,10 @@ wd <- system.file(
   "tests",
   package = "jeksterslabRutils"
 )
+file <- file.path(
+  wd,
+  "z.Rmd"
+)
 epub <- file.path(
   wd,
   "valid.epub"
@@ -40,20 +44,53 @@ util_style(
 #+ message
 message <- "No files to style"
 #'
+#' Length of `files == 0`
+#'
+#+ testthat_03, echo=TRUE
+test_that("expect_message", {
+  expect_message(
+    util_style(
+      files = character(0),
+      par = FALSE
+    ),
+    regexp = message
+  )
+})
+#'
+#' Non existent file
+#'
+#+ testthat_04, echo=TRUE
+test_that("expect_message", {
+  expect_message(
+    util_style(
+      files = "non-existent-file",
+      par = FALSE
+    ),
+    regexp = message
+  )
+})
+#'
+#' Invalid file
+#'
+#+ testthat_05, echo=TRUE
+test_that("expect_warning", {
+  expect_warning(
+    util_style(
+      files = epub,
+      par = FALSE
+    ),
+    regexp = "Error styling"
+  )
+})
+#'
 #' No `R` or `R Markdown` files in `dir`.
 #'
-#+ testthat_01, echo=TRUE
+#+ testthat_06, echo=TRUE
 tmp <- file.path(
   getwd(),
   util_rand_str()
 )
 dir.create(tmp)
-on.exit(
-  unlink(
-    tmp,
-    recursive = TRUE
-  )
-)
 test_that("expect_message", {
   expect_message(
     util_style(
@@ -67,16 +104,3 @@ unlink(
   tmp,
   recursive = TRUE
 )
-#'
-#' Invalid file
-#'
-#+ testthat_02, echo=TRUE
-test_that("expect_warning", {
-  expect_warning(
-    util_style(
-      files = epub,
-      par = FALSE
-    ),
-    regexp = "Error styling"
-  )
-})
