@@ -28,8 +28,8 @@ context("Test util_render.")
 #' ### Initialize temporary folders in the working directory
 #'
 #+ temp
-tmp_01 <- util_mksubdir()
-tmp_02 <- util_mksubdir()
+tmp_01 <- util_make_subdir()
+tmp_02 <- util_make_subdir()
 #'
 #' ### Copy files from `extdata` to temporary folder
 #'
@@ -162,9 +162,9 @@ test_that("expect_message", {
 #+ cleanup
 util_clean_dir(
   dir = tmp_01,
-  empty_dir = FALSE
+  create_dir = FALSE
 )
 util_clean_dir(
   dir = tmp_02,
-  empty_dir = FALSE
+  create_dir = FALSE
 )

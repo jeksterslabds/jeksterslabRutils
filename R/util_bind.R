@@ -1,4 +1,4 @@
-#' Row Bind External Files.
+#' Bind External Files.
 #'
 #' Binds `csv`, `Excel`, `RData`, or `Rds` files
 #' in a given directory by row (`rbind`).

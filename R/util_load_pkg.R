@@ -22,17 +22,17 @@
 #'   "stats",
 #'   "stats4"
 #' )
-#' util_pkgload(
+#' util_load_pkg(
 #'   pkg = pkg
 #' )
 #' @export
-util_pkgload <- function(pkg,
-                         github = NULL,
-                         lib.loc = .libPaths()[1],
-                         repos = "https://cran.rstudio.org",
-                         dependencies = TRUE,
-                         type = "source",
-                         update = FALSE) {
+util_load_pkg <- function(pkg,
+                          github = NULL,
+                          lib.loc = .libPaths()[1],
+                          repos = "https://cran.rstudio.org",
+                          dependencies = TRUE,
+                          type = "source",
+                          update = FALSE) {
   if (is.vector(pkg)) {
     pkg <- as.list(pkg)
   }

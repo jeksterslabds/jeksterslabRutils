@@ -5,17 +5,17 @@
 #' if `dir = "/home/jek"`
 #' and
 #' `subdir = "subdir"`
-#' [`util_mksubdir()`]
+#' [`util_make_subdir()`]
 #' creates
 #' `/home/jek/subdir`.
 #' If `dir = "/home/jek"`
 #' and
 #' `subdir = c("subdir1", "subdir2")`
-#' [`util_mksubdir()`]
+#' [`util_make_subdir()`]
 #' creates
 #' `/home/jek/subdir1/subdir2`.
 #' If `dir` and `subdir` are not provided
-#' [`util_mksubdir()`]
+#' [`util_make_subdir()`]
 #' creates
 #' a subdirectory with a random name
 #' (see [`util_rand_str()`])
@@ -28,8 +28,8 @@
 #'   A single subdirectory of a vector of subdirectories.
 #'   Subdirectory or subdirectories.
 #' @export
-util_subdir <- function(dir = NULL,
-                        subdir = NULL) {
+util_make_subdir <- function(dir = NULL,
+                             subdir = NULL) {
   if (is.null(dir)) {
     dir <- getwd()
   }
@@ -42,7 +42,6 @@ util_subdir <- function(dir = NULL,
       subdir[i]
     )
   }
-  dir <- normalizePath(dir)
   if (dir.exists(dir)) {
     warning(
       paste(

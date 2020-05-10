@@ -1,10 +1,10 @@
-#' Clean Contents of a Directory
+#' Clean Contents of a Directory.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param dir Character string.
 #'   Directory.
-#' @param empty_dir Logical.
-#'   If `TRUE`, leaves an empty `dir`.
+#' @param create_dir Logical.
+#'   If `TRUE`, creates an empty `dir`.
 #'   If `FALSE`, `dir` and all its contents are deleted.
 #' @inheritParams base::unlink
 #' @examples
@@ -13,7 +13,7 @@
 #' }
 #' @export
 util_clean_dir <- function(dir,
-                           empty_dir = TRUE,
+                           create_dir = TRUE,
                            recursive = TRUE,
                            force = TRUE,
                            expand = TRUE) {
@@ -23,7 +23,7 @@ util_clean_dir <- function(dir,
     force = force,
     expand = expand
   )
-  if (empty_dir) {
+  if (create_dir) {
     dir.create(dir)
   }
 }
