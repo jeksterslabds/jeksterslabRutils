@@ -9,7 +9,7 @@
 #'   %\VignetteEncoding{UTF-8}
 #' ---
 #'
-#+ include=FALSE, cache=FALSE
+#+ knitr_options, include=FALSE, cache=FALSE
 knitr::opts_chunk$set(
   error = TRUE,
   collapse = TRUE,
@@ -22,29 +22,65 @@ library(testthat)
 library(jeksterslabRutils)
 context("Test util_style.")
 #'
-#+ parameters
-wd <- system.file(
+#' ## Parameters
+#'
+#' ### Initialize temporary folders in the working directory
+#'
+#+ temp
+tmp_01 <- util_make_subdir()
+tmp_02 <- util_make_subdir()
+#'
+#' ### Copy files from `extdata` to temporary folder
+#'
+#+ files
+extdata <- system.file(
   "extdata",
   "tests",
   package = "jeksterslabRutils"
 )
-file <- file.path(
-  wd,
+file_from <- file.path(
+  extdata,
   "z.Rmd"
 )
-epub <- file.path(
-  wd,
+file <- file.path(
+  tmp_01,
+  "z.Rmd"
+)
+epub_from <- file.path(
+  extdata,
   "valid.epub"
 )
+epub <- file.path(
+  tmp_01,
+  "valid.epub"
+)
+output <- file.path(
+  tmp_01,
+  "z_roxygen.Rmd"
+)
+file.copy(
+  from = c(
+    file_from,
+    epub_from
+  ),
+  to = c(
+    file,
+    epub
+  )
+)
+#'
+#' ### No output
+#'
+#+ no_output, echo=TRUE
 util_style(
-  dir = wd,
+  dir = tmp_01,
   par = FALSE
 )
 #'
 #+ message
 message <- "No files to style"
 #'
-#' Length of `files == 0`
+#' ### Length of `files == 0`
 #'
 #+ testthat_03, echo=TRUE
 test_that("expect_message", {
@@ -57,7 +93,7 @@ test_that("expect_message", {
   )
 })
 #'
-#' Non existent file
+#' ### Non existent file
 #'
 #+ testthat_04, echo=TRUE
 test_that("expect_message", {
@@ -70,7 +106,7 @@ test_that("expect_message", {
   )
 })
 #'
-#' Invalid file
+#' ### Invalid file
 #'
 #+ testthat_05, echo=TRUE
 test_that("expect_warning", {
@@ -83,24 +119,27 @@ test_that("expect_warning", {
   )
 })
 #'
-#' No `R` or `R Markdown` files in `dir`.
+#' ### No `R` or `R Markdown` files in `dir`.
 #'
 #+ testthat_06, echo=TRUE
-tmp <- file.path(
-  getwd(),
-  util_rand_str()
-)
-dir.create(tmp)
 test_that("expect_message", {
   expect_message(
     util_style(
-      dir = tmp,
+      dir = tmp_02,
       par = FALSE
     ),
     regexp = message
   )
 })
-unlink(
-  tmp,
-  recursive = TRUE
+#'
+#' ### Clean up temporary files and folders
+#'
+#+ cleanup
+util_clean_dir(
+  dir = tmp_01,
+  create_dir = FALSE
+)
+util_clean_dir(
+  dir = tmp_02,
+  create_dir = FALSE
 )

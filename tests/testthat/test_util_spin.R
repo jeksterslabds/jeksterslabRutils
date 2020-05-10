@@ -9,7 +9,8 @@
 #'   %\VignetteEncoding{UTF-8}
 #' ---
 #'
-#+ include=FALSE, cache=FALSE
+#'
+#+ knitr_options, include=FALSE, cache=FALSE
 knitr::opts_chunk$set(
   error = TRUE,
   collapse = TRUE,
@@ -22,56 +23,80 @@ library(testthat)
 library(jeksterslabRutils)
 context("Test util_spin.")
 #'
-#+ parameters
-wd <- system.file(
+#' ## Parameters
+#'
+#' ### Initialize temporary folders in the working directory
+#'
+#+ temp
+tmp_01 <- util_make_subdir()
+tmp_02 <- util_make_subdir()
+#'
+#' ### Copy files from `extdata` to temporary folder
+#'
+#+ files
+extdata <- system.file(
   "extdata",
   "tests",
   package = "jeksterslabRutils"
 )
-file <- file.path(
-  wd,
+file_from <- file.path(
+  extdata,
   "z_roxygen.R"
 )
-output <- file.path(
-  wd,
-  "z_roxygen.Rmd"
+file <- file.path(
+  tmp_01,
+  "z_roxygen.R"
 )
-epub <- file.path(
-  wd,
+epub_from <- file.path(
+  extdata,
   "valid.epub"
 )
-#'
-#+ test_01
-if (file.exists(output)) {
-  unlink(output)
-}
-util_spin(
-  dir = wd,
-  par = FALSE
+epub <- file.path(
+  tmp_01,
+  "valid.epub"
+)
+output <- file.path(
+  tmp_01,
+  "z_roxygen.Rmd"
+)
+file.copy(
+  from = c(
+    file_from,
+    epub_from
+  ),
+  to = c(
+    file,
+    epub
+  )
 )
 #'
-#' Check if output `html` is produced
+#' ### Check if output `html` is produced (`dir`)
 #'
 #+ testthat_01, echo=TRUE
-test_that("output", {
+test_that("dir", {
+  if (file.exists(output)) {
+    unlink(output)
+  }
+  util_spin(
+    dir = tmp_01,
+    par = FALSE
+  )
   expect_true(
     file.exists(output)
   )
 })
 #'
-#+ test_02
-if (file.exists(output)) {
-  unlink(output)
-}
-util_spin(
-  files = file,
-  par = FALSE
-)
-#'
-#' Check if output `html` is produced
+#' ### Check if output `html` is produced (`files`)
 #'
 #+ testthat_02, echo=TRUE
-test_that("output", {
+test_that("files", {
+  if (file.exists(output)) {
+    unlink(output)
+  }
+  util_spin(
+    files = file,
+    par = FALSE
+  )
   expect_true(
     file.exists(output)
   )
@@ -80,10 +105,10 @@ test_that("output", {
 #+ message
 message <- "No files to spin"
 #'
-#' Length of `files == 0`
+#' ### Length of `files == 0`
 #'
 #+ testthat_03, echo=TRUE
-test_that("expect_message", {
+test_that("character(0)", {
   expect_message(
     util_spin(
       files = character(0),
@@ -93,10 +118,10 @@ test_that("expect_message", {
   )
 })
 #'
-#' Non existent file
+#' ### Non existent file
 #'
 #+ testthat_04, echo=TRUE
-test_that("expect_message", {
+test_that("non-existent-file", {
   expect_message(
     util_spin(
       files = "non-existent-file",
@@ -106,7 +131,7 @@ test_that("expect_message", {
   )
 })
 #'
-#' Invalid file
+#' ### Invalid file
 #'
 #+ testthat_05, echo=TRUE
 test_that("expect_warning", {
@@ -119,24 +144,27 @@ test_that("expect_warning", {
   )
 })
 #'
-#' No `R` files in `dir`.
+#' ### No `R` or `R Markdown` files in `dir`.
 #'
 #+ testthat_06, echo=TRUE
-tmp <- file.path(
-  getwd(),
-  util_rand_str()
-)
-dir.create(tmp)
 test_that("expect_message", {
   expect_message(
     util_spin(
-      dir = tmp,
+      dir = tmp_02,
       par = FALSE
     ),
     regexp = message
   )
 })
-unlink(
-  tmp,
-  recursive = TRUE
+#'
+#' ### Clean up temporary files and folders
+#'
+#+ cleanup
+util_clean_dir(
+  dir = tmp_01,
+  create_dir = FALSE
+)
+util_clean_dir(
+  dir = tmp_02,
+  create_dir = FALSE
 )
