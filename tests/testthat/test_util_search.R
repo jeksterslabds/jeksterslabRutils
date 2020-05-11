@@ -9,9 +9,7 @@
 #'   %\VignetteEncoding{UTF-8}
 #' ---
 #'
-# Check why this test fails in appveyor.
-#'
-#+ include=FALSE, cache=FALSE
+#+ knitr_options, include=FALSE, cache=FALSE
 knitr::opts_chunk$set(
   error = TRUE,
   collapse = TRUE,
@@ -24,12 +22,10 @@ library(testthat)
 library(jeksterslabRutils)
 context("Test util_search.")
 #'
-#+ parameters
-tmp <- file.path(
-  getwd(),
-  util_rand_str()
-)
-dir.create(tmp)
+#' ## Parameters
+#'
+#+ temp
+tmp <- util_make_subdir()
 #'
 #+ pattern1
 pattern1 <- "^[[:print:]]*\\.[[:alnum:]]{1,4}$"
@@ -40,12 +36,12 @@ file_basename <- file_extension <- mismatch <- rep(
 )
 for (i in seq_along(file_basename)) {
   file_basename[i] <- util_rand_str(
-    characters = sample(1:8),
+    characters = sample(8:16),
     digits = TRUE,
     ext = NULL
   )
   mismatch[i] <- util_rand_str(
-    characters = sample(1:8),
+    characters = sample(8:16),
     digits = TRUE,
     ext = NULL
   )
@@ -82,11 +78,9 @@ expect_equal(
   results_util_search_pattern_pattern1,
   sort(file_name)
 )
-unlink(
-  c(
-    file_name,
-    mismatch
-  )
+util_clean_dir(
+  dir = tmp,
+  create_dir = TRUE
 )
 #'
 #+ pattern2
@@ -98,12 +92,12 @@ file_basename <- mismatch <- rep(
 )
 for (i in seq_along(file_basename)) {
   file_basename[i] <- util_rand_str(
-    characters = sample(1:8),
+    characters = sample(8:16),
     digits = TRUE,
     ext = NULL
   )
   mismatch[i] <- util_rand_str(
-    characters = sample(1:8),
+    characters = sample(8:16),
     digits = TRUE,
     ext = NULL
   )
@@ -165,11 +159,9 @@ expect_equal(
   results_util_search_r_pattern2,
   sort(file_name)
 )
-unlink(
-  c(
-    file_name,
-    mismatch
-  )
+util_clean_dir(
+  dir = tmp,
+  create_dir = TRUE
 )
 #'
 #+ pattern3
@@ -186,12 +178,12 @@ file_basename <- mismatch <- rep(
 )
 for (i in seq_along(file_basename)) {
   file_basename[i] <- util_rand_str(
-    characters = sample(1:8),
+    characters = sample(8:16),
     digits = TRUE,
     ext = NULL
   )
   mismatch[i] <- util_rand_str(
-    characters = sample(1:8),
+    characters = sample(8:16),
     digits = TRUE,
     ext = NULL
   )
@@ -254,11 +246,9 @@ expect_equal(
   results_util_search_ext_pattern3,
   sort(file_name)
 )
-unlink(
-  c(
-    file_name,
-    mismatch
-  )
+util_clean_dir(
+  dir = tmp,
+  create_dir = TRUE
 )
 #'
 #+ pattern4
@@ -270,12 +260,12 @@ file_basename <- mismatch <- rep(
 )
 for (i in seq_along(file_basename)) {
   file_basename[i] <- util_rand_str(
-    characters = sample(1:8),
+    characters = sample(8:16),
     digits = TRUE,
     ext = NULL
   )
   mismatch[i] <- util_rand_str(
-    characters = sample(1:8),
+    characters = sample(8:16),
     digits = TRUE,
     ext = NULL
   )
@@ -323,15 +313,9 @@ expect_equal(
   results_util_search_pattern_pattern4,
   sort(file_name)
 )
-unlink(
-  c(
-    file_name,
-    mismatch
-  )
-)
-unlink(
-  tmp,
-  recursive = TRUE
+util_clean_dir(
+  dir = tmp,
+  create_dir = TRUE
 )
 #'
 #+ pattern6
@@ -343,12 +327,12 @@ file_basename <- mismatch <- rep(
 )
 for (i in seq_along(file_basename)) {
   file_basename[i] <- util_rand_str(
-    characters = sample(1:8),
+    characters = sample(8:16),
     digits = TRUE,
     ext = NULL
   )
   mismatch[i] <- util_rand_str(
-    characters = sample(1:8),
+    characters = sample(8:16),
     digits = TRUE,
     ext = NULL
   )
@@ -410,11 +394,9 @@ expect_equal(
   results_util_search_r_pattern6,
   sort(file_name)
 )
-unlink(
-  c(
-    file_name,
-    mismatch
-  )
+util_clean_dir(
+  dir = tmp,
+  create_dir = TRUE
 )
 #'
 #+ pattern7
@@ -426,12 +408,12 @@ file_basename <- mismatch <- rep(
 )
 for (i in seq_along(file_basename)) {
   file_basename[i] <- util_rand_str(
-    characters = sample(1:8),
+    characters = sample(8:16),
     digits = TRUE,
     ext = NULL
   )
   mismatch[i] <- util_rand_str(
-    characters = sample(1:8),
+    characters = sample(8:16),
     digits = TRUE,
     ext = NULL
   )
@@ -496,9 +478,7 @@ expect_equal(
   results_util_search_r_pattern7,
   sort(file_name)
 )
-unlink(
-  c(
-    file_name,
-    mismatch
-  )
+util_clean_dir(
+  dir = tmp,
+  create_dir = FALSE
 )
