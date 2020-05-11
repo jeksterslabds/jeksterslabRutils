@@ -59,7 +59,10 @@ util_txt2file <- function(text,
     }
   }
   if (!dir.exists(dir)) {
-    dir.create(dir)
+    dir.create(
+      path = dir,
+      recursive = TRUE
+    )
   }
   con <- file(output_fn)
   on.exit(
