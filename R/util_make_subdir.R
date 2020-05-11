@@ -1,6 +1,7 @@
 #' Make Subdirectories
 #'
 #' Makes subdirectories recursively.
+#' 
 #' For example,
 #' if `dir = "/home/jek"`
 #' and
