@@ -74,6 +74,7 @@ file.copy(
 #'
 #+ testthat_01, echo=TRUE
 test_that("dir", {
+  skip_on_appveyor()
   if (file.exists(output)) {
     unlink(output)
   }
@@ -90,6 +91,7 @@ test_that("dir", {
 #'
 #+ testthat_02, echo=TRUE
 test_that("files", {
+  skip_on_appveyor()
   if (file.exists(output)) {
     unlink(output)
   }
