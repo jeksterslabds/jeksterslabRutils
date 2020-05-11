@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Ivan Jacob Agaloos Pesigan" />
+
+<meta name="date" content="2020-05-11" />
+
+<title>Test: util_check_file_type</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Test: util_check_file_type</h1>
+<h4 class="author">Ivan Jacob Agaloos Pesigan</h4>
+<h4 class="date">2020-05-11</h4>
+
+
+
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">library</span>(testthat)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">library</span>(jeksterslabRutils)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">context</span>(<span class="st">&quot;Test util_check_file_type.&quot;</span>)</span></code></pre></div>
+<div id="set-test-parameters" class="section level2">
+<h2>Set test parameters</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>tmp_<span class="dv">01</span> &lt;-<span class="st"> </span><span class="kw">util_make_subdir</span>()</span>
+<span id="cb2-2"><a href="#cb2-2"></a>tmp_<span class="dv">02</span> &lt;-<span class="st"> </span><span class="kw">util_make_subdir</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>invalid_from &lt;-<span class="st"> </span><span class="kw">system.file</span>(</span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="st">&quot;extdata&quot;</span>,</span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="st">&quot;tests&quot;</span>,</span>
+<span id="cb3-4"><a href="#cb3-4"></a>  <span class="st">&quot;invalid.epub&quot;</span>,</span>
+<span id="cb3-5"><a href="#cb3-5"></a>  <span class="dt">package =</span> <span class="st">&quot;jeksterslabRutils&quot;</span>,</span>
+<span id="cb3-6"><a href="#cb3-6"></a>  <span class="dt">mustWork =</span> <span class="ot">TRUE</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a>)</span>
+<span id="cb3-8"><a href="#cb3-8"></a>valid_from &lt;-<span class="st"> </span><span class="kw">system.file</span>(</span>
+<span id="cb3-9"><a href="#cb3-9"></a>  <span class="st">&quot;extdata&quot;</span>,</span>
+<span id="cb3-10"><a href="#cb3-10"></a>  <span class="st">&quot;tests&quot;</span>,</span>
+<span id="cb3-11"><a href="#cb3-11"></a>  <span class="st">&quot;valid.epub&quot;</span>,</span>
+<span id="cb3-12"><a href="#cb3-12"></a>  <span class="dt">package =</span> <span class="st">&quot;jeksterslabRutils&quot;</span>,</span>
+<span id="cb3-13"><a href="#cb3-13"></a>  <span class="dt">mustWork =</span> <span class="ot">TRUE</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a>)</span>
+<span id="cb3-15"><a href="#cb3-15"></a>invalid &lt;-<span class="st"> </span><span class="kw">file.path</span>(</span>
+<span id="cb3-16"><a href="#cb3-16"></a>  tmp_<span class="dv">01</span>,</span>
+<span id="cb3-17"><a href="#cb3-17"></a>  <span class="st">&quot;invalid.epub&quot;</span></span>
+<span id="cb3-18"><a href="#cb3-18"></a>)</span>
+<span id="cb3-19"><a href="#cb3-19"></a>valid &lt;-<span class="st"> </span><span class="kw">file.path</span>(</span>
+<span id="cb3-20"><a href="#cb3-20"></a>  tmp_<span class="dv">01</span>,</span>
+<span id="cb3-21"><a href="#cb3-21"></a>  <span class="st">&quot;valid.epub&quot;</span></span>
+<span id="cb3-22"><a href="#cb3-22"></a>)</span>
+<span id="cb3-23"><a href="#cb3-23"></a>fn &lt;-<span class="st"> </span><span class="kw">c</span>(</span>
+<span id="cb3-24"><a href="#cb3-24"></a>  <span class="st">&quot;invalid.epub&quot;</span>,</span>
+<span id="cb3-25"><a href="#cb3-25"></a>  <span class="st">&quot;valid.epub&quot;</span></span>
+<span id="cb3-26"><a href="#cb3-26"></a>)</span>
+<span id="cb3-27"><a href="#cb3-27"></a><span class="kw">file.copy</span>(</span>
+<span id="cb3-28"><a href="#cb3-28"></a>  <span class="dt">from =</span> <span class="kw">c</span>(</span>
+<span id="cb3-29"><a href="#cb3-29"></a>    invalid_from,</span>
+<span id="cb3-30"><a href="#cb3-30"></a>    valid_from</span>
+<span id="cb3-31"><a href="#cb3-31"></a>  ),</span>
+<span id="cb3-32"><a href="#cb3-32"></a>  <span class="dt">to =</span> <span class="kw">c</span>(</span>
+<span id="cb3-33"><a href="#cb3-33"></a>    invalid,</span>
+<span id="cb3-34"><a href="#cb3-34"></a>    valid</span>
+<span id="cb3-35"><a href="#cb3-35"></a>  )</span>
+<span id="cb3-36"><a href="#cb3-36"></a>)</span>
+<span id="cb3-37"><a href="#cb3-37"></a><span class="co">#&gt; [1] TRUE TRUE</span></span>
+<span id="cb3-38"><a href="#cb3-38"></a>Variable &lt;-<span class="st"> </span><span class="kw">c</span>(</span>
+<span id="cb3-39"><a href="#cb3-39"></a>  <span class="st">&quot;`invalid`&quot;</span>,</span>
+<span id="cb3-40"><a href="#cb3-40"></a>  <span class="st">&quot;`valid`&quot;</span></span>
+<span id="cb3-41"><a href="#cb3-41"></a>)</span>
+<span id="cb3-42"><a href="#cb3-42"></a>Description &lt;-<span class="st"> </span><span class="kw">c</span>(</span>
+<span id="cb3-43"><a href="#cb3-43"></a>  <span class="st">&quot;Invalid file.&quot;</span>,</span>
+<span id="cb3-44"><a href="#cb3-44"></a>  <span class="st">&quot;Valid file.&quot;</span></span>
+<span id="cb3-45"><a href="#cb3-45"></a>)</span>
+<span id="cb3-46"><a href="#cb3-46"></a>Value &lt;-<span class="st"> </span><span class="kw">c</span>(</span>
+<span id="cb3-47"><a href="#cb3-47"></a>  invalid,</span>
+<span id="cb3-48"><a href="#cb3-48"></a>  valid</span>
+<span id="cb3-49"><a href="#cb3-49"></a>)</span>
+<span id="cb3-50"><a href="#cb3-50"></a>knitr<span class="op">::</span><span class="kw">kable</span>(</span>
+<span id="cb3-51"><a href="#cb3-51"></a>  <span class="dt">x =</span> <span class="kw">data.frame</span>(</span>
+<span id="cb3-52"><a href="#cb3-52"></a>    Variable,</span>
+<span id="cb3-53"><a href="#cb3-53"></a>    Description,</span>
+<span id="cb3-54"><a href="#cb3-54"></a>    Value</span>
+<span id="cb3-55"><a href="#cb3-55"></a>  ),</span>
+<span id="cb3-56"><a href="#cb3-56"></a>  <span class="dt">row.names =</span> <span class="ot">FALSE</span></span>
+<span id="cb3-57"><a href="#cb3-57"></a>)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Variable</th>
+<th align="left">Description</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>invalid</code></td>
+<td align="left">Invalid file.</td>
+<td align="left">/media/jeksterslab/scripts/r/jeksterslabRutils/vignettes/tests/lJAELHgL/invalid.epub</td>
+</tr>
+<tr class="even">
+<td align="left"><code>valid</code></td>
+<td align="left">Valid file.</td>
+<td align="left">/media/jeksterslab/scripts/r/jeksterslabRutils/vignettes/tests/lJAELHgL/valid.epub</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="run-test" class="section level2">
+<h2>Run test</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">util_check_file_type</span>(</span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="dt">dir =</span> tmp_<span class="dv">01</span>,</span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="dt">fn =</span> fn,</span>
+<span id="cb4-4"><a href="#cb4-4"></a>  <span class="dt">file_type =</span> <span class="st">&quot;EPUB document&quot;</span>,</span>
+<span id="cb4-5"><a href="#cb4-5"></a>  <span class="dt">remove_files =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb4-6"><a href="#cb4-6"></a>  <span class="dt">par =</span> <span class="ot">FALSE</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a>)</span></code></pre></div>
+</div>
+<div id="results" class="section level2">
+<h2>Results</h2>
+<p>Note that only <code>valid.epub</code> should be retained.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>Parameter &lt;-<span class="st"> </span>fn</span>
+<span id="cb5-2"><a href="#cb5-2"></a>Result &lt;-<span class="st"> </span><span class="kw">c</span>(</span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="kw">file.exists</span>(invalid),</span>
+<span id="cb5-4"><a href="#cb5-4"></a>  <span class="kw">file.exists</span>(valid)</span>
+<span id="cb5-5"><a href="#cb5-5"></a>)</span>
+<span id="cb5-6"><a href="#cb5-6"></a>knitr<span class="op">::</span><span class="kw">kable</span>(</span>
+<span id="cb5-7"><a href="#cb5-7"></a>  <span class="dt">x =</span> <span class="kw">data.frame</span>(</span>
+<span id="cb5-8"><a href="#cb5-8"></a>    Description,</span>
+<span id="cb5-9"><a href="#cb5-9"></a>    Parameter,</span>
+<span id="cb5-10"><a href="#cb5-10"></a>    Result</span>
+<span id="cb5-11"><a href="#cb5-11"></a>  ),</span>
+<span id="cb5-12"><a href="#cb5-12"></a>  <span class="dt">row.names =</span> <span class="ot">FALSE</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a>)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Description</th>
+<th align="left">Parameter</th>
+<th align="left">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Invalid file.</td>
+<td align="left">invalid.epub</td>
+<td align="left">FALSE</td>
+</tr>
+<tr class="even">
+<td align="left">Valid file.</td>
+<td align="left">valid.epub</td>
+<td align="left">TRUE</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">test_that</span>(<span class="st">&quot;invalid file is deleted&quot;</span>, {</span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="kw">skip_on_appveyor</span>()</span>
+<span id="cb6-3"><a href="#cb6-3"></a>  <span class="kw">expect_equivalent</span>(</span>
+<span id="cb6-4"><a href="#cb6-4"></a>    <span class="kw">file.exists</span>(invalid),</span>
+<span id="cb6-5"><a href="#cb6-5"></a>    <span class="ot">FALSE</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a>  )</span>
+<span id="cb6-7"><a href="#cb6-7"></a>})</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">test_that</span>(<span class="st">&quot;valid file is retained&quot;</span>, {</span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="kw">skip_on_appveyor</span>()</span>
+<span id="cb7-3"><a href="#cb7-3"></a>  <span class="kw">expect_equivalent</span>(</span>
+<span id="cb7-4"><a href="#cb7-4"></a>    <span class="kw">file.exists</span>(valid),</span>
+<span id="cb7-5"><a href="#cb7-5"></a>    <span class="ot">TRUE</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a>  )</span>
+<span id="cb7-7"><a href="#cb7-7"></a>})</span></code></pre></div>
+</div>
+<div id="expect-error" class="section level2">
+<h2>Expect error</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">test_that</span>(<span class="st">&quot;tryCatch&quot;</span>, {</span>
+<span id="cb8-2"><a href="#cb8-2"></a>  <span class="kw">expect_error</span>(</span>
+<span id="cb8-3"><a href="#cb8-3"></a>    <span class="kw">util_check_file_type</span>(</span>
+<span id="cb8-4"><a href="#cb8-4"></a>      <span class="dt">dir =</span> tmp_<span class="dv">02</span>,</span>
+<span id="cb8-5"><a href="#cb8-5"></a>      <span class="dt">par =</span> <span class="ot">FALSE</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a>    )</span>
+<span id="cb8-7"><a href="#cb8-7"></a>  )</span>
+<span id="cb8-8"><a href="#cb8-8"></a>})</span></code></pre></div>
+</div>
+<div id="trycatch-error-for-code-coverage" class="section level2">
+<h2>tryCatch error for code coverage</h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>files &lt;-<span class="st"> </span><span class="kw">paste0</span>(</span>
+<span id="cb9-2"><a href="#cb9-2"></a>  <span class="kw">file.path</span>(</span>
+<span id="cb9-3"><a href="#cb9-3"></a>    tmp_<span class="dv">02</span>,</span>
+<span id="cb9-4"><a href="#cb9-4"></a>    <span class="st">&quot;error&quot;</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a>  ),</span>
+<span id="cb9-6"><a href="#cb9-6"></a>  <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,</span>
+<span id="cb9-7"><a href="#cb9-7"></a>  <span class="st">&quot;.epub&quot;</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a>)</span>
+<span id="cb9-9"><a href="#cb9-9"></a>fn &lt;-<span class="st"> </span><span class="kw">paste0</span>(</span>
+<span id="cb9-10"><a href="#cb9-10"></a>  <span class="st">&quot;error&quot;</span>,</span>
+<span id="cb9-11"><a href="#cb9-11"></a>  <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,</span>
+<span id="cb9-12"><a href="#cb9-12"></a>  <span class="st">&quot;.epub&quot;</span></span>
+<span id="cb9-13"><a href="#cb9-13"></a>)</span>
+<span id="cb9-14"><a href="#cb9-14"></a><span class="kw">sapply</span>(</span>
+<span id="cb9-15"><a href="#cb9-15"></a>  <span class="dt">X =</span> files,</span>
+<span id="cb9-16"><a href="#cb9-16"></a>  <span class="dt">FUN =</span> file.create</span>
+<span id="cb9-17"><a href="#cb9-17"></a>)</span>
+<span id="cb9-18"><a href="#cb9-18"></a><span class="co">#&gt; /media/jeksterslab/scripts/r/jeksterslabRutils/vignettes/tests/ZBQjQSwl/error1.epub </span></span>
+<span id="cb9-19"><a href="#cb9-19"></a><span class="co">#&gt;                                                                                TRUE </span></span>
+<span id="cb9-20"><a href="#cb9-20"></a><span class="co">#&gt; /media/jeksterslab/scripts/r/jeksterslabRutils/vignettes/tests/ZBQjQSwl/error2.epub </span></span>
+<span id="cb9-21"><a href="#cb9-21"></a><span class="co">#&gt;                                                                                TRUE </span></span>
+<span id="cb9-22"><a href="#cb9-22"></a><span class="co">#&gt; /media/jeksterslab/scripts/r/jeksterslabRutils/vignettes/tests/ZBQjQSwl/error3.epub </span></span>
+<span id="cb9-23"><a href="#cb9-23"></a><span class="co">#&gt;                                                                                TRUE </span></span>
+<span id="cb9-24"><a href="#cb9-24"></a><span class="co">#&gt; /media/jeksterslab/scripts/r/jeksterslabRutils/vignettes/tests/ZBQjQSwl/error4.epub </span></span>
+<span id="cb9-25"><a href="#cb9-25"></a><span class="co">#&gt;                                                                                TRUE </span></span>
+<span id="cb9-26"><a href="#cb9-26"></a><span class="co">#&gt; /media/jeksterslab/scripts/r/jeksterslabRutils/vignettes/tests/ZBQjQSwl/error5.epub </span></span>
+<span id="cb9-27"><a href="#cb9-27"></a><span class="co">#&gt;                                                                                TRUE</span></span>
+<span id="cb9-28"><a href="#cb9-28"></a><span class="kw">util_check_file_type</span>(</span>
+<span id="cb9-29"><a href="#cb9-29"></a>  <span class="dt">dir =</span> tmp_<span class="dv">02</span>,</span>
+<span id="cb9-30"><a href="#cb9-30"></a>  <span class="dt">fn =</span> fn,</span>
+<span id="cb9-31"><a href="#cb9-31"></a>  <span class="dt">par =</span> <span class="ot">FALSE</span></span>
+<span id="cb9-32"><a href="#cb9-32"></a>)</span></code></pre></div>
+<div id="clean-up-temporary-files-and-folders" class="section level3">
+<h3>Clean up temporary files and folders</h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw">util_clean_dir</span>(</span>
+<span id="cb10-2"><a href="#cb10-2"></a>  <span class="dt">dir =</span> tmp_<span class="dv">01</span>,</span>
+<span id="cb10-3"><a href="#cb10-3"></a>  <span class="dt">create_dir =</span> <span class="ot">FALSE</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a>)</span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="kw">util_clean_dir</span>(</span>
+<span id="cb10-6"><a href="#cb10-6"></a>  <span class="dt">dir =</span> tmp_<span class="dv">02</span>,</span>
+<span id="cb10-7"><a href="#cb10-7"></a>  <span class="dt">create_dir =</span> <span class="ot">FALSE</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a>)</span></code></pre></div>
+</div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
