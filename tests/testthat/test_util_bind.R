@@ -9,10 +9,7 @@
 #'   %\VignetteEncoding{UTF-8}
 #' ---
 #'
-# This is not automatically rendering on rbuild.
-# Find out what the issue is.
-#'
-#+ include=FALSE, cache=FALSE
+#+ knitr_options, include=FALSE, cache=FALSE
 knitr::opts_chunk$set(
   error = TRUE,
   collapse = TRUE,
@@ -25,28 +22,48 @@ library(testthat)
 library(jeksterslabRutils)
 context("Test util_bind.")
 #'
-#' ## Set test parameters
+#' ## Parameters
 #'
-#+ parameters
-tmp <- file.path(
-  getwd(),
-  util_rand_str()
-)
-dir.create(tmp)
-wd <- system.file(
+#' ### Initialize temporary folders in the working directory
+#'
+#+ temp
+tmp_01 <- util_make_subdir()
+tmp_02 <- util_make_subdir()
+#'
+#' ### Copy files from `extdata` to temporary folder
+#'
+#+ files
+pattern <- "^filename.*"
+extdata <- system.file(
   "extdata",
   "tests",
-  package = "jeksterslabRutils"
+  package = "jeksterslabRutils",
+  mustWork = TRUE
 )
-root <- basename(wd)
+files_from <- list.files(
+  path = extdata,
+  pattern = pattern
+)
+full_path_files_from <- file.path(
+  extdata,
+  files_from
+)
+full_path_files_to <- file.path(
+  tmp_01,
+  files_from
+)
+file.copy(
+  from = full_path_files_from,
+  to = full_path_files_to
+)
+root <- basename(tmp_01)
 fn <- file.path(
-  tmp,
+  tmp_01,
   paste0(
     root,
     ".csv"
   )
 )
-pattern <- "^filename.*"
 fn_column <- TRUE
 save <- FALSE
 rows <- 1108
@@ -55,7 +72,7 @@ if (fn_column) {
   columns <- columns + 1 # columns plus fn_column
 }
 Variable <- c(
-  "`wd`",
+  "`tmp_01`",
   "`pattern`",
   "`fn_column`",
   "`save`",
@@ -71,7 +88,7 @@ Description <- c(
   "Number of columns."
 )
 Value <- c(
-  wd,
+  tmp_01,
   pattern,
   fn_column,
   save,
@@ -91,16 +108,16 @@ knitr::kable(
 #'
 #+ test
 csv <- util_bind(
-  dir = wd,
+  dir = tmp_01,
   format = "csv",
   pattern = "^filename.*",
   fn_column = TRUE,
   save = TRUE,
-  save_dir = tmp,
+  save_dir = tmp_01,
   par = FALSE
 )
 xls <- util_bind(
-  dir = wd,
+  dir = tmp_01,
   format = "xls",
   pattern = "^filename.*",
   fn_column = TRUE,
@@ -108,7 +125,7 @@ xls <- util_bind(
   par = FALSE
 )
 xlsx <- util_bind(
-  dir = wd,
+  dir = tmp_01,
   format = "xlsx",
   pattern = "^filename.*",
   fn_column = TRUE,
@@ -190,7 +207,6 @@ test_that("external file is saved", {
     TRUE
   )
 })
-unlink(fn)
 #'
 #' ## Expect error
 #'
@@ -198,21 +214,21 @@ unlink(fn)
 test_that("tryCatch", {
   expect_error(
     util_bind(
-      dir = tmp,
+      dir = tmp_02,
       format = "csv",
       par = FALSE
     )
   )
   expect_error(
     util_bind(
-      dir = tmp,
+      dir = tmp_02,
       format = "xls",
       par = FALSE
     )
   )
   expect_error(
     util_bind(
-      dir = tmp,
+      dir = tmp_02,
       format = "xlsx",
       par = FALSE
     )
@@ -224,7 +240,7 @@ test_that("tryCatch", {
 #+ error
 files_csv <- paste0(
   file.path(
-    tmp,
+    tmp_02,
     "error"
   ),
   1:5,
@@ -232,7 +248,7 @@ files_csv <- paste0(
 )
 files_xls <- paste0(
   file.path(
-    tmp,
+    tmp_02,
     "error"
   ),
   1:5,
@@ -245,7 +261,7 @@ fn_xls <- paste0(
 )
 files_xlsx <- paste0(
   file.path(
-    tmp,
+    tmp_02,
     "error"
   ),
   1:5,
@@ -271,7 +287,7 @@ sapply(
 test_that("tryCatch", {
   expect_error(
     util_bind(
-      dir = tmp,
+      dir = tmp_02,
       pattern = "^error.*",
       format = "csv",
       par = FALSE
@@ -279,7 +295,7 @@ test_that("tryCatch", {
   )
   expect_error(
     util_bind(
-      dir = tmp,
+      dir = tmp_02,
       pattern = "^error.*",
       format = "xls",
       par = FALSE
@@ -287,28 +303,22 @@ test_that("tryCatch", {
   )
   expect_error(
     util_bind(
-      dir = tmp,
+      dir = tmp_02,
       pattern = "^error.*",
       format = "xlsx",
       par = FALSE
     )
   )
 })
-sapply(
-  X = files_csv,
-  FUN = unlink
-)
-sapply(
-  X = files_xls,
-  FUN = unlink
-)
-sapply(
-  X = files_xlsx,
-  FUN = unlink
-)
+#'
+#' ### Clean up temporary files and folders
 #'
 #+ cleanup
-unlink(
-  tmp,
-  recursive = TRUE
+util_clean_dir(
+  dir = tmp_01,
+  create_dir = FALSE
+)
+util_clean_dir(
+  dir = tmp_02,
+  create_dir = FALSE
 )

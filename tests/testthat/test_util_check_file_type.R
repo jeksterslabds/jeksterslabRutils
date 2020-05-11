@@ -9,7 +9,7 @@
 #'   %\VignetteEncoding{UTF-8}
 #' ---
 #'
-#+ include=FALSE, cache=FALSE
+#+ knitr_options, include=FALSE, cache=FALSE
 knitr::opts_chunk$set(
   error = TRUE,
   collapse = TRUE,
@@ -24,30 +24,31 @@ context("Test util_check_file_type.")
 #'
 #' ## Set test parameters
 #'
-#+ parameters
-tmp <- file.path(
-  getwd(),
-  util_rand_str()
-)
-dir.create(tmp)
+#+ temp
+tmp_01 <- util_make_subdir()
+tmp_02 <- util_make_subdir()
+#'
+#+ files
 invalid_from <- system.file(
   "extdata",
   "tests",
   "invalid.epub",
-  package = "jeksterslabRutils"
+  package = "jeksterslabRutils",
+  mustWork = TRUE
 )
 valid_from <- system.file(
   "extdata",
   "tests",
   "valid.epub",
-  package = "jeksterslabRutils"
+  package = "jeksterslabRutils",
+  mustWork = TRUE
 )
 invalid <- file.path(
-  tmp,
+  tmp_01,
   "invalid.epub"
 )
 valid <- file.path(
-  tmp,
+  tmp_01,
   "valid.epub"
 )
 fn <- c(
@@ -85,9 +86,11 @@ knitr::kable(
   row.names = FALSE
 )
 #'
+#' ## Run test
+#'
 #+ test
 util_check_file_type(
-  dir = tmp,
+  dir = tmp_01,
   fn = fn,
   file_type = "EPUB document",
   remove_files = TRUE,
@@ -131,21 +134,13 @@ test_that("valid file is retained", {
   )
 })
 #'
-#+ cleanup_01
-unlink(
-  c(
-    invalid,
-    valid
-  )
-)
-#'
 #' ## Expect error
 #'
 #+ testthat_03, echo=TRUE
 test_that("tryCatch", {
   expect_error(
     util_check_file_type(
-      dir = tmp,
+      dir = tmp_02,
       par = FALSE
     )
   )
@@ -156,7 +151,7 @@ test_that("tryCatch", {
 #+ error
 files <- paste0(
   file.path(
-    tmp,
+    tmp_02,
     "error"
   ),
   1:5,
@@ -172,17 +167,19 @@ sapply(
   FUN = file.create
 )
 util_check_file_type(
-  dir = tmp,
+  dir = tmp_02,
   fn = fn,
   par = FALSE
 )
-sapply(
-  X = files,
-  FUN = unlink
-)
 #'
-#+ cleanup_02
-unlink(
-  tmp,
-  recursive = TRUE
+#' ### Clean up temporary files and folders
+#'
+#+ cleanup
+util_clean_dir(
+  dir = tmp_01,
+  create_dir = FALSE
+)
+util_clean_dir(
+  dir = tmp_02,
+  create_dir = FALSE
 )

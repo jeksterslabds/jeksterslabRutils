@@ -9,7 +9,7 @@
 #'   %\VignetteEncoding{UTF-8}
 #' ---
 #'
-#+ include=FALSE, cache=FALSE
+#+ knitr_options, include=FALSE, cache=FALSE
 knitr::opts_chunk$set(
   error = TRUE,
   collapse = TRUE,
@@ -24,12 +24,10 @@ context("Test util_wget.")
 #'
 #' ## Set test parameters
 #'
+#' #+ temp
+tmp <- util_make_subdir()
+#'
 #+ parameters
-tmp <- file.path(
-  getwd(),
-  util_rand_str()
-)
-dir.create(tmp)
 link <- c(
   "https://raw.githubusercontent.com/jeksterslabds/jeksterslabRutils/master/R/util_bind.R",
   "https://raw.githubusercontent.com/jeksterslabds/jeksterslabRutils/master/R/util_cat_sys.R"
@@ -98,6 +96,7 @@ knitr::kable(
   ),
   row.names = FALSE
 )
+#'
 #+ testthat_01, echo=TRUE
 test_that("util_wget works", {
   skip_on_appveyor()
@@ -107,8 +106,10 @@ test_that("util_wget works", {
   )
 })
 #'
+#' ### Clean up temporary files and folders
+#'
 #+ cleanup
-unlink(
-  tmp,
-  recursive = TRUE
+util_clean_dir(
+  dir = tmp,
+  create_dir = FALSE
 )

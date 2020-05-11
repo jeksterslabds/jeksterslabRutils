@@ -24,12 +24,10 @@ context("Test util_xml2list.")
 #'
 #' ## Set test parameters
 #'
+#+ temp
+tmp <- util_make_subdir()
+#'
 #+ parameters
-tmp <- file.path(
-  getwd(),
-  util_rand_str()
-)
-dir.create(tmp)
 fn <- file.path(
   file.path(
     tmp,
@@ -106,6 +104,7 @@ knitr::kable(
   ),
   row.names = FALSE
 )
+#'
 #+ test
 results <- util_xml2list(
   tags = tags,
@@ -189,7 +188,10 @@ test_that("year is correct", {
   )
 })
 #'
-unlink(
-  tmp,
-  recursive = TRUE
+#' ### Clean up temporary files and folders
+#'
+#+ cleanup
+util_clean_dir(
+  dir = tmp,
+  create_dir = FALSE
 )
