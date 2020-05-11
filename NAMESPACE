@@ -2,6 +2,7 @@
 
 export(util_bind)
 export(util_cat_sys)
+export(util_check_file_seq)
 export(util_check_file_type)
 export(util_clean_dir)
 export(util_clean_tempdir)
