@@ -36,7 +36,8 @@ tmp_02 <- util_make_subdir()
 extdata <- system.file(
   "extdata",
   "tests",
-  package = "jeksterslabRutils"
+  package = "jeksterslabRutils",
+  mustWork = TRUE
 )
 file_from <- file.path(
   extdata,

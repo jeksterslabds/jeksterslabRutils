@@ -9,7 +9,7 @@
 #'   %\VignetteEncoding{UTF-8}
 #' ---
 #'
-#+ include=FALSE, cache=FALSE
+#+ knitr_options, include=FALSE, cache=FALSE
 knitr::opts_chunk$set(
   error = TRUE,
   collapse = TRUE,
@@ -22,7 +22,7 @@ library(testthat)
 library(jeksterslabRutils)
 context("Test util_cat_sys.")
 #'
-#' ## Set test parameters
+#' ## Parameters
 #'
 #+ parameters
 year <- format(Sys.time(), "%Y")
@@ -56,7 +56,7 @@ knitr::kable(
   row.names = FALSE
 )
 #'
-#+ test_that, echo=TRUE
+#+ testthat, echo=TRUE
 test_that("util_cat_sys works", {
   expect_equivalent(
     results,

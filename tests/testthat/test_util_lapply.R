@@ -9,7 +9,7 @@
 #'   %\VignetteEncoding{UTF-8}
 #' ---
 #'
-#+ include=FALSE, cache=FALSE
+#+ knitr_options, include=FALSE, cache=FALSE
 knitr::opts_chunk$set(
   error = TRUE,
   collapse = TRUE,
@@ -22,7 +22,7 @@ library(testthat)
 library(jeksterslabRutils)
 context("Test util_lapply.")
 #'
-#' ## Set test parameters
+#' ## Parameters
 #'
 #+ parameters
 FUN <- rnorm

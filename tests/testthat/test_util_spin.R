@@ -9,7 +9,6 @@
 #'   %\VignetteEncoding{UTF-8}
 #' ---
 #'
-#'
 #+ knitr_options, include=FALSE, cache=FALSE
 knitr::opts_chunk$set(
   error = TRUE,
@@ -37,7 +36,8 @@ tmp_02 <- util_make_subdir()
 extdata <- system.file(
   "extdata",
   "tests",
-  package = "jeksterslabRutils"
+  package = "jeksterslabRutils",
+  mustWork = TRUE
 )
 file_from <- file.path(
   extdata,

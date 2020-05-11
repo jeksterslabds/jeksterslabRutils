@@ -9,7 +9,7 @@
 #'   %\VignetteEncoding{UTF-8}
 #' ---
 #'
-#+ include=FALSE, cache=FALSE
+#+ knitr_options, include=FALSE, cache=FALSE
 knitr::opts_chunk$set(
   error = TRUE,
   collapse = TRUE,
@@ -120,8 +120,10 @@ test_that("warning", {
   )
 })
 #'
+#' ### Clean up temporary files and folders
+#'
 #+ cleanup
-unlink(
-  tmp,
-  recursive = TRUE
+util_clean_dir(
+  dir = tmp,
+  create_dir = FALSE
 )
