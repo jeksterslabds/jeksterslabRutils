@@ -54,6 +54,7 @@
 #'   prefix = FALSE
 #' )
 #' }
+#' @export
 util_check_file_seq <- function(dir = getwd(),
                                 start = 1L,
                                 end = 10L,
