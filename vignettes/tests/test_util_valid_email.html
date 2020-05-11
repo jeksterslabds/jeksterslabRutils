@@ -14,7 +14,7 @@
 
 <meta name="date" content="2020-05-12" />
 
-<title>Test: util_distro</title>
+<title>Test: util_valid_email</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -313,7 +313,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 
 
-<h1 class="title toc-ignore">Test: util_distro</h1>
+<h1 class="title toc-ignore">Test: util_valid_email</h1>
 <h4 class="author">Ivan Jacob Agaloos Pesigan</h4>
 <h4 class="date">2020-05-12</h4>
 
@@ -321,27 +321,109 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">library</span>(testthat)</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="kw">library</span>(jeksterslabRutils)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">context</span>(<span class="st">&quot;Test util_distro.&quot;</span>)</span></code></pre></div>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">context</span>(<span class="st">&quot;Test util_valid_email.&quot;</span>)</span></code></pre></div>
 <div id="parameters" class="section level2">
 <h2>Parameters</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>os &lt;-<span class="st"> </span><span class="kw">util_os</span>()</span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="co"># It&#39;s difficult to hard code tests for distro</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="co"># since the package can be used in a variety of Linux Distributions.</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a>distro &lt;-<span class="st"> </span><span class="kw">util_distro</span>()</span></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">test_that</span>(<span class="st">&quot;util_os works&quot;</span>, {</span>
-<span id="cb3-2"><a href="#cb3-2"></a>  <span class="kw">expect_equivalent</span>(</span>
-<span id="cb3-3"><a href="#cb3-3"></a>    (os <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;linux&quot;</span>, <span class="st">&quot;osx&quot;</span>, <span class="st">&quot;windows&quot;</span>)),</span>
-<span id="cb3-4"><a href="#cb3-4"></a>    <span class="ot">TRUE</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a>  )</span>
-<span id="cb3-6"><a href="#cb3-6"></a>})</span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">test_that</span>(<span class="st">&quot;util_distro works&quot;</span>, {</span>
-<span id="cb4-2"><a href="#cb4-2"></a>  <span class="cf">if</span> (os <span class="op">==</span><span class="st"> &quot;osx&quot;</span> <span class="op">|</span><span class="st"> </span>os <span class="op">==</span><span class="st"> &quot;windows&quot;</span>) {</span>
-<span id="cb4-3"><a href="#cb4-3"></a>    <span class="kw">expect_equivalent</span>(</span>
-<span id="cb4-4"><a href="#cb4-4"></a>      distro,</span>
-<span id="cb4-5"><a href="#cb4-5"></a>      os</span>
-<span id="cb4-6"><a href="#cb4-6"></a>    )</span>
-<span id="cb4-7"><a href="#cb4-7"></a>  }</span>
-<span id="cb4-8"><a href="#cb4-8"></a>})</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>valid &lt;-<span class="st"> &quot;email@email.com&quot;</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>invalid &lt;-<span class="st"> &quot;https://www.google.com&quot;</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>valid_expected &lt;-<span class="st"> </span><span class="ot">TRUE</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>invalid_expected &lt;-<span class="st"> </span><span class="ot">FALSE</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>Variable &lt;-<span class="st"> </span><span class="kw">c</span>(</span>
+<span id="cb2-6"><a href="#cb2-6"></a>  <span class="st">&quot;`valid`&quot;</span>,</span>
+<span id="cb2-7"><a href="#cb2-7"></a>  <span class="st">&quot;`invalid`&quot;</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>)</span>
+<span id="cb2-9"><a href="#cb2-9"></a>Description &lt;-<span class="st"> </span><span class="kw">c</span>(</span>
+<span id="cb2-10"><a href="#cb2-10"></a>  <span class="kw">paste0</span>(<span class="st">&quot;Vaild email (&quot;</span>, valid, <span class="st">&quot;).&quot;</span>),</span>
+<span id="cb2-11"><a href="#cb2-11"></a>  <span class="kw">paste0</span>(<span class="st">&quot;Invalid email (&quot;</span>, invalid, <span class="st">&quot;).&quot;</span>)</span>
+<span id="cb2-12"><a href="#cb2-12"></a>)</span>
+<span id="cb2-13"><a href="#cb2-13"></a>Value &lt;-<span class="st"> </span><span class="kw">c</span>(</span>
+<span id="cb2-14"><a href="#cb2-14"></a>  valid_expected,</span>
+<span id="cb2-15"><a href="#cb2-15"></a>  invalid_expected</span>
+<span id="cb2-16"><a href="#cb2-16"></a>)</span>
+<span id="cb2-17"><a href="#cb2-17"></a>knitr<span class="op">::</span><span class="kw">kable</span>(</span>
+<span id="cb2-18"><a href="#cb2-18"></a>  <span class="dt">x =</span> <span class="kw">data.frame</span>(</span>
+<span id="cb2-19"><a href="#cb2-19"></a>    Variable,</span>
+<span id="cb2-20"><a href="#cb2-20"></a>    Description,</span>
+<span id="cb2-21"><a href="#cb2-21"></a>    Value</span>
+<span id="cb2-22"><a href="#cb2-22"></a>  ),</span>
+<span id="cb2-23"><a href="#cb2-23"></a>  <span class="dt">row.names =</span> <span class="ot">FALSE</span></span>
+<span id="cb2-24"><a href="#cb2-24"></a>)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Variable</th>
+<th align="left">Description</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>valid</code></td>
+<td align="left">Vaild email (<a href="mailto:email@email.com" class="email">email@email.com</a>).</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="even">
+<td align="left"><code>invalid</code></td>
+<td align="left">Invalid email (<a href="https://www.google.com" class="uri">https://www.google.com</a>).</td>
+<td align="left">FALSE</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="run-test" class="section level2">
+<h2>Run test</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>valid_result &lt;-<span class="st"> </span><span class="kw">util_valid_email</span>(<span class="dt">x =</span> valid)</span>
+<span id="cb3-2"><a href="#cb3-2"></a>invalid_result &lt;-<span class="st"> </span><span class="kw">util_valid_email</span>(<span class="dt">x =</span> invalid)</span></code></pre></div>
+</div>
+<div id="results" class="section level2">
+<h2>Results</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>Parameter &lt;-<span class="st"> </span><span class="kw">c</span>(</span>
+<span id="cb4-2"><a href="#cb4-2"></a>  valid_expected,</span>
+<span id="cb4-3"><a href="#cb4-3"></a>  invalid_expected</span>
+<span id="cb4-4"><a href="#cb4-4"></a>)</span>
+<span id="cb4-5"><a href="#cb4-5"></a>Result &lt;-<span class="st"> </span><span class="kw">c</span>(</span>
+<span id="cb4-6"><a href="#cb4-6"></a>  valid_result,</span>
+<span id="cb4-7"><a href="#cb4-7"></a>  invalid_result</span>
+<span id="cb4-8"><a href="#cb4-8"></a>)</span>
+<span id="cb4-9"><a href="#cb4-9"></a>knitr<span class="op">::</span><span class="kw">kable</span>(</span>
+<span id="cb4-10"><a href="#cb4-10"></a>  <span class="dt">x =</span> <span class="kw">data.frame</span>(</span>
+<span id="cb4-11"><a href="#cb4-11"></a>    Description,</span>
+<span id="cb4-12"><a href="#cb4-12"></a>    Parameter,</span>
+<span id="cb4-13"><a href="#cb4-13"></a>    Result</span>
+<span id="cb4-14"><a href="#cb4-14"></a>  ),</span>
+<span id="cb4-15"><a href="#cb4-15"></a>  <span class="dt">row.names =</span> <span class="ot">FALSE</span></span>
+<span id="cb4-16"><a href="#cb4-16"></a>)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Description</th>
+<th align="left">Parameter</th>
+<th align="left">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Vaild email (<a href="mailto:email@email.com" class="email">email@email.com</a>).</td>
+<td align="left">TRUE</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="even">
+<td align="left">Invalid email (<a href="https://www.google.com" class="uri">https://www.google.com</a>).</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">test_that</span>(<span class="st">&quot;util_valid_email returns TRUE&quot;</span>, {</span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="kw">expect_true</span>(</span>
+<span id="cb5-3"><a href="#cb5-3"></a>    valid_result</span>
+<span id="cb5-4"><a href="#cb5-4"></a>  )</span>
+<span id="cb5-5"><a href="#cb5-5"></a>})</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">test_that</span>(<span class="st">&quot;util_valid_email returns FALSE&quot;</span>, {</span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="kw">expect_false</span>(</span>
+<span id="cb6-3"><a href="#cb6-3"></a>    invalid_result</span>
+<span id="cb6-4"><a href="#cb6-4"></a>  )</span>
+<span id="cb6-5"><a href="#cb6-5"></a>})</span></code></pre></div>
 </div>
 
 
