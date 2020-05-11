@@ -51,7 +51,10 @@ util_make_subdir <- function(dir = NULL,
       )
     )
   } else {
-    dir.create(dir)
+    dir.create(
+      path = dir,
+      recursive = TRUE
+    )
   }
   dir
 }
