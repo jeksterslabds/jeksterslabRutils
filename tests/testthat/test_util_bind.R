@@ -57,7 +57,7 @@ file.copy(
   to = full_path_files_to
 )
 root <- basename(tmp_01)
-fn <- file.path(
+fn_output <- file.path(
   tmp_01,
   paste0(
     root,
@@ -203,7 +203,7 @@ test_that("columns are correct", {
 #+ testthat_03, echo=TRUE
 test_that("external file is saved", {
   expect_equivalent(
-    file.exists(fn),
+    file.exists(fn_output),
     TRUE
   )
 })
