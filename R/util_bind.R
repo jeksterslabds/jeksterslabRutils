@@ -13,6 +13,8 @@
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param dir Character string.
 #'   Directory which contains target files.
+#' @param recursive Logical.
+#'   Search files recursively under `dir`.
 #' @param format Character string.
 #'   `"csv"` for comma separated files.
 #'   `"xls"` or `"xlsx` for `Excel` files.
@@ -26,15 +28,16 @@
 #'   `"^filename.*\\.csv$"`.
 #' @param fn_column Logical.
 #'   Save file name of source data file as a new column.
+#'   The new column will have `"fn"` as its column name.
 #' @param fn_column_full_path Logical.
 #'   Save the full path of source data file as a new column.
 #' @param save Logical.
 #'   Save concatenated files in `csv` format.
-#' @param fn Character string.
+#' @param fn_output Character string.
 #'   Filename to use when `save = TRUE`.
 #'   Uses the basename of `dir` if not provided.
 #' @param save_dir Character string.
-#'   Directory used for `fn`.
+#'   Directory used for `fn_output`.
 #' @param ... Optional arguments to pass to
 #'   [`readxl::read_excel()`] when `format %in% c("xls", "xlsx")`,
 #'   [`read.csv()`] when `format = "csv"`,
@@ -53,19 +56,20 @@
 #'   pattern = "^filename.*",
 #'   fn_column = TRUE,
 #'   save = TRUE,
-#'   fn = NULL,
+#'   fn_output = NULL,
 #'   save_dir = getwd(),
 #'   par = FALSE
 #' )
 #' }
 #' @export
 util_bind <- function(dir = getwd(),
+                      recursive = FALSE,
                       format = "csv",
                       pattern = "^filename.*",
                       fn_column = TRUE,
                       fn_column_full_path = FALSE,
                       save = FALSE,
-                      fn = NULL,
+                      fn_output = NULL,
                       save_dir = getwd(),
                       par = TRUE,
                       ncores = NULL,
@@ -138,8 +142,8 @@ util_bind <- function(dir = getwd(),
   dir <- normalizePath(dir)
   save_dir <- normalizePath(save_dir)
   root <- basename(dir)
-  if (is.null(fn)) {
-    fn <- file.path(
+  if (is.null(fn_output)) {
+    fn_output <- file.path(
       save_dir,
       paste0(
         root,
@@ -158,7 +162,7 @@ util_bind <- function(dir = getwd(),
     pattern = pattern,
     all.files = FALSE,
     full.names = TRUE,
-    recursive = FALSE,
+    recursive = recursive,
     ignore.case = TRUE,
     no.. = FALSE
   )
@@ -194,12 +198,12 @@ util_bind <- function(dir = getwd(),
     if (save) {
       write.csv(
         x = output,
-        file = fn,
+        file = fn_output,
         row.names = FALSE
       )
       message(
         paste(
-          fn,
+          fn_output,
           "saved.",
           "\n"
         )
