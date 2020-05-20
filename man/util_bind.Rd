@@ -28,7 +28,9 @@ Search files recursively under \code{dir}.}
 
 \item{format}{Character string.
 \code{"csv"} for comma separated files.
-\code{"xls"} or \verb{"xlsx} for \code{Excel} files.}
+\code{"xls"} or \verb{"xlsx} for \code{Excel} files.
+\code{"Rda"}, \code{"rda"}, \code{"RDA"}, \code{"RData"}, \code{"Rdata"}, \code{"rdata"}, \code{"RDATA"} for \verb{R Data Format}.
+\code{"Rds"}, \code{"rds"}, \code{"RDS"} for serialized \code{R} object.}
 
 \item{pattern}{Character string.
 Regular expression.
@@ -66,7 +68,7 @@ If unspecified, defaults to \code{detectCores() - 1}.}
 \item{...}{Optional arguments to pass to
 \code{\link[readxl:read_excel]{readxl::read_excel()}} when \code{format \%in\% c("xls", "xlsx")},
 \code{\link[=read.csv]{read.csv()}} when \code{format = "csv"},
-\code{\link[=load]{load()}} when \code{format \%in\% c("Rda", "RDA", "RData", "Rdata", "rdata", "RDATA")}, or
+\code{\link[=load]{load()}} when \code{format \%in\% c("Rda", "rda", "RDA", "RData", "Rdata", "rdata", "RDATA")}, or
 \code{\link[=readRDS]{readRDS()}} when \code{format \%in\% c("Rds", "rds", "RDS")}.}
 }
 \description{
