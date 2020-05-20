@@ -18,6 +18,8 @@
 #' @param format Character string.
 #'   `"csv"` for comma separated files.
 #'   `"xls"` or `"xlsx` for `Excel` files.
+#'   `"Rda"`, `"rda"`, `"RDA"`, `"RData"`, `"Rdata"`, `"rdata"`, `"RDATA"` for `R Data Format`.
+#'   `"Rds"`, `"rds"`, `"RDS"` for serialized `R` object.
 #' @param pattern Character string.
 #'   Regular expression.
 #'   Pattern of file names.
@@ -41,7 +43,7 @@
 #' @param ... Optional arguments to pass to
 #'   [`readxl::read_excel()`] when `format %in% c("xls", "xlsx")`,
 #'   [`read.csv()`] when `format = "csv"`,
-#'   [`load()`] when `format %in% c("Rda", "RDA", "RData", "Rdata", "rdata", "RDATA")`, or
+#'   [`load()`] when `format %in% c("Rda", "rda", "RDA", "RData", "Rdata", "rdata", "RDATA")`, or
 #'   [`readRDS()`] when `format %in% c("Rds", "rds", "RDS")`.
 #' @inheritParams util_lapply
 #' @importFrom utils glob2rx
@@ -96,7 +98,7 @@ util_bind <- function(dir = getwd(),
           )
           return(x)
         }
-        if (format %in% c("Rda", "RDA", "RData", "Rdata", "rdata", "RDATA")) {
+        if (format %in% c("Rda", "rda", "RDA", "RData", "Rdata", "rdata", "RDATA")) {
           x <- load(
             file = file,
             ...
@@ -109,7 +111,7 @@ util_bind <- function(dir = getwd(),
           )
         }
         # These lines are covered when
-        # format %in% c("Rda", "RDA", "RData", "Rdata", "rdata", "RDATA")
+        # format %in% c("Rda", "rda", "RDA", "RData", "Rdata", "rdata", "RDATA")
         # or
         # format %in% c("Rds", "rds", "RDS")
         # write tests for these
