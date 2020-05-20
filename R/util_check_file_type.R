@@ -112,11 +112,9 @@ util_check_file_type <- function(dir = getwd(),
     replacement = "",
     x = readLines(con = tempfile)
   )
-  output <- paste(
-    mismatch
-  )
   unlink(tempfile)
   if (remove_files) {
     unlink(mismatch)
   }
+  mismatch
 }
