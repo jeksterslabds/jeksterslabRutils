@@ -63,6 +63,7 @@ util_check_file_seq <- function(dir = getwd(),
                                 ext = "csv",
                                 sep = "_",
                                 prefix = TRUE) {
+  dir <- normalizePath(dir)
   id <- start:end
   id <- sprintf(
     paste0(
