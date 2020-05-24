@@ -18,8 +18,16 @@
 #' @param format Character string.
 #'   `"csv"` for comma separated files.
 #'   `"xls"` or `"xlsx` for `Excel` files.
-#'   `"Rda"`, `"rda"`, `"RDA"`, `"RData"`, `"Rdata"`, `"rdata"`, `"RDATA"` for `R Data Format`.
-#'   `"Rds"`, `"rds"`, `"RDS"` for serialized `R` object.
+#'   `"Rda"`,
+#'   `"rda"`,
+#'   `"RDA"`,
+#'   `"RData"`,
+#'   `"Rdata"`,
+#'   `"rdata"`,
+#'   `"RDATA"` for `R Data Format`.
+#'   `"Rds"`,
+#'   `"rds"`,
+#'   `"RDS"` for serialized `R` object.
 #' @param pattern Character string.
 #'   Regular expression.
 #'   Pattern of file names.
