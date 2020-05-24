@@ -41,10 +41,31 @@
 #' @param save_dir Character string.
 #'   Directory used for `fn_output`.
 #' @param ... Optional arguments to pass to
-#'   [`readxl::read_excel()`] when `format %in% c("xls", "xlsx")`,
-#'   [`read.csv()`] when `format = "csv"`,
-#'   [`load()`] when `format %in% c("Rda", "rda", "RDA", "RData", "Rdata", "rdata", "RDATA")`, or
-#'   [`readRDS()`] when `format %in% c("Rds", "rds", "RDS")`.
+#'   [`readxl::read_excel()`]
+#'   when
+#'   `format = "xls"`
+#'   or `"xlsx"`,
+#'   [`read.csv()`]
+#'   when
+#'   `format = "csv"`,
+#'   [`load()`]
+#'   when
+#'   `format = `
+#'   any of the following
+#'   `"Rda"`,
+#'   `"rda"`,
+#'   `"RDA"`,
+#'   `"RData"`,
+#'   `"Rdata"`,
+#'   `"rdata"`,
+#'   `"RDATA"`, or
+#'   [`readRDS()`]
+#'   when
+#'   `format = `
+#'   any of the following
+#'   `"Rds"`,
+#'   `"rds"`,
+#'   `"RDS"`.
 #' @inheritParams util_lapply
 #' @importFrom utils glob2rx
 #' @importFrom utils read.csv
