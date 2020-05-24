@@ -26,7 +26,7 @@ context("Test util_get_numbers.")
 #'
 #+ parameters
 input <- util_rand_str(
-  characters = 1000L,
+  characters = 50L,
   digits = TRUE,
   ext = "inp"
 )
