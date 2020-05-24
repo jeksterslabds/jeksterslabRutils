@@ -13,7 +13,8 @@
 #'   If `TRUE`, use multiple cores.
 #' @param ncores Integer.
 #'   Number of cores to use if `par = TRUE`.
-#'   If unspecified, defaults to `detectCores() - 1`.
+#'   If unspecified,
+#'   defaults to `detectCores() - 1`.
 #' @importFrom parallel detectCores
 #' @importFrom parallel makeCluster
 #' @importFrom parallel stopCluster
