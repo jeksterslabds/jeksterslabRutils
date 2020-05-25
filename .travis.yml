@@ -14,6 +14,8 @@ after_success:
 - Rscript -e 'covr::codecov()'
 - Rscript -e 'pkgdown::build_site()'
 deploy:
+  os: linux
+  r: release
   provider: pages
   skip_cleanup: true
   strategy: git
