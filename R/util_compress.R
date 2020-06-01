@@ -43,7 +43,7 @@ util_compress <- function(dir = getwd(),
       "Rdata",
       "rdata",
       "RDATA"
-      )) {
+    )) {
       x <- load(
         file = file
       )
