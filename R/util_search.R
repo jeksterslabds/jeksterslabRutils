@@ -46,7 +46,8 @@ util_search_pattern <- function(dir = getwd(),
 #'   File extension.
 #' @inheritParams util_search_pattern
 #' @examples
-#' # Search for files in the working directory with the csv extension
+#' # Search for files in the working directory
+#' # with the csv extension
 #' util_search_ext(
 #'   dir = getwd(),
 #'   ext = "csv"
@@ -83,9 +84,11 @@ util_search_ext <- function(dir = getwd(),
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param rscript Logical.
-#'   Search for `R` scripts (`*.R` or `*.r`).
+#'   Search for `R` scripts
+#'   (`*.R` or `*.r`).
 #' @param rmd Logical.
-#'   Search for `R Markdown` files (`*.Rmd` or `*.rmd`).
+#'   Search for `R Markdown` files
+#'   (`*.Rmd` or `*.rmd`).
 #' @inheritParams util_search_pattern
 #' @examples
 #' util_search_r(dir = getwd())

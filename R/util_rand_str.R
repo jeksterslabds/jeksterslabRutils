@@ -6,7 +6,8 @@
 #'
 #' To ensure that the character string generated
 #' is a valid `R` variable name,
-#' the first character will always be a lower case or upper case letter
+#' the first character will always be
+#' a lower case or upper case letter
 #' when `digits = TRUE`.
 #'
 #' @author Ivan Jacob Agaloos Pesigan

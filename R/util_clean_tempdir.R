@@ -2,8 +2,10 @@
 #'
 #' Cleans contents of `tempdir`.
 #'
-#' From [stevec's](https://stackoverflow.com/users/5783745/stevec)
-#' answer in [Stackoverflow](https://stackoverflow.com/questions/45894133/deleting-tmp-files)
+#' From
+#' [stevec's](https://stackoverflow.com/users/5783745/stevec)
+#' answer in
+#' [Stackoverflow](https://stackoverflow.com/questions/45894133/deleting-tmp-files)
 #'
 #' @examples
 #' \dontrun{

@@ -127,7 +127,15 @@ util_bind <- function(dir = getwd(),
           )
           return(x)
         }
-        if (format %in% c("Rda", "rda", "RDA", "RData", "Rdata", "rdata", "RDATA")) {
+        if (format %in% c(
+          "Rda",
+          "rda",
+          "RDA",
+          "RData",
+          "Rdata",
+          "rdata",
+          "RDATA"
+        )) {
           x <- load(
             file = file,
             ...
@@ -140,7 +148,15 @@ util_bind <- function(dir = getwd(),
           )
         }
         # These lines are covered when
-        # format %in% c("Rda", "rda", "RDA", "RData", "Rdata", "rdata", "RDATA")
+        # format %in% c(
+        #  "Rda",
+        #  "rda",
+        #  "RDA",
+        #  "RData",
+        #  "Rdata",
+        #  "rdata",
+        #  "RDATA"
+        #  )
         # or
         # format %in% c("Rds", "rds", "RDS")
         # write tests for these

@@ -30,7 +30,7 @@ util_wget <- function(dir = getwd(),
   dir <- file.path(dir)
   if (nchar(Sys.which("wget")) == 0) {
     stop(
-      "`wget` command is not installed in the system.\n"
+      "`wget` command is not installed in the system."
     )
   }
   exe <- function(link, args) {
@@ -54,8 +54,7 @@ util_wget <- function(dir = getwd(),
         warning(
           paste(
             "Error downloading",
-            link,
-            "\n"
+            link
           )
         )
       }

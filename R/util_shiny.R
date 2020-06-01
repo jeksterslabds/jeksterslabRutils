@@ -8,7 +8,8 @@
 #'   Name of the Shiny App.
 #' @param pkg_name Character string.
 #'   package name.
-#' @param ... Optional arguments to pass to [`shiny::runApp()`].
+#' @param ... Optional arguments
+#'   to pass to [`shiny::runApp()`].
 #' @importFrom shiny runApp
 #' @export
 util_shiny <- function(app, pkg_name, ...) {
@@ -51,8 +52,7 @@ util_shiny <- function(app, pkg_name, ...) {
     stop(
       paste0(
         "Please use `util_shiny()` with a valid shiny app as an argument.\n",
-        msg,
-        "\n"
+        msg
       ),
       call. = FALSE
     )

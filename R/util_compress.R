@@ -2,8 +2,16 @@
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param format Character string.
-#'   `"Rda"`, `"rda"`, `"RDA"`, `"RData"`, `"Rdata"`, `"rdata"`, `"RDATA"` for `R Data Format`.
-#'   `"Rds"`, `"rds"`, `"RDS"` for serialized `R` object.
+#'   `"Rda"`,
+#'   `"rda"`,
+#'   `"RDA"`,
+#'   `"RData"`,
+#'   `"Rdata"`,
+#'   `"rdata"`,
+#'   `"RDATA"` for `R Data Format`.
+#'   `"Rds"`,
+#'   `"rds"`,
+#'   `"RDS"` for serialized `R` object.
 #' @param pattern Character string.
 #'   Regular expression.
 #'   Pattern of file names.
@@ -27,7 +35,15 @@ util_compress <- function(dir = getwd(),
   foo <- function(file,
                   format,
                   compress) {
-    if (format %in% c("Rda", "rda", "RDA", "RData", "Rdata", "rdata", "RDATA")) {
+    if (format %in% c(
+      "Rda",
+      "rda",
+      "RDA",
+      "RData",
+      "Rdata",
+      "rdata",
+      "RDATA"
+      )) {
       x <- load(
         file = file
       )

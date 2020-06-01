@@ -1,11 +1,16 @@
 #' Get Linux Distribution.
 #'
-#' Utility to detect the Linux distribution of the current `R` session.
+#' Utility to detect the Linux distribution
+#' of the current `R` session.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @return
-#' Returns the `NAME` field in `/etc/os-release`
-#' or `/usr/lib/os-release` in lower case if `util_os() == "linux"`.
+#' Returns the `NAME` field in
+#' `/etc/os-release`
+#' or
+#' `/usr/lib/os-release`
+#' in lower case if
+#' `util_os() == "linux"`.
 #' If the operating system is NOT Linux,
 #' returns the result of [`util_os()`]
 #' @examples

@@ -81,7 +81,7 @@ util_check_file_type <- function(dir = getwd(),
   )
   if (nchar(Sys.which("file")) == 0) {
     stop(
-      "`file` command is not installed in the system.\n"
+      "`file` command is not installed in the system."
     )
   }
   tempfile <- file.path(

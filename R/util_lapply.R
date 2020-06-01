@@ -12,9 +12,11 @@
 #' @param par Logical.
 #'   If `TRUE`, use multiple cores.
 #' @param ncores Integer.
-#'   Number of cores to use if `par = TRUE`.
+#'   Number of cores to use if
+#'   `par = TRUE`.
 #'   If unspecified,
-#'   defaults to `detectCores() - 1`.
+#'   defaults to
+#'   `detectCores() - 1`.
 #' @importFrom parallel detectCores
 #' @importFrom parallel makeCluster
 #' @importFrom parallel stopCluster
@@ -38,7 +40,7 @@ util_lapply <- function(FUN,
   length_X <- length(args[[1]])
   if (length_X == 0) {
     stop(
-      "`length(args[[1]]` should be greater than or equal to 1.\n"
+      "`length(args[[1]]` should be greater than or equal to 1."
     )
   }
   if (length_X == 1) {

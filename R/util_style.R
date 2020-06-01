@@ -47,8 +47,7 @@ util_style <- function(dir = getwd(),
         warning(
           paste(
             "Error styling",
-            file,
-            "\n"
+            file
           )
         )
       }
@@ -61,7 +60,7 @@ util_style <- function(dir = getwd(),
       return(TRUE)
     }
   }
-  message <- "No files to style.\n"
+  message <- "No files to style."
   dir <- normalizePath(dir)
   if (is.null(files)) {
     # populate files
