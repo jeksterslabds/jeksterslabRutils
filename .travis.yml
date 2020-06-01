@@ -3,11 +3,25 @@ language: r
 r:
 - oldrel
 - release
+- devel
 os:
 - linux
 - osx
+jobs:
+  exclude:
+  # macOS binary packages not available for r-devel
+  - r: devel
+    os: osx
+addons:
+  apt:
+    update: true
+    packages:
+    - libmagick++-dev
+    - libpoppler-cpp-dev
 cache: packages
 before_install:
+- if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew update && brew install imagemagick ghostscript; fi
+- Rscript -e 'if (!require("tinytex")) install.packages("tinytex"); tinytex::install_tinytex()'
 - Rscript -e 'if (!require("covr")) install.packages("covr")'
 - Rscript -e 'if (!require("pkgdown")) install.packages("pkgdown")'
 - Rscript -e 'if (!require("magick")) install.packages("magick")'

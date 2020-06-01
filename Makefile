@@ -12,10 +12,4 @@ clean : rm
 	-git push
 
 rm :
-	-rm -rf ${PKG}/docs/*
-	-rm -rf ${PKG}/man/*
-	-rm -rf ${PKG}/tests/testthat/*.html
-	-rm -rf ${PKG}/tests/testthat/*.md
-	-rm -rf ${PKG}/vignettes/*.html
-	-rm -rf ${PKG}/vignettes/*.md
-	-rm -rf ${PKG}/vignettes/tests/*
+	-Rscript -e 'jeksterslabRpkg::pkg_clean("$(PKG)")'
