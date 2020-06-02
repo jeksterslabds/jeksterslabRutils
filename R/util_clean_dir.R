@@ -15,8 +15,7 @@
 util_clean_dir <- function(dir,
                            create_dir = TRUE,
                            recursive = TRUE,
-                           force = TRUE,
-                           expand = TRUE) {
+                           force = TRUE) {
   if (!dir.exists(dir)) {
     stop(
       paste(
@@ -28,8 +27,7 @@ util_clean_dir <- function(dir,
   unlink(
     x = dir,
     recursive = recursive,
-    force = force,
-    expand = expand
+    force = force
   )
   if (create_dir) {
     dir.create(path = dir)
