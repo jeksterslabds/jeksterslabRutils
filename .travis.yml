@@ -14,7 +14,6 @@ jobs:
     os: osx
 cache: packages
 before_install:
-- wget https://github.com/scottkosty/install-tl-ubuntu/raw/master/install-tl-ubuntu && chmod +x ./install-tl-ubuntu
 - Rscript -e 'if (!require("covr")) install.packages("covr")'
 - Rscript -e 'if (!require("pkgdown")) install.packages("pkgdown")'
 after_success:
