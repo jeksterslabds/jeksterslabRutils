@@ -37,24 +37,25 @@ util_make_subdir <- function(dir = NULL,
   if (is.null(subdir)) {
     subdir <- util_rand_str()
   }
+  dir_subdir <- rep(x = NA, length = length(subdir))
   for (i in seq_along(subdir)) {
-    dir <- file.path(
+    dir_subdir[i] <- file.path(
       dir,
       subdir[i]
     )
-  }
-  if (dir.exists(dir)) {
-    warning(
-      paste(
-        dir,
-        "already exists and will not be created."
+    if (dir.exists(dir_subdir[i])) {
+      warning(
+        paste(
+          dir_subdir[i],
+          "already exists and will not be created."
+        )
       )
-    )
-  } else {
-    dir.create(
-      path = dir,
-      recursive = TRUE
-    )
+    } else {
+      dir.create(
+        path = dir_subdir[i],
+        recursive = TRUE
+      )
+    }
   }
-  dir
+  dir_subdir
 }
