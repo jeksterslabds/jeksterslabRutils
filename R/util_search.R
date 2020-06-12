@@ -102,13 +102,13 @@ util_search_r <- function(dir = getwd(),
                           ignore.case = TRUE,
                           no.. = FALSE) {
   if (rscript == TRUE & rmd == TRUE) {
-    pattern <- "^.*\\.r$|^.*\\.rmd$"
+    pattern <- "^.*\\.r$|^.*\\.R$|^.*\\.rmd$|^.*\\.Rmd$|^.*\\.RMD$"
   }
   if (rscript == TRUE & rmd == FALSE) {
-    pattern <- "^.*\\.r$"
+    pattern <- "^.*\\.r$|^.*\\.R$"
   }
   if (rscript == FALSE & rmd == TRUE) {
-    pattern <- "^.*\\.rmd$"
+    pattern <- "^.*\\.rmd$|^.*\\.Rmd$|^.*\\.RMD$"
   }
   sort(
     list.files(
