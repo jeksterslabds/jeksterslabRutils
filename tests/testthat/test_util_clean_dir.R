@@ -27,7 +27,6 @@ context("Test util_clean_dir.")
 #' ### Initialize temporary folders in the working directory
 #'
 #+ temp
-#+ temp
 tmp_01 <- util_make_subdir()
 tmp_02 <- util_make_subdir()
 #'
@@ -38,9 +37,7 @@ test_that("error", {
   expect_error(
     util_clean_dir(
       dir = "NONEXISTENT",
-      create_dir = TRUE,
-      recursive = TRUE,
-      force = TRUE
+      create_dir = FALSE
     )
   )
 })
