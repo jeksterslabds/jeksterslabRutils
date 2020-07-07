@@ -27,6 +27,9 @@ vignettes/*.md
 vignettes/articles/*.html
 vignettes/articles/*.pdf
 vignettes/articles/*.md
+vignettes/notes/*.html
+vignettes/notes/*.pdf
+vignettes/notes/*.md
 vignettes/tests/*.html
 vignettes/tests/*.pdf
 vignettes/tests/*.md
@@ -49,6 +52,3 @@ tests/testthat/*.md
 
 # R Environment Variables
 .Renviron
-
-# pkgdown site
-docs/

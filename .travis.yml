@@ -15,16 +15,6 @@ jobs:
 cache: packages
 before_install:
 - Rscript -e 'if (!require("covr")) install.packages("covr")'
-- Rscript -e 'if (!require("pkgdown")) install.packages("pkgdown")'
 after_success:
-- Rscript -e 'covr::codecov()'
 - Rscript -e 'pkgdown::build_site()'
-deploy:
-  provider: pages
-  skip_cleanup: true
-  strategy: git
-  token: "$GITHUB_PAT"
-  keep_history: true
-  local_dir: docs
-  on:
-    branch: master
+
