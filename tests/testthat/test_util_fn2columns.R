@@ -133,6 +133,35 @@ test_that("expect_true", {
     ("ext" %in% colnames(df))
   )
 })
+#'
+#' ## Expect error
+#'
+#+ error
+test_that("error", {
+  expect_error(
+    util_fn2columns(
+      df = "NOT A DATA FRAME"
+    )
+  )
+})
+#+ error
+test_that("message", {
+  expect_message(
+    util_fn2columns(
+      df = as.data.frame(
+        csv
+      ),
+      colnames = paste0("col", 1:20)
+    )
+  )
+})
+#' ## No colnames
+#'
+util_fn2columns(
+  df = as.data.frame(
+    csv
+  )
+)
 #' ### Clean up temporary files and folders
 #'
 #+ cleanup

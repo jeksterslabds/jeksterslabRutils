@@ -5,17 +5,14 @@
 #' and loads them in the namespace.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
-#' @param pkg Character vector.
-#'   Packages to install.
-#' @param github Character vector.
-#'   Packages from `Github` to install.
-#' @param update Logical.
-#'   Update installed packages.
 #' @inheritParams utils::update.packages
 #' @inheritParams utils::install.packages
-#' @importFrom utils update.packages
-#' @importFrom utils install.packages
-#' @importFrom utils installed.packages
+#' @param pkg Character vector.
+#' Packages to install.
+#' @param github Character vector.
+#' Packages from `Github` to install.
+#' @param update Logical.
+#' Update installed packages.
 #' @examples
 #' pkg <- c(
 #'   "parallel",
@@ -25,6 +22,9 @@
 #' util_load_pkg(
 #'   pkg = pkg
 #' )
+#' @importFrom utils update.packages
+#' @importFrom utils install.packages
+#' @importFrom utils installed.packages
 #' @export
 util_load_pkg <- function(pkg,
                           github = NULL,

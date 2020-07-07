@@ -4,9 +4,9 @@
 #' using file name regular expression pattern.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
+#' @inheritParams base::list.files
 #' @param dir Character string.
 #'   Directory to search.
-#' @inheritParams base::list.files
 #' @examples
 #' # Search for files in the working directory
 #' # with filenames starting with `file`

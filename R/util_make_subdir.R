@@ -24,10 +24,10 @@
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param dir Character string.
-#'   Directory.
+#' Directory.
 #' @param subdir Character string or vector.
-#'   A single subdirectory of a vector of subdirectories.
-#'   Subdirectory or subdirectories.
+#' A single subdirectory of a vector of subdirectories.
+#' Subdirectory or subdirectories.
 #' @export
 util_make_subdir <- function(dir = NULL,
                              subdir = NULL) {

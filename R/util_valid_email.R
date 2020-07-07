@@ -2,7 +2,7 @@
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param x Character string.
-#'   Email address to validate.
+#' Email address to validate.
 #' @export
 util_valid_email <- function(x) {
   grepl(

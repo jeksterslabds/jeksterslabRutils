@@ -1,23 +1,22 @@
 #' Spin `R` Scripts into `R` Markdown Files.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
-#' @param recursive Logical.
-#'   If `TRUE`,
-#'   recursively spin all `R` scripts
-#'   (`.R`, `.r`)
-#'   in `dir`.
-#'   Ignored if `file` is NOT NULL.
-#' @param files Character vector.
-#'   Vector of files to spin.
-#' @param knit Logical.
-#'   If `TRUE`,
-#'   compiles the document after conversion.
-#' @param ... Arguments
-#'   to pass to [`knitr::spin()`].
 #' @inheritParams util_lapply
 #' @inheritParams knitr::spin
 #' @inheritParams util_render
-#' @importFrom knitr spin
+#' @param recursive Logical.
+#' If `TRUE`,
+#' recursively spin all `R` scripts
+#' (`.R`, `.r`)
+#' in `dir`.
+#' Ignored if `file` is NOT NULL.
+#' @param files Character vector.
+#' Vector of files to spin.
+#' @param knit Logical.
+#' If `TRUE`,
+#' compiles the document after conversion.
+#' @param ... Arguments
+#' to pass to [`knitr::spin()`].
 #' @examples
 #' \dontrun{
 #' util_spin(
@@ -25,6 +24,7 @@
 #'   par = FALSE
 #' )
 #' }
+#' @importFrom knitr spin
 #' @export
 util_spin <- function(dir = getwd(),
                       recursive = FALSE,

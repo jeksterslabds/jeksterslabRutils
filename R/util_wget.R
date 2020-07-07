@@ -1,13 +1,13 @@
 #' Download Files using `wget`.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
-#' @param dir Character string.
-#'   Output directory.
-#' @param link Character vector.
-#'   URLs.
-#' @param args Character string.
-#'   Arguments to pass to \code{wget}.
 #' @inheritParams util_lapply
+#' @param dir Character string.
+#' Output directory.
+#' @param link Character vector.
+#' URLs.
+#' @param args Character string.
+#' Arguments to pass to \code{wget}.
 #' @examples
 #' \dontrun{
 #' link <- c(

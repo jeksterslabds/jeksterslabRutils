@@ -3,17 +3,17 @@
 #' Writes lines of character strings to file.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
-#' @param dir Character string.
-#'   Directory.
-#' @param fn Character string.
-#'   Filename.
-#' @param msg Character string.
-#'   Optional message.
-#'   If supplied,
-#'   prints `msg dir/fn`.
-#' @param overwrite Logical.
-#'   Overwrite existing `fn` in `dir`.
 #' @inheritParams base::writeLines
+#' @param dir Character string.
+#' Directory.
+#' @param fn Character string.
+#' Filename.
+#' @param msg Character string.
+#' Optional message.
+#' If supplied,
+#' prints `msg dir/fn`.
+#' @param overwrite Logical.
+#' Overwrite existing `fn` in `dir`.
 #' @examples
 #' \dontrun{
 #' text <- paste0(

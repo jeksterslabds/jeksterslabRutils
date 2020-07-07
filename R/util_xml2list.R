@@ -1,11 +1,11 @@
 #' `XML`/`HTML` to List.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
-#' @param tags Character vector.
-#'   `XML` or `HTML` tags.
-#' @param con Connection.
-#'   Path or connection to `XML`/`HTML` file.
 #' @inheritParams util_lapply
+#' @param tags Character vector.
+#' `XML` or `HTML` tags.
+#' @param con Connection.
+#' Path or connection to `XML`/`HTML` file.
 #' @examples
 #' xml <- paste0(
 #'   "<TITLE>",

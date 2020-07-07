@@ -4,9 +4,9 @@
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param con URL.
-#' @importFrom utils capture.output
 #' @examples
 #' util_url_exists("https://www.google.com")
+#' @importFrom utils capture.output
 #' @export
 util_url_exists <- function(con) {
   on.exit(close(con))

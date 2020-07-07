@@ -27,7 +27,8 @@ context("Test util_compress.")
 #' ### Initialize temporary folder in the working directory
 #'
 #+ temp
-tmp <- util_make_subdir()
+tmp_01 <- util_make_subdir()
+tmp_02 <- util_make_subdir()
 #'
 #+ test
 data <- rnorm(n = 10)
@@ -43,11 +44,11 @@ Rds <- paste0(
   ".Rds"
 )
 Rda <- file.path(
-  tmp,
+  tmp_01,
   Rda
 )
 Rds <- file.path(
-  tmp,
+  tmp_01,
   Rds
 )
 for (i in seq_along(Rda)) {
@@ -55,7 +56,7 @@ for (i in seq_along(Rda)) {
 }
 for (i in seq_along(compress)) {
   util_compress(
-    dir = tmp,
+    dir = tmp_01,
     format = "Rda",
     compress = compress[i],
     par = FALSE
@@ -66,16 +67,40 @@ for (i in seq_along(Rds)) {
 }
 for (i in seq_along(compress)) {
   util_compress(
-    dir = tmp,
+    dir = tmp_01,
     format = "Rds",
     compress = compress[i],
     par = FALSE
   )
 }
-list.files(tmp)
+list.files(tmp_01)
 test_that("expect_true", {
   expect_true(
     TRUE
+  )
+})
+#'
+#' ## Expect error
+#'
+#+ testthat_01
+test_that("error", {
+  expect_error(
+    util_compress(
+      dir = tmp_02,
+      format = "doc",
+      compress = compress[i],
+      par = FALSE
+    )
+  )
+})
+test_that("error", {
+  expect_error(
+    util_compress(
+      dir = tmp_01,
+      format = "Rds",
+      compress = "doc",
+      par = FALSE
+    )
   )
 })
 #'
@@ -83,6 +108,10 @@ test_that("expect_true", {
 #'
 #+ cleanup
 util_clean_dir(
-  dir = tmp,
+  dir = tmp_01,
+  create_dir = FALSE
+)
+util_clean_dir(
+  dir = tmp_02,
   create_dir = FALSE
 )

@@ -4,24 +4,19 @@
 #'
 #' @param FUN Function to apply.
 #' @param args Named list.
-#'   Arguments to pass to `FUN`.
-#'   The first item (`args[[1]]`)
-#'   should be first argument of `FUN`.
-#'   This corresponds to the argument `X`
-#'   in `mclapply`, `parLapply` or `lapply`.
+#' Arguments to pass to `FUN`.
+#' The first item (`args[[1]]`)
+#' should be first argument of `FUN`.
+#' This corresponds to the argument `X`
+#' in `mclapply`, `parLapply` or `lapply`.
 #' @param par Logical.
-#'   If `TRUE`, use multiple cores.
+#' If `TRUE`, use multiple cores.
 #' @param ncores Integer.
-#'   Number of cores to use if
-#'   `par = TRUE`.
-#'   If unspecified,
-#'   defaults to
-#'   `detectCores() - 1`.
-#' @importFrom parallel detectCores
-#' @importFrom parallel makeCluster
-#' @importFrom parallel stopCluster
-#' @importFrom parallel mclapply
-#' @importFrom parallel parLapply
+#' Number of cores to use if
+#' `par = TRUE`.
+#' If unspecified,
+#' defaults to
+#' `detectCores() - 1`.
 #' @examples
 #' util_lapply(
 #'   FUN = rnorm,
@@ -32,6 +27,11 @@
 #'   ),
 #'   par = FALSE
 #' )
+#' @importFrom parallel detectCores
+#' @importFrom parallel makeCluster
+#' @importFrom parallel stopCluster
+#' @importFrom parallel mclapply
+#' @importFrom parallel parLapply
 #' @export
 util_lapply <- function(FUN,
                         args,

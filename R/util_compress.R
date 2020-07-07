@@ -1,29 +1,29 @@
 #' Compress saved R Objects
 #'
 #' @author Ivan Jacob Agaloos Pesigan
-#' @param format Character string.
-#'   `"Rda"`,
-#'   `"rda"`,
-#'   `"RDA"`,
-#'   `"RData"`,
-#'   `"Rdata"`,
-#'   `"rdata"`,
-#'   `"RDATA"` for `R Data Format`.
-#'   `"Rds"`,
-#'   `"rds"`,
-#'   `"RDS"` for serialized `R` object.
-#' @param pattern Character string.
-#'   Regular expression.
-#'   Pattern of file names.
-#'   `format` is appended as an extension.
-#'   For example, if `pattern = "^filename.*"`,
-#'   and `format = "Rds"`,
-#'   the pattern used to load files will be
-#'   `"^filename.*\\.Rds$"`.
-#' @param compress Character string.
-#'   Compression type
-#'   (`gzip`, `bzip2` or `xz`).
 #' @inheritParams util_bind
+#' @param format Character string.
+#' `"Rda"`,
+#' `"rda"`,
+#' `"RDA"`,
+#' `"RData"`,
+#' `"Rdata"`,
+#' `"rdata"`,
+#' `"RDATA"` for `R Data Format`.
+#' `"Rds"`,
+#' `"rds"`,
+#' `"RDS"` for serialized `R` object.
+#' @param pattern Character string.
+#' Regular expression.
+#' Pattern of file names.
+#' `format` is appended as an extension.
+#' For example, if `pattern = "^filename.*"`,
+#' and `format = "Rds"`,
+#' the pattern used to load files will be
+#' `"^filename.*\\.Rds$"`.
+#' @param compress Character string.
+#' Compression type
+#' (`gzip`, `bzip2` or `xz`).
 #' @export
 util_compress <- function(dir = getwd(),
                           recursive = FALSE,

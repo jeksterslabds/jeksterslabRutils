@@ -6,10 +6,10 @@
 #'
 #' @return
 #' Return any of the following:
-#'   - `linux` for GNU/Linux operating system
-#'   - `osx` for Macintosh operating system
-#'   - `windows` for Windows operating system
-#'   - mystery machine
+#' - `linux` for GNU/Linux operating system
+#' - `osx` for Macintosh operating system
+#' - `windows` for Windows operating system
+#' - mystery machine
 #' @examples
 #' util_os()
 #' @export

@@ -6,7 +6,7 @@
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param fields Character vector.
-#'   Vector of names in the list.
+#' Vector of names in the list.
 #' @param index List.
 #' @examples
 #' index <- list(

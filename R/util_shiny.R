@@ -5,11 +5,11 @@
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param app Character string.
-#'   Name of the Shiny App.
+#' Name of the Shiny App.
 #' @param pkg_name Character string.
-#'   package name.
+#' package name.
 #' @param ... Optional arguments
-#'   to pass to [`shiny::runApp()`].
+#' to pass to [`shiny::runApp()`].
 #' @importFrom shiny runApp
 #' @export
 util_shiny <- function(app, pkg_name, ...) {

@@ -2,31 +2,31 @@
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param dir Character string.
-#'   Directory.
+#' Directory.
 #' @param start Integer.
-#'   Start of the sequence.
+#' Start of the sequence.
 #' @param end Integer.
-#'   End of the sequence.
+#' End of the sequence.
 #' @param digits Integer.
-#'   Digits used in number sequence.
+#' Digits used in number sequence.
 #' @param fn Character string.
-#'   Filename EXCLUDING
-#'   the sequence number,
-#'   the separator (`sep`), and
-#'   the file extension (`sep`).
-#'   The sequence number,
-#'   separator and
-#'   file extension and declared
-#'   in the other arguments.
+#' Filename EXCLUDING
+#' the sequence number,
+#' the separator (`sep`), and
+#' the file extension (`sep`).
+#' The sequence number,
+#' separator and
+#' file extension and declared
+#' in the other arguments.
 #' @param ext Character string.
-#'   File extension,
-#'   for example `ext = "csv"`
-#'   for Comma Separated Values.
+#' File extension,
+#' for example `ext = "csv"`
+#' for Comma Separated Values.
 #' @param sep Character string.
-#'   String that separates number sequence and `fn`.
+#' String that separates number sequence and `fn`.
 #' @param prefix Logical.
-#'   If `TRUE`, number sequence are at the beginning of `fn`.
-#'   If `FALSE`, number sequence are at the end of `fn`.
+#' If `TRUE`, number sequence are at the beginning of `fn`.
+#' If `FALSE`, number sequence are at the end of `fn`.
 #' @examples
 #' \dontrun{
 #' # This will search for

@@ -32,9 +32,8 @@ distro <- util_distro()
 #'
 #+ testthat_01, echo=TRUE
 test_that("util_os works", {
-  expect_equivalent(
-    (os %in% c("linux", "osx", "windows")),
-    TRUE
+  expect_true(
+    (os %in% c("linux", "osx", "windows"))
   )
 })
 #'

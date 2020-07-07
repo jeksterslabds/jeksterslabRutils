@@ -1,12 +1,12 @@
 #' Clean Contents of a Directory.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
-#' @param dir Character string.
-#'   Directory.
-#' @param create_dir Logical.
-#'   If `TRUE`, creates an empty `dir`.
-#'   If `FALSE`, `dir` and all its contents are deleted.
 #' @inheritParams base::unlink
+#' @param dir Character string.
+#' Directory.
+#' @param create_dir Logical.
+#' If `TRUE`, creates an empty `dir`.
+#' If `FALSE`, `dir` and all its contents are deleted.
 #' @examples
 #' \dontrun{
 #' util_clean_dir(dir = MY_DIRECTORY)

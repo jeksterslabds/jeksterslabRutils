@@ -12,11 +12,11 @@
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param characters Integer.
-#'   Number of characters.
+#' Number of characters.
 #' @param digits Logical.
-#'   Use digits.
+#' Use digits.
 #' @param ext Character string.
-#'   Optional extension.
+#' Optional extension.
 #' @examples
 #' util_rand_str(characters = 8L, ext = "R")
 #' @export

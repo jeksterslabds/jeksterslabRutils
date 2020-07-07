@@ -5,6 +5,8 @@
 #' with an option to delete them.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
+#' @inheritParams util_bind
+#' @inheritParams util_lapply
 #' @param fn Character vector.
 #'   Filenames.
 #' @param file_type Character string.
@@ -15,8 +17,6 @@
 #'   Remove files that do not match the specified file type.
 #'   BE CAREFUL WITH THIS OPTION
 #'   AS FILES CAN BE DELETED FROM YOUR SYSTEM.
-#' @inheritParams util_bind
-#' @inheritParams util_lapply
 #' @examples
 #' \dontrun{
 #' util_check_file_type(

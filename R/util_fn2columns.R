@@ -5,17 +5,17 @@
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param df R object.
-#'   Data frame.
+#' Data frame.
 #' @param fn Character string.
-#'   Column name of filenames.
-#'   Defaults to `fn = "fn"`.
+#' Column name of filenames.
+#' Defaults to `fn = "fn"`.
 #' @param split Character string.
-#'   Regular expression used to split `fn`.
-#'   Defaults to `split = "_|\\."`
-#'   to split using `"_"` or `"."`.
+#' Regular expression used to split `fn`.
+#' Defaults to `split = "_|\\."`
+#' to split using `"_"` or `"."`.
 #' @param colnames Character vector.
-#'   Column names to use to name the new columns produced.
-#'   This should have the same length as the columns produced.
+#' Column names to use to name the new columns produced.
+#' This should have the same length as the columns produced.
 #' @export
 util_fn2columns <- function(df,
                             fn = "fn",

@@ -4,17 +4,16 @@
 #' in a given directory.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
-#' @param dir Character string.
-#'   Directory.
-#' @param recursive Logical.
-#'   If `TRUE`,
-#'   recursively style all `R` scripts (`.R`, `.r`) and
-#'   R Markdown files (`.Rmd`, `.rmd`)
-#'   in `dir`.
-#' @param files Character vector.
-#'   Vector of files to style.
 #' @inheritParams util_lapply
-#' @importFrom styler style_file
+#' @param dir Character string.
+#' Directory.
+#' @param recursive Logical.
+#' If `TRUE`,
+#' recursively style all `R` scripts (`.R`, `.r`) and
+#' R Markdown files (`.Rmd`, `.rmd`)
+#' in `dir`.
+#' @param files Character vector.
+#' Vector of files to style.
 #' @examples
 #' \dontrun{
 #' util_style(
@@ -22,6 +21,7 @@
 #'   par = FALSE
 #' )
 #' }
+#' @importFrom styler style_file
 #' @export
 ###############################################
 # Identical function structure to util_render

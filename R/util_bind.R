@@ -11,74 +11,70 @@
 #' when `format = "csv"`.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
-#' @param dir Character string.
-#'   Directory which contains target files.
-#' @param recursive Logical.
-#'   Search files recursively under `dir`.
-#' @param format Character string.
-#'   `"csv"` for comma separated files.
-#'   `"xls"` or `"xlsx` for `Excel` files.
-#'   `"Rda"`,
-#'   `"rda"`,
-#'   `"RDA"`,
-#'   `"RData"`,
-#'   `"Rdata"`,
-#'   `"rdata"`,
-#'   `"RDATA"` for `R Data Format`.
-#'   `"Rds"`,
-#'   `"rds"`,
-#'   `"RDS"` for serialized `R` object.
-#' @param pattern Character string.
-#'   Regular expression.
-#'   Pattern of file names.
-#'   `format` is appended as an extension.
-#'   For example, if `pattern = "^filename.*"`,
-#'   and `format = "csv"`,
-#'   the pattern used to load files will be
-#'   `"^filename.*\\.csv$"`.
-#' @param fn_column Logical.
-#'   Save file name of source data file as a new column.
-#'   The new column will have `"fn"` as its column name.
-#' @param fn_column_full_path Logical.
-#'   Save the full path of source data file as a new column.
-#' @param save Logical.
-#'   Save concatenated files in `csv` format.
-#' @param fn_output Character string.
-#'   Filename to use when `save = TRUE`.
-#'   Uses the basename of `dir` if not provided.
-#' @param save_dir Character string.
-#'   Directory used for `fn_output`.
-#' @param ... Optional arguments to pass to
-#'   [`readxl::read_excel()`]
-#'   when
-#'   `format = "xls"`
-#'   or `"xlsx"`,
-#'   [`read.csv()`]
-#'   when
-#'   `format = "csv"`,
-#'   [`load()`]
-#'   when
-#'   `format = `
-#'   any of the following
-#'   `"Rda"`,
-#'   `"rda"`,
-#'   `"RDA"`,
-#'   `"RData"`,
-#'   `"Rdata"`,
-#'   `"rdata"`,
-#'   `"RDATA"`, or
-#'   [`readRDS()`]
-#'   when
-#'   `format = `
-#'   any of the following
-#'   `"Rds"`,
-#'   `"rds"`,
-#'   `"RDS"`.
 #' @inheritParams util_lapply
-#' @importFrom utils glob2rx
-#' @importFrom utils read.csv
-#' @importFrom utils write.csv
-#' @importFrom readxl read_excel
+#' @param dir Character string.
+#' Directory which contains target files.
+#' @param recursive Logical.
+#' Search files recursively under `dir`.
+#' @param format Character string.
+#' `"csv"` for comma separated files.
+#' `"xls"` or `"xlsx` for `Excel` files.
+#' `"Rda"`,
+#' `"rda"`,
+#' `"RDA"`,
+#' `"RData"`,
+#' `"Rdata"`,
+#' `"rdata"`,
+#' `"RDATA"` for `R Data Format`.
+#' `"Rds"`,
+#' `"rds"`,
+#' `"RDS"` for serialized `R` object.
+#' @param pattern Character string.
+#' Regular expression.
+#' Pattern of file names.
+#' `format` is appended as an extension.
+#' For example, if `pattern = "^filename.*"`,
+#' and `format = "csv"`,
+#' the pattern used to load files will be
+#' `"^filename.*\\.csv$"`.
+#' @param fn_column Logical.
+#' Save file name of source data file as a new column.
+#' The new column will have `"fn"` as its column name.
+#' @param fn_column_full_path Logical.
+#' Save the full path of source data file as a new column.
+#' @param save Logical.
+#' Save concatenated files in `csv` format.
+#' @param fn_output Character string.
+#' Filename to use when `save = TRUE`.
+#' Uses the basename of `dir` if not provided.
+#' @param save_dir Character string.
+#' Directory used for `fn_output`.
+#' @param ... Optional arguments to pass to
+#' [`readxl::read_excel()`]
+#' when
+#' `format = "xls"`
+#' or `"xlsx"`,
+#' [`read.csv()`]
+#' when
+#' `format = "csv"`,
+#' [`load()`]
+#' when
+#' `format = `
+#' any of the following
+#' `"Rda"`,
+#' `"rda"`,
+#' `"RDA"`,
+#' `"RData"`,
+#' `"Rdata"`,
+#' `"rdata"`,
+#' `"RDATA"`, or
+#' [`readRDS()`]
+#' when
+#' `format = `
+#' any of the following
+#' `"Rds"`,
+#' `"rds"`,
+#' `"RDS"`.
 #' @examples
 #' \dontrun{
 #' util_bind(
@@ -92,6 +88,10 @@
 #'   par = FALSE
 #' )
 #' }
+#' @importFrom utils glob2rx
+#' @importFrom utils read.csv
+#' @importFrom utils write.csv
+#' @importFrom readxl read_excel
 #' @export
 util_bind <- function(dir = getwd(),
                       recursive = FALSE,

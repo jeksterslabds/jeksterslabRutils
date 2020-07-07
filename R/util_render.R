@@ -1,20 +1,19 @@
 #' Render `R` Scripts and `R` Markdown Files.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
-#' @param dir Character string.
-#'   Directory which contains target files.
-#'   Ignored if `file` is NOT NULL.
-#' @param recursive Logical.
-#'   If `TRUE`,
-#'   recursively render\
-#'   all `R` scripts (`.R`, `.r`) and
-#'   R Markdown files (`.Rmd`, `.rmd`)
-#'   in `dir`.
-#'   Ignored if `file` is NOT NULL.
-#' @param files Character vector.
-#'   Vector of files to render.
 #' @inheritParams util_lapply
-#' @importFrom rmarkdown render
+#' @param dir Character string.
+#' Directory which contains target files.
+#' Ignored if `file` is NOT NULL.
+#' @param recursive Logical.
+#' If `TRUE`,
+#' recursively render\
+#' all `R` scripts (`.R`, `.r`) and
+#' R Markdown files (`.Rmd`, `.rmd`)
+#' in `dir`.
+#' Ignored if `file` is NOT NULL.
+#' @param files Character vector.
+#' Vector of files to render.
 #' @examples
 #' \dontrun{
 #' util_render(
@@ -22,6 +21,7 @@
 #'   par = FALSE
 #' )
 #' }
+#' @importFrom rmarkdown render
 #' @export
 util_render <- function(dir = getwd(),
                         recursive = FALSE,
