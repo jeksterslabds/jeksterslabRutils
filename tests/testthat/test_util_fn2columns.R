@@ -144,7 +144,7 @@ test_that("error", {
     )
   )
 })
-#+ error
+#+ message
 test_that("message", {
   expect_message(
     util_fn2columns(
