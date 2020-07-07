@@ -16,5 +16,4 @@ cache: packages
 before_install:
 - Rscript -e 'if (!require("covr")) install.packages("covr")'
 after_success:
-- Rscript -e 'pkgdown::build_site()'
-
+- Rscript -e 'covr::codecov()'
