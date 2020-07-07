@@ -88,7 +88,7 @@ test_that("error", {
     util_compress(
       dir = tmp_02,
       format = "doc",
-      compress = compress[i],
+      compress = "xz",
       par = FALSE
     )
   )

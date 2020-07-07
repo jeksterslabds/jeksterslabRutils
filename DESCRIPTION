@@ -21,7 +21,8 @@ BugReports: https://github.com/jeksterslabds/jeksterslabRutils/issues
 SystemRequirements:
     wget,
     file
-Depends: R (>= 3.5.0)
+Depends:
+    R (>= 3.5.0)
 Imports:
     styler,
     rmarkdown,
