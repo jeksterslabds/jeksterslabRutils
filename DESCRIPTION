@@ -11,11 +11,13 @@ Authors@R:
     )
 Description: Utility functions I find useful in my personal R scripting.
 License: MIT + file LICENSE
+Encoding: UTF-8
+Language: en-US
+LazyData: true
+VignetteBuilder: knitr
+Roxygen: list(markdown = TRUE)
 URL: https://github.com/jeksterslabds/jeksterslabRutils
 BugReports: https://github.com/jeksterslabds/jeksterslabRutils/issues
-Encoding: UTF-8
-LazyData: true
-Language: en-US
 SystemRequirements:
     wget,
     file
@@ -31,6 +33,4 @@ Imports:
     knitr
 Suggests:
     testthat
-VignetteBuilder: knitr
-Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
