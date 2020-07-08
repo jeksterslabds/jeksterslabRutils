@@ -6,7 +6,7 @@
 #' @author Ivan Jacob Agaloos Pesigan
 #' @inheritParams base::list.files
 #' @param dir Character string.
-#'   Directory to search.
+#' Directory to search.
 #' @examples
 #' # Search for files in the working directory
 #' # with filenames starting with `file`

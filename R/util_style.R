@@ -10,8 +10,7 @@
 #' @param recursive Logical.
 #' If `TRUE`,
 #' recursively style all `R` scripts (`.R`, `.r`) and
-#' R Markdown files (`.Rmd`, `.rmd`)
-#' in `dir`.
+#' R Markdown files (`.Rmd`, `.rmd`) in `dir`.
 #' @param files Character vector.
 #' Vector of files to style.
 #' @examples

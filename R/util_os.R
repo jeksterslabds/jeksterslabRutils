@@ -1,8 +1,7 @@
 #' Get Operating System.
 #'
 #' Utility to detect the operating system of the current `R` session.
-#' Based on
-#' <http://conjugateprior.org/2015/06/identifying-the-os-from-r/>.
+#' Based on <http://conjugateprior.org/2015/06/identifying-the-os-from-r/>.
 #'
 #' @return
 #' Return any of the following:

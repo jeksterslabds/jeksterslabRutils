@@ -3,7 +3,7 @@
 #' Binds `csv`, `Excel`, `RData`, or `Rds` files
 #' in a given directory by row (`rbind`).
 #'
-#' The function requires that files have the data structure.
+#' The function requires that files have the same data structure.
 #' For `R` object files.
 #' only vectors, matrices or data frames
 #' are allowed.
@@ -44,31 +44,13 @@
 #' @param save_dir Character string.
 #' Directory used for `fn_output`.
 #' @param ... Optional arguments to pass to
-#' [`readxl::read_excel()`]
-#' when
-#' `format = "xls"`
-#' or `"xlsx"`,
-#' [`read.csv()`]
-#' when
-#' `format = "csv"`,
-#' [`load()`]
-#' when
-#' `format = `
-#' any of the following
-#' `"Rda"`,
-#' `"rda"`,
-#' `"RDA"`,
-#' `"RData"`,
-#' `"Rdata"`,
-#' `"rdata"`,
-#' `"RDATA"`, or
-#' [`readRDS()`]
-#' when
-#' `format = `
-#' any of the following
-#' `"Rds"`,
-#' `"rds"`,
-#' `"RDS"`.
+#' [`readxl::read_excel()`] when `format = "xls"` or `"xlsx"`,
+#' [`read.csv()`] when `format = "csv"`,
+#' [`load()`] when `format = `
+#' any of the following `"Rda"`, `"rda"`, `"RDA"`, `"RData"`,
+#' `"Rdata"`, `"rdata"`, `"RDATA"`, or [`readRDS()`]
+#' when `format = `
+#' any of the following `"Rds"`, `"rds"`, `"RDS"`.
 #' @examples
 #' \dontrun{
 #' util_bind(

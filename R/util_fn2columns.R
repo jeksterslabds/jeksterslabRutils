@@ -1,7 +1,6 @@
 #' Filenames to Columns.
 #'
 #' Splits filenames column to create new columns.
-#' See [`util_bind()`]
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param df R object.
@@ -16,6 +15,7 @@
 #' @param colnames Character vector.
 #' Column names to use to name the new columns produced.
 #' This should have the same length as the columns produced.
+#' @seealso [`util_bind()`]
 #' @export
 util_fn2columns <- function(df,
                             fn = "fn",

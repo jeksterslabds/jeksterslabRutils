@@ -7,8 +7,7 @@
 #' @param recursive Logical.
 #' If `TRUE`,
 #' recursively spin all `R` scripts
-#' (`.R`, `.r`)
-#' in `dir`.
+#' (`.R`, `.r`) in `dir`.
 #' Ignored if `file` is NOT NULL.
 #' @param files Character vector.
 #' Vector of files to spin.

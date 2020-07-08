@@ -4,23 +4,14 @@
 #'
 #' For example,
 #' if `dir = "/home/jek"`
-#' and
-#' `subdir = "subdir"`
-#' [`util_make_subdir()`]
-#' creates
-#' `/home/jek/subdir`.
+#' and `subdir = "subdir"` [`util_make_subdir()`]
+#' creates `/home/jek/subdir`.
 #' If `dir = "/home/jek"`
-#' and
-#' `subdir = c("subdir1", "subdir2")`
-#' [`util_make_subdir()`]
-#' creates
-#' `/home/jek/subdir1/subdir2`.
-#' If `dir` and `subdir` are not provided
-#' [`util_make_subdir()`]
-#' creates
-#' a subdirectory with a random name
-#' (see [`util_rand_str()`])
-#' in the home directory.
+#' and `subdir = c("subdir1", "subdir2")` [`util_make_subdir()`]
+#' creates `/home/jek/subdir1/subdir2`.
+#' If `dir` and `subdir` are not provided [`util_make_subdir()`]
+#' creates a subdirectory with a random name
+#' (using [`util_rand_str()`]) in the current directory.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param dir Character string.

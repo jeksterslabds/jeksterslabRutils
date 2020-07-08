@@ -7,7 +7,7 @@
 #' @param link Character vector.
 #' URLs.
 #' @param args Character string.
-#' Arguments to pass to \code{wget}.
+#' Arguments to pass to `wget`.
 #' @examples
 #' \dontrun{
 #' link <- c(

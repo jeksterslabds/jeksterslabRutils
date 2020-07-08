@@ -7,10 +7,8 @@
 #' Ignored if `file` is NOT NULL.
 #' @param recursive Logical.
 #' If `TRUE`,
-#' recursively render\
-#' all `R` scripts (`.R`, `.r`) and
-#' R Markdown files (`.Rmd`, `.rmd`)
-#' in `dir`.
+#' recursively render all `R` scripts (`.R`, `.r`) and
+#' R Markdown files (`.Rmd`, `.rmd`) in `dir`.
 #' Ignored if `file` is NOT NULL.
 #' @param files Character vector.
 #' Vector of files to render.

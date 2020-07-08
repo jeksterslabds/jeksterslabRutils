@@ -8,15 +8,15 @@
 #' @inheritParams util_bind
 #' @inheritParams util_lapply
 #' @param fn Character vector.
-#'   Filenames.
+#' Filenames.
 #' @param file_type Character string.
-#'   File type.
-#'   For example, "PDF document" for PDF and
-#'   "EPUB document" for EPUB.
+#' File type.
+#' For example, "PDF document" for PDF and
+#' "EPUB document" for EPUB.
 #' @param remove_files Logical.
-#'   Remove files that do not match the specified file type.
-#'   BE CAREFUL WITH THIS OPTION
-#'   AS FILES CAN BE DELETED FROM YOUR SYSTEM.
+#' Remove files that do not match the specified file type.
+#' BE CAREFUL WITH THIS OPTION
+#' AS FILES CAN BE DELETED FROM YOUR SYSTEM.
 #' @examples
 #' \dontrun{
 #' util_check_file_type(

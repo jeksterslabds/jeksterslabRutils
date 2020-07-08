@@ -1,7 +1,6 @@
 #' Run a Shiny App in a Package
 #'
-#' Runs a Shiny App in a package located in
-#' `inst/shiny/`.
+#' Runs a Shiny App in a package located in `inst/shiny/`.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param app Character string.
