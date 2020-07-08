@@ -1,4 +1,4 @@
-#' Extract Numbers from Strings.
+#' Extract Numbers from Strings
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param x Character string.

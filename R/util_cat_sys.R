@@ -1,4 +1,4 @@
-#' Cat System Output in knitr.
+#' Cat System Output in knitr
 #'
 #' Utility to [`cat()`] [`system()`] output.
 #' Based on https://github.com/yihui/knitr/issues/1203.

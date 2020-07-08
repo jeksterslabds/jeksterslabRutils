@@ -1,4 +1,4 @@
-#' Filenames to Columns.
+#' Filenames to Columns
 #'
 #' Splits filenames column to create new columns.
 #'

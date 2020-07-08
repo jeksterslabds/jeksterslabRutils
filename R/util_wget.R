@@ -1,4 +1,4 @@
-#' Download Files using `wget`.
+#' Download Files using `wget`
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @inheritParams util_lapply

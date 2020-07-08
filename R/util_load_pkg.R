@@ -1,4 +1,4 @@
-#' Load Packages.
+#' Load Packages
 #'
 #' Checks if a character vector of `R` packages are installed,
 #' installs them if they are not currently installed,

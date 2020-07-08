@@ -1,4 +1,4 @@
-#' Text to File.
+#' Text to File
 #'
 #' Writes lines of character strings to file.
 #'

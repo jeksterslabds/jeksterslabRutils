@@ -1,4 +1,4 @@
-#' `XML`/`HTML` to List.
+#' `XML`/`HTML` to List
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @inheritParams util_lapply

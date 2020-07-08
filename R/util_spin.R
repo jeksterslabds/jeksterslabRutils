@@ -1,4 +1,4 @@
-#' Spin `R` Scripts into `R` Markdown Files.
+#' Spin `R` Scripts into `R` Markdown Files
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @inheritParams util_lapply

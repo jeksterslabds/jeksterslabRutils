@@ -1,4 +1,4 @@
-#' Render `R` Scripts and `R` Markdown Files.
+#' Render `R` Scripts and `R` Markdown Files
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @inheritParams util_lapply

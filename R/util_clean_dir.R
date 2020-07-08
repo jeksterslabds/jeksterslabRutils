@@ -1,4 +1,4 @@
-#' Clean Contents of a Directory.
+#' Clean Contents of a Directory
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @inheritParams base::unlink

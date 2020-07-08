@@ -1,4 +1,4 @@
-#' Style `R` and `R` Markdown Files.
+#' Style `R` and `R` Markdown Files
 #'
 #' Styles all `R` scripts and `R` Markdown files
 #' in a given directory.

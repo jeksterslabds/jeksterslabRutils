@@ -1,4 +1,4 @@
-#' Get Linux Distribution.
+#' Get Linux Distribution
 #'
 #' Utility to detect the Linux distribution
 #' of the current `R` session.

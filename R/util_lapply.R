@@ -1,4 +1,4 @@
-#' `lapply` Utility.
+#' `lapply` Utility
 #'
 #' Utility to use different implementations of `lapply`.
 #'

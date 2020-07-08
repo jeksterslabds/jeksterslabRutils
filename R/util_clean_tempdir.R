@@ -1,4 +1,4 @@
-#' Clean Contents of `tempdir`.
+#' Clean Contents of `tempdir`
 #'
 #' Cleans contents of `tempdir`.
 #'

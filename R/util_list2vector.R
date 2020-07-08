@@ -1,4 +1,4 @@
-#' List to Vector.
+#' List to Vector
 #'
 #' Extracts items from a list and returns a vector.
 #' Note that this only works with lists

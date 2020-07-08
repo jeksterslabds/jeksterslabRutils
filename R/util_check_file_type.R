@@ -1,4 +1,4 @@
-#' Check File Type.
+#' Check File Type
 #'
 #' Checks if files have the specified file type.
 #' Returns filenames of files that mismatch the file type specified

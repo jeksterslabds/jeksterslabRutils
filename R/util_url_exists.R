@@ -1,4 +1,4 @@
-#' Check URL.
+#' Check URL
 #'
 #' Checks if website exists.
 #'

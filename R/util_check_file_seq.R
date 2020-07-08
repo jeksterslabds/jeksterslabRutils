@@ -1,4 +1,4 @@
-#' Check Files in a Sequence.
+#' Check Files in a Sequence
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param dir Character string.
