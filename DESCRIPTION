@@ -31,7 +31,10 @@ Imports:
     usethis,
     shiny,
     remotes,
-    knitr
+    knitr,
+    foreach,
+    doMC,
+    doParallel
 Suggests:
     testthat
 RoxygenNote: 7.1.1
