@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Extract Numbers from Strings — util_get_numbers • jeksterslabRutils</title>
+<title>Numbers from Strings — util_get_numbers • jeksterslabRutils</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Extract Numbers from Strings — util_get_numbers" />
-<meta property="og:description" content="Extract Numbers from Strings" />
+<meta property="og:title" content="Numbers from Strings — util_get_numbers" />
+<meta property="og:description" content="Extracts numbers from a vector of character strings." />
 
 
 
@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -178,7 +178,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/jeksterslabds/jeksterslabRutils/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -195,30 +195,45 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Extract Numbers from Strings</h1>
+    <h1>Numbers from Strings</h1>
     <small class="dont-index">Source: <a href='https://github.com/jeksterslabds/jeksterslabRutils/blob/master/R/util_get_numbers.R'><code>R/util_get_numbers.R</code></a></small>
     <div class="hidden name"><code>util_get_numbers.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Extract Numbers from Strings</p>
+    <p>Extracts numbers from a vector of character strings.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>util_get_numbers</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>util_get_numbers</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>Character string.</p></td>
+      <td><p>Character string or vector.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Returns a numeric vector.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This function uses the regular expression pattern <code>"\\(?[0-9]+"</code>
+to extract numbers from a vector of character strings.
+Note that decimal numbers (e.g., <code>3.5</code>)</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Ivan Jacob Agaloos Pesigan</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='st'>"fkj;lakjfajkfak73875kllkj75487"</span>
-<span class='fu'>util_get_numbers</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] 73875 75487</div></pre>
+    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
+  <span class='st'>"fkj;lakjfajkfak73875kllkj75487"</span>,
+  <span class='st'>"jhgtfiusdf639jhdajkhdf7356.4763"</span>
+<span class='op'>)</span>
+<span class='fu'>util_get_numbers</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 73875 75487   639  7356  4763</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -234,7 +249,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

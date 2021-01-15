@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -137,7 +137,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/jeksterslabds/jeksterslabRutils/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -151,13 +151,13 @@
 
       
 
-      </header><script src="test_util_style_files/header-attrs-2.3/header-attrs.js"></script><script src="test_util_style_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="test_util_style_files/header-attrs-2.6/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Test: util_style</h1>
                         <h4 class="author">Ivan Jacob Agaloos Pesigan</h4>
             
-            <h4 class="date">2020-07-10</h4>
+            <h4 class="date">2021-01-15</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/jeksterslabds/jeksterslabRutils/blob/master/vignettes/tests/test_util_style.Rmd"><code>vignettes/tests/test_util_style.Rmd</code></a></small>
       <div class="hidden name"><code>test_util_style.Rmd</code></div>
@@ -166,142 +166,155 @@
 
     
     
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">testthat</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">jeksterslabRutils</span>)
-<span class="fu"><a href="https://testthat.r-lib.org/reference/context.html">context</a></span>(<span class="st">"Test util_style."</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://testthat.r-lib.org">testthat</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jeksterslabds/jeksterslabRutils">jeksterslabRutils</a></span><span class="op">)</span>
+<span class="fu"><a href="https://testthat.r-lib.org/reference/context.html">context</a></span><span class="op">(</span><span class="st">"Test util_style."</span><span class="op">)</span></code></pre></div>
 <div id="parameters" class="section level2">
 <h2 class="hasAnchor">
 <a href="#parameters" class="anchor"></a>Parameters</h2>
 <div id="initialize-temporary-folders-in-the-working-directory" class="section level3">
 <h3 class="hasAnchor">
 <a href="#initialize-temporary-folders-in-the-working-directory" class="anchor"></a>Initialize temporary folders in the working directory</h3>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="no">tmp_01</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../../reference/util_make_subdir.html">util_make_subdir</a></span>()
-<span class="no">tmp_02</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../../reference/util_make_subdir.html">util_make_subdir</a></span>()</pre></body></html></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tmp_01</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/util_make_subdir.html">util_make_subdir</a></span><span class="op">(</span><span class="op">)</span>
+<span class="va">tmp_02</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/util_make_subdir.html">util_make_subdir</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="copy-files-from-extdata-to-temporary-folder" class="section level3">
 <h3 class="hasAnchor">
 <a href="#copy-files-from-extdata-to-temporary-folder" class="anchor"></a>Copy files from <code>extdata</code> to temporary folder</h3>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="no">extdata</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">extdata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span>
   <span class="st">"extdata"</span>,
   <span class="st">"tests"</span>,
-  <span class="kw">package</span> <span class="kw">=</span> <span class="st">"jeksterslabRutils"</span>,
-  <span class="kw">mustWork</span> <span class="kw">=</span> <span class="fl">TRUE</span>
-)
-<span class="no">file_from</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(
-  <span class="no">extdata</span>,
+  package <span class="op">=</span> <span class="st">"jeksterslabRutils"</span>,
+  mustWork <span class="op">=</span> <span class="cn">TRUE</span>
+<span class="op">)</span>
+<span class="va">file_from</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span>
+  <span class="va">extdata</span>,
   <span class="st">"z.Rmd"</span>
-)
-<span class="no">file</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(
-  <span class="no">tmp_01</span>,
+<span class="op">)</span>
+<span class="va">file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span>
+  <span class="va">tmp_01</span>,
   <span class="st">"z.Rmd"</span>
-)
-<span class="no">epub_from</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(
-  <span class="no">extdata</span>,
+<span class="op">)</span>
+<span class="va">epub_from</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span>
+  <span class="va">extdata</span>,
   <span class="st">"valid.epub"</span>
-)
-<span class="no">epub</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(
-  <span class="no">tmp_01</span>,
+<span class="op">)</span>
+<span class="va">epub</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span>
+  <span class="va">tmp_01</span>,
   <span class="st">"valid.epub"</span>
-)
-<span class="no">output</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(
-  <span class="no">tmp_01</span>,
+<span class="op">)</span>
+<span class="va">output</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span>
+  <span class="va">tmp_01</span>,
   <span class="st">"z_roxygen.Rmd"</span>
-)
-<span class="fu"><a href="https://rdrr.io/r/base/files.html">file.copy</a></span>(
-  <span class="kw">from</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(
-    <span class="no">file_from</span>,
-    <span class="no">epub_from</span>
-  ),
-  <span class="kw">to</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(
-    <span class="no">file</span>,
-    <span class="no">epub</span>
-  )
-)
-<span class="co">#&gt; [1] TRUE TRUE</span></pre></body></html></div>
+<span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/files.html">file.copy</a></span><span class="op">(</span>
+  from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+    <span class="va">file_from</span>,
+    <span class="va">epub_from</span>
+  <span class="op">)</span>,
+  to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+    <span class="va">file</span>,
+    <span class="va">epub</span>
+  <span class="op">)</span>
+<span class="op">)</span>
+<span class="co">#&gt; [1] TRUE TRUE</span></code></pre></div>
 </div>
 <div id="no-output" class="section level3">
 <h3 class="hasAnchor">
 <a href="#no-output" class="anchor"></a>No output</h3>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="../../reference/util_style.html">util_style</a></span>(
-  <span class="kw">dir</span> <span class="kw">=</span> <span class="no">tmp_01</span>,
-  <span class="kw">par</span> <span class="kw">=</span> <span class="fl">FALSE</span>
-)
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../../reference/util_style.html">util_style</a></span><span class="op">(</span>
+  dir <span class="op">=</span> <span class="va">tmp_01</span>,
+  par <span class="op">=</span> <span class="cn">FALSE</span>
+<span class="op">)</span>
 <span class="co">#&gt; Styling  1  files:</span>
-<span class="co">#&gt;  /media/jeksterslab/scripts/r/jeksterslabRutils/vignettes/tests/vUfcjfDQ/z.Rmd ✔ </span>
+<span class="co">#&gt;  /media/jeksterslab/scripts/r/jeksterslabRutils/vignettes/tests/RXpCyvgH/z.Rmd ✔ </span>
 <span class="co">#&gt; ─────────────────────────────────────────────────────────────────────────────</span>
 <span class="co">#&gt; Status   Count   Legend </span>
 <span class="co">#&gt; ✔    1   File unchanged.</span>
 <span class="co">#&gt; ℹ    0   File changed.</span>
 <span class="co">#&gt; ✖    0   Styling threw an error.</span>
-<span class="co">#&gt; ─────────────────────────────────────────────────────────────────────────────</span></pre></body></html></div>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="no">message</span> <span class="kw">&lt;-</span> <span class="st">"No files to style"</span></pre></body></html></div>
+<span class="co">#&gt; ─────────────────────────────────────────────────────────────────────────────</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">message</span> <span class="op">&lt;-</span> <span class="st">"No files to style"</span></code></pre></div>
 </div>
 <div id="length-of-files-0" class="section level3">
 <h3 class="hasAnchor">
 <a href="#length-of-files-0" class="anchor"></a>Length of <code>files == 0</code>
 </h3>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span>(<span class="st">"expect_message"</span>, {
-  <span class="fu"><a href="https://testthat.r-lib.org/reference/expect_message.html">expect_message</a></span>(
-    <span class="fu"><a href="../../reference/util_style.html">util_style</a></span>(
-      <span class="kw">files</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">character</a></span>(<span class="fl">0</span>),
-      <span class="kw">par</span> <span class="kw">=</span> <span class="fl">FALSE</span>
-    ),
-    <span class="kw">regexp</span> <span class="kw">=</span> <span class="no">message</span>
-  )
-})</pre></body></html></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"expect_message"</span>, <span class="op">{</span>
+  <span class="fu"><a href="https://testthat.r-lib.org/reference/expect_error.html">expect_message</a></span><span class="op">(</span>
+    <span class="fu"><a href="../../reference/util_style.html">util_style</a></span><span class="op">(</span>
+      files <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,
+      par <span class="op">=</span> <span class="cn">FALSE</span>
+    <span class="op">)</span>,
+    regexp <span class="op">=</span> <span class="va">message</span>
+  <span class="op">)</span>
+<span class="op">}</span><span class="op">)</span>
+<span class="co">#&gt; Test passed 🥇</span></code></pre></div>
 </div>
 <div id="non-existent-file" class="section level3">
 <h3 class="hasAnchor">
 <a href="#non-existent-file" class="anchor"></a>Non existent file</h3>
-<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span>(<span class="st">"expect_message"</span>, {
-  <span class="fu"><a href="https://testthat.r-lib.org/reference/expect_message.html">expect_message</a></span>(
-    <span class="fu"><a href="../../reference/util_style.html">util_style</a></span>(
-      <span class="kw">files</span> <span class="kw">=</span> <span class="st">"non-existent-file"</span>,
-      <span class="kw">par</span> <span class="kw">=</span> <span class="fl">FALSE</span>
-    ),
-    <span class="kw">regexp</span> <span class="kw">=</span> <span class="no">message</span>
-  )
-})</pre></body></html></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"expect_message"</span>, <span class="op">{</span>
+  <span class="fu"><a href="https://testthat.r-lib.org/reference/expect_error.html">expect_message</a></span><span class="op">(</span>
+    <span class="fu"><a href="../../reference/util_style.html">util_style</a></span><span class="op">(</span>
+      files <span class="op">=</span> <span class="st">"non-existent-file"</span>,
+      par <span class="op">=</span> <span class="cn">FALSE</span>
+    <span class="op">)</span>,
+    regexp <span class="op">=</span> <span class="va">message</span>
+  <span class="op">)</span>
+<span class="op">}</span><span class="op">)</span>
+<span class="co">#&gt; Test passed 😸</span></code></pre></div>
 </div>
 <div id="invalid-file" class="section level3">
 <h3 class="hasAnchor">
 <a href="#invalid-file" class="anchor"></a>Invalid file</h3>
-<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span>(<span class="st">"expect_warning"</span>, {
-  <span class="fu"><a href="https://testthat.r-lib.org/reference/expect_message.html">expect_warning</a></span>(
-    <span class="fu"><a href="../../reference/util_style.html">util_style</a></span>(
-      <span class="kw">files</span> <span class="kw">=</span> <span class="no">epub</span>,
-      <span class="kw">par</span> <span class="kw">=</span> <span class="fl">FALSE</span>
-    ),
-    <span class="kw">regexp</span> <span class="kw">=</span> <span class="st">"Error styling"</span>
-  )
-})
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"expect_warning"</span>, <span class="op">{</span>
+  <span class="fu"><a href="https://testthat.r-lib.org/reference/expect_error.html">expect_warning</a></span><span class="op">(</span>
+    <span class="fu"><a href="../../reference/util_style.html">util_style</a></span><span class="op">(</span>
+      files <span class="op">=</span> <span class="va">epub</span>,
+      par <span class="op">=</span> <span class="cn">FALSE</span>
+    <span class="op">)</span>,
+    regexp <span class="op">=</span> <span class="st">"Error styling"</span>
+  <span class="op">)</span>
+<span class="op">}</span><span class="op">)</span>
 <span class="co">#&gt; Styling  1  files:</span>
-<span class="co">#&gt;  /media/jeksterslab/scripts/r/jeksterslabRutils/vignettes/tests/vUfcjfDQ/valid.epub</span></pre></body></html></div>
+<span class="co">#&gt;  /media/jeksterslab/scripts/r/jeksterslabRutils/vignettes/tests/RXpCyvgH/valid.epub Test passed 🌈</span></code></pre></div>
 </div>
 <div id="no-r-or-r-markdown-files-in-dir-" class="section level3">
 <h3 class="hasAnchor">
 <a href="#no-r-or-r-markdown-files-in-dir-" class="anchor"></a>No <code>R</code> or <code>R Markdown</code> files in <code>dir</code>.</h3>
-<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span>(<span class="st">"expect_message"</span>, {
-  <span class="fu"><a href="https://testthat.r-lib.org/reference/expect_message.html">expect_message</a></span>(
-    <span class="fu"><a href="../../reference/util_style.html">util_style</a></span>(
-      <span class="kw">dir</span> <span class="kw">=</span> <span class="no">tmp_02</span>,
-      <span class="kw">par</span> <span class="kw">=</span> <span class="fl">FALSE</span>
-    ),
-    <span class="kw">regexp</span> <span class="kw">=</span> <span class="no">message</span>
-  )
-})</pre></body></html></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"expect_message"</span>, <span class="op">{</span>
+  <span class="fu"><a href="https://testthat.r-lib.org/reference/expect_error.html">expect_message</a></span><span class="op">(</span>
+    <span class="fu"><a href="../../reference/util_style.html">util_style</a></span><span class="op">(</span>
+      dir <span class="op">=</span> <span class="va">tmp_02</span>,
+      par <span class="op">=</span> <span class="cn">FALSE</span>
+    <span class="op">)</span>,
+    regexp <span class="op">=</span> <span class="va">message</span>
+  <span class="op">)</span>
+<span class="op">}</span><span class="op">)</span>
+<span class="co">#&gt; Test passed 🥇</span></code></pre></div>
 </div>
 <div id="clean-up-temporary-files-and-folders" class="section level3">
 <h3 class="hasAnchor">
 <a href="#clean-up-temporary-files-and-folders" class="anchor"></a>Clean up temporary files and folders</h3>
-<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="fu"><a href="../../reference/util_clean_dir.html">util_clean_dir</a></span>(
-  <span class="kw">dir</span> <span class="kw">=</span> <span class="no">tmp_01</span>,
-  <span class="kw">create_dir</span> <span class="kw">=</span> <span class="fl">FALSE</span>
-)
-<span class="fu"><a href="../../reference/util_clean_dir.html">util_clean_dir</a></span>(
-  <span class="kw">dir</span> <span class="kw">=</span> <span class="no">tmp_02</span>,
-  <span class="kw">create_dir</span> <span class="kw">=</span> <span class="fl">FALSE</span>
-)</pre></body></html></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../../reference/util_clean_dir.html">util_clean_dir</a></span><span class="op">(</span>
+  dir <span class="op">=</span> <span class="va">tmp_01</span>,
+  create_dir <span class="op">=</span> <span class="cn">FALSE</span>
+<span class="op">)</span>
+<span class="fu"><a href="../../reference/util_clean_dir.html">util_clean_dir</a></span><span class="op">(</span>
+  dir <span class="op">=</span> <span class="va">tmp_02</span>,
+  create_dir <span class="op">=</span> <span class="cn">FALSE</span>
+<span class="op">)</span></code></pre></div>
 </div>
 </div>
   </div>
@@ -321,7 +334,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

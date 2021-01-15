@@ -2,18 +2,29 @@
 % Please edit documentation in R/util_get_numbers.R
 \name{util_get_numbers}
 \alias{util_get_numbers}
-\title{Extract Numbers from Strings}
+\title{Numbers from Strings}
 \usage{
 util_get_numbers(x)
 }
 \arguments{
-\item{x}{Character string.}
+\item{x}{Character string or vector.}
+}
+\value{
+Returns a numeric vector.
 }
 \description{
-Extract Numbers from Strings
+Extracts numbers from a vector of character strings.
+}
+\details{
+This function uses the regular expression pattern \code{"\\\\(?[0-9]+"}
+to extract numbers from a vector of character strings.
+Note that decimal numbers (e.g., \code{3.5})
 }
 \examples{
-x <- "fkj;lakjfajkfak73875kllkj75487"
+x <- c(
+  "fkj;lakjfajkfak73875kllkj75487",
+  "jhgtfiusdf639jhdajkhdf7356.4763"
+)
 util_get_numbers(x)
 }
 \author{

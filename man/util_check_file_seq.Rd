@@ -32,10 +32,10 @@ Digits used in number sequence.}
 Filename EXCLUDING
 the sequence number,
 the separator (\code{sep}), and
-the file extension (\code{sep}).
+the file extension (\code{ext}).
 The sequence number,
 separator and
-file extension and declared
+file extension are declared
 in the other arguments.}
 
 \item{ext}{Character string.

@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -137,7 +137,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/jeksterslabds/jeksterslabRutils/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -151,13 +151,13 @@
 
       
 
-      </header><script src="util_os_files/header-attrs-2.3/header-attrs.js"></script><script src="util_os_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="util_os_files/header-attrs-2.6/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Get Operating System</h1>
                         <h4 class="author">Ivan Jacob Agaloos Pesigan</h4>
             
-            <h4 class="date">2020-07-10</h4>
+            <h4 class="date">2021-01-15</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/jeksterslabds/jeksterslabRutils/blob/master/vignettes/util_os.Rmd"><code>vignettes/util_os.Rmd</code></a></small>
       <div class="hidden name"><code>util_os.Rmd</code></div>
@@ -179,41 +179,43 @@
 <code>windows</code> for Windows operating system</li>
 <li>mystery machine</li>
 </ul>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">jeksterslabRutils</span>)
-<span class="fu"><a href="../reference/util_os.html">util_os</a></span>()
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jeksterslabds/jeksterslabRutils">jeksterslabRutils</a></span><span class="op">)</span>
+<span class="fu"><a href="../reference/util_os.html">util_os</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; sysname </span>
-<span class="co">#&gt; "linux"</span></pre></body></html></div>
+<span class="co">#&gt; "linux"</span></code></pre></div>
 </div>
 <div id="use-case" class="section level2">
 <h2 class="hasAnchor">
 <a href="#use-case" class="anchor"></a>Use case</h2>
 <p>I use the <code>util_os</code> function to programatically employ forking on operating systems (POSIX) that support it and employ sockets on Windows.</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="no">exe</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">cores</span> <span class="kw">=</span> <span class="fl">2</span>) {
-  <span class="no">os</span> <span class="kw">&lt;-</span> <span class="kw pkg">jeksterslabRutils</span><span class="kw ns">::</span><span class="fu"><a href="../reference/util_os.html">util_os</a></span>()
-  <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span>(<span class="st">"Operating System:"</span>, <span class="no">os</span>)
-  <span class="kw">if</span> (<span class="no">os</span> <span class="kw">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"linux"</span>, <span class="st">"osx"</span>)) {
-    <span class="fu"><a href="https://rdrr.io/r/base/function.html">return</a></span>(
-      <span class="kw pkg">parallel</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/r/parallel/mclapply.html">mclapply</a></span>(
-        <span class="kw">X</span> <span class="kw">=</span> <span class="fl">1</span>:<span class="fl">5</span>,
-        <span class="kw">FUN</span> <span class="kw">=</span> <span class="no">rnorm</span>,
-        <span class="kw">mc.cores</span> <span class="kw">=</span> <span class="no">cores</span>
-      )
-    )
-  }
-  <span class="kw">if</span> (<span class="no">os</span> <span class="kw">==</span> <span class="st">"windows"</span>) {
-    <span class="no">cl</span> <span class="kw">&lt;-</span> <span class="kw pkg">parallel</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/r/parallel/makeCluster.html">makeCluster</a></span>(<span class="no">cores</span>)
-    <span class="fu"><a href="https://rdrr.io/r/base/on.exit.html">on.exit</a></span>(
-      <span class="kw pkg">parallel</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/r/parallel/makeCluster.html">stopCluster</a></span>(<span class="no">cl</span>)
-    )
-    <span class="fu"><a href="https://rdrr.io/r/base/function.html">return</a></span>(
-      <span class="kw pkg">parallel</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/r/parallel/clusterApply.html">parLapply</a></span>(
-        <span class="kw">X</span> <span class="kw">=</span> <span class="fl">1</span>:<span class="fl">5</span>,
-        <span class="kw">fun</span> <span class="kw">=</span> <span class="no">rnorm</span>
-      )
-    )
-  }
-}
-<span class="fu">exe</span>()</pre></body></html></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">exe</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">cores</span> <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">os</span> <span class="op">&lt;-</span> <span class="fu">jeksterslabRutils</span><span class="fu">::</span><span class="fu"><a href="../reference/util_os.html">util_os</a></span><span class="op">(</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Operating System:"</span>, <span class="va">os</span><span class="op">)</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="va">os</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"linux"</span>, <span class="st">"osx"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span>
+      <span class="fu">parallel</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/parallel/mclapply.html">mclapply</a></span><span class="op">(</span>
+        X <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>,
+        FUN <span class="op">=</span> <span class="va">rnorm</span>,
+        mc.cores <span class="op">=</span> <span class="va">cores</span>
+      <span class="op">)</span>
+    <span class="op">)</span>
+  <span class="op">}</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="va">os</span> <span class="op">==</span> <span class="st">"windows"</span><span class="op">)</span> <span class="op">{</span>
+    <span class="va">cl</span> <span class="op">&lt;-</span> <span class="fu">parallel</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/parallel/makeCluster.html">makeCluster</a></span><span class="op">(</span><span class="va">cores</span><span class="op">)</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/on.exit.html">on.exit</a></span><span class="op">(</span>
+      <span class="fu">parallel</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/parallel/makeCluster.html">stopCluster</a></span><span class="op">(</span><span class="va">cl</span><span class="op">)</span>
+    <span class="op">)</span>
+    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span>
+      <span class="fu">parallel</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/parallel/clusterApply.html">parLapply</a></span><span class="op">(</span>
+        X <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>,
+        fun <span class="op">=</span> <span class="va">rnorm</span>
+      <span class="op">)</span>
+    <span class="op">)</span>
+  <span class="op">}</span>
+<span class="op">}</span>
+<span class="fu">exe</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
   </div>
 
@@ -232,7 +234,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -137,7 +137,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/jeksterslabds/jeksterslabRutils/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -151,13 +151,13 @@
 
       
 
-      </header><script src="test_util_fn2columns_files/header-attrs-2.3/header-attrs.js"></script><script src="test_util_fn2columns_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="test_util_fn2columns_files/header-attrs-2.6/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Test: util_fn2columns</h1>
                         <h4 class="author">Ivan Jacob Agaloos Pesigan</h4>
             
-            <h4 class="date">2020-07-10</h4>
+            <h4 class="date">2021-01-15</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/jeksterslabds/jeksterslabRutils/blob/master/vignettes/tests/test_util_fn2columns.Rmd"><code>vignettes/tests/test_util_fn2columns.Rmd</code></a></small>
       <div class="hidden name"><code>test_util_fn2columns.Rmd</code></div>
@@ -166,91 +166,94 @@
 
     
     
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">testthat</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">jeksterslabRutils</span>)
-<span class="fu"><a href="https://testthat.r-lib.org/reference/context.html">context</a></span>(<span class="st">"Test util_fn2columns."</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://testthat.r-lib.org">testthat</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jeksterslabds/jeksterslabRutils">jeksterslabRutils</a></span><span class="op">)</span>
+<span class="fu"><a href="https://testthat.r-lib.org/reference/context.html">context</a></span><span class="op">(</span><span class="st">"Test util_fn2columns."</span><span class="op">)</span></code></pre></div>
 <div id="parameters" class="section level2">
 <h2 class="hasAnchor">
 <a href="#parameters" class="anchor"></a>Parameters</h2>
 <div id="initialize-temporary-folder-in-the-working-directory" class="section level3">
 <h3 class="hasAnchor">
 <a href="#initialize-temporary-folder-in-the-working-directory" class="anchor"></a>Initialize temporary folder in the working directory</h3>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="no">tmp</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../../reference/util_make_subdir.html">util_make_subdir</a></span>()</pre></body></html></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/util_make_subdir.html">util_make_subdir</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="copy-files-from-extdata-to-temporary-folder" class="section level3">
 <h3 class="hasAnchor">
 <a href="#copy-files-from-extdata-to-temporary-folder" class="anchor"></a>Copy files from <code>extdata</code> to temporary folder</h3>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="no">pattern</span> <span class="kw">&lt;-</span> <span class="st">"^filename.*"</span>
-<span class="no">extdata</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pattern</span> <span class="op">&lt;-</span> <span class="st">"^filename.*"</span>
+<span class="va">extdata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span>
   <span class="st">"extdata"</span>,
   <span class="st">"tests"</span>,
-  <span class="kw">package</span> <span class="kw">=</span> <span class="st">"jeksterslabRutils"</span>,
-  <span class="kw">mustWork</span> <span class="kw">=</span> <span class="fl">TRUE</span>
-)
-<span class="no">files_from</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span>(
-  <span class="kw">path</span> <span class="kw">=</span> <span class="no">extdata</span>,
-  <span class="kw">pattern</span> <span class="kw">=</span> <span class="no">pattern</span>
-)
-<span class="no">full_path_files_from</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(
-  <span class="no">extdata</span>,
-  <span class="no">files_from</span>
-)
-<span class="no">full_path_files_to</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(
-  <span class="no">tmp</span>,
-  <span class="no">files_from</span>
-)
-<span class="fu"><a href="https://rdrr.io/r/base/files.html">file.copy</a></span>(
-  <span class="kw">from</span> <span class="kw">=</span> <span class="no">full_path_files_from</span>,
-  <span class="kw">to</span> <span class="kw">=</span> <span class="no">full_path_files_to</span>
-)
+  package <span class="op">=</span> <span class="st">"jeksterslabRutils"</span>,
+  mustWork <span class="op">=</span> <span class="cn">TRUE</span>
+<span class="op">)</span>
+<span class="va">files_from</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span><span class="op">(</span>
+  path <span class="op">=</span> <span class="va">extdata</span>,
+  pattern <span class="op">=</span> <span class="va">pattern</span>
+<span class="op">)</span>
+<span class="va">full_path_files_from</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span>
+  <span class="va">extdata</span>,
+  <span class="va">files_from</span>
+<span class="op">)</span>
+<span class="va">full_path_files_to</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span>
+  <span class="va">tmp</span>,
+  <span class="va">files_from</span>
+<span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/files.html">file.copy</a></span><span class="op">(</span>
+  from <span class="op">=</span> <span class="va">full_path_files_from</span>,
+  to <span class="op">=</span> <span class="va">full_path_files_to</span>
+<span class="op">)</span>
 <span class="co">#&gt; [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</span>
-<span class="no">root</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/basename.html">basename</a></span>(<span class="no">tmp</span>)
-<span class="no">fn_output</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(
-  <span class="no">tmp</span>,
-  <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(
-    <span class="no">root</span>,
+<span class="va">root</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/basename.html">basename</a></span><span class="op">(</span><span class="va">tmp</span><span class="op">)</span>
+<span class="va">fn_output</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span>
+  <span class="va">tmp</span>,
+  <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span>
+    <span class="va">root</span>,
     <span class="st">".csv"</span>
-  )
-)
-<span class="no">fn_column</span> <span class="kw">&lt;-</span> <span class="fl">TRUE</span>
-<span class="no">save</span> <span class="kw">&lt;-</span> <span class="fl">FALSE</span>
-<span class="no">rows</span> <span class="kw">&lt;-</span> <span class="fl">1108</span>
-<span class="no">columns</span> <span class="kw">&lt;-</span> <span class="fl">10</span>
-<span class="kw">if</span> (<span class="no">fn_column</span>) {
-  <span class="no">columns</span> <span class="kw">&lt;-</span> <span class="no">columns</span> + <span class="fl">1</span> <span class="co"># columns plus fn_column</span>
-}
-<span class="no">Variable</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(
+  <span class="op">)</span>
+<span class="op">)</span>
+<span class="va">fn_column</span> <span class="op">&lt;-</span> <span class="cn">TRUE</span>
+<span class="va">save</span> <span class="op">&lt;-</span> <span class="cn">FALSE</span>
+<span class="va">rows</span> <span class="op">&lt;-</span> <span class="fl">1108</span>
+<span class="va">columns</span> <span class="op">&lt;-</span> <span class="fl">10</span>
+<span class="kw">if</span> <span class="op">(</span><span class="va">fn_column</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">columns</span> <span class="op">&lt;-</span> <span class="va">columns</span> <span class="op">+</span> <span class="fl">1</span> <span class="co"># columns plus fn_column</span>
+<span class="op">}</span>
+<span class="va">Variable</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
   <span class="st">"`tmp`"</span>,
   <span class="st">"`pattern`"</span>,
   <span class="st">"`fn_column`"</span>,
   <span class="st">"`save`"</span>,
   <span class="st">"`rows`"</span>,
   <span class="st">"`columns`"</span>
-)
-<span class="no">Description</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(
+<span class="op">)</span>
+<span class="va">Description</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
   <span class="st">"Working directory."</span>,
   <span class="st">"Pattern."</span>,
   <span class="st">"Save file name of source data file as a new column."</span>,
   <span class="st">"Save concatenated files in `csv` format."</span>,
   <span class="st">"Number of rows."</span>,
   <span class="st">"Number of columns."</span>
-)
-<span class="no">Value</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(
-  <span class="no">tmp</span>,
-  <span class="no">pattern</span>,
-  <span class="no">fn_column</span>,
-  <span class="no">save</span>,
-  <span class="no">rows</span>,
-  <span class="no">columns</span>
-)
-<span class="kw pkg">knitr</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>(
-  <span class="kw">x</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(
-    <span class="no">Variable</span>,
-    <span class="no">Description</span>,
-    <span class="no">Value</span>
-  ),
-  <span class="kw">row.names</span> <span class="kw">=</span> <span class="fl">FALSE</span>
-)</pre></body></html></div>
+<span class="op">)</span>
+<span class="va">Value</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+  <span class="va">tmp</span>,
+  <span class="va">pattern</span>,
+  <span class="va">fn_column</span>,
+  <span class="va">save</span>,
+  <span class="va">rows</span>,
+  <span class="va">columns</span>
+<span class="op">)</span>
+<span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>
+  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>
+    <span class="va">Variable</span>,
+    <span class="va">Description</span>,
+    <span class="va">Value</span>
+  <span class="op">)</span>,
+  row.names <span class="op">=</span> <span class="cn">FALSE</span>
+<span class="op">)</span></code></pre></div>
 <table class="table">
 <colgroup>
 <col width="8%">
@@ -266,7 +269,7 @@
 <tr class="odd">
 <td align="left"><code>tmp</code></td>
 <td align="left">Working directory.</td>
-<td align="left">/media/jeksterslab/scripts/r/jeksterslabRutils/vignettes/tests/RcnKDesF</td>
+<td align="left">/media/jeksterslab/scripts/r/jeksterslabRutils/vignettes/tests/JCcKAEqU</td>
 </tr>
 <tr class="even">
 <td align="left"><code>pattern</code></td>
@@ -300,27 +303,29 @@
 <div id="run-test" class="section level2">
 <h2 class="hasAnchor">
 <a href="#run-test" class="anchor"></a>Run test</h2>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">csv</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../../reference/util_bind.html">util_bind</a></span>(
-  <span class="kw">dir</span> <span class="kw">=</span> <span class="no">tmp</span>,
-  <span class="kw">format</span> <span class="kw">=</span> <span class="st">"csv"</span>,
-  <span class="kw">pattern</span> <span class="kw">=</span> <span class="st">"^filename.*"</span>,
-  <span class="kw">fn_column</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-  <span class="kw">save</span> <span class="kw">=</span> <span class="fl">FALSE</span>,
-  <span class="kw">save_dir</span> <span class="kw">=</span> <span class="no">tmp</span>,
-  <span class="kw">par</span> <span class="kw">=</span> <span class="fl">FALSE</span>
-)</pre></body></html></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">csv</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/util_bind.html">util_bind</a></span><span class="op">(</span>
+  dir <span class="op">=</span> <span class="va">tmp</span>,
+  format <span class="op">=</span> <span class="st">"csv"</span>,
+  pattern <span class="op">=</span> <span class="st">"^filename.*"</span>,
+  fn_column <span class="op">=</span> <span class="cn">TRUE</span>,
+  save <span class="op">=</span> <span class="cn">FALSE</span>,
+  save_dir <span class="op">=</span> <span class="va">tmp</span>,
+  par <span class="op">=</span> <span class="cn">FALSE</span>
+<span class="op">)</span></code></pre></div>
 </div>
 <div id="util_fn2columns" class="section level2">
 <h2 class="hasAnchor">
 <a href="#util_fn2columns" class="anchor"></a>util_fn2columns</h2>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="no">df</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span>(
-  <span class="no">csv</span>
-)
-<span class="no">df</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../../reference/util_fn2columns.html">util_fn2columns</a></span>(
-  <span class="kw">df</span> <span class="kw">=</span> <span class="no">df</span>,
-  <span class="kw">colnames</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"root"</span>, <span class="st">"number"</span>, <span class="st">"ext"</span>)
-)
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">df</span>)
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span>
+  <span class="va">csv</span>
+<span class="op">)</span>
+<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/util_fn2columns.html">util_fn2columns</a></span><span class="op">(</span>
+  df <span class="op">=</span> <span class="va">df</span>,
+  colnames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"root"</span>, <span class="st">"number"</span>, <span class="st">"ext"</span><span class="op">)</span>
+<span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span>
 <span class="co">#&gt;                                                                     Item.Title</span>
 <span class="co">#&gt; 1                                    Stochastic Orders in Reliability and Risk</span>
 <span class="co">#&gt; 2 Statistical Methods for Imbalanced Data in Ecological and Biological Studies</span>
@@ -356,43 +361,49 @@
 <span class="co">#&gt; 4         Book filename_001.csv filename    001 csv</span>
 <span class="co">#&gt; 5         Book filename_001.csv filename    001 csv</span>
 <span class="co">#&gt; 6         Book filename_001.csv filename    001 csv</span>
-<span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span>(<span class="st">"expect_true"</span>, {
-  <span class="fu"><a href="https://testthat.r-lib.org/reference/logical-expectations.html">expect_true</a></span>(
-    (<span class="st">"root"</span> <span class="kw">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(<span class="no">df</span>)),
-    (<span class="st">"number"</span> <span class="kw">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(<span class="no">df</span>)),
-    (<span class="st">"ext"</span> <span class="kw">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(<span class="no">df</span>))
-  )
-})</pre></body></html></div>
+<span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"expect_true"</span>, <span class="op">{</span>
+  <span class="fu"><a href="https://testthat.r-lib.org/reference/logical-expectations.html">expect_true</a></span><span class="op">(</span>
+    <span class="op">(</span><span class="st">"root"</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span><span class="op">)</span>,
+    <span class="op">(</span><span class="st">"number"</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span><span class="op">)</span>,
+    <span class="op">(</span><span class="st">"ext"</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span><span class="op">)</span>
+  <span class="op">)</span>
+<span class="op">}</span><span class="op">)</span>
+<span class="co">#&gt; Test passed 🌈</span></code></pre></div>
 </div>
 <div id="expect-error" class="section level2">
 <h2 class="hasAnchor">
 <a href="#expect-error" class="anchor"></a>Expect error</h2>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span>(<span class="st">"error"</span>, {
-  <span class="fu"><a href="https://testthat.r-lib.org/reference/expect_error.html">expect_error</a></span>(
-    <span class="fu"><a href="../../reference/util_fn2columns.html">util_fn2columns</a></span>(
-      <span class="kw">df</span> <span class="kw">=</span> <span class="st">"NOT A DATA FRAME"</span>
-    )
-  )
-})</pre></body></html></div>
-<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span>(<span class="st">"message"</span>, {
-  <span class="fu"><a href="https://testthat.r-lib.org/reference/expect_message.html">expect_message</a></span>(
-    <span class="fu"><a href="../../reference/util_fn2columns.html">util_fn2columns</a></span>(
-      <span class="kw">df</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span>(
-        <span class="no">csv</span>
-      ),
-      <span class="kw">colnames</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="st">"col"</span>, <span class="fl">1</span>:<span class="fl">20</span>)
-    )
-  )
-})</pre></body></html></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"error"</span>, <span class="op">{</span>
+  <span class="fu"><a href="https://testthat.r-lib.org/reference/expect_error.html">expect_error</a></span><span class="op">(</span>
+    <span class="fu"><a href="../../reference/util_fn2columns.html">util_fn2columns</a></span><span class="op">(</span>
+      df <span class="op">=</span> <span class="st">"NOT A DATA FRAME"</span>
+    <span class="op">)</span>
+  <span class="op">)</span>
+<span class="op">}</span><span class="op">)</span>
+<span class="co">#&gt; Test passed 😀</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"message"</span>, <span class="op">{</span>
+  <span class="fu"><a href="https://testthat.r-lib.org/reference/expect_error.html">expect_message</a></span><span class="op">(</span>
+    <span class="fu"><a href="../../reference/util_fn2columns.html">util_fn2columns</a></span><span class="op">(</span>
+      df <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span>
+        <span class="va">csv</span>
+      <span class="op">)</span>,
+      colnames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"col"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">20</span><span class="op">)</span>
+    <span class="op">)</span>
+  <span class="op">)</span>
+<span class="op">}</span><span class="op">)</span>
+<span class="co">#&gt; Test passed 😸</span></code></pre></div>
 </div>
 <div id="no-colnames" class="section level2">
 <h2 class="hasAnchor">
 <a href="#no-colnames" class="anchor"></a>No colnames</h2>
-<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="fu"><a href="../../reference/util_fn2columns.html">util_fn2columns</a></span>(
-  <span class="kw">df</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span>(
-    <span class="no">csv</span>
-  )
-)
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../../reference/util_fn2columns.html">util_fn2columns</a></span><span class="op">(</span>
+  df <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span>
+    <span class="va">csv</span>
+  <span class="op">)</span>
+<span class="op">)</span>
 <span class="co">#&gt;                                                                                                                    Item.Title</span>
 <span class="co">#&gt; 1                                                                                   Stochastic Orders in Reliability and Risk</span>
 <span class="co">#&gt; 2                                                Statistical Methods for Imbalanced Data in Ecological and Biological Studies</span>
@@ -8155,14 +8166,15 @@
 <span class="co">#&gt; 1105          Book filename_003.csv  filename       003       csv</span>
 <span class="co">#&gt; 1106          Book filename_003.csv  filename       003       csv</span>
 <span class="co">#&gt; 1107          Book filename_003.csv  filename       003       csv</span>
-<span class="co">#&gt; 1108          Book filename_003.csv  filename       003       csv</span></pre></body></html></div>
+<span class="co">#&gt; 1108          Book filename_003.csv  filename       003       csv</span></code></pre></div>
 <div id="clean-up-temporary-files-and-folders" class="section level3">
 <h3 class="hasAnchor">
 <a href="#clean-up-temporary-files-and-folders" class="anchor"></a>Clean up temporary files and folders</h3>
-<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="fu"><a href="../../reference/util_clean_dir.html">util_clean_dir</a></span>(
-  <span class="kw">dir</span> <span class="kw">=</span> <span class="no">tmp</span>,
-  <span class="kw">create_dir</span> <span class="kw">=</span> <span class="fl">FALSE</span>
-)</pre></body></html></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../../reference/util_clean_dir.html">util_clean_dir</a></span><span class="op">(</span>
+  dir <span class="op">=</span> <span class="va">tmp</span>,
+  create_dir <span class="op">=</span> <span class="cn">FALSE</span>
+<span class="op">)</span></code></pre></div>
 </div>
 </div>
   </div>
@@ -8182,7 +8194,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

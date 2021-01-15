@@ -16,7 +16,7 @@
 #' @param digits Logical.
 #' Use digits.
 #' @param ext Character string.
-#' Optional extension.
+#' Optional file extension.
 #' @examples
 #' util_rand_str(characters = 8L, ext = "R")
 #' @export

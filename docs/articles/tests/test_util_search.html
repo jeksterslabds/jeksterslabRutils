@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -137,7 +137,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/jeksterslabds/jeksterslabRutils/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -151,13 +151,13 @@
 
       
 
-      </header><script src="test_util_search_files/header-attrs-2.3/header-attrs.js"></script><script src="test_util_search_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="test_util_search_files/header-attrs-2.6/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Test: util_search</h1>
                         <h4 class="author">Ivan Jacob Agaloos Pesigan</h4>
             
-            <h4 class="date">2020-07-10</h4>
+            <h4 class="date">2021-01-15</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/jeksterslabds/jeksterslabRutils/blob/master/vignettes/tests/test_util_search.Rmd"><code>vignettes/tests/test_util_search.Rmd</code></a></small>
       <div class="hidden name"><code>test_util_search.Rmd</code></div>
@@ -166,349 +166,356 @@
 
     
     
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">testthat</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">jeksterslabRutils</span>)
-<span class="fu"><a href="https://testthat.r-lib.org/reference/context.html">context</a></span>(<span class="st">"Test util_search."</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://testthat.r-lib.org">testthat</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jeksterslabds/jeksterslabRutils">jeksterslabRutils</a></span><span class="op">)</span>
+<span class="fu"><a href="https://testthat.r-lib.org/reference/context.html">context</a></span><span class="op">(</span><span class="st">"Test util_search."</span><span class="op">)</span></code></pre></div>
 <div id="parameters" class="section level2">
 <h2 class="hasAnchor">
 <a href="#parameters" class="anchor"></a>Parameters</h2>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="no">tmp</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../../reference/util_make_subdir.html">util_make_subdir</a></span>()</pre></body></html></div>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="no">pattern1</span> <span class="kw">&lt;-</span> <span class="st">"^[[:print:]]*\\.[[:alnum:]]{1,4}$"</span>
-<span class="no">n</span> <span class="kw">&lt;-</span> <span class="fl">20</span>
-<span class="no">file_basename</span> <span class="kw">&lt;-</span> <span class="no">file_extension</span> <span class="kw">&lt;-</span> <span class="no">mismatch</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(
-  <span class="kw">x</span> <span class="kw">=</span> <span class="fl">NA</span>,
-  <span class="kw">times</span> <span class="kw">=</span> <span class="no">n</span>
-)
-<span class="kw">for</span> (<span class="no">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span>(<span class="no">file_basename</span>)) {
-  <span class="no">file_basename</span>[<span class="no">i</span>] <span class="kw">&lt;-</span> <span class="fu"><a href="../../reference/util_rand_str.html">util_rand_str</a></span>(
-    <span class="kw">characters</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(<span class="fl">8</span>:<span class="fl">16</span>),
-    <span class="kw">digits</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-    <span class="kw">ext</span> <span class="kw">=</span> <span class="kw">NULL</span>
-  )
-  <span class="no">mismatch</span>[<span class="no">i</span>] <span class="kw">&lt;-</span> <span class="fu"><a href="../../reference/util_rand_str.html">util_rand_str</a></span>(
-    <span class="kw">characters</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(<span class="fl">8</span>:<span class="fl">16</span>),
-    <span class="kw">digits</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-    <span class="kw">ext</span> <span class="kw">=</span> <span class="kw">NULL</span>
-  )
-  <span class="no">file_extension</span>[<span class="no">i</span>] <span class="kw">&lt;-</span> <span class="fu"><a href="../../reference/util_rand_str.html">util_rand_str</a></span>(
-    <span class="kw">characters</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(<span class="fl">1</span>:<span class="fl">4</span>),
-    <span class="kw">digits</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-    <span class="kw">ext</span> <span class="kw">=</span> <span class="kw">NULL</span>
-  )
-}
-<span class="no">file_name</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(
-  <span class="no">file_basename</span>,
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/util_make_subdir.html">util_make_subdir</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pattern1</span> <span class="op">&lt;-</span> <span class="st">"^[[:print:]]*\\.[[:alnum:]]{1,4}$"</span>
+<span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">20</span>
+<span class="va">file_basename</span> <span class="op">&lt;-</span> <span class="va">file_extension</span> <span class="op">&lt;-</span> <span class="va">mismatch</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span>
+  x <span class="op">=</span> <span class="cn">NA</span>,
+  times <span class="op">=</span> <span class="va">n</span>
+<span class="op">)</span>
+<span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">file_basename</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">file_basename</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/util_rand_str.html">util_rand_str</a></span><span class="op">(</span>
+    characters <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">8</span><span class="op">:</span><span class="fl">16</span><span class="op">)</span>,
+    digits <span class="op">=</span> <span class="cn">TRUE</span>,
+    ext <span class="op">=</span> <span class="cn">NULL</span>
+  <span class="op">)</span>
+  <span class="va">mismatch</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/util_rand_str.html">util_rand_str</a></span><span class="op">(</span>
+    characters <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">8</span><span class="op">:</span><span class="fl">16</span><span class="op">)</span>,
+    digits <span class="op">=</span> <span class="cn">TRUE</span>,
+    ext <span class="op">=</span> <span class="cn">NULL</span>
+  <span class="op">)</span>
+  <span class="va">file_extension</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/util_rand_str.html">util_rand_str</a></span><span class="op">(</span>
+    characters <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span>,
+    digits <span class="op">=</span> <span class="cn">TRUE</span>,
+    ext <span class="op">=</span> <span class="cn">NULL</span>
+  <span class="op">)</span>
+<span class="op">}</span>
+<span class="va">file_name</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span>
+  <span class="va">file_basename</span>,
   <span class="st">"."</span>,
-  <span class="no">file_extension</span>
-)
-<span class="no">file_name</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(
-  <span class="no">tmp</span>,
-  <span class="no">file_name</span>
-)
-<span class="no">mismatch</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(
-  <span class="no">tmp</span>,
-  <span class="no">mismatch</span>
-)
-<span class="fu"><a href="https://rdrr.io/r/base/files.html">file.create</a></span>(
-  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(
-    <span class="no">file_name</span>,
-    <span class="no">mismatch</span>
-  )
-)
+  <span class="va">file_extension</span>
+<span class="op">)</span>
+<span class="va">file_name</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span>
+  <span class="va">tmp</span>,
+  <span class="va">file_name</span>
+<span class="op">)</span>
+<span class="va">mismatch</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span>
+  <span class="va">tmp</span>,
+  <span class="va">mismatch</span>
+<span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/files.html">file.create</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+    <span class="va">file_name</span>,
+    <span class="va">mismatch</span>
+  <span class="op">)</span>
+<span class="op">)</span>
 <span class="co">#&gt;  [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</span>
 <span class="co">#&gt; [16] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</span>
 <span class="co">#&gt; [31] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</span>
-<span class="no">results_util_search_pattern_pattern1</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../../reference/util_search_pattern.html">util_search_pattern</a></span>(
-  <span class="kw">dir</span> <span class="kw">=</span> <span class="no">tmp</span>,
-  <span class="kw">pattern</span> <span class="kw">=</span> <span class="no">pattern1</span>
-)
-<span class="fu"><a href="https://testthat.r-lib.org/reference/equality-expectations.html">expect_equal</a></span>(
-  <span class="no">results_util_search_pattern_pattern1</span>,
-  <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span>(<span class="no">file_name</span>)
-)
-<span class="fu"><a href="../../reference/util_clean_dir.html">util_clean_dir</a></span>(
-  <span class="kw">dir</span> <span class="kw">=</span> <span class="no">tmp</span>,
-  <span class="kw">create_dir</span> <span class="kw">=</span> <span class="fl">TRUE</span>
-)</pre></body></html></div>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">pattern2</span> <span class="kw">&lt;-</span> <span class="st">"^.*\\.r$|^.*\\.rmd$"</span>
-<span class="no">n</span> <span class="kw">&lt;-</span> <span class="fl">30</span>
-<span class="no">file_basename</span> <span class="kw">&lt;-</span> <span class="no">mismatch</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(
-  <span class="kw">x</span> <span class="kw">=</span> <span class="fl">NA</span>,
-  <span class="kw">times</span> <span class="kw">=</span> <span class="no">n</span>
-)
-<span class="kw">for</span> (<span class="no">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span>(<span class="no">file_basename</span>)) {
-  <span class="no">file_basename</span>[<span class="no">i</span>] <span class="kw">&lt;-</span> <span class="fu"><a href="../../reference/util_rand_str.html">util_rand_str</a></span>(
-    <span class="kw">characters</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(<span class="fl">8</span>:<span class="fl">16</span>),
-    <span class="kw">digits</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-    <span class="kw">ext</span> <span class="kw">=</span> <span class="kw">NULL</span>
-  )
-  <span class="no">mismatch</span>[<span class="no">i</span>] <span class="kw">&lt;-</span> <span class="fu"><a href="../../reference/util_rand_str.html">util_rand_str</a></span>(
-    <span class="kw">characters</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(<span class="fl">8</span>:<span class="fl">16</span>),
-    <span class="kw">digits</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-    <span class="kw">ext</span> <span class="kw">=</span> <span class="kw">NULL</span>
-  )
-}
-<span class="no">file_name</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(
-  <span class="no">file_basename</span>,
+<span class="va">results_util_search_pattern_pattern1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/util_search_pattern.html">util_search_pattern</a></span><span class="op">(</span>
+  dir <span class="op">=</span> <span class="va">tmp</span>,
+  pattern <span class="op">=</span> <span class="va">pattern1</span>
+<span class="op">)</span>
+<span class="fu"><a href="https://testthat.r-lib.org/reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span>
+  <span class="va">results_util_search_pattern_pattern1</span>,
+  <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">file_name</span><span class="op">)</span>
+<span class="op">)</span>
+<span class="fu"><a href="../../reference/util_clean_dir.html">util_clean_dir</a></span><span class="op">(</span>
+  dir <span class="op">=</span> <span class="va">tmp</span>,
+  create_dir <span class="op">=</span> <span class="cn">TRUE</span>
+<span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pattern2</span> <span class="op">&lt;-</span> <span class="st">"^.*\\.r$|^.*\\.rmd$"</span>
+<span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">30</span>
+<span class="va">file_basename</span> <span class="op">&lt;-</span> <span class="va">mismatch</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span>
+  x <span class="op">=</span> <span class="cn">NA</span>,
+  times <span class="op">=</span> <span class="va">n</span>
+<span class="op">)</span>
+<span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">file_basename</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">file_basename</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/util_rand_str.html">util_rand_str</a></span><span class="op">(</span>
+    characters <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">8</span><span class="op">:</span><span class="fl">16</span><span class="op">)</span>,
+    digits <span class="op">=</span> <span class="cn">TRUE</span>,
+    ext <span class="op">=</span> <span class="cn">NULL</span>
+  <span class="op">)</span>
+  <span class="va">mismatch</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/util_rand_str.html">util_rand_str</a></span><span class="op">(</span>
+    characters <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">8</span><span class="op">:</span><span class="fl">16</span><span class="op">)</span>,
+    digits <span class="op">=</span> <span class="cn">TRUE</span>,
+    ext <span class="op">=</span> <span class="cn">NULL</span>
+  <span class="op">)</span>
+<span class="op">}</span>
+<span class="va">file_name</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span>
+  <span class="va">file_basename</span>,
   <span class="st">"."</span>,
-  <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(
-    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(
+  <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
       <span class="st">"r"</span>,
       <span class="st">"R"</span>,
       <span class="st">"RMD"</span>,
       <span class="st">"Rmd"</span>,
       <span class="st">"rmd"</span>,
       <span class="st">"rMd"</span>
-    ),
-    <span class="kw">size</span> <span class="kw">=</span> <span class="no">n</span>,
-    <span class="kw">replace</span> <span class="kw">=</span> <span class="fl">TRUE</span>
-  )
-)
-<span class="no">file_name</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(
-  <span class="no">tmp</span>,
-  <span class="no">file_name</span>
-)
-<span class="no">mismatch</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(
-  <span class="no">mismatch</span>,
+    <span class="op">)</span>,
+    size <span class="op">=</span> <span class="va">n</span>,
+    replace <span class="op">=</span> <span class="cn">TRUE</span>
+  <span class="op">)</span>
+<span class="op">)</span>
+<span class="va">file_name</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span>
+  <span class="va">tmp</span>,
+  <span class="va">file_name</span>
+<span class="op">)</span>
+<span class="va">mismatch</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span>
+  <span class="va">mismatch</span>,
   <span class="st">"."</span>,
-  <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(
-    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(
+  <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
       <span class="st">"md"</span>,
       <span class="st">"rd"</span>,
       <span class="st">"Rd"</span>,
       <span class="st">"js"</span>,
       <span class="st">"Rtex"</span>
-    ),
-    <span class="kw">size</span> <span class="kw">=</span> <span class="no">n</span>,
-    <span class="kw">replace</span> <span class="kw">=</span> <span class="fl">TRUE</span>
-  )
-)
-<span class="no">mismatch</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(
-  <span class="no">tmp</span>,
-  <span class="no">mismatch</span>
-)
-<span class="fu"><a href="https://rdrr.io/r/base/files.html">file.create</a></span>(
-  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(
-    <span class="no">file_name</span>,
-    <span class="no">mismatch</span>
-  )
-)
+    <span class="op">)</span>,
+    size <span class="op">=</span> <span class="va">n</span>,
+    replace <span class="op">=</span> <span class="cn">TRUE</span>
+  <span class="op">)</span>
+<span class="op">)</span>
+<span class="va">mismatch</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span>
+  <span class="va">tmp</span>,
+  <span class="va">mismatch</span>
+<span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/files.html">file.create</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+    <span class="va">file_name</span>,
+    <span class="va">mismatch</span>
+  <span class="op">)</span>
+<span class="op">)</span>
 <span class="co">#&gt;  [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</span>
 <span class="co">#&gt; [16] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</span>
 <span class="co">#&gt; [31] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</span>
 <span class="co">#&gt; [46] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</span>
-<span class="no">results_util_search_pattern_pattern2</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../../reference/util_search_pattern.html">util_search_pattern</a></span>(
-  <span class="kw">dir</span> <span class="kw">=</span> <span class="no">tmp</span>,
-  <span class="kw">pattern</span> <span class="kw">=</span> <span class="no">pattern2</span>
-)
-<span class="no">results_util_search_r_pattern2</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../../reference/util_search_r.html">util_search_r</a></span>(
-  <span class="kw">dir</span> <span class="kw">=</span> <span class="no">tmp</span>
-)
-<span class="fu"><a href="https://testthat.r-lib.org/reference/equality-expectations.html">expect_equal</a></span>(
-  <span class="no">results_util_search_pattern_pattern2</span>,
-  <span class="no">results_util_search_r_pattern2</span>,
-  <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span>(<span class="no">file_name</span>)
-)
-<span class="fu"><a href="../../reference/util_clean_dir.html">util_clean_dir</a></span>(
-  <span class="kw">dir</span> <span class="kw">=</span> <span class="no">tmp</span>,
-  <span class="kw">create_dir</span> <span class="kw">=</span> <span class="fl">TRUE</span>
-)</pre></body></html></div>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="no">ext</span> <span class="kw">&lt;-</span> <span class="st">"csv"</span>
-<span class="no">pattern3</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(
+<span class="va">results_util_search_pattern_pattern2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/util_search_pattern.html">util_search_pattern</a></span><span class="op">(</span>
+  dir <span class="op">=</span> <span class="va">tmp</span>,
+  pattern <span class="op">=</span> <span class="va">pattern2</span>
+<span class="op">)</span>
+<span class="va">results_util_search_r_pattern2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/util_search_r.html">util_search_r</a></span><span class="op">(</span>
+  dir <span class="op">=</span> <span class="va">tmp</span>
+<span class="op">)</span>
+<span class="fu"><a href="https://testthat.r-lib.org/reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span>
+  <span class="va">results_util_search_pattern_pattern2</span>,
+  <span class="va">results_util_search_r_pattern2</span>,
+  <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">file_name</span><span class="op">)</span>
+<span class="op">)</span>
+<span class="fu"><a href="../../reference/util_clean_dir.html">util_clean_dir</a></span><span class="op">(</span>
+  dir <span class="op">=</span> <span class="va">tmp</span>,
+  create_dir <span class="op">=</span> <span class="cn">TRUE</span>
+<span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ext</span> <span class="op">&lt;-</span> <span class="st">"csv"</span>
+<span class="va">pattern3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span>
   <span class="st">"^.*\\."</span>,
-  <span class="no">ext</span>,
+  <span class="va">ext</span>,
   <span class="st">"$"</span>
-)
-<span class="no">n</span> <span class="kw">&lt;-</span> <span class="fl">30</span>
-<span class="no">file_basename</span> <span class="kw">&lt;-</span> <span class="no">mismatch</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(
-  <span class="kw">x</span> <span class="kw">=</span> <span class="fl">NA</span>,
-  <span class="kw">times</span> <span class="kw">=</span> <span class="no">n</span>
-)
-<span class="kw">for</span> (<span class="no">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span>(<span class="no">file_basename</span>)) {
-  <span class="no">file_basename</span>[<span class="no">i</span>] <span class="kw">&lt;-</span> <span class="fu"><a href="../../reference/util_rand_str.html">util_rand_str</a></span>(
-    <span class="kw">characters</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(<span class="fl">8</span>:<span class="fl">16</span>),
-    <span class="kw">digits</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-    <span class="kw">ext</span> <span class="kw">=</span> <span class="kw">NULL</span>
-  )
-  <span class="no">mismatch</span>[<span class="no">i</span>] <span class="kw">&lt;-</span> <span class="fu"><a href="../../reference/util_rand_str.html">util_rand_str</a></span>(
-    <span class="kw">characters</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(<span class="fl">8</span>:<span class="fl">16</span>),
-    <span class="kw">digits</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-    <span class="kw">ext</span> <span class="kw">=</span> <span class="kw">NULL</span>
-  )
-}
-<span class="no">file_name</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(
-  <span class="no">file_basename</span>,
+<span class="op">)</span>
+<span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">30</span>
+<span class="va">file_basename</span> <span class="op">&lt;-</span> <span class="va">mismatch</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span>
+  x <span class="op">=</span> <span class="cn">NA</span>,
+  times <span class="op">=</span> <span class="va">n</span>
+<span class="op">)</span>
+<span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">file_basename</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">file_basename</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/util_rand_str.html">util_rand_str</a></span><span class="op">(</span>
+    characters <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">8</span><span class="op">:</span><span class="fl">16</span><span class="op">)</span>,
+    digits <span class="op">=</span> <span class="cn">TRUE</span>,
+    ext <span class="op">=</span> <span class="cn">NULL</span>
+  <span class="op">)</span>
+  <span class="va">mismatch</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/util_rand_str.html">util_rand_str</a></span><span class="op">(</span>
+    characters <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">8</span><span class="op">:</span><span class="fl">16</span><span class="op">)</span>,
+    digits <span class="op">=</span> <span class="cn">TRUE</span>,
+    ext <span class="op">=</span> <span class="cn">NULL</span>
+  <span class="op">)</span>
+<span class="op">}</span>
+<span class="va">file_name</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span>
+  <span class="va">file_basename</span>,
   <span class="st">"."</span>,
-  <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(
-    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(
+  <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
       <span class="st">"csv"</span>,
       <span class="st">"CSV"</span>,
       <span class="st">"Csv"</span>,
       <span class="st">"cSv"</span>,
       <span class="st">"csV"</span>,
       <span class="st">"CSv"</span>
-    ),
-    <span class="kw">size</span> <span class="kw">=</span> <span class="no">n</span>,
-    <span class="kw">replace</span> <span class="kw">=</span> <span class="fl">TRUE</span>
-  )
-)
-<span class="no">file_name</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(
-  <span class="no">tmp</span>,
-  <span class="no">file_name</span>
-)
-<span class="no">mismatch</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(
-  <span class="no">mismatch</span>,
+    <span class="op">)</span>,
+    size <span class="op">=</span> <span class="va">n</span>,
+    replace <span class="op">=</span> <span class="cn">TRUE</span>
+  <span class="op">)</span>
+<span class="op">)</span>
+<span class="va">file_name</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span>
+  <span class="va">tmp</span>,
+  <span class="va">file_name</span>
+<span class="op">)</span>
+<span class="va">mismatch</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span>
+  <span class="va">mismatch</span>,
   <span class="st">"."</span>,
-  <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(
-    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(
+  <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
       <span class="st">"md"</span>,
       <span class="st">"rd"</span>,
       <span class="st">"Rd"</span>,
       <span class="st">"js"</span>,
       <span class="st">"Rtex"</span>
-    ),
-    <span class="kw">size</span> <span class="kw">=</span> <span class="no">n</span>,
-    <span class="kw">replace</span> <span class="kw">=</span> <span class="fl">TRUE</span>
-  )
-)
-<span class="no">mismatch</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(
-  <span class="no">tmp</span>,
-  <span class="no">mismatch</span>
-)
-<span class="fu"><a href="https://rdrr.io/r/base/files.html">file.create</a></span>(
-  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(
-    <span class="no">file_name</span>,
-    <span class="no">mismatch</span>
-  )
-)
+    <span class="op">)</span>,
+    size <span class="op">=</span> <span class="va">n</span>,
+    replace <span class="op">=</span> <span class="cn">TRUE</span>
+  <span class="op">)</span>
+<span class="op">)</span>
+<span class="va">mismatch</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span>
+  <span class="va">tmp</span>,
+  <span class="va">mismatch</span>
+<span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/files.html">file.create</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+    <span class="va">file_name</span>,
+    <span class="va">mismatch</span>
+  <span class="op">)</span>
+<span class="op">)</span>
 <span class="co">#&gt;  [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</span>
 <span class="co">#&gt; [16] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</span>
 <span class="co">#&gt; [31] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</span>
 <span class="co">#&gt; [46] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</span>
-<span class="no">results_util_search_pattern_pattern3</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../../reference/util_search_pattern.html">util_search_pattern</a></span>(
-  <span class="kw">dir</span> <span class="kw">=</span> <span class="no">tmp</span>,
-  <span class="kw">pattern</span> <span class="kw">=</span> <span class="no">pattern3</span>
-)
-<span class="no">results_util_search_ext_pattern3</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../../reference/util_search_ext.html">util_search_ext</a></span>(
-  <span class="kw">dir</span> <span class="kw">=</span> <span class="no">tmp</span>,
-  <span class="kw">ext</span> <span class="kw">=</span> <span class="no">ext</span>
-)
-<span class="fu"><a href="https://testthat.r-lib.org/reference/equality-expectations.html">expect_equal</a></span>(
-  <span class="no">results_util_search_pattern_pattern3</span>,
-  <span class="no">results_util_search_ext_pattern3</span>,
-  <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span>(<span class="no">file_name</span>)
-)
-<span class="fu"><a href="../../reference/util_clean_dir.html">util_clean_dir</a></span>(
-  <span class="kw">dir</span> <span class="kw">=</span> <span class="no">tmp</span>,
-  <span class="kw">create_dir</span> <span class="kw">=</span> <span class="fl">TRUE</span>
-)</pre></body></html></div>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="no">pattern4</span> <span class="kw">&lt;-</span> <span class="st">"^file.*\\.csv$"</span>
-<span class="no">n</span> <span class="kw">&lt;-</span> <span class="fl">20</span>
-<span class="no">file_basename</span> <span class="kw">&lt;-</span> <span class="no">mismatch</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(
-  <span class="kw">x</span> <span class="kw">=</span> <span class="fl">NA</span>,
-  <span class="kw">times</span> <span class="kw">=</span> <span class="no">n</span>
-)
-<span class="kw">for</span> (<span class="no">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span>(<span class="no">file_basename</span>)) {
-  <span class="no">file_basename</span>[<span class="no">i</span>] <span class="kw">&lt;-</span> <span class="fu"><a href="../../reference/util_rand_str.html">util_rand_str</a></span>(
-    <span class="kw">characters</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(<span class="fl">8</span>:<span class="fl">16</span>),
-    <span class="kw">digits</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-    <span class="kw">ext</span> <span class="kw">=</span> <span class="kw">NULL</span>
-  )
-  <span class="no">mismatch</span>[<span class="no">i</span>] <span class="kw">&lt;-</span> <span class="fu"><a href="../../reference/util_rand_str.html">util_rand_str</a></span>(
-    <span class="kw">characters</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(<span class="fl">8</span>:<span class="fl">16</span>),
-    <span class="kw">digits</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-    <span class="kw">ext</span> <span class="kw">=</span> <span class="kw">NULL</span>
-  )
-}
-<span class="no">file_name</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(
+<span class="va">results_util_search_pattern_pattern3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/util_search_pattern.html">util_search_pattern</a></span><span class="op">(</span>
+  dir <span class="op">=</span> <span class="va">tmp</span>,
+  pattern <span class="op">=</span> <span class="va">pattern3</span>
+<span class="op">)</span>
+<span class="va">results_util_search_ext_pattern3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/util_search_ext.html">util_search_ext</a></span><span class="op">(</span>
+  dir <span class="op">=</span> <span class="va">tmp</span>,
+  ext <span class="op">=</span> <span class="va">ext</span>
+<span class="op">)</span>
+<span class="fu"><a href="https://testthat.r-lib.org/reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span>
+  <span class="va">results_util_search_pattern_pattern3</span>,
+  <span class="va">results_util_search_ext_pattern3</span>,
+  <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">file_name</span><span class="op">)</span>
+<span class="op">)</span>
+<span class="fu"><a href="../../reference/util_clean_dir.html">util_clean_dir</a></span><span class="op">(</span>
+  dir <span class="op">=</span> <span class="va">tmp</span>,
+  create_dir <span class="op">=</span> <span class="cn">TRUE</span>
+<span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pattern4</span> <span class="op">&lt;-</span> <span class="st">"^file.*\\.csv$"</span>
+<span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">20</span>
+<span class="va">file_basename</span> <span class="op">&lt;-</span> <span class="va">mismatch</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span>
+  x <span class="op">=</span> <span class="cn">NA</span>,
+  times <span class="op">=</span> <span class="va">n</span>
+<span class="op">)</span>
+<span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">file_basename</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">file_basename</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/util_rand_str.html">util_rand_str</a></span><span class="op">(</span>
+    characters <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">8</span><span class="op">:</span><span class="fl">16</span><span class="op">)</span>,
+    digits <span class="op">=</span> <span class="cn">TRUE</span>,
+    ext <span class="op">=</span> <span class="cn">NULL</span>
+  <span class="op">)</span>
+  <span class="va">mismatch</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/util_rand_str.html">util_rand_str</a></span><span class="op">(</span>
+    characters <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">8</span><span class="op">:</span><span class="fl">16</span><span class="op">)</span>,
+    digits <span class="op">=</span> <span class="cn">TRUE</span>,
+    ext <span class="op">=</span> <span class="cn">NULL</span>
+  <span class="op">)</span>
+<span class="op">}</span>
+<span class="va">file_name</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span>
   <span class="st">"file"</span>,
-  <span class="no">file_basename</span>,
+  <span class="va">file_basename</span>,
   <span class="st">"."</span>,
   <span class="st">"csv"</span>
-)
-<span class="no">file_name</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(
-  <span class="no">tmp</span>,
-  <span class="no">file_name</span>
-)
-<span class="no">mismatch</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(
-  <span class="no">mismatch</span>,
+<span class="op">)</span>
+<span class="va">file_name</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span>
+  <span class="va">tmp</span>,
+  <span class="va">file_name</span>
+<span class="op">)</span>
+<span class="va">mismatch</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span>
+  <span class="va">mismatch</span>,
   <span class="st">"."</span>,
-  <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(
-    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(
+  <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
       <span class="st">"md"</span>,
       <span class="st">"rd"</span>,
       <span class="st">"Rd"</span>,
       <span class="st">"js"</span>,
       <span class="st">"Rtex"</span>
-    ),
-    <span class="kw">size</span> <span class="kw">=</span> <span class="no">n</span>,
-    <span class="kw">replace</span> <span class="kw">=</span> <span class="fl">TRUE</span>
-  )
-)
-<span class="no">mismatch</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(
-  <span class="no">tmp</span>,
-  <span class="no">mismatch</span>
-)
-<span class="fu"><a href="https://rdrr.io/r/base/files.html">file.create</a></span>(
-  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(
-    <span class="no">file_name</span>,
-    <span class="no">mismatch</span>
-  )
-)
+    <span class="op">)</span>,
+    size <span class="op">=</span> <span class="va">n</span>,
+    replace <span class="op">=</span> <span class="cn">TRUE</span>
+  <span class="op">)</span>
+<span class="op">)</span>
+<span class="va">mismatch</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span>
+  <span class="va">tmp</span>,
+  <span class="va">mismatch</span>
+<span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/files.html">file.create</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+    <span class="va">file_name</span>,
+    <span class="va">mismatch</span>
+  <span class="op">)</span>
+<span class="op">)</span>
 <span class="co">#&gt;  [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</span>
 <span class="co">#&gt; [16] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</span>
 <span class="co">#&gt; [31] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</span>
-<span class="no">results_util_search_pattern_pattern4</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../../reference/util_search_pattern.html">util_search_pattern</a></span>(
-  <span class="kw">dir</span> <span class="kw">=</span> <span class="no">tmp</span>,
-  <span class="kw">pattern</span> <span class="kw">=</span> <span class="no">pattern4</span>
-)
-<span class="fu"><a href="https://testthat.r-lib.org/reference/equality-expectations.html">expect_equal</a></span>(
-  <span class="no">results_util_search_pattern_pattern4</span>,
-  <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span>(<span class="no">file_name</span>)
-)
-<span class="fu"><a href="../../reference/util_clean_dir.html">util_clean_dir</a></span>(
-  <span class="kw">dir</span> <span class="kw">=</span> <span class="no">tmp</span>,
-  <span class="kw">create_dir</span> <span class="kw">=</span> <span class="fl">TRUE</span>
-)</pre></body></html></div>
-<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">pattern6</span> <span class="kw">&lt;-</span> <span class="st">"^.*\\.r$"</span>
-<span class="no">n</span> <span class="kw">&lt;-</span> <span class="fl">30</span>
-<span class="no">file_basename</span> <span class="kw">&lt;-</span> <span class="no">mismatch</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(
-  <span class="kw">x</span> <span class="kw">=</span> <span class="fl">NA</span>,
-  <span class="kw">times</span> <span class="kw">=</span> <span class="no">n</span>
-)
-<span class="kw">for</span> (<span class="no">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span>(<span class="no">file_basename</span>)) {
-  <span class="no">file_basename</span>[<span class="no">i</span>] <span class="kw">&lt;-</span> <span class="fu"><a href="../../reference/util_rand_str.html">util_rand_str</a></span>(
-    <span class="kw">characters</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(<span class="fl">8</span>:<span class="fl">16</span>),
-    <span class="kw">digits</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-    <span class="kw">ext</span> <span class="kw">=</span> <span class="kw">NULL</span>
-  )
-  <span class="no">mismatch</span>[<span class="no">i</span>] <span class="kw">&lt;-</span> <span class="fu"><a href="../../reference/util_rand_str.html">util_rand_str</a></span>(
-    <span class="kw">characters</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(<span class="fl">8</span>:<span class="fl">16</span>),
-    <span class="kw">digits</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-    <span class="kw">ext</span> <span class="kw">=</span> <span class="kw">NULL</span>
-  )
-}
-<span class="no">file_name</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(
-  <span class="no">file_basename</span>,
+<span class="va">results_util_search_pattern_pattern4</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/util_search_pattern.html">util_search_pattern</a></span><span class="op">(</span>
+  dir <span class="op">=</span> <span class="va">tmp</span>,
+  pattern <span class="op">=</span> <span class="va">pattern4</span>
+<span class="op">)</span>
+<span class="fu"><a href="https://testthat.r-lib.org/reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span>
+  <span class="va">results_util_search_pattern_pattern4</span>,
+  <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">file_name</span><span class="op">)</span>
+<span class="op">)</span>
+<span class="fu"><a href="../../reference/util_clean_dir.html">util_clean_dir</a></span><span class="op">(</span>
+  dir <span class="op">=</span> <span class="va">tmp</span>,
+  create_dir <span class="op">=</span> <span class="cn">TRUE</span>
+<span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pattern6</span> <span class="op">&lt;-</span> <span class="st">"^.*\\.r$"</span>
+<span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">30</span>
+<span class="va">file_basename</span> <span class="op">&lt;-</span> <span class="va">mismatch</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span>
+  x <span class="op">=</span> <span class="cn">NA</span>,
+  times <span class="op">=</span> <span class="va">n</span>
+<span class="op">)</span>
+<span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">file_basename</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">file_basename</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/util_rand_str.html">util_rand_str</a></span><span class="op">(</span>
+    characters <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">8</span><span class="op">:</span><span class="fl">16</span><span class="op">)</span>,
+    digits <span class="op">=</span> <span class="cn">TRUE</span>,
+    ext <span class="op">=</span> <span class="cn">NULL</span>
+  <span class="op">)</span>
+  <span class="va">mismatch</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/util_rand_str.html">util_rand_str</a></span><span class="op">(</span>
+    characters <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">8</span><span class="op">:</span><span class="fl">16</span><span class="op">)</span>,
+    digits <span class="op">=</span> <span class="cn">TRUE</span>,
+    ext <span class="op">=</span> <span class="cn">NULL</span>
+  <span class="op">)</span>
+<span class="op">}</span>
+<span class="va">file_name</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span>
+  <span class="va">file_basename</span>,
   <span class="st">"."</span>,
-  <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(
-    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(
+  <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
       <span class="st">"r"</span>,
       <span class="st">"R"</span>
-    ),
-    <span class="kw">size</span> <span class="kw">=</span> <span class="no">n</span>,
-    <span class="kw">replace</span> <span class="kw">=</span> <span class="fl">TRUE</span>
-  )
-)
-<span class="no">file_name</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(
-  <span class="no">tmp</span>,
-  <span class="no">file_name</span>
-)
-<span class="no">mismatch</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(
-  <span class="no">mismatch</span>,
+    <span class="op">)</span>,
+    size <span class="op">=</span> <span class="va">n</span>,
+    replace <span class="op">=</span> <span class="cn">TRUE</span>
+  <span class="op">)</span>
+<span class="op">)</span>
+<span class="va">file_name</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span>
+  <span class="va">tmp</span>,
+  <span class="va">file_name</span>
+<span class="op">)</span>
+<span class="va">mismatch</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span>
+  <span class="va">mismatch</span>,
   <span class="st">"."</span>,
-  <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(
-    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(
+  <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
       <span class="st">"md"</span>,
       <span class="st">"rd"</span>,
       <span class="st">"Rd"</span>,
@@ -516,85 +523,86 @@
       <span class="st">"Rtex"</span>,
       <span class="st">"Rmd"</span>,
       <span class="st">"rmd"</span>
-    ),
-    <span class="kw">size</span> <span class="kw">=</span> <span class="no">n</span>,
-    <span class="kw">replace</span> <span class="kw">=</span> <span class="fl">TRUE</span>
-  )
-)
-<span class="no">mismatch</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(
-  <span class="no">tmp</span>,
-  <span class="no">mismatch</span>
-)
-<span class="fu"><a href="https://rdrr.io/r/base/files.html">file.create</a></span>(
-  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(
-    <span class="no">file_name</span>,
-    <span class="no">mismatch</span>
-  )
-)
+    <span class="op">)</span>,
+    size <span class="op">=</span> <span class="va">n</span>,
+    replace <span class="op">=</span> <span class="cn">TRUE</span>
+  <span class="op">)</span>
+<span class="op">)</span>
+<span class="va">mismatch</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span>
+  <span class="va">tmp</span>,
+  <span class="va">mismatch</span>
+<span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/files.html">file.create</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+    <span class="va">file_name</span>,
+    <span class="va">mismatch</span>
+  <span class="op">)</span>
+<span class="op">)</span>
 <span class="co">#&gt;  [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</span>
 <span class="co">#&gt; [16] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</span>
 <span class="co">#&gt; [31] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</span>
 <span class="co">#&gt; [46] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</span>
-<span class="no">results_util_search_pattern_pattern6</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../../reference/util_search_pattern.html">util_search_pattern</a></span>(
-  <span class="kw">dir</span> <span class="kw">=</span> <span class="no">tmp</span>,
-  <span class="kw">pattern</span> <span class="kw">=</span> <span class="no">pattern6</span>
-)
-<span class="no">results_util_search_r_pattern6</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../../reference/util_search_r.html">util_search_r</a></span>(
-  <span class="kw">dir</span> <span class="kw">=</span> <span class="no">tmp</span>,
-  <span class="kw">rscript</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-  <span class="kw">rmd</span> <span class="kw">=</span> <span class="fl">FALSE</span>
-)
-<span class="fu"><a href="https://testthat.r-lib.org/reference/equality-expectations.html">expect_equal</a></span>(
-  <span class="no">results_util_search_pattern_pattern6</span>,
-  <span class="no">results_util_search_r_pattern6</span>,
-  <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span>(<span class="no">file_name</span>)
-)
-<span class="fu"><a href="../../reference/util_clean_dir.html">util_clean_dir</a></span>(
-  <span class="kw">dir</span> <span class="kw">=</span> <span class="no">tmp</span>,
-  <span class="kw">create_dir</span> <span class="kw">=</span> <span class="fl">TRUE</span>
-)</pre></body></html></div>
-<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">pattern7</span> <span class="kw">&lt;-</span> <span class="st">"^.*\\.rmd$"</span>
-<span class="no">n</span> <span class="kw">&lt;-</span> <span class="fl">30</span>
-<span class="no">file_basename</span> <span class="kw">&lt;-</span> <span class="no">mismatch</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(
-  <span class="kw">x</span> <span class="kw">=</span> <span class="fl">NA</span>,
-  <span class="kw">times</span> <span class="kw">=</span> <span class="no">n</span>
-)
-<span class="kw">for</span> (<span class="no">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span>(<span class="no">file_basename</span>)) {
-  <span class="no">file_basename</span>[<span class="no">i</span>] <span class="kw">&lt;-</span> <span class="fu"><a href="../../reference/util_rand_str.html">util_rand_str</a></span>(
-    <span class="kw">characters</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(<span class="fl">8</span>:<span class="fl">16</span>),
-    <span class="kw">digits</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-    <span class="kw">ext</span> <span class="kw">=</span> <span class="kw">NULL</span>
-  )
-  <span class="no">mismatch</span>[<span class="no">i</span>] <span class="kw">&lt;-</span> <span class="fu"><a href="../../reference/util_rand_str.html">util_rand_str</a></span>(
-    <span class="kw">characters</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(<span class="fl">8</span>:<span class="fl">16</span>),
-    <span class="kw">digits</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-    <span class="kw">ext</span> <span class="kw">=</span> <span class="kw">NULL</span>
-  )
-}
-<span class="no">file_name</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(
-  <span class="no">file_basename</span>,
+<span class="va">results_util_search_pattern_pattern6</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/util_search_pattern.html">util_search_pattern</a></span><span class="op">(</span>
+  dir <span class="op">=</span> <span class="va">tmp</span>,
+  pattern <span class="op">=</span> <span class="va">pattern6</span>
+<span class="op">)</span>
+<span class="va">results_util_search_r_pattern6</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/util_search_r.html">util_search_r</a></span><span class="op">(</span>
+  dir <span class="op">=</span> <span class="va">tmp</span>,
+  rscript <span class="op">=</span> <span class="cn">TRUE</span>,
+  rmd <span class="op">=</span> <span class="cn">FALSE</span>
+<span class="op">)</span>
+<span class="fu"><a href="https://testthat.r-lib.org/reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span>
+  <span class="va">results_util_search_pattern_pattern6</span>,
+  <span class="va">results_util_search_r_pattern6</span>,
+  <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">file_name</span><span class="op">)</span>
+<span class="op">)</span>
+<span class="fu"><a href="../../reference/util_clean_dir.html">util_clean_dir</a></span><span class="op">(</span>
+  dir <span class="op">=</span> <span class="va">tmp</span>,
+  create_dir <span class="op">=</span> <span class="cn">TRUE</span>
+<span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pattern7</span> <span class="op">&lt;-</span> <span class="st">"^.*\\.rmd$"</span>
+<span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">30</span>
+<span class="va">file_basename</span> <span class="op">&lt;-</span> <span class="va">mismatch</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span>
+  x <span class="op">=</span> <span class="cn">NA</span>,
+  times <span class="op">=</span> <span class="va">n</span>
+<span class="op">)</span>
+<span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">file_basename</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">file_basename</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/util_rand_str.html">util_rand_str</a></span><span class="op">(</span>
+    characters <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">8</span><span class="op">:</span><span class="fl">16</span><span class="op">)</span>,
+    digits <span class="op">=</span> <span class="cn">TRUE</span>,
+    ext <span class="op">=</span> <span class="cn">NULL</span>
+  <span class="op">)</span>
+  <span class="va">mismatch</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/util_rand_str.html">util_rand_str</a></span><span class="op">(</span>
+    characters <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">8</span><span class="op">:</span><span class="fl">16</span><span class="op">)</span>,
+    digits <span class="op">=</span> <span class="cn">TRUE</span>,
+    ext <span class="op">=</span> <span class="cn">NULL</span>
+  <span class="op">)</span>
+<span class="op">}</span>
+<span class="va">file_name</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span>
+  <span class="va">file_basename</span>,
   <span class="st">"."</span>,
-  <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(
-    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(
+  <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
       <span class="st">"rmd"</span>,
       <span class="st">"Rmd"</span>,
       <span class="st">"RMD"</span>,
       <span class="st">"rMd"</span>,
       <span class="st">"rmD"</span>
-    ),
-    <span class="kw">size</span> <span class="kw">=</span> <span class="no">n</span>,
-    <span class="kw">replace</span> <span class="kw">=</span> <span class="fl">TRUE</span>
-  )
-)
-<span class="no">file_name</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(
-  <span class="no">tmp</span>,
-  <span class="no">file_name</span>
-)
-<span class="no">mismatch</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(
-  <span class="no">mismatch</span>,
+    <span class="op">)</span>,
+    size <span class="op">=</span> <span class="va">n</span>,
+    replace <span class="op">=</span> <span class="cn">TRUE</span>
+  <span class="op">)</span>
+<span class="op">)</span>
+<span class="va">file_name</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span>
+  <span class="va">tmp</span>,
+  <span class="va">file_name</span>
+<span class="op">)</span>
+<span class="va">mismatch</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span>
+  <span class="va">mismatch</span>,
   <span class="st">"."</span>,
-  <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(
-    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(
+  <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
       <span class="st">"md"</span>,
       <span class="st">"rd"</span>,
       <span class="st">"Rd"</span>,
@@ -602,43 +610,43 @@
       <span class="st">"Rtex"</span>,
       <span class="st">"R"</span>,
       <span class="st">"r"</span>
-    ),
-    <span class="kw">size</span> <span class="kw">=</span> <span class="no">n</span>,
-    <span class="kw">replace</span> <span class="kw">=</span> <span class="fl">TRUE</span>
-  )
-)
-<span class="no">mismatch</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(
-  <span class="no">tmp</span>,
-  <span class="no">mismatch</span>
-)
-<span class="fu"><a href="https://rdrr.io/r/base/files.html">file.create</a></span>(
-  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(
-    <span class="no">file_name</span>,
-    <span class="no">mismatch</span>
-  )
-)
+    <span class="op">)</span>,
+    size <span class="op">=</span> <span class="va">n</span>,
+    replace <span class="op">=</span> <span class="cn">TRUE</span>
+  <span class="op">)</span>
+<span class="op">)</span>
+<span class="va">mismatch</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span>
+  <span class="va">tmp</span>,
+  <span class="va">mismatch</span>
+<span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/files.html">file.create</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+    <span class="va">file_name</span>,
+    <span class="va">mismatch</span>
+  <span class="op">)</span>
+<span class="op">)</span>
 <span class="co">#&gt;  [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</span>
 <span class="co">#&gt; [16] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</span>
 <span class="co">#&gt; [31] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</span>
 <span class="co">#&gt; [46] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</span>
-<span class="no">results_util_search_pattern_pattern7</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../../reference/util_search_pattern.html">util_search_pattern</a></span>(
-  <span class="kw">dir</span> <span class="kw">=</span> <span class="no">tmp</span>,
-  <span class="kw">pattern</span> <span class="kw">=</span> <span class="no">pattern7</span>
-)
-<span class="no">results_util_search_r_pattern7</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../../reference/util_search_r.html">util_search_r</a></span>(
-  <span class="kw">dir</span> <span class="kw">=</span> <span class="no">tmp</span>,
-  <span class="kw">rscript</span> <span class="kw">=</span> <span class="fl">FALSE</span>,
-  <span class="kw">rmd</span> <span class="kw">=</span> <span class="fl">TRUE</span>
-)
-<span class="fu"><a href="https://testthat.r-lib.org/reference/equality-expectations.html">expect_equal</a></span>(
-  <span class="no">results_util_search_pattern_pattern7</span>,
-  <span class="no">results_util_search_r_pattern7</span>,
-  <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span>(<span class="no">file_name</span>)
-)
-<span class="fu"><a href="../../reference/util_clean_dir.html">util_clean_dir</a></span>(
-  <span class="kw">dir</span> <span class="kw">=</span> <span class="no">tmp</span>,
-  <span class="kw">create_dir</span> <span class="kw">=</span> <span class="fl">FALSE</span>
-)</pre></body></html></div>
+<span class="va">results_util_search_pattern_pattern7</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/util_search_pattern.html">util_search_pattern</a></span><span class="op">(</span>
+  dir <span class="op">=</span> <span class="va">tmp</span>,
+  pattern <span class="op">=</span> <span class="va">pattern7</span>
+<span class="op">)</span>
+<span class="va">results_util_search_r_pattern7</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/util_search_r.html">util_search_r</a></span><span class="op">(</span>
+  dir <span class="op">=</span> <span class="va">tmp</span>,
+  rscript <span class="op">=</span> <span class="cn">FALSE</span>,
+  rmd <span class="op">=</span> <span class="cn">TRUE</span>
+<span class="op">)</span>
+<span class="fu"><a href="https://testthat.r-lib.org/reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span>
+  <span class="va">results_util_search_pattern_pattern7</span>,
+  <span class="va">results_util_search_r_pattern7</span>,
+  <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">file_name</span><span class="op">)</span>
+<span class="op">)</span>
+<span class="fu"><a href="../../reference/util_clean_dir.html">util_clean_dir</a></span><span class="op">(</span>
+  dir <span class="op">=</span> <span class="va">tmp</span>,
+  create_dir <span class="op">=</span> <span class="cn">FALSE</span>
+<span class="op">)</span></code></pre></div>
 </div>
   </div>
 
@@ -657,7 +665,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

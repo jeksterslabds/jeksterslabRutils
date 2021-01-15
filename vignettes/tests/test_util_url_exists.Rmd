@@ -32,7 +32,7 @@ context("Test util_url_exists.")
 
 
 ```{r parameters}
-wrong_url <- "https://thisWebsiteDoesNotExist.com"
+wrong_url <- "https://thisWebsiteDoesNotExist123.com"
 wrong_url_expected <- FALSE
 correct_url <- "https://www.google.com"
 correct_url_expected <- TRUE

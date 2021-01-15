@@ -14,7 +14,7 @@ Number of characters.}
 Use digits.}
 
 \item{ext}{Character string.
-Optional extension.}
+Optional file extension.}
 }
 \description{
 Generates random character string

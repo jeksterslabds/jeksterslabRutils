@@ -13,10 +13,10 @@
 #' Filename EXCLUDING
 #' the sequence number,
 #' the separator (`sep`), and
-#' the file extension (`sep`).
+#' the file extension (`ext`).
 #' The sequence number,
 #' separator and
-#' file extension and declared
+#' file extension are declared
 #' in the other arguments.
 #' @param ext Character string.
 #' File extension,
@@ -73,7 +73,6 @@ util_check_file_seq <- function(dir = getwd(),
     ),
     id
   )
-
   if (prefix) {
     id <- paste0(
       id,

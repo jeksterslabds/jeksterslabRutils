@@ -82,7 +82,7 @@ with an option to delete them." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -180,7 +180,7 @@ with an option to delete them." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/jeksterslabds/jeksterslabRutils/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -208,14 +208,14 @@ Returns filenames of files that mismatch the file type specified
 with an option to delete them.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>util_check_file_type</span>(
-  <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span>(),
-  <span class='no'>fn</span>,
-  <span class='kw'>file_type</span> <span class='kw'>=</span> <span class='st'>"PDF document"</span>,
-  <span class='kw'>remove_files</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>par</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>ncores</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)</pre>
+    <pre class="usage"><span class='fu'>util_check_file_type</span><span class='op'>(</span>
+  dir <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span><span class='op'>(</span><span class='op'>)</span>,
+  <span class='va'>fn</span>,
+  file_type <span class='op'>=</span> <span class='st'>"PDF document"</span>,
+  remove_files <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  par <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  ncores <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -257,22 +257,26 @@ If unspecified, defaults to <code>detectCores() - 1</code>.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Ivan Jacob Agaloos Pesigan</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>util_check_file_type</span>(
-  <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span>(),
-  <span class='kw'>fn</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='fu'>util_check_file_type</span><span class='op'>(</span>
+  dir <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span><span class='op'>(</span><span class='op'>)</span>,
+  fn <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
     <span class='st'>"file_01.pdf"</span>,
     <span class='st'>"file_02.pdf"</span>,
     <span class='st'>"file_03.pdf"</span>,
     <span class='st'>"file_04.pdf"</span>,
     <span class='st'>"file_05.pdf"</span>
-  ),
-  <span class='kw'>file_type</span> <span class='kw'>=</span> <span class='st'>"PDF document"</span>,
-  <span class='kw'>par</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-)
-}</div></pre>
+  <span class='op'>)</span>,
+  file_type <span class='op'>=</span> <span class='st'>"PDF document"</span>,
+  par <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -288,7 +292,7 @@ If unspecified, defaults to <code>detectCores() - 1</code>.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

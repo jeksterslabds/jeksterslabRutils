@@ -81,7 +81,7 @@ using file name regular expression pattern." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -179,7 +179,7 @@ using file name regular expression pattern." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/jeksterslabds/jeksterslabRutils/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -206,15 +206,15 @@ using file name regular expression pattern." />
 using file name regular expression pattern.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>util_search_pattern</span>(
-  <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span>(),
-  <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>"^file.*\\.csv$"</span>,
-  <span class='kw'>all.files</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>full.names</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>recursive</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>ignore.case</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>no..</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-)</pre>
+    <pre class="usage"><span class='fu'>util_search_pattern</span><span class='op'>(</span>
+  dir <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span><span class='op'>(</span><span class='op'>)</span>,
+  pattern <span class='op'>=</span> <span class='st'>"^file.*\\.csv$"</span>,
+  all.files <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  full.names <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  recursive <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  ignore.case <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  no.. <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -257,15 +257,19 @@ Directory to search.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Ivan Jacob Agaloos Pesigan</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Search for files in the working directory</span>
 <span class='co'># with filenames starting with `file`</span>
 <span class='co'># and ending with `.csv`.</span>
-<span class='fu'>util_search_pattern</span>(
-  <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span>(),
-  <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>"^file.*\\.csv$"</span>
-)</div><div class='output co'>#&gt; character(0)</div></pre>
+<span class='fu'>util_search_pattern</span><span class='op'>(</span>
+  dir <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span><span class='op'>(</span><span class='op'>)</span>,
+  pattern <span class='op'>=</span> <span class='st'>"^file.*\\.csv$"</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; character(0)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -281,7 +285,7 @@ Directory to search.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
